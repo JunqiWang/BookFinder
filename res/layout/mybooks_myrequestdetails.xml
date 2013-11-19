@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".PostListActivity" >
+
+    <TextView
+        android:id="@+id/myrequestdetails_requestdetailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/requestdetailsTitle"
+        android:textSize="22sp" />
+    
+    <ImageView
+        android:id="@+id/myrequestdetails_coverBookDetail"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_launcher"
+        android:contentDescription="@string/cover" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/name"
+        android:textSize="13sp" />
+    
+    <TextView
+        android:id="@+id/myrequestdetails_nameBookDetail"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="60dp"
+        android:textSize="13sp"
+        android:text="@string/nameBookDetail" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myrequestdetails_nameBookDetail"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="13sp"
+        android:text="@string/price" />
+    
+    <TextView
+        android:id="@+id/myrequestdetails_priceBookDetail"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myrequestdetails_nameBookDetail"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:textSize="13sp"
+        android:text="@string/pricedetail" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myrequestdetails_priceBookDetail"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="13sp"
+        android:text="@string/available" />
+    
+    <TextView
+        android:id="@+id/myrequestdetails_availableBookDetail"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myrequestdetails_priceBookDetail"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="87dp"
+        android:textSize="13sp"
+        android:text="@string/availableBookDetail" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myrequestdetails_availableBookDetail"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="13sp"
+        android:text="@string/owner" />
+    
+    <TextView
+        android:id="@+id/myrequestdetails_ownerBookDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myrequestdetails_availableBookDetail"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:textSize="13sp"
+        android:text="@string/ownerBookDetail" />
+    
+     <ScrollView
+        android:id="@+id/myrequestdetails_descriptionScrollBookDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_below="@id/myrequestdetails_ownerBookDetail"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" >
+	    <TextView
+	        android:id="@+id/myrequestdetails_descriptionBookDetail"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="13sp"
+	        android:text="@string/descriptionBookDetail" />
+    </ScrollView>
+    
+    <TextView
+        android:id="@+id/myrequestdetails_responseDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myrequestdetails_descriptionScrollBookDetail"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="13sp"
+        android:text="@string/responseDetail" />
+
+    <Button
+        android:id="@+id/myrequestdetails_deleteMyPost"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/myrequestdetails_responseDetail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/withdraw"
+        android:textSize="13sp" />
+    
+</RelativeLayout>

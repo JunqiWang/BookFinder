@@ -1,0 +1,149 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="40dp" >  
+
+    <TextView
+        android:id="@+id/profile_photo_string"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Profile Photo"
+        android:layout_marginLeft="18dp" />
+  
+    <ImageView 
+   		android:id="@+id/profile_image_string"
+   		android:src="@drawable/ic_launcher"
+   		android:layout_width="80dp"
+  		android:layout_height="100dp"
+  		android:layout_alignParentRight="true"
+  		android:layout_marginRight="15dp"
+  		android:layout_marginTop="1dp" />
+    
+	<View
+	    android:layout_below="@id/profile_photo_string"
+	    android:id="@+id/blank_after_photo"
+	    android:layout_width="fill_parent"
+    	android:layout_height="40dp" />
+	
+	<TextView
+	    android:layout_below="@id/blank_after_photo"
+        android:id="@+id/name_string"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:text="Name: "
+        android:layout_marginLeft="18dp" />
+	
+	<TextView
+	    android:layout_below="@id/blank_after_photo"
+	    android:layout_toRightOf="@id/name_string"
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Peter" />
+	
+	<TextView
+	    android:layout_below="@id/name_string"
+        android:id="@+id/gender_string"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:text="Gender: "
+        android:layout_marginLeft="18dp" />
+	
+	<TextView
+	    android:layout_below="@id/name_string"
+	    android:layout_toRightOf="@id/gender_string"
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="M" />
+	
+	<TextView
+	    android:layout_below="@id/gender_string"
+        android:id="@+id/campus_string"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:text="Campus: "
+        android:layout_marginLeft="18dp" />
+	
+	<TextView
+	    android:layout_below="@id/gender_string"
+	    android:layout_toRightOf="@id/campus_string"
+        android:id="@+id/campus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Pittsburgh" />
+	
+	<TextView
+	    android:layout_below="@id/campus_string"
+        android:id="@+id/contact_string"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:text="Contact: "
+        android:layout_marginLeft="18dp" />
+	
+	<TextView
+	    android:layout_below="@id/campus_string"
+	    android:layout_toRightOf="@id/contact_string"
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="4206542343" />
+	
+	<TextView
+	    android:layout_below="@id/contact_string"
+        android:id="@+id/address_string"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:text="Address: "
+        android:layout_marginLeft="18dp" />
+	
+	<TextView
+	    android:layout_below="@id/contact_string"
+	    android:layout_toRightOf="@id/address_string"
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Pittsburgh" />
+	
+	<Button 
+	    android:layout_below="@id/address_string"
+	    android:id="@+id/edit_button"
+	    android:layout_centerHorizontal="true"
+	    android:layout_width="150dp"
+        android:layout_height="wrap_content" 
+        android:text="Edit Profile"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:onClick="editProfile" />
+	
+	<Button 
+	    android:layout_below="@id/edit_button"
+	    android:id="@+id/change_password_button"
+	    android:layout_centerHorizontal="true"
+	    android:layout_width="150dp"
+        android:layout_height="wrap_content" 
+        android:text="Change Password"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp" />
+
+	<Button
+	    android:id="@+id/logout_button"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/change_password_button"
+	    android:onClick="logOut"
+	    android:text="Logout" />
+	
+</RelativeLayout>

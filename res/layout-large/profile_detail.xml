@@ -1,0 +1,185 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">  
+	
+    <ImageView
+       android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image"
+        android:alpha="0.3"/>
+    
+    <TextView
+        android:layout_marginTop="60dp"
+        android:id="@+id/profile_photo_string"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/profile_detail_photo"
+        android:layout_marginLeft="35dp" />
+  
+    <ImageView 
+   		android:id="@+id/profile_image"
+   		android:layout_marginTop="60dp"
+   		android:src="@drawable/ic_launcher"
+   		android:contentDescription="@string/image"
+   		android:layout_width="160dp"
+  		android:layout_height="200dp"
+  		android:layout_alignParentRight="true"
+  		android:layout_marginRight="60dp" />
+<LinearLayout
+     android:id="@+id/profile_detail_linear1"
+     android:layout_below="@id/profile_photo_string"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
+	<TextView
+	    android:id="@+id/name_string"	   
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/name"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp" />
+	
+	<TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_name" />
+</LinearLayout>	
+
+<LinearLayout
+     android:id="@+id/profile_detail_linear2"
+     android:layout_below="@id/profile_detail_linear1"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">	
+	<TextView
+        android:id="@+id/gender_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/gender"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp" />
+	
+	<TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_gender" />
+</LinearLayout>	
+<LinearLayout 
+     android:id="@+id/profile_detail_linear3"
+     android:layout_below="@id/profile_detail_linear2"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
+	<TextView
+        android:id="@+id/campus_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/campus"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp" />	
+	<TextView
+        android:id="@+id/campus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_campus" />
+</LinearLayout>	
+
+<LinearLayout 
+     android:id="@+id/profile_detail_linear4"
+     android:layout_below="@id/profile_detail_linear3"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
+	<TextView
+        android:id="@+id/contact_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/contact"
+        android:layout_marginLeft="35dp" />
+	
+	<TextView
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_contact" />
+</LinearLayout>	
+<LinearLayout 
+     android:id="@+id/profile_detail_linear5"
+     android:layout_below="@id/profile_detail_linear4"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
+	<TextView
+        android:id="@+id/address_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/address"
+        android:layout_marginLeft="35dp" />
+
+	<TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_address" />
+</LinearLayout>		
+
+	<Button
+	    android:id="@+id/edit_button"	    
+	    android:layout_below="@id/profile_detail_linear5"
+	 	android:layout_alignLeft="@+id/change_password_button"
+	 	android:layout_marginTop="60dp"
+	    android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+	    android:text="@string/edit"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+	    android:onClick="editProfile" />
+	
+	<Button 
+	  	android:id="@+id/change_password_button"
+	    android:layout_below="@id/edit_button"
+	    android:layout_marginTop="30dp" 
+	    android:layout_centerHorizontal="true"
+	    android:layout_width="300dp"
+        android:layout_height="wrap_content" 
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
+        android:text="@string/change_password"/>
+
+	<Button
+	    android:id="@+id/logout_button"
+	    android:layout_width="300dp"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/change_password_button"
+	    android:layout_below="@+id/change_password_button"
+	    android:layout_marginTop="30dp"
+	    android:background="@drawable/custom_button2"
+	    android:gravity="center"
+	    android:onClick="logOut"
+	    android:text="@string/logout"
+	    android:textColor="@color/white"
+	    android:textSize="25sp"
+	    android:textStyle="bold" />
+	
+</RelativeLayout>

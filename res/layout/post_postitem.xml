@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@+id/RelativeLayout"  
+	android:layout_width="fill_parent"  
+	android:layout_height="25dp" 
+	android:background="@drawable/postlist_bg" >
+
+   	<TextView    
+   	    android:id="@+id/bookNamePostList"
+		android:layout_height="20dp"  
+		android:layout_width="135dp"
+		android:layout_centerVertical="true"
+		android:layout_marginLeft="3dp"
+		android:textSize="13sp"
+		android:maxLength="22" />
+
+	<TextView  
+		android:id="@+id/bookPricePostList" 
+		android:layout_height="20dp"  
+		android:layout_width="75dp"          
+		android:layout_toRightOf="@+id/bookNamePostList"
+		android:layout_marginLeft="5dp"
+		android:layout_centerVertical="true"
+		android:textSize="13sp"
+		android:maxLength="8" /> 	
+		
+	<ImageView  
+		android:layout_width="18dp"  
+		android:layout_height="18dp"
+		android:layout_toRightOf="@+id/bookPricePostList"
+		android:layout_marginLeft="10dp"
+		android:layout_centerVertical="true"
+		android:src="@drawable/ic_launcher"
+		android:contentDescription="@string/open" />  
+		
+	<TextView  
+		android:id="@+id/likeNumPostList" 
+		android:layout_height="20dp"  
+		android:layout_width="wrap_content"          
+		android:layout_toRightOf="@+id/bookPricePostList"
+		android:layout_marginLeft="35dp"
+		android:layout_centerVertical="true"
+		android:textSize="13sp"
+		android:maxLength="4" />
+		
+</RelativeLayout>

@@ -1,0 +1,146 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+     <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha="0.3"
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image" />
+
+    <TextView
+        android:id="@+id/mybooks_profile_photo"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/profile_detail_photo"
+        android:layout_marginLeft="35dp" />
+  
+    <ImageView 
+   		android:id="@+id/mybooks_profile_image"
+   		android:layout_marginTop="100dp"
+   		android:src="@drawable/ic_launcher"
+   		android:contentDescription="@string/image"
+   		android:layout_width="160dp"
+  		android:layout_height="200dp"
+  		android:layout_alignParentRight="true"
+  		android:layout_marginRight="60dp" />    
+
+<LinearLayout
+     android:id="@+id/mybooks_profile_linear1"
+     android:layout_below="@id/mybooks_profile_photo"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">	
+	<TextView
+        android:id="@+id/my_books_profile_name_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/name"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp" />
+	
+	<TextView
+        android:id="@+id/my_books_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_name" />
+</LinearLayout>	
+
+<LinearLayout
+     android:id="@+id/mybooks_profile_linear2"
+     android:layout_below="@id/mybooks_profile_linear1"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">	
+	<TextView
+        android:id="@+id/mybooks_profile_gender_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/gender"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp" />
+	
+	<TextView
+        android:id="@+id/mybooks_profile_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_gender" />
+</LinearLayout>
+
+<LinearLayout 
+     android:id="@+id/mybooks_profile_linear3"
+     android:layout_below="@id/mybooks_profile_linear2"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">	
+	<TextView
+        android:id="@+id/mybooks_profile_campus_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/campus"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp" />	
+	
+	<TextView
+        android:id="@+id/mybooks_profile_campus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_campus" />
+</LinearLayout>
+
+<LinearLayout 
+     android:id="@+id/mybooks_profile_linear4"
+     android:layout_below="@id/mybooks_profile_linear3"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">	
+	<TextView
+        android:id="@+id/mybooks_profile_contact_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/contact"
+        android:layout_marginLeft="35dp" />
+	
+	<TextView
+        android:id="@+id/mybooks_profile_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_contact" />
+</LinearLayout>	
+
+<LinearLayout 
+     android:id="@+id/mybooks_profile_linear5"
+     android:layout_below="@id/mybooks_profile_linear4"
+     android:layout_marginTop="30dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">	
+	<TextView
+        android:id="@+id/mybooks_profile_address_string"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/address"
+        android:layout_marginLeft="35dp" />
+	
+	<TextView
+        android:id="@+id/mybooks_profile_address"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/user_address" />
+</LinearLayout>	
+</RelativeLayout>

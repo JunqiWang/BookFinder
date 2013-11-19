@@ -1,0 +1,155 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp">
+    
+ 	<LinearLayout
+   	 android:gravity="center_horizontal"
+   	 android:layout_width="match_parent"
+   	 android:layout_height="wrap_content" >
+	    <TextView
+	       android:id="@+id/editMyBookForSaleTitle"
+     	   android:layout_width="wrap_content"
+     	   android:layout_height="wrap_content"
+     	   android:text="@string/editMyBookPageTitle"
+     	   android:textSize="15sp"
+     	   android:textStyle="bold"
+     	   android:layout_margin="7sp" />
+	</LinearLayout>
+ 	
+   <TextView
+       	android:text="@string/cover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"/>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="5dp"
+       android:orientation="horizontal" >
+
+       <LinearLayout
+           android:id="@+id/edit_my_book_for_sale_linearLayout1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical" >
+
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="30dp"
+               android:layout_marginLeft="10dp"
+               android:text="@string/takePhoto"
+               android:textSize="13sp" />
+
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="30dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="5dp"
+               android:text="@string/choosePhoto"
+               android:textSize="13sp" />
+       </LinearLayout>
+
+       <ImageView
+           android:layout_width="60dp"
+           android:layout_height="65dp"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentTop="true"
+           android:contentDescription="@string/bookCover_alt"
+           android:src="@drawable/shape" />
+
+   </RelativeLayout>
+ 	
+    <LinearLayout
+    	android:layout_width="match_parent"
+   	 	android:layout_height="wrap_content"
+   	 	android:layout_marginTop="25dp">
+  	  <TextView
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/name"
+    	    android:textSize="15sp"/>
+  	  <EditText
+        	android:id="@+id/edit_my_book_for_sale_bookName"
+        	android:layout_marginLeft="10sp"
+        	android:layout_weight="1"
+        	android:layout_width="0dp"
+        	android:layout_height="25dp"
+        	android:inputType="text"
+        	android:background="@drawable/input_box" />
+  	  <requestFocus />
+  	
+	</LinearLayout>
+ 	
+ 	<LinearLayout
+    	android:layout_width="match_parent"
+   	 	android:layout_height="wrap_content"
+   	 	android:layout_marginTop="25dp">
+    	<TextView
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/price"
+        	android:textSize="15sp"
+        	android:layout_marginRight="5dp"/>
+    	<EditText
+        	android:id="@+id/edit_my_book_for_sale_bookPrice"
+        	android:layout_weight="1"
+        	android:layout_width="0dp"
+        	android:layout_height="25dp"
+        	android:inputType="number"
+        	android:background="@drawable/input_box" />
+    	<requestFocus />
+    </LinearLayout>
+   
+    <LinearLayout
+    	android:layout_width="match_parent"
+   	 	android:layout_height="wrap_content"
+   	 	android:layout_marginTop="25dp" 
+   	 	android:orientation="vertical">
+    	<TextView
+      	  android:text="@string/description"
+      	  android:layout_width="wrap_content"
+       	  android:layout_height="wrap_content"
+       	  android:textSize="15sp"/>
+    	<EditText
+    	    android:id="@+id/edit_my_book_for_sale_bookDescription"
+    	    android:inputType="textMultiLine" 
+    		android:lines="3" 
+    		android:gravity="top|left" 
+    		android:maxLines="5" 
+    		android:layout_height="wrap_content" 
+    		android:layout_width="fill_parent" 
+    		android:scrollbars="vertical"
+    	    android:layout_marginTop="10dp"
+    	    android:background="@drawable/input_box"/>
+
+    	<requestFocus />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:gravity="center_horizontal"
+  		android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal" 
+    	android:layout_marginTop="30dp">
+    <Button
+        android:id="@+id/saveButton"
+      	android:layout_width="61dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="11dp"
+        android:text="@string/save"
+        android:textSize="12sp"
+        android:onClick=""/>
+     <Button
+        android:layout_width="61dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="11dp"
+        android:text="@string/cancel"
+        android:textSize="12sp"
+        android:onClick=""/>
+	</LinearLayout>
+    
+</LinearLayout>
