@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.wilddynamis.bookapp.utils.TakePhoto;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.SignupActivity;
@@ -37,6 +39,16 @@ public class EditProfileActivity extends Activity {
 	
 	private User user;
 	private Context context;
+	
+	/***take photo ***/	
+	private static final int ACTION_TAKE_PHOTO = 1;
+	private static final String BITMAP_STORAGE_KEY = "viewbitmap";
+	private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
+	private Bitmap mImageBitmap;
+	private String mCurrentPhotoPath;
+
+	TakePhoto takePhotoAction;
+	/***take photo ***/
 	
 	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
@@ -78,6 +90,11 @@ public class EditProfileActivity extends Activity {
 //					.start();
 			}
 		});
+		/***take photo ***/
+		mImageBitmap = null;
+		takePhotoAction = new TakePhoto(this,mCurrentPhotoPath, profileImage, takePhoto);
+		takePhotoAction.start();
+		/***take photo ***/
     }
 	
 	/* save button*/
@@ -97,5 +114,41 @@ public class EditProfileActivity extends Activity {
 	public Handler getHandler() {
 		return handler;
 	}
+	/***take photo ***/
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+			case ACTION_TAKE_PHOTO: {
+				if (resultCode == RESULT_OK) {
+					takePhotoAction.handleCameraPhoto( );
+				}
+				break;
+			}
+			default:
+			Toast.makeText(EditProfileActivity.this, "SMS not delivered",
+	                      Toast.LENGTH_SHORT).show();
+		} // switch
+	}
+
+	// Some lifecycle callbacks so that the image can survive orientation change
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		outState.putParcelable(BITMAP_STORAGE_KEY, mImageBitmap);
+		outState.putBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY, (mImageBitmap != null) );
+		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		mImageBitmap = savedInstanceState.getParcelable(BITMAP_STORAGE_KEY);
+		profileImage.setImageBitmap(mImageBitmap);
+		profileImage.setVisibility(
+				savedInstanceState.getBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY) ? 
+						ImageView.VISIBLE : ImageView.INVISIBLE
+		);
+	}
+	/***take photo ***/
 } 
 

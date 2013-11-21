@@ -1,6 +1,7 @@
 package com.wilddynamos.bookapp.activity;
 
 import com.wilddynamos.bookapp.R;
+import com.wilddynamos.bookapp.activity.profile.EditProfileActivity;
 import com.wilddynamos.bookapp.ws.remote.action.Login;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,14 +54,14 @@ public class LoginActivity extends Activity {
 					new Login(LoginActivity.this,
 							  email.getText().toString(),
 							  password.getText().toString())
-						.start();
-//				signIn();
+						.start(); 
+				signIn();
 			}
 		});
     }
 
     public void signIn(){
-    	Intent intent = new Intent(this, MultiWindowActivity.class);	
+    	Intent intent = new Intent(this, EditProfileActivity.class);	
     	startActivity(intent);
     }
     
