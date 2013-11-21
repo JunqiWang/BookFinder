@@ -11,6 +11,7 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
     private final WeakReference<ImageView> imageViewReference;
     private String mCurrentPhotoPath;
     private ImageView imageView;
+    private Bitmap mybitmap;
 
     public BitmapWorkerTask(String mCurrentPhotoPath,ImageView imageView) {
         // Use a WeakReference to ensure the ImageView can be garbage collected
@@ -33,6 +34,7 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
             if (imageView != null) {
                 imageView.setImageBitmap(bitmap);
                 imageView.setVisibility(View.VISIBLE);
+                mybitmap = bitmap;
             }
         }
     }
@@ -64,6 +66,10 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
 		/* Decode the JPEG file into a Bitmap */
         return BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
     }  
+    
+    public Bitmap getBitmap(){
+    	return mybitmap;
+    }
 }
 
 
