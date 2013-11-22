@@ -1,16 +1,20 @@
 package com.wilddynamos.bookapp.activity.profile;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+=======
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+>>>>>>> 15c760fda5bd0a177c9f4ab543285feb11a778f3
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,7 +31,6 @@ import com.wilddynamis.bookapp.utils.TakePhoto;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.model.User;
-import com.wilddynamos.bookapp.ws.remote.Connection;
 import com.wilddynamos.bookapp.ws.remote.action.profile.EditMyProfile;
 
 public class EditProfileActivity extends Activity {
@@ -66,7 +69,7 @@ public class EditProfileActivity extends Activity {
     	public void handleMessage(Message msg){
     		
     		if(msg.what < 0)
-    			Toast.makeText(EditProfileActivity.this, "Oops!Something's wrong", Toast.LENGTH_SHORT).show();
+    			Toast.makeText(EditProfileActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
     		else if(msg.what == 1) {
     			Toast.makeText(EditProfileActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
     			save();
@@ -93,32 +96,15 @@ public class EditProfileActivity extends Activity {
 		cancel = (Button) findViewById(R.id.editprofile_cancelButton);
 		
 		context = this;
+		
 		save.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//deal with the taken photo
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				try{
-					File file = new File(mCurrentPhotoPath);
-					FileInputStream fis = new FileInputStream(file);
-					byte[] buf = new byte[1024 * 1024];
-					for(int readNum; (readNum = fis.read(buf)) != -1;)
-						bos.write(buf, 0, readNum);
-					fis.close();
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
-				byte[] bytes = bos.toByteArray();
-				
-				user.setId(Connection.id);
-				user.setName(name.getEditableText().toString());
-				user.setGender(name.getEditableText().toString().equals("M"));
-				user.setCampus(name.getEditableText().toString());
-				user.setContact(name.getEditableText().toString());
-				user.setAddress(name.getEditableText().toString());
-				user.setPhotoAddr(mCurrentPhotoPath);
-				
-				new EditMyProfile(EditProfileActivity.this, context, user, bytes)
+				Bitmap bitmap = ((BitmapDrawable)profileImage.getDrawable()).getBitmap();
+				ByteArrayOutputStream stream = new ByteArrayOutputStream();
+				bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+				byte[] byteArray = stream.toByteArray(); 
+				new EditMyProfile(EditProfileActivity.this, context, user, byteArray)
 					.start();
 			}
 		});

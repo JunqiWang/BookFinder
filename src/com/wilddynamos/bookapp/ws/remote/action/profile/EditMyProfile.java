@@ -38,8 +38,9 @@ public class EditMyProfile extends Thread {
 			String imageString = new String(byteArray, Charset.forName("ISO-8859-1"));
 			
 			Map<String, String> params = new HashMap<String, String>();
+			params.put("id", String.valueOf(user.getId()));
 			params.put("name", user.getName());
-			params.put("gender", Boolean.toString(user.getGender()));
+			params.put("gender", user.getGender() ? "M" : "F");
 			params.put("campus", user.getCampus());
 			params.put("contact", user.getContact());
 			params.put("address", user.getAddress());
