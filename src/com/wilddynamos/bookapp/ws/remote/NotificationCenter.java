@@ -10,14 +10,12 @@ public class NotificationCenter extends Service {
 	
 	@Override
 	public void onCreate() {
-		System.out.println("Create");
 		super.onCreate();
 	}
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		 new WaitingRequest(this).start();  
-		 System.out.println("Service Started");
 		 return super.onStartCommand(intent, flags, startId);
 	}
 	

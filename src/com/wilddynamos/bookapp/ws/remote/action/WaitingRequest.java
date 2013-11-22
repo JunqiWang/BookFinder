@@ -12,6 +12,7 @@ import android.app.Service;
 import android.content.Intent;
 
 import com.wilddynamos.bookapp.R;
+import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.post.PostListActivity;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
@@ -39,7 +40,7 @@ public class WaitingRequest extends Thread {
 					Notification notification = new Notification(R.drawable.app_cover,  
 				                "New Request", System.currentTimeMillis());  
 					
-					Intent notificationIntent = new Intent(service, PostListActivity.class);  
+					Intent notificationIntent = new Intent(service, MultiWindowActivity.class);  
 					
 					PendingIntent pendingIntent = PendingIntent.getActivity(service, 0,  
 				                notificationIntent, 0);  

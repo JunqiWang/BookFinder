@@ -111,4 +111,7 @@
     <item name="android:shadowRadius">2</item>
 </style>
 
+<!-- photos -->
+<string name="album_name">Bookapp_album</string>
+<string name="cannot">Bookapp cannot</string>
 </resources>

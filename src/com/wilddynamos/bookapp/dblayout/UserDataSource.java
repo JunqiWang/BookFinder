@@ -63,6 +63,20 @@ public class UserDataSource {
 		  cursor.close();
 		  return user;
 	  }
+	  
+	  public int updateUser(User user) {
+		  ContentValues values = new ContentValues();
+//		  values.put(UserSQLiteHelper.COLUMN_EMAIL, user.getEmail());
+//		  values.put(UserSQLiteHelper.COLUMN_PASSWORD, user.getPassword());
+		  values.put(UserSQLiteHelper.COLUMN_NAME, user.getName());
+		  values.put(UserSQLiteHelper.COLUMN_GENDER, user.getGender());
+		  values.put(UserSQLiteHelper.COLUMN_CAMPUS, user.getCampus());
+		  values.put(UserSQLiteHelper.COLUMN_CONTACT, user.getContact());
+		  values.put(UserSQLiteHelper.COLUMN_ADDRESS, user.getAddress());
+		  values.put(UserSQLiteHelper.COLUMN_PHOTO, user.getPhotoAddr());
+		  return database.update(UserSQLiteHelper.TABLE_USER, values, UserSQLiteHelper.COLUMN_ID
+			        + " = " + user.getId(), null);
+	  }
 
 	  public void deleteUser(User user) {
 	    long id = user.getId();
