@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.wilddynamos.bookapp.activity.post.PostDetailsActivity;
+import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
-import com.wilddynamos.bookapp.ws.remote.DataUtils;
 
 public class GetPostDetail extends Thread {
 	

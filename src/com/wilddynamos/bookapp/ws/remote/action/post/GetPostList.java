@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.wilddynamos.bookapp.activity.post.PostListActivity;
+import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
-import com.wilddynamos.bookapp.ws.remote.DataUtils;
-import com.wilddynamos.bookapp.ws.remote.action.WaitingRequest;
 
 public class GetPostList extends Thread {
 	
@@ -14,7 +13,6 @@ public class GetPostList extends Thread {
 	
 	public GetPostList(PostListActivity a) {
 		this.a = a;
-//		new WaitingRequest(a).start();
 	}
 
 	@Override

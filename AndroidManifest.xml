@@ -97,7 +97,7 @@
         </activity>
         
         <service 
-            android:name="com.wilddynamos.bookapp.ws.remote.NotificationCenter">
+            android:name="com.wilddynamos.bookapp.service.NotificationCenter">
         </service>
     </application>
 

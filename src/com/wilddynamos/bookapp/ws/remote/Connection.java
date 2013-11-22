@@ -25,11 +25,14 @@ import org.apache.http.params.HttpParams;
 public abstract class Connection {
 	
 	private static DefaultHttpClient client = new DefaultHttpClient();
+	
 	private static DefaultHttpClient waitingClient = new DefaultHttpClient(); 
 	
 	public static String sessionID;
 	
+
 	public static final String STRURI = "http://10.0.23.175:8080/BookAppServer_1110";
+
 	public static int id;
 	
 	public synchronized static boolean login(String email, String pwd) {
@@ -69,14 +72,9 @@ public abstract class Connection {
 			if(!result.equals("-1")) {
 				sessionID = result;
 				id = Integer.parseInt(br.readLine());
-				br.close();
-//				System.out.println("haha");
 				return true;
-			} else {
-//				System.out.println("hahaha");
-				br.close();
-				return false;
 			}
+			return false;
 			
 		} catch(IOException e) {
 			return false;
