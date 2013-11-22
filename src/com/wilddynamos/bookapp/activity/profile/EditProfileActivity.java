@@ -1,9 +1,13 @@
 package com.wilddynamos.bookapp.activity.profile;
 
+import java.io.ByteArrayOutputStream;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,7 +20,6 @@ import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
-import com.wilddynamos.bookapp.activity.SignupActivity;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.ws.remote.action.profile.EditMyProfile;
 
@@ -71,11 +74,16 @@ public class EditProfileActivity extends Activity {
 		cancel = (Button) findViewById(R.id.editprofile_cancelButton);
 		
 		context = this;
+		
 		save.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				new EditMyProfile(EditProfileActivity.this, context, user)
-//					.start();
+				Bitmap bitmap = ((BitmapDrawable)profileImage.getDrawable()).getBitmap();
+				ByteArrayOutputStream stream = new ByteArrayOutputStream();
+				bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+				byte[] byteArray = stream.toByteArray(); 
+				new EditMyProfile(EditProfileActivity.this, context, user, byteArray)
+					.start();
 			}
 		});
     }
