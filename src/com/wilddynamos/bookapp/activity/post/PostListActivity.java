@@ -11,12 +11,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.view.MenuItemCompat;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,38 +26,34 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
-import com.wilddynamos.bookapp.ws.remote.action.WaitingRequest;
+import com.wilddynamos.bookapp.ws.remote.NotificationCenter;
 import com.wilddynamos.bookapp.ws.remote.action.post.GetPostList;
 
-public class PostListActivity extends Activity {
+public class PostListActivity extends Activity implements SensorEventListener {
+	
+	private SensorManager mSensorManager = null;
+	private Sensor sensor;
 	
 	private EditText searchContent;
 	private CheckBox rent, sell;
 	private ListView bookList;
 	
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 		@Override
     	public void handleMessage(Message msg){
     		
-			if(msg.what == 9) {
-				System.out.println(WaitingRequest.s);
-				Toast.makeText(PostListActivity.this, WaitingRequest.s, Toast.LENGTH_LONG).show();
-			}
     		if(msg.what == -1)
-    			Toast.makeText(PostListActivity.this, "Oops!", Toast.LENGTH_LONG).show();
-    		else if(msg.what == 1) {
-    			search = "";
+    			Toast.makeText(PostListActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
+    		else if(msg.what == 1)
     			pour();
-    		}
     		else
-    			Toast.makeText(PostListActivity.this, "What happened?", Toast.LENGTH_LONG).show();
+    			Toast.makeText(PostListActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
     	}
 	};
 	
@@ -67,9 +64,7 @@ public class PostListActivity extends Activity {
 	private String sOrR = null;
 	private String search = "";
 	
-	private Thread getAll;
-	private Thread getChecked;
-	private Thread getSearched;
+	private Thread refresh;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -77,6 +72,11 @@ public class PostListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.post_postlist);
 
+		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		mSensorManager.registerListener(this, sensor,
+				SensorManager.SENSOR_DELAY_GAME);
+		
 //		searchContent = (EditText) findViewById(R.id.searchContent);
 		rent = (CheckBox) findViewById(R.id.rentCheckBox);
 		sell = (CheckBox) findViewById(R.id.sellCheckBox);
@@ -85,12 +85,11 @@ public class PostListActivity extends Activity {
 		currentPage = 1;
 
 		try {
-			getChecked.stop();
-			getSearched.stop();
+			refresh.stop();
 		} catch(Exception e) {
 		}
-		getAll = new GetPostList(this);
-		getAll.start();
+		refresh = new GetPostList(this);
+		refresh.start();
 		
 		rent.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
@@ -104,15 +103,15 @@ public class PostListActivity extends Activity {
 					currentPage = 1;
 					
 					try {
-						getAll.stop();
-						getSearched.stop();
+						refresh.stop();
 					} catch(Exception e) {
 					}
-					getChecked = new GetPostList(PostListActivity.this);
-					getChecked.start();
+					refresh = new GetPostList(PostListActivity.this);
+					refresh.start();
 				}
 			}
 		});
+		
 		sell.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override
@@ -123,33 +122,20 @@ public class PostListActivity extends Activity {
 					sellChecked = isChecked;
 					sOrR = sellChecked ? null : "r";
 					currentPage = 1;
-					getChecked = new GetPostList(PostListActivity.this);
-					getChecked.start();
+					
+					try {
+						refresh.stop();
+					} catch(Exception e) {
+					}
+					refresh = new GetPostList(PostListActivity.this);
+					refresh.start();
 				}
 			}
 		});
-	}
-
-	private class PostListAdapter extends SimpleAdapter {
-		private int[] colors = {R.color.gray, R.color.white};
 		
-		public PostListAdapter(Context context,
-						List<? extends Map<String, ?>> books, int resource,
-						String[] from, int[] to) {
-			
-			super(context, books, resource, from, to);
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			
-			View view = super.getView(position, convertView, parent);
-			view.setBackgroundResource(colors[position % 2]);
-			
-			return view;
-		}
+		startService(new Intent(this, NotificationCenter.class));
 	}
-	
+
 ////	@SuppressLint("NewApi")
 //	@Override
 //	public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,6 +148,29 @@ public class PostListActivity extends Activity {
 //	    
 //		return true;
 //	}
+	
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		Log.d("YAO", "jinle");
+        int sensorType = event.sensor.getType();
+        float[] values = event.values;
+        if (sensorType == Sensor.TYPE_ACCELEROMETER){
+            if (Math.abs(values[0]) > 14 || Math.abs(values[1]) > 14 || Math.abs(values[2]) > 14){
+        		try {
+					refresh.stop();
+				} catch(Exception e) {
+				}
+				refresh = new GetPostList(PostListActivity.this);
+				refresh.start();
+				Toast.makeText(this, "YAOYAOYAO", Toast.LENGTH_LONG).show();
+            }
+        }
+	}
 	
 	private void pour() {
 		if(jsonArray == null || jsonArray.length() == 0)
@@ -211,6 +220,26 @@ public class PostListActivity extends Activity {
 		currentPage ++;
 	}
 	
+	private class PostListAdapter extends SimpleAdapter {
+		private int[] colors = {R.color.gray, R.color.white};
+		
+		public PostListAdapter(Context context,
+						List<? extends Map<String, ?>> books, int resource,
+						String[] from, int[] to) {
+			
+			super(context, books, resource, from, to);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			
+			View view = super.getView(position, convertView, parent);
+			view.setBackgroundResource(colors[position % 2]);
+			
+			return view;
+		}
+	}
+	
 	@SuppressWarnings({ "deprecation" })
 	public void searchPost(View view) {
 		if(searchContent.getText() == null || searchContent.getText().toString().equals("")) {
@@ -221,12 +250,11 @@ public class PostListActivity extends Activity {
 		search = searchContent.getText().toString();
 		
 		try {
-			getChecked.stop();
-			getAll.stop();
+			refresh.stop();
 		} catch(Exception e) {
 		}
-		getSearched = new GetPostList(this);
-		getSearched.start();
+		refresh = new GetPostList(this);
+		refresh.start();
 	}
 	
 	/**
