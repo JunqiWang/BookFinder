@@ -62,8 +62,8 @@ public final class R {
         public static final int LinearLayout01=0x7f0a0000;
         public static final int RelativeLayout=0x7f0a007d;
         public static final int acceptButton=0x7f0a006a;
-        public static final int action_search=0x7f0a009b;
-        public static final int action_settings=0x7f0a009c;
+        public static final int action_search=0x7f0a009a;
+        public static final int action_settings=0x7f0a009b;
         public static final int address=0x7f0a0052;
         public static final int address_string=0x7f0a0051;
         public static final int blank_after_photo=0x7f0a0048;
@@ -90,11 +90,11 @@ public final class R {
         public static final int declineButton=0x7f0a0065;
         public static final int editMyBookForRentTitle=0x7f0a000d;
         public static final int editMyBookForSaleTitle=0x7f0a0018;
-        public static final int edit_address=0x7f0a0094;
+        public static final int edit_address=0x7f0a0092;
         public static final int edit_button=0x7f0a0082;
-        public static final int edit_campus=0x7f0a0092;
-        public static final int edit_contact=0x7f0a0093;
-        public static final int edit_gender=0x7f0a0091;
+        public static final int edit_campus=0x7f0a0090;
+        public static final int edit_contact=0x7f0a0091;
+        public static final int edit_gender=0x7f0a008f;
         public static final int edit_my_book_for_rent_bookDescription=0x7f0a0014;
         public static final int edit_my_book_for_rent_bookName=0x7f0a000f;
         public static final int edit_my_book_for_rent_bookPrice=0x7f0a0010;
@@ -107,13 +107,13 @@ public final class R {
         public static final int edit_my_book_for_sale_cancelButton=0x7f0a001f;
         public static final int edit_my_book_for_sale_linearLayout1=0x7f0a0019;
         public static final int edit_my_book_for_sale_saveButton=0x7f0a001e;
-        public static final int edit_name=0x7f0a0090;
-        public static final int editprofile_cancelButton=0x7f0a0096;
-        public static final int editprofile_choose_photo_button=0x7f0a008f;
+        public static final int edit_name=0x7f0a008e;
+        public static final int editprofile_cancelButton=0x7f0a0094;
+        public static final int editprofile_choose_photo_button=0x7f0a008d;
         public static final int editprofile_image=0x7f0a0016;
-        public static final int editprofile_linearLayout1=0x7f0a008d;
-        public static final int editprofile_saveButton=0x7f0a0095;
-        public static final int editprofile_take_photo_button=0x7f0a008e;
+        public static final int editprofile_linearLayout1=0x7f0a008b;
+        public static final int editprofile_saveButton=0x7f0a0093;
+        public static final int editprofile_take_photo_button=0x7f0a008c;
         public static final int forgotPwd=0x7f0a000b;
         public static final int gender=0x7f0a004c;
         public static final int gender_string=0x7f0a004b;
@@ -122,7 +122,6 @@ public final class R {
         public static final int lblListHeader=0x7f0a0003;
         public static final int lblListItem=0x7f0a0005;
         public static final int likeNumPostList=0x7f0a0080;
-        public static final int linearLayout1=0x7f0a008b;
         public static final int list_image=0x7f0a0067;
         public static final int login=0x7f0a0009;
         public static final int logout_button=0x7f0a0084;
@@ -205,17 +204,17 @@ public final class R {
         public static final int saveButton=0x7f0a001d;
         public static final int sellCheckBox=0x7f0a0002;
         public static final int signup=0x7f0a000a;
-        public static final int signupButton=0x7f0a009a;
+        public static final int signupButton=0x7f0a0099;
         public static final int textView1=0x7f0a0076;
         public static final int thumbnail=0x7f0a0066;
         public static final int titleBookDetail=0x7f0a002e;
         public static final int titleMyPostDetail=0x7f0a0021;
-        public static final int userEmail=0x7f0a0097;
+        public static final int userEmail=0x7f0a0095;
         public static final int userInputEmail=0x7f0a0006;
         public static final int userInputPassword=0x7f0a0007;
-        public static final int userName=0x7f0a008c;
-        public static final int userPassword=0x7f0a0098;
-        public static final int userPasswordConfirm=0x7f0a0099;
+        public static final int userName=0x7f0a0096;
+        public static final int userPassword=0x7f0a0097;
+        public static final int userPasswordConfirm=0x7f0a0098;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -252,6 +251,9 @@ public final class R {
          */
         public static final int addNewBookForRentTitle=0x7f07003c;
         public static final int address=0x7f070038;
+        /**  photos 
+         */
+        public static final int album_name=0x7f070045;
         public static final int app_name=0x7f070000;
         public static final int available=0x7f07000c;
         public static final int availableBookDetail=0x7f070011;
@@ -262,6 +264,7 @@ public final class R {
         public static final int borrow=0x7f07000f;
         public static final int campus=0x7f070034;
         public static final int cancel=0x7f07002d;
+        public static final int cannot=0x7f070046;
         public static final int change_password=0x7f07003a;
         public static final int choosePhoto=0x7f07002f;
         public static final int confirmation=0x7f07000a;

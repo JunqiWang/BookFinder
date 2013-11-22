@@ -25,7 +25,7 @@ import org.apache.http.params.HttpParams;
 public abstract class Connection {
 	
 	private static DefaultHttpClient client = new DefaultHttpClient();
-	private static DefaultHttpClient waitingClient = new DefaultHttpClient();
+	private static DefaultHttpClient waitingClient = new DefaultHttpClient(); 
 	
 	public static String sessionID;
 	
@@ -85,8 +85,7 @@ public abstract class Connection {
 	public synchronized static InputStream waiting() {
 		
 		HttpParams hp = new BasicHttpParams();
-		hp.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5);
-		hp.setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 0);
+		hp.setParameter(CoreConnectionPNames.SO_TIMEOUT, 0);
 		waitingClient.setParams(hp);
 		
 		HttpGet doGet = new HttpGet(STRURI + "/LongConn?id=" + id);
