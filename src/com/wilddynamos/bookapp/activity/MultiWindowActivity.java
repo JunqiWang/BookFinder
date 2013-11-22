@@ -22,6 +22,7 @@ import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.mybooks.MybooksList;
 import com.wilddynamos.bookapp.activity.post.PostListActivity;
 import com.wilddynamos.bookapp.activity.profile.MyProfileActivity;
+import com.wilddynamos.bookapp.service.NotificationCenter;
 
 
 @SuppressWarnings("deprecation")
@@ -79,7 +80,8 @@ public class MultiWindowActivity extends TabActivity {
             	} */
               
             }       
-        });  
+        });
+		startService(new Intent(this, NotificationCenter.class));
     }
 	
 	@SuppressLint("NewApi")
@@ -105,10 +107,10 @@ public class MultiWindowActivity extends TabActivity {
             tv.setTextSize(18);  
        //     tv.setTypeface(Typeface.SERIF, 2); // text style  
             if (tabHost.getCurrentTab() == i) {//when selected
-                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_selected));//选中后的背景  
+                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_selected));//������������������  
                 tv.setTextColor(Color.DKGRAY);  
             } else {//when not selected 
-                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_unselected));//非选择的背景  
+                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_unselected));//������������������  
                 tv.setTextColor(Color.WHITE);  
             }  
         }  

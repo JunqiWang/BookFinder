@@ -17,42 +17,66 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
-import com.wilddynamos.bookapp.ws.remote.NotificationCenter;
 import com.wilddynamos.bookapp.ws.remote.action.post.GetPostList;
 
-public class PostListActivity extends Activity implements SensorEventListener {
+public class PostListActivity extends Activity 
+			implements SensorEventListener, OnTouchListener {
 	
 	private SensorManager mSensorManager = null;
-	private Sensor sensor;
 	
 	private EditText searchContent;
-	private CheckBox rent, sell;
+	private CheckBox rent, 
+					 sell;
 	private ListView bookList;
+	private ProgressBar refreshProgress,
+						loadProgress;
+	
+	private PostListAdapter pla;
+	
+	List<Map<String, String>> list;
+	private float yDown;
+	private float touchSlop;
+	private boolean willRefresh = false;
+	private boolean willLoad = false;
+	private boolean atTop = true;
+	private boolean atBottom = false;
+	
 	
 	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
+
 		@Override
     	public void handleMessage(Message msg){
-    		
     		if(msg.what == -1)
     			Toast.makeText(PostListActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
-    		else if(msg.what == 1)
-    			pour();
-    		else
+    		else if(msg.what == 1) {
+    			if(currentPage == 1)
+    				pour();
+    			else {
+    				loadData();
+    				pla.notifyDataSetChanged();
+    				loadProgress.setVisibility(ProgressBar.INVISIBLE);
+    			}
+    		} else
     			Toast.makeText(PostListActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
     	}
 	};
@@ -60,125 +84,129 @@ public class PostListActivity extends Activity implements SensorEventListener {
 	private JSONArray jsonArray;
 	private List<Integer> ids;
 	private int currentPage;
-	private boolean rentChecked = true, sellChecked = true;
 	private String sOrR = null;
 	private String search = "";
 	
-	private Thread refresh;
+	private Thread load;
 
-	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.post_postlist);
 
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		mSensorManager.registerListener(this, sensor,
-				SensorManager.SENSOR_DELAY_GAME);
 		
-//		searchContent = (EditText) findViewById(R.id.searchContent);
+		searchContent = (EditText) findViewById(R.id.searchContent);
 		rent = (CheckBox) findViewById(R.id.rentCheckBox);
 		sell = (CheckBox) findViewById(R.id.sellCheckBox);
 		bookList = (ListView) findViewById(R.id.postlist);
+		refreshProgress = (ProgressBar) findViewById(R.id.refreshProgress);
+		loadProgress = (ProgressBar) findViewById(R.id.loadProgress);
+		
+		touchSlop = ViewConfiguration.get(this).getScaledTouchSlop();
+		
+		list = new ArrayList<Map<String, String>>();
+		ids = new ArrayList<Integer>();
+		
+		refresh();
+		
+		rent.setOnCheckedChangeListener(new CheckBoxListener());
+		sell.setOnCheckedChangeListener(new CheckBoxListener());
+		
+		bookList.setOnItemClickListener(new OnItemClickListener() {
+			 
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                    int position, long id) {
+            	show(position);
+            }
+		});
+		
+		bookList.setOnTouchListener(this);
+		bookList.setOnScrollListener(new OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
+			
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				if(firstVisibleItem == 0)
+					atTop = true;
+				else
+					atTop = false;
+				
+				if(firstVisibleItem + visibleItemCount == totalItemCount 
+						&& firstVisibleItem != 0)
+					atBottom = true;
+				else
+					atBottom = false;
+			}
+		});
+	}
+	
+	private class CheckBoxListener implements OnCheckedChangeListener {
+
+		@Override
+		public void onCheckedChanged(CompoundButton buttonView,
+				boolean isChecked) {
+			if(!rent.isChecked() && buttonView.equals(sell))
+				sell.setChecked(true);
+			else if(!sell.isChecked() && buttonView.equals(rent))
+				rent.setChecked(true);
+			else {
+				if(buttonView.equals(sell))
+					sOrR = sell.isChecked() ? null : "r";
+				else if(buttonView.equals(rent))
+					sOrR = rent.isChecked() ? null : "s";
+				else
+					sOrR = null;
+				
+				refresh();
+			}
+		}
+		
+	}
+	
+	@SuppressWarnings("deprecation")
+	private void refresh() {
+		bookList.setTop(50);
+		refreshProgress.setVisibility(ProgressBar.VISIBLE);
 		
 		currentPage = 1;
-
+		
 		try {
-			refresh.stop();
+			load.stop();
 		} catch(Exception e) {
 		}
-		refresh = new GetPostList(this);
-		refresh.start();
-		
-		rent.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(!sellChecked)
-					rent.setChecked(true);
-				else {
-					rentChecked = isChecked;
-					sOrR = rentChecked ? null : "s";
-					currentPage = 1;
-					
-					try {
-						refresh.stop();
-					} catch(Exception e) {
-					}
-					refresh = new GetPostList(PostListActivity.this);
-					refresh.start();
-				}
-			}
-		});
-		
-		sell.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(!rentChecked)
-					sell.setChecked(true);
-				else {
-					sellChecked = isChecked;
-					sOrR = sellChecked ? null : "r";
-					currentPage = 1;
-					
-					try {
-						refresh.stop();
-					} catch(Exception e) {
-					}
-					refresh = new GetPostList(PostListActivity.this);
-					refresh.start();
-				}
-			}
-		});
-		
-		startService(new Intent(this, NotificationCenter.class));
+		load = new GetPostList(PostListActivity.this);
+		load.start();
 	}
 
-////	@SuppressLint("NewApi")
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.main, menu);		
-////		MenuItem searchItem = menu.findItem(R.id.action_search);
-////	    SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-////	    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-////	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-//	    
-//		return true;
-//	}
-	
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		Log.d("YAO", "jinle");
-        int sensorType = event.sensor.getType();
-        float[] values = event.values;
-        if (sensorType == Sensor.TYPE_ACCELEROMETER){
-            if (Math.abs(values[0]) > 14 || Math.abs(values[1]) > 14 || Math.abs(values[2]) > 14){
-        		try {
-					refresh.stop();
-				} catch(Exception e) {
-				}
-				refresh = new GetPostList(PostListActivity.this);
-				refresh.start();
-				Toast.makeText(this, "YAOYAOYAO", Toast.LENGTH_LONG).show();
-            }
-        }
+		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+			float[] values = event.values;
+			
+		    if (Math.abs(values[0]) > 16 || Math.abs(values[1]) > 16 || Math.abs(values[2]) > 16){
+		    	
+		    	refresh();
+
+				mSensorManager
+						.unregisterListener(this, 
+								mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+		    }
+		}
 	}
 	
-	private void pour() {
-		if(jsonArray == null || jsonArray.length() == 0)
+	private void loadData() {
+		if(jsonArray == null)
 			return;
-		
-		ids = new ArrayList<Integer>();
-		
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		
 		try {
 			for(int i = 0; i < jsonArray.length(); i ++) {
@@ -202,22 +230,30 @@ public class PostListActivity extends Activity implements SensorEventListener {
 		} catch (JSONException e) {
 		}
 		
-		bookList.setAdapter(new PostListAdapter(
-				this,
-				list, R.layout.post_postitem,
-				new String[] {"name", "price", "likes"},  
-				new int[] {R.id.bookNamePostList, R.id.bookPricePostList, R.id.likeNumPostList}));
+		if(jsonArray.length() > 0)
+			currentPage ++;
+	}
+	
+	private void pour() {
+		list.clear();
+		loadData();
 		
-		bookList.setOnItemClickListener(new OnItemClickListener() {
-			 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                    int position, long id) {
-            	show(position);
-            }
-		});
+		pla = new PostListAdapter(
+						this,
+						list, R.layout.post_postitem,
+						new String[] {"name", "price", "likes"},  
+						new int[] {R.id.bookNamePostList, R.id.bookPricePostList, R.id.likeNumPostList});
 		
-		currentPage ++;
+		bookList.setAdapter(pla);
+		
+		mSensorManager
+				.registerListener(
+						this, 
+						mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
+						SensorManager.SENSOR_DELAY_NORMAL);
+		
+		refreshProgress.setVisibility(ProgressBar.INVISIBLE);
+		bookList.setTop(0);
 	}
 	
 	private class PostListAdapter extends SimpleAdapter {
@@ -240,31 +276,57 @@ public class PostListActivity extends Activity implements SensorEventListener {
 		}
 	}
 	
-	@SuppressWarnings({ "deprecation" })
 	public void searchPost(View view) {
-		if(searchContent.getText() == null || searchContent.getText().toString().equals("")) {
-			search = "";
-			return;
-		}
-		
 		search = searchContent.getText().toString();
 		
-		try {
-			refresh.stop();
-		} catch(Exception e) {
-		}
-		refresh = new GetPostList(this);
-		refresh.start();
+		refresh();
 	}
 	
-	/**
-	 * Go to detail page
-	 * @param view
-	 */
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		
+		switch(event.getAction()) {
+		case MotionEvent.ACTION_DOWN:
+			yDown = event.getRawY();
+			break;
+		case MotionEvent.ACTION_MOVE:
+			float yMove = event.getRawY();
+			float distance = yMove - yDown;
+			
+			if(Math.abs(distance) < touchSlop)
+				return false;
+			else if(distance < 0 && atBottom)
+				willLoad = true;
+			else if(distance > 0 && atTop)
+				willRefresh = true;
+			
+			break;
+		case MotionEvent.ACTION_UP:
+			if(willRefresh) {
+				willRefresh = false;
+				refresh();
+			}
+			if(willLoad) {
+				willLoad = false;
+				loadProgress.setVisibility(ProgressBar.VISIBLE);
+				
+				try {
+					load.stop();
+				} catch(Exception e) {
+				}
+				load = new GetPostList(PostListActivity.this);
+				load.start();
+			}
+			break;
+		}
+		
+		return false;
+	}
+	
 	public void show(int position) {
 		Intent intent = new Intent(this, PostDetailsActivity.class);
 		intent.putExtra("id", ids.get(position));
-		
 		startActivity(intent);
 	}
 	
@@ -287,4 +349,5 @@ public class PostListActivity extends Activity implements SensorEventListener {
 	public String getSearch() {
 		return search;
 	}
+
 }
