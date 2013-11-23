@@ -118,7 +118,7 @@ public class EditProfileActivity extends Activity {
     					e.printStackTrace();
     				}
     				byte[] bytes = bos.toByteArray();
-    				
+
     				user.setId(Connection.id);
     				user.setName(name.getEditableText().toString());
     				user.setGender(name.getEditableText().toString().equals("M"));
