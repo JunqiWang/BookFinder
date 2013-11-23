@@ -24,12 +24,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.wilddynamis.bookapp.utils.BitmapWorkerTask;
-import com.wilddynamis.bookapp.utils.TakePhoto;
-import com.wilddynamis.bookapp.utils.ZoomInOutActivity;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
+import com.wilddynamos.bookapp.activity.ZoomInOutActivity;
 import com.wilddynamos.bookapp.model.User;
+import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
+import com.wilddynamos.bookapp.utils.TakePhoto;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 import com.wilddynamos.bookapp.ws.remote.action.profile.EditMyProfile;
 

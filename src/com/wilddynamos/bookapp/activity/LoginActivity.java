@@ -49,20 +49,20 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-/*				if(!"".equals(email.getText().toString()) 
+				if(!"".equals(email.getText().toString()) 
 						&& !"".equals(password.getText().toString()))
 					new Login(LoginActivity.this,
 							  email.getText().toString(),
 							  password.getText().toString())
-						.start();  */
-				signIn();
+						.start();  
+//				signIn();
 			}
 		});
     }
 
     public void signIn(){
-    //	Intent intent = new Intent(this, MultiWindowActivity.class);
-    	Intent intent = new Intent(this, EditProfileActivity.class);	
+    	Intent intent = new Intent(this, MultiWindowActivity.class);
+   // 	Intent intent = new Intent(this, EditProfileActivity.class);	
     	startActivity(intent);
     }
     

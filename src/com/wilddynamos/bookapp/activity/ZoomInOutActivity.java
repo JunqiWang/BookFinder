@@ -1,4 +1,4 @@
-package com.wilddynamis.bookapp.utils;
+package com.wilddynamos.bookapp.activity;
 
 import com.wilddynamos.bookapp.R;
 import android.app.Activity;
