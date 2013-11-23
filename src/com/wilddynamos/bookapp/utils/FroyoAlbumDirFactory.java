@@ -1,4 +1,4 @@
-package com.wilddynamis.bookapp.utils;
+package com.wilddynamos.bookapp.utils;
 
 import java.io.File;
 

@@ -97,7 +97,7 @@
             android:label="@string/app_name" >
         </activity>
          <activity
-        	android:name="com.wilddynamis.bookapp.utils.ZoomInOutActivity"
+        	android:name="com.wilddynamos.bookapp.activity.ZoomInOutActivity"
             android:label="@string/app_name" >
         </activity>
         <service 

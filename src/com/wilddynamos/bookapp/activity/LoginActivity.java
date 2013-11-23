@@ -62,7 +62,7 @@ public class LoginActivity extends Activity {
 
     public void signIn(){
     	Intent intent = new Intent(this, MultiWindowActivity.class);
-//    	Intent intent = new Intent(this, EditProfileActivity.class);	
+   // 	Intent intent = new Intent(this, EditProfileActivity.class);	
     	startActivity(intent);
     }
     
