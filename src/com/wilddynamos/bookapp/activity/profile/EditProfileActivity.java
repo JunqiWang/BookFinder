@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.wilddynamis.bookapp.utils.BitmapWorkerTask;
 import com.wilddynamis.bookapp.utils.TakePhoto;
+import com.wilddynamis.bookapp.utils.ZoomInOutActivity;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.model.User;

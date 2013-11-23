@@ -125,11 +125,10 @@
     <string name="latitude_longitude">%1$.8f, %2$.8f</string>
 
     <!-- Menu title -->
-    <string name="action_settings">Settings</string>
 
     <!-- Labels -->
     <string name="latlng">Lat/Long:</string>
-    <string name="address">Address:</string>
+  
 
     <!-- Messages -->
     <string name="connected">Client connected</string>
