@@ -49,12 +49,12 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-	/*			if(!"".equals(email.getText().toString()) 
+/*				if(!"".equals(email.getText().toString()) 
 						&& !"".equals(password.getText().toString()))
 					new Login(LoginActivity.this,
 							  email.getText().toString(),
 							  password.getText().toString())
-						.start(); */
+						.start();  */
 				signIn();
 			}
 		});

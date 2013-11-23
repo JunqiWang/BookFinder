@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/com/wilddynamos/bookapp/activity/mybooks/MybooksList.java=UTF-8
+encoding//src/com/wilddynamos/bookapp/activity/post/PostListActivity.java=UTF-8
 encoding//src/com/wilddynamos/bookapp/ws/remote/Connection.java=UTF-8
+encoding//src/com/wilddynamos/bookapp/ws/remote/NotificationCenter.java=UTF-8
+encoding//src/com/wilddynamos/bookapp/ws/remote/action/WaitingRequest.java=UTF-8

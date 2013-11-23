@@ -14,7 +14,7 @@ public class GetPostList extends Thread {
 	
 	public GetPostList(PostListActivity a) {
 		this.a = a;
-		new WaitingRequest(a).start();
+//		new WaitingRequest(a).start();
 	}
 
 	@Override

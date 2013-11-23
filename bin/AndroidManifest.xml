@@ -95,6 +95,10 @@
         	android:name="com.wilddynamos.bookapp.activity.mybooks.MyBorrowRequestDetailsActivity"
             android:label="@string/app_name" >
         </activity>
+        
+        <service 
+            android:name="com.wilddynamos.bookapp.ws.remote.NotificationCenter">
+        </service>
     </application>
 
 </manifest>
