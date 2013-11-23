@@ -2,7 +2,6 @@ package com.wilddynamos.bookapp.ws.remote.action;
 
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -36,7 +35,7 @@ public class WaitingForRequest extends Thread {
 				service.getSystemService(Context.NOTIFICATION_SERVICE);
 		
 		try {
-			String str;// = br.readLine();
+			String str = br.readLine();
 			
 			while((str = br.readLine()) != null) {
 
@@ -58,10 +57,10 @@ public class WaitingForRequest extends Thread {
 					notiMngr.notify(0, noti);
 				}
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			try {
 				br.close();
-			} catch (IOException e1) {
+			} catch (Exception e1) {
 			}
 		}
 	}

@@ -95,9 +95,9 @@ public class EditProfileActivity extends Activity {
 		save.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Bitmap bitmap = ((BitmapDrawable)profileImage.getDrawable()).getBitmap();
+//				Bitmap bitmap = ((BitmapDrawable) profileImage.getDrawable()).getBitmap();
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
-				bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//				bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 				byte[] byteArray = stream.toByteArray(); 
 				new EditMyProfile(EditProfileActivity.this, context, user, byteArray)
 					.start();
