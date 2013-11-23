@@ -53,7 +53,7 @@ public abstract class Connection {
 		BufferedReader br = null;
 		try {
 			HttpResponse response;
-			
+
 			synchronized (client) {
 				response = client.execute(doPost);
 			}
@@ -70,10 +70,8 @@ public abstract class Connection {
 			if(!result.equals("-1")) {
 				sessionID = result;
 				id = Integer.parseInt(br.readLine());
-				
 				return true;
 			}
-			
 			return false;
 			
 		} catch(IOException e) {

@@ -40,36 +40,34 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
     }
     
     public static Bitmap decodeSampledBitmapFromResource(String mCurrentPhotoPath,
-    		ImageView imageView) {
+                    ImageView imageView) {
 
-    	int targetW = imageView.getWidth();
-		int targetH = imageView.getHeight();
+            int targetW = imageView.getWidth();
+                int targetH = imageView.getHeight();
 
-		/* Get the size of the image */
-		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-		bmOptions.inJustDecodeBounds = true;
-		BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-		int photoW = bmOptions.outWidth;
-		int photoH = bmOptions.outHeight;
-		
-		/* Figure out which way needs to be reduced less */
-		int scaleFactor = 1;
-		if ((targetW > 0) || (targetH > 0)) {
-			scaleFactor = Math.min(photoW/targetW, photoH/targetH);	
-		}
+                /* Get the size of the image */
+                BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+                bmOptions.inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+                int photoW = bmOptions.outWidth;
+                int photoH = bmOptions.outHeight;
+                
+                /* Figure out which way needs to be reduced less */
+                int scaleFactor = 1;
+                if ((targetW > 0) || (targetH > 0)) {
+                        scaleFactor = Math.min(photoW/targetW, photoH/targetH);        
+                }
 
-		/* Set bitmap options to scale the image decode target */
-		bmOptions.inJustDecodeBounds = false;
-		bmOptions.inSampleSize = scaleFactor;
-		bmOptions.inPurgeable = true;
+                /* Set bitmap options to scale the image decode target */
+                bmOptions.inJustDecodeBounds = false;
+                bmOptions.inSampleSize = scaleFactor;
+                bmOptions.inPurgeable = true;
 
-		/* Decode the JPEG file into a Bitmap */
+                /* Decode the JPEG file into a Bitmap */
         return BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
     }  
     
     public Bitmap getBitmap(){
-    	return mybitmap;
+            return mybitmap;
     }
 }
-
-

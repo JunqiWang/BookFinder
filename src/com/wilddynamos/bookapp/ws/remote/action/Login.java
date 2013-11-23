@@ -19,7 +19,8 @@ public class Login extends Thread {
 	public void run() {
 		if(Connection.login(email, pwd)) {
 			a.getHandler().sendEmptyMessage(1);
-		} else
+		} else {
 			a.getHandler().sendEmptyMessage(-1);
+		}
 	}
 }

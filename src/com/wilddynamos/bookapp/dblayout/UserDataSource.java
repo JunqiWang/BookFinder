@@ -74,6 +74,7 @@ public class UserDataSource {
 		  values.put(UserSQLiteHelper.COLUMN_CONTACT, user.getContact());
 		  values.put(UserSQLiteHelper.COLUMN_ADDRESS, user.getAddress());
 		  values.put(UserSQLiteHelper.COLUMN_PHOTO, user.getPhotoAddr());
+		  System.out.println(values);
 		  return database.update(UserSQLiteHelper.TABLE_USER, values, UserSQLiteHelper.COLUMN_ID
 			        + " = " + user.getId(), null);
 	  }
