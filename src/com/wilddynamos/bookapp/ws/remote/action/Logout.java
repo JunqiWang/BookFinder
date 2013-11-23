@@ -1,8 +1,8 @@
 package com.wilddynamos.bookapp.ws.remote.action;
 
 import com.wilddynamos.bookapp.activity.LoginActivity;
+import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
-import com.wilddynamos.bookapp.ws.remote.DataUtils;
 
 public class Logout extends Thread {
 	private LoginActivity a;

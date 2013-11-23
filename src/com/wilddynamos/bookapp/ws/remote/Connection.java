@@ -25,11 +25,14 @@ import org.apache.http.params.HttpParams;
 public abstract class Connection {
 	
 	private static DefaultHttpClient client = new DefaultHttpClient();
+	
 	private static DefaultHttpClient waitingClient = new DefaultHttpClient(); 
 	
 	public static String sessionID;
 	
-	public static final String STRURI = "http://10.0.23.39:8080/BookAppServer";
+
+	public static final String STRURI = "http://10.0.23.175:8080/BookAppServer_1110";
+
 	public static int id;
 	
 	public synchronized static boolean login(String email, String pwd) {
@@ -50,11 +53,11 @@ public abstract class Connection {
 		
 		BufferedReader br = null;
 		try {
-			HttpResponse response;
-			
-			synchronized (client) {
-				response = client.execute(doPost);
-			}
+			HttpResponse response = client.execute(doPost);
+
+//			synchronized (client) {
+//				response = client.execute(doPost);
+//			}
 			
 			if(response.getStatusLine().getStatusCode() != 200)
 				return false;
@@ -65,20 +68,21 @@ public abstract class Connection {
 					new InputStreamReader(entity.getContent()));
 			
 			String result = br.readLine();
+			System.out.println(result);
 			if(!result.equals("-1")) {
 				sessionID = result;
 				id = Integer.parseInt(br.readLine());
 				return true;
-			} else
-				return false;
+			}
+			return false;
 			
 		} catch(IOException e) {
 			return false;
 		} finally {
-			try {
-				br.close();
-			} catch (IOException e) {
-			}
+//			try {
+//				br.close();
+//			} catch (IOException e) {
+//			}
 		}
 	}
 	

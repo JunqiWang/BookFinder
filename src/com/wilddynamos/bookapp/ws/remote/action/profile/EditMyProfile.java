@@ -3,6 +3,7 @@ package com.wilddynamos.bookapp.ws.remote.action.profile;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,11 +19,13 @@ public class EditMyProfile extends Thread {
 	private EditProfileActivity a;
 	private Context context;
 	private User user;
+	private byte[] byteArray;
 	
-	public EditMyProfile(EditProfileActivity a, Context context, User user) {
+	public EditMyProfile(EditProfileActivity a, Context context, User user, byte[] byteArray) {
 		this.a = a;
 		this.context = context;
 		this.user = user;
+		this.byteArray = byteArray;
 	}
 	
 	public void run() {
@@ -32,12 +35,16 @@ public class EditMyProfile extends Thread {
 			int sqliteResult = userDataSource.updateUser(user);
 			userDataSource.close();
 			
+			String imageString = new String(byteArray, Charset.forName("ISO-8859-1"));
+			
 			Map<String, String> params = new HashMap<String, String>();
+			params.put("id", String.valueOf(user.getId()));
 			params.put("name", user.getName());
-			params.put("gender", Boolean.toString(user.getGender()));
+			params.put("gender", user.getGender() ? "M" : "F");
 			params.put("campus", user.getCampus());
 			params.put("contact", user.getContact());
 			params.put("address", user.getAddress());
+			params.put("imgae",imageString);
 			
 			InputStream is = Connection.requestByPost("/EditProfile", params);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));

@@ -9,12 +9,31 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#cccccc"
     tools:context=".PostListActivity" >
+    
+    <EditText
+        android:id="@+id/searchContent"
+        android:layout_width="480dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:inputType="text"
+        android:textSize="25sp" />
+    
+    <ImageView
+        android:id="@+id/searchIt"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@id/searchContent"
+        android:src="@drawable/ic_action_search"
+        android:onClick="searchPost" />
 
     <CheckBox
         android:id="@+id/rentCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/searchContent"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="120dp"
+        android:checked="true"
         android:text="@string/rent"
         android:textSize="25sp" />
     
@@ -22,18 +41,42 @@
         android:id="@+id/sellCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
+        android:layout_alignBottom="@id/rentCheckBox"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="120dp"
+        android:checked="true"
         android:text="@string/sell"
         android:textSize="25sp" />
     
-    <ListView
-        android:id="@+id/postlist"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_below="@+id/rentCheckBox"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:cacheColorHint="@android:color/black" >
-    </ListView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="635dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/rentCheckBox" >
+
+	    <ProgressBar   
+	        android:id="@+id/refreshProgress"
+	        android:layout_width="30dp"  
+	        android:layout_height="30dp"
+	        android:layout_centerHorizontal="true" 
+	        android:visibility="invisible" /> 
+	         
+	    <ListView
+	        android:id="@+id/postlist"
+	        android:layout_width="match_parent"
+	        android:layout_height="605dp"
+	        android:layout_centerHorizontal="true"
+	        android:cacheColorHint="@android:color/black" >
+	    </ListView>
+	    
+	    <ProgressBar
+	        android:id="@+id/loadProgress"   
+	        android:layout_width="30dp"  
+	        android:layout_height="30dp"
+	        android:layout_alignParentBottom="true"
+	        android:layout_centerHorizontal="true"
+	        android:visibility="invisible" /> 
+	        
+    </RelativeLayout>
 
 </RelativeLayout>

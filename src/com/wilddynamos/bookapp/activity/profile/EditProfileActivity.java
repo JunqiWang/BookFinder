@@ -56,7 +56,7 @@ public class EditProfileActivity extends Activity {
         private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
         public static Bitmap mImageBitmap;
         private String mCurrentPhotoPath;
-
+        
         TakePhoto takePhotoAction;
         /***take photo ***/
         /***choose photo ***/
@@ -140,8 +140,7 @@ public class EditProfileActivity extends Activity {
                         startActivityForResult(i, ACTIVITY_SELECT_IMAGE); 
                         }
                 });
-    }
-        
+        }
         /* save button*/
         public void save(){
                 Intent intent = new Intent(this, MultiWindowActivity.class);

@@ -110,7 +110,7 @@ public class PostDetailsActivity extends Activity {
 				request.setClickable(false);
 				break;
 			case DialogInterface.BUTTON_NEGATIVE:
-				new RequestBook(PostDetailsActivity.this, id, null).start();
+//				new RequestBook(PostDetailsActivity.this, id, null).start();
 				break;
 			default:
 				new RequestBook(PostDetailsActivity.this, id, message.getText().toString()).start();
@@ -119,7 +119,6 @@ public class PostDetailsActivity extends Activity {
 		
 	};
 	
-	@SuppressLint("NewApi")
 	private void fill() {
 		if(jsonArray == null || jsonArray.length() == 0)
 			return;
@@ -151,9 +150,12 @@ public class PostDetailsActivity extends Activity {
 			
 		} catch (JSONException e) {
 		}
-		byte[] cover = s.getBytes(Charset.forName("ISO-8859-1"));
-		Bitmap bitmap = BitmapFactory.decodeByteArray(cover, 0, cover.length);
-		this.cover.setImageBitmap(bitmap);
+		
+		if(s != null && !"".equals(s)) {
+			byte[] cover = s.getBytes(Charset.forName("ISO-8859-1"));
+			Bitmap bitmap = BitmapFactory.decodeByteArray(cover, 0, cover.length);
+			this.cover.setImageBitmap(bitmap);
+		}
 		
 		if(hasRequested) {
 			request.setText("Has Requested");
@@ -169,11 +171,15 @@ public class PostDetailsActivity extends Activity {
 	
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
+								message = new EditText(PostDetailsActivity.this);
+								message.setHeight(100);
+								message.setHint("Your can click send directly by not leaving a message.");
+								
 								new AlertDialog.Builder(PostDetailsActivity.this)
 									.setTitle("Leave a message to owner?")
-									.setView(message = new EditText(PostDetailsActivity.this))
+									.setView(message)
 									.setPositiveButton("Send", messageListener)
-									.setNegativeButton("Skip", messageListener)
+									.setNegativeButton("Cancel", messageListener)
 									.show();
 	
 							}
