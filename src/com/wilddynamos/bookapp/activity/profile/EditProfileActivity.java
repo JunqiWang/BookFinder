@@ -120,8 +120,8 @@ public class EditProfileActivity extends Activity {
                                 user.setAddress(name.getEditableText().toString());
                                 user.setPhotoAddr(mCurrentPhotoPath);
                                 
-                            //    new EditMyProfile(EditProfileActivity.this, context, user, bytes)
-                            //            .start();
+                                new EditMyProfile(EditProfileActivity.this, context, user, bytes)
+                                        .start();
                         }
                 });
                 /***take photo ***/
