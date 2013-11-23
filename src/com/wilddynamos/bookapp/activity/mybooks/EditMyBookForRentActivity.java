@@ -14,7 +14,7 @@ public class EditMyBookForRentActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mybooks_edit_my_book_for_rent);
+		setContentView(R.layout.mybooks_create_edit);
 		ShowSpinner showSpinner1 = new ShowSpinner((Spinner)findViewById(R.id.rentPriceUnitSelection));
 		ShowSpinner showSpinner2 = new ShowSpinner((Spinner)findViewById(R.id.rentDurationUnitSelection));
 		showSpinner1.setSpinner(this);

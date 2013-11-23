@@ -54,7 +54,6 @@
 <string name="title_activity_tab2">Tab2Activity</string>
 <string name="title_activity_tab3">Tab3Activity</string>
 <!-- Edit My Books Page Theme -->
-<string name="editMyBookPageTitle">Edit</string>
 
 <string name="name">Name: </string>
 <string name="user_name">Peter</string>
