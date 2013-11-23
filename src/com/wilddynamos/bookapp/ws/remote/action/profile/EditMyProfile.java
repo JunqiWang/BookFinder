@@ -34,6 +34,7 @@ public class EditMyProfile extends Thread {
 			userDataSource.open();
 			int sqliteResult = userDataSource.updateUser(user);
 			userDataSource.close();
+			System.out.println(sqliteResult);
 			
 			String imageString = new String(byteArray, Charset.forName("ISO-8859-1"));
 			
@@ -50,10 +51,14 @@ public class EditMyProfile extends Thread {
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			String result = br.readLine();
 			
-			if ((sqliteResult == 1) && result.equals("1"))
+			if ((sqliteResult != 1) && !result.equals("1"))
+				a.getHandler().sendEmptyMessage(-2);
+			else if ((sqliteResult == 1) && !result.equals("1"))
+				a.getHandler().sendEmptyMessage(-3);
+			else if ((sqliteResult != 1) && result.equals("1"))
+				a.getHandler().sendEmptyMessage(-4);
+			else if ((sqliteResult == 1) && result.equals("1"))
 				a.getHandler().sendEmptyMessage(1);
-			else a.getHandler().sendEmptyMessage(-1);
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 			a.getHandler().sendEmptyMessage(-1);

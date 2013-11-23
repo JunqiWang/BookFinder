@@ -45,7 +45,7 @@ public class EditProfileActivity extends Activity {
 	Button save;
 	Button cancel;
 	
-	private User user;
+	private User user = new User();
 	private Context context;
 	
 	/***take photo ***/	
@@ -53,7 +53,7 @@ public class EditProfileActivity extends Activity {
 	private static final String BITMAP_STORAGE_KEY = "viewbitmap";
 	private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
 	public static Bitmap mImageBitmap;
-	private String mCurrentPhotoPath;
+	private String mCurrentPhotoPath = "";
 
 	TakePhoto takePhotoAction;
 	/***take photo ***/
@@ -65,8 +65,14 @@ public class EditProfileActivity extends Activity {
 		@Override
     	public void handleMessage(Message msg){
     		
-    		if(msg.what < 0)
-    			Toast.makeText(EditProfileActivity.this, "Oops!Something's wrong", Toast.LENGTH_SHORT).show();
+    		if(msg.what == -1)
+    			Toast.makeText(EditProfileActivity.this, "Exceptions!", Toast.LENGTH_SHORT).show();
+    		else if(msg.what == -2) 
+    			Toast.makeText(EditProfileActivity.this, "Both sqlite and mysql wrong!", Toast.LENGTH_SHORT).show();
+    		else if(msg.what == -3) 
+    			Toast.makeText(EditProfileActivity.this, "Mysql wrong!", Toast.LENGTH_SHORT).show();
+    		else if(msg.what == -4) 
+    			Toast.makeText(EditProfileActivity.this, "Sqlite wrong!", Toast.LENGTH_SHORT).show();
     		else if(msg.what == 1) {
     			Toast.makeText(EditProfileActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
     			save();
@@ -98,6 +104,7 @@ public class EditProfileActivity extends Activity {
 			public void onClick(View v) {
 				//deal with the taken photo
 				ByteArrayOutputStream bos = new ByteArrayOutputStream();
+				System.out.println(mCurrentPhotoPath);
 				try{
 					File file = new File(mCurrentPhotoPath);
 					FileInputStream fis = new FileInputStream(file);
