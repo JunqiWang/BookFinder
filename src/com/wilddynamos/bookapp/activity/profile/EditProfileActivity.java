@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.wilddynamis.bookapp.utils.BitmapWorkerTask;
 import com.wilddynamis.bookapp.utils.TakePhoto;
+import com.wilddynamis.bookapp.utils.ZoomInOutActivity;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.model.User;
@@ -140,6 +141,12 @@ public class EditProfileActivity extends Activity {
                         startActivityForResult(i, ACTIVITY_SELECT_IMAGE); 
                         }
                 });
+                /****image zoom in and out***/
+                profileImage.setOnClickListener(new OnClickListener() {
+        		    public void onClick(View v) {
+        		    	zoomInOut(v);
+        		    }
+        		});
         }
         /* save button*/
         public void save(){
@@ -158,6 +165,16 @@ public class EditProfileActivity extends Activity {
         public Handler getHandler() {
                 return handler;
         }
+        /****image zoom in and out***/
+        public void zoomInOut(View view){
+        	Drawable drawable = profileImage.getDrawable();
+    		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
+    		mImageBitmap = bitmapDrawable.getBitmap();
+    		Intent intent = new Intent(this, ZoomInOutActivity.class);
+    		intent.putExtra("BitmapImage", mImageBitmap);
+    		startActivity(intent);
+    	}
+        
         /***take photo ***/
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {

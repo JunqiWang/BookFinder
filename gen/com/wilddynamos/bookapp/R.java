@@ -62,8 +62,8 @@ public final class R {
         public static final int LinearLayout01=0x7f0a0000;
         public static final int RelativeLayout=0x7f0a007d;
         public static final int acceptButton=0x7f0a006a;
-        public static final int action_search=0x7f0a009e;
-        public static final int action_settings=0x7f0a009f;
+        public static final int action_search=0x7f0a009f;
+        public static final int action_settings=0x7f0a00a0;
         public static final int address=0x7f0a0052;
         public static final int address_string=0x7f0a0051;
         public static final int blank_after_photo=0x7f0a0048;
@@ -119,6 +119,7 @@ public final class R {
         public static final int gender_string=0x7f0a004b;
         public static final int header=0x7f0a000c;
         public static final int imageView1=0x7f0a0069;
+        public static final int imageView2=0x7f0a009e;
         public static final int lblListHeader=0x7f0a0003;
         public static final int lblListItem=0x7f0a0005;
         public static final int likeNumPostList=0x7f0a0080;
@@ -243,6 +244,7 @@ public final class R {
         public static final int profile_detail=0x7f030013;
         public static final int profile_editprofile=0x7f030014;
         public static final int signup=0x7f030015;
+        public static final int util_zoom_in_out=0x7f030016;
     }
     public static final class menu {
         public static final int main=0x7f090000;
