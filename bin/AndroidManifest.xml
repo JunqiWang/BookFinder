@@ -95,7 +95,10 @@
         	android:name="com.wilddynamos.bookapp.activity.mybooks.MyBorrowRequestDetailsActivity"
             android:label="@string/app_name" >
         </activity>
-        
+         <activity
+        	android:name="com.wilddynamis.bookapp.utils.ZoomInOutActivity"
+            android:label="@string/app_name" >
+        </activity>
         <service 
             android:name="com.wilddynamos.bookapp.service.NotificationCenter">
         </service>
