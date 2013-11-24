@@ -13,7 +13,7 @@ public class EditMyBookForSaleActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mybooks_edit_my_book_for_sale);
+		setContentView(R.layout.mybooks_create_edit);
 	}
 	
 	public void save(View view){

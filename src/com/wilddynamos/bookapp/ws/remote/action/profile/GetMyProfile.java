@@ -21,7 +21,6 @@ public class GetMyProfile extends Thread {
 		try {
 			UserDataSource userDataSource = new UserDataSource(context);
 			userDataSource.open();
-			//userDataSource.createUser("13412", "XX", "Zhe", true, "Bill", "6504504979", "SV", "jm5.jpg");
 			a.setUser(userDataSource.getUser(Connection.id));
 			userDataSource.close();
 			

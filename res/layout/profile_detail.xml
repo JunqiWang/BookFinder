@@ -1,149 +1,185 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingTop="40dp" >  
-
+    android:layout_height="fill_parent">  
+	
+    <ImageView
+       android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image"
+        android:alpha="0.3"/>
+    
     <TextView
+        android:layout_marginTop="15dp"
         android:id="@+id/profile_photo_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="Profile Photo"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/profile_detail_photo"
         android:layout_marginLeft="18dp" />
   
     <ImageView 
-   		android:id="@+id/profile_image_string"
+   		android:id="@+id/profile_image"
+   		android:layout_marginTop="25dp"
    		android:src="@drawable/ic_launcher"
-   		android:layout_width="80dp"
+   		android:contentDescription="@string/image"
+   		android:layout_width="100dp"
   		android:layout_height="100dp"
   		android:layout_alignParentRight="true"
-  		android:layout_marginRight="15dp"
-  		android:layout_marginTop="1dp" />
-    
-	<View
-	    android:layout_below="@id/profile_photo_string"
-	    android:id="@+id/blank_after_photo"
-	    android:layout_width="fill_parent"
-    	android:layout_height="40dp" />
-	
+  		android:layout_marginRight="40dp" />
+<LinearLayout
+     android:id="@+id/profile_detail_linear1"
+     android:layout_below="@id/profile_photo_string"
+     android:layout_marginTop="15dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
 	<TextView
-	    android:layout_below="@id/blank_after_photo"
-        android:id="@+id/name_string"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:textSize="15sp"
-        android:text="Name: "
+	    android:id="@+id/name_string"	   
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/name"
+        android:textStyle="bold"
         android:layout_marginLeft="18dp" />
 	
 	<TextView
-	    android:layout_below="@id/blank_after_photo"
-	    android:layout_toRightOf="@id/name_string"
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="Peter" />
-	
+        android:textSize="20sp"
+        android:text="@string/user_name" />
+</LinearLayout>	
+
+<LinearLayout
+     android:id="@+id/profile_detail_linear2"
+     android:layout_below="@id/profile_detail_linear1"
+     android:layout_marginTop="15dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">	
 	<TextView
-	    android:layout_below="@id/name_string"
         android:id="@+id/gender_string"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:textSize="15sp"
-        android:text="Gender: "
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/gender"
+        android:textStyle="bold"
         android:layout_marginLeft="18dp" />
 	
 	<TextView
-	    android:layout_below="@id/name_string"
-	    android:layout_toRightOf="@id/gender_string"
         android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="M" />
-	
+        android:textSize="20sp"
+        android:text="@string/user_gender" />
+</LinearLayout>	
+<LinearLayout 
+     android:id="@+id/profile_detail_linear3"
+     android:layout_below="@id/profile_detail_linear2"
+     android:layout_marginTop="15dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
 	<TextView
-	    android:layout_below="@id/gender_string"
         android:id="@+id/campus_string"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:textSize="15sp"
-        android:text="Campus: "
-        android:layout_marginLeft="18dp" />
-	
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/campus"
+        android:textStyle="bold"
+        android:layout_marginLeft="18dp" />	
 	<TextView
-	    android:layout_below="@id/gender_string"
-	    android:layout_toRightOf="@id/campus_string"
         android:id="@+id/campus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="Pittsburgh" />
-	
+        android:textSize="20sp"
+        android:text="@string/user_campus" />
+</LinearLayout>	
+
+<LinearLayout 
+     android:id="@+id/profile_detail_linear4"
+     android:layout_below="@id/profile_detail_linear3"
+     android:layout_marginTop="15dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
 	<TextView
-	    android:layout_below="@id/campus_string"
         android:id="@+id/contact_string"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:textSize="15sp"
-        android:text="Contact: "
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/contact"
         android:layout_marginLeft="18dp" />
 	
 	<TextView
-	    android:layout_below="@id/campus_string"
-	    android:layout_toRightOf="@id/contact_string"
         android:id="@+id/contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="4206542343" />
-	
+        android:textSize="20sp"
+        android:text="@string/user_contact" />
+</LinearLayout>	
+<LinearLayout 
+     android:id="@+id/profile_detail_linear5"
+     android:layout_below="@id/profile_detail_linear4"
+     android:layout_marginTop="15dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
 	<TextView
-	    android:layout_below="@id/contact_string"
         android:id="@+id/address_string"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:textSize="15sp"
-        android:text="Address: "
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/address"
         android:layout_marginLeft="18dp" />
-	
+
 	<TextView
-	    android:layout_below="@id/contact_string"
-	    android:layout_toRightOf="@id/address_string"
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="Pittsburgh" />
-	
-	<Button 
-	    android:layout_below="@id/address_string"
-	    android:id="@+id/edit_button"
-	    android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:text="@string/user_address" />
+</LinearLayout>		
+
+	<Button
+	    android:id="@+id/edit_button"	    
+	    android:layout_below="@id/profile_detail_linear5"
+	 	android:layout_alignLeft="@+id/change_password_button"
+	 	android:layout_marginTop="20dp"
 	    android:layout_width="150dp"
-        android:layout_height="wrap_content" 
-        android:text="Edit Profile"
-        android:textSize="12sp"
-        android:layout_marginTop="10dp"
-        android:onClick="editProfile" />
+        android:layout_height="35dp"
+        android:background="@drawable/custom_button"
+	    android:text="@string/edit"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+	    android:onClick="editProfile" />
 	
 	<Button 
+	  	android:id="@+id/change_password_button"
 	    android:layout_below="@id/edit_button"
-	    android:id="@+id/change_password_button"
+	    android:layout_marginTop="15dp" 
 	    android:layout_centerHorizontal="true"
 	    android:layout_width="150dp"
-        android:layout_height="wrap_content" 
-        android:text="Change Password"
-        android:textSize="12sp"
-        android:layout_marginTop="10dp" />
+        android:layout_height="35dp" 
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_button"
+        android:text="@string/change_password"/>
 
 	<Button
 	    android:id="@+id/logout_button"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentLeft="true"
+	    android:layout_width="150dp"
+	    android:layout_height="35dp"
+	    android:layout_alignLeft="@+id/change_password_button"
 	    android:layout_below="@+id/change_password_button"
+	    android:layout_marginTop="15dp"
+	    android:background="@drawable/custom_button2"
+	    android:gravity="center"
 	    android:onClick="logOut"
-	    android:text="Logout" />
+	    android:text="@string/logout"
+	    android:textColor="@color/white"
+	    android:textSize="13sp"
+	    android:textStyle="bold" />
 	
 </RelativeLayout>

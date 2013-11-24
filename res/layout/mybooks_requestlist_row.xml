@@ -10,17 +10,18 @@
     <LinearLayout
         android:id="@+id/thumbnail"
         android:layout_width="wrap_content"
-        android:layout_height="40sp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginRight="5dip"
         android:background="@drawable/image_bg"
         android:padding="3dip" >
 
-    <ImageView
+        <ImageView
             android:id="@+id/list_image"
             android:layout_width="25dip"
             android:layout_height="25dip"
-            android:src="@drawable/profile" />
+            android:src="@drawable/profile" 
+            android:contentDescription="@string/image"/>
     </LinearLayout>
 
     <TextView
@@ -29,27 +30,33 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:text="Test User 1"
+        android:text="@string/user_name"
         android:textColor="#040404"
         android:textSize="13sp"
         android:textStyle="bold"
         android:typeface="sans" />
 	
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_action_user" />
+        android:src="@drawable/ic_action_user"
+        android:contentDescription="@string/image" />
 
     <Button
         android:id="@+id/acceptButton"
         android:layout_width="wrap_content"
-        android:layout_height="30sp"
+        android:layout_height="35dp"
+        android:layout_margin="5dip"
         android:layout_alignTop="@+id/requesterName"
         android:layout_toLeftOf="@+id/imageView1"
+        android:background="@drawable/custom_button4"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
         android:textSize="13sp"
-        android:text="Accept" />
+        android:text="@string/accept" />
   
 </RelativeLayout>

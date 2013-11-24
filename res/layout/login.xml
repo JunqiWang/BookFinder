@@ -1,141 +1,115 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
     android:layout_width="match_parent"  
     android:layout_height="match_parent"  
-    android:baselineAligned="false"
-    android:orientation="vertical" >  
-
-<View 
-    android:layout_width="fill_parent"
-    android:layout_height="50dp" />
-
+    android:orientation="vertical" 
+    android:background="#ffffff">  
 <LinearLayout 
-    android:layout_width="wrap_content"
-    android:layout_height="30dp"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_horizontal" >
-    
-    <TextView
+    android:id="@+id/header"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+	android:gravity="center"
+	android:background="@layout/header_gradient"
+	android:paddingTop="3dip"
+	android:paddingBottom="3dip">
+     
+     <TextView
        	android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="On Campus Book Sell/Rent Network"
-        android:textSize="16sp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="@string/login_title"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:textStyle="italic|bold"/>
 
-</LinearLayout> 
-
-<View 
-    android:layout_width="fill_parent"
-    android:layout_height="50dp" />
-
-<LinearLayout 
-    android:layout_width="200dp"
+</LinearLayout>    
+    
+<LinearLayout     
+    android:layout_marginTop="40dp"
+    android:layout_width="175dp"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:layout_gravity="center_horizontal">
     
     <TextView
-       	android:layout_width="wrap_content"
+       	android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Email: "
-        android:textSize="18sp" />
+        android:text="@string/email"
+        android:textColor="#372c24"
+        android:textSize="14sp" />
     <EditText
         android:id="@+id/userInputEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"  />
-    
-</LinearLayout>  
-  
-<LinearLayout 
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal">
-    
+        android:layout_marginTop="3dip"
+        android:layout_marginBottom="10dip"
+        android:layout_height="20dp"
+        android:layout_width="fill_parent"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/gradient_bg"
+        android:singleLine="true"/>      
     <TextView
-       	android:layout_width="wrap_content"
+       	android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Password: "
-        android:textSize="18sp" />
+        android:text="@string/password"
+        android:textColor="#372c24"
+        android:textSize="14sp" />
     <EditText
         android:id="@+id/userInputPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPassword" />
+        android:layout_marginTop="3dip"
+        android:layout_marginBottom="10dip"
+        android:layout_height="20dp"
+        android:layout_width="fill_parent"
+        android:inputType= "textPassword"
+        android:background="@drawable/gradient_bg"
+        android:singleLine="true"/>
      
 </LinearLayout>
 
-<View 
-    android:layout_width="fill_parent"
-    android:layout_height="10dp" />
-
-<LinearLayout 
-    android:layout_width="140dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_horizontal" >
     
-     <CheckBox
-         android:id="@+id/checkbox_remember"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:onClick="onCheckboxClicked"
-         android:text="Remember me" />
+     <CheckBox 
+        android:layout_marginTop="20dp"
+        android:id="@+id/checkbox_remember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/remember_me"
+        android:textSize="13sp"
+        android:onClick="onCheckboxClicked"/>
 
-</LinearLayout>
-
-<View 
-    android:layout_width="fill_parent"
-    android:layout_height="10dp" />
-
-<LinearLayout
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal" >
 
     <Button
         android:id="@+id/login"
-        android:layout_width="fill_parent"
+        android:layout_marginTop="25dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:onClick="signIn"
-        android:text="Sign in" />
-
-</LinearLayout>
-
-<View 
-    android:layout_width="fill_parent"
-    android:layout_height="10dp" />
-
-<LinearLayout
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal" >
+        android:layout_gravity="center"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:text="@string/sign_in"/>
 
     <Button
         android:id="@+id/signup"
-        android:layout_width="fill_parent"
+        android:layout_marginTop="15dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Sign up"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:text="@string/sign_up"
+        android:layout_gravity="center"
         android:onClick="signUp" />
-</LinearLayout>
 
-<View 
-    android:layout_width="fill_parent"
-    android:layout_height="10dp" />
-
-<LinearLayout
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal" >
-
-    <Button
+   <Button
         android:id="@+id/forgotPwd"
-        android:layout_width="fill_parent"
+        android:layout_marginTop="15dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Forget Password"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:text="@string/forget_password"
+        android:layout_gravity="center"
         android:onClick="forgetPassword" />
-</LinearLayout>
 
 </LinearLayout>

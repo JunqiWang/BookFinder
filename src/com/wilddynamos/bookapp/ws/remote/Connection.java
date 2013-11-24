@@ -28,7 +28,7 @@ public abstract class Connection {
 	
 	private static DefaultHttpClient waitingClient = new DefaultHttpClient(); 
 	
-	public static String sessionID;
+	public static String sessionID = "";
 	
 	public static final String STRURI = "http://10.0.0.4:8080/BookAppServer";
 	
