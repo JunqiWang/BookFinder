@@ -13,7 +13,7 @@ public class MyPostForRentDetailsActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mybooks_mypostdetails);
+		setContentView(R.layout.mybooks_detail);
 		TextView tv = (TextView)findViewById(R.id.titleMyPostDetail);
 		tv.setText("Rent");
 	}

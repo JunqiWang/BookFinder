@@ -7,7 +7,11 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Context;
+
 import com.wilddynamos.bookapp.activity.SignupActivity;
+import com.wilddynamos.bookapp.dblayout.UserDataSource;
+import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
 public class Signup extends Thread {
@@ -16,11 +20,14 @@ public class Signup extends Thread {
 	
 	private String email, name, pwd;
 	
-	public Signup(SignupActivity a, String email, String name, String pwd) {
+	private Context context;
+	
+	public Signup(SignupActivity a, String email, String name, String pwd, Context context) {
 		this.a = a;
 		this.email = email;
 		this.name = name;
 		this.pwd = pwd;
+		this.context = context;
 	}
 
 	@Override
@@ -39,8 +46,10 @@ public class Signup extends Thread {
 					a.getHandler().sendEmptyMessage(-1);
 				else if (result.equals("-2"))
 					a.getHandler().sendEmptyMessage(-2);
-				else if (result.equals("1"))
+				else if (result.equals("1")) {
 					a.getHandler().sendEmptyMessage(1);
+					
+				}
 			}
 
 		catch(IOException e) {

@@ -48,6 +48,7 @@
 <string name="edit">Edit</string>
 <string name="delete">Delete</string>
 <string name="withdraw">Withdraw</string>
+<string name="duration">Rent for: </string>
 
 <!-- MultiWindow -->
 <string name="title_activity_tab1">Tab1Activity</string>
@@ -85,7 +86,7 @@
 <string name="post">Post</string>
 <!-- Mybooks list -->
 <string name="sell">Sell</string>
-<string name="rent">Rent for: </string>
+<string name="rent">Rent</string>
 <string name="email">Email: </string>
 
 <!-- profile detail -->

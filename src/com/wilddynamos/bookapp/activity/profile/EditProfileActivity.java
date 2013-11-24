@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
@@ -47,6 +48,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.ZoomInOutActivity;
+import com.wilddynamos.bookapp.dblayout.UserDataSource;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
 import com.wilddynamos.bookapp.utils.TakePhoto;
@@ -58,6 +60,7 @@ public class EditProfileActivity extends Activity implements
 	GooglePlayServicesClient.ConnectionCallbacks,
 	GooglePlayServicesClient.OnConnectionFailedListener{
 
+
         ImageView profileImage;
         ImageView mapImage;
         
@@ -68,13 +71,14 @@ public class EditProfileActivity extends Activity implements
         EditText campus;
         EditText contact;
         EditText myaddress;
+
         
-        Button takePhoto;
-        Button choosePhoto;
-        Button save;
-        Button cancel;
+        private Button takePhoto;
+        private Button choosePhoto;
+        private Button save;
+        private Button cancel;
         
-        private User user;
+        private User user = new User();
         private Context context;
         
         /***take photo ***/        
@@ -125,6 +129,7 @@ public class EditProfileActivity extends Activity implements
     		super.onCreate(savedInstanceState);
             setContentView(R.layout.profile_editprofile);   
             
+            context = this;
             profileImage = (ImageView) findViewById(R.id.editprofile_image);
     		name = (EditText) findViewById(R.id.edit_name);
     		gender = (EditText) findViewById(R.id.edit_gender);
@@ -136,9 +141,35 @@ public class EditProfileActivity extends Activity implements
     		save = (Button) findViewById(R.id.editprofile_saveButton);
     		cancel = (Button) findViewById(R.id.editprofile_cancelButton);
     		
-    		mapImage = (ImageView) findViewById(R.id.edit_map);
     		
-    		context = this;
+    		Thread th = new Thread() {
+				@Override
+				public void run() {
+					UserDataSource userDataSource = new UserDataSource(context);
+					userDataSource.open();
+					user = userDataSource.getUser(Connection.id);
+					userDataSource.close();
+				}
+			};
+    		th.start();
+			
+			while(th.isAlive());
+			
+			name.setText(user.getName());
+			gender.setText(user.getGender() ? "Male" : "Female");
+			campus.setText(user.getCampus());
+			contact.setText(user.getContact());
+			myaddress.setText(user.getAddress());
+			
+			String photoPath = user.getPhotoAddr();
+			if (photoPath != null) {
+				System.out.println(photoPath);
+				//Bitmap bmp = getBitmap(this, photoPath);
+				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
+				profileImage.setImageBitmap(bmp);
+			}
+			
+    		mapImage = (ImageView) findViewById(R.id.edit_map);
     		
     		/***geolocation***/
     		  mActivityIndicator = (ProgressBar) findViewById(R.id.ediprofile_progress);
@@ -169,7 +200,6 @@ public class EditProfileActivity extends Activity implements
     			public void onClick(View v) {
     				//deal with the taken photo
     				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    				System.out.println(mCurrentPhotoPath);
     				try{
     					File file = new File(mCurrentPhotoPath);
     					FileInputStream fis = new FileInputStream(file);
@@ -184,14 +214,16 @@ public class EditProfileActivity extends Activity implements
 
     				user.setId(Connection.id);
     				user.setName(name.getEditableText().toString());
-    				user.setGender(name.getEditableText().toString().equals("M"));
-    				user.setCampus(name.getEditableText().toString());
-    				user.setContact(name.getEditableText().toString());
-    				user.setAddress(name.getEditableText().toString());
+    				user.setGender(gender.getEditableText().toString().equals("M"));
+    				user.setCampus(campus.getEditableText().toString());
+    				user.setContact(contact.getEditableText().toString());
+    				user.setAddress(myaddress.getEditableText().toString());
     				user.setPhotoAddr(mCurrentPhotoPath);
+    				//System.out.println(mCurrentPhotoPath);
     				
     				new EditMyProfile(EditProfileActivity.this, context, user, bytes)
     					.start();
+    				
     			}
     		});
                 /***take photo ***/
