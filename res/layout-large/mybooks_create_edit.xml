@@ -2,17 +2,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#FCFBE3">
+    android:background="#FCFBE3" >
     
 	<TextView
-	  	android:id="@+id/editMyBookForRentTitle"
+	  	android:id="@+id/createOrEditMyBookTitle"
      	android:layout_width="wrap_content"
      	android:layout_height="wrap_content"
      	android:textSize="35sp"
      	android:textStyle="bold"
-     	android:layout_margin="20dp" 
-     	android:layout_gravity="center"
-     	android:text="@string/editMyBookPageTitle" />
+     	android:layout_margin="20dp"
+     	android:text="HH"
+     	android:layout_gravity="center" />
  	
    <TextView
        	android:text="@string/cover"
@@ -77,7 +77,7 @@
     	    android:textStyle="bold"
     	    android:text="@string/name"/>
   	  <EditText
-        	android:id="@+id/edit_my_book_for_rent_bookName"
+        	android:id="@+id/createOrEditMyBookName"
         	android:layout_weight="1"
         	android:layout_width="0dp"
         	android:layout_height="40dp"
@@ -93,6 +93,7 @@
    	 	android:layout_marginTop="30dp"
    	 	android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp">
+  	  
     	<TextView
         	android:layout_width="130dp"
     	    android:layout_height="wrap_content"
@@ -100,13 +101,12 @@
     	    android:textStyle="bold"
         	android:text="@string/price"/>
     	<EditText
-        	android:id="@+id/edit_my_book_for_rent_bookPrice"
+        	android:id="@+id/createOrEditMyBookPrice"
         	android:layout_width="0dp"
         	android:layout_height="40dp"
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="number"/>
-    	<requestFocus />
     	<TextView
         	android:text="@string/per"
        		android:layout_width="wrap_content"
@@ -119,15 +119,19 @@
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:textSize="25sp"/>
+    	
     </LinearLayout>
    
 	<LinearLayout
+	    android:id="@+id/rentOnly"
         android:layout_width="fill_parent"
    	 	android:layout_height="wrap_content"
    	 	android:layout_marginTop="30dp"
    	 	android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp">
+    	
     	<TextView
+    	    android:id="@+id/createOrEditMyBookRentFor"
         	android:text="@string/rent"
         	android:layout_width="130dp"
     	    android:layout_height="wrap_content"
@@ -140,11 +144,14 @@
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="number"/>
-    	<requestFocus />
-    	<Spinner
-        	android:id="@+id/rentDurationUnitSelection"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"/>
+    	<TextView
+        	android:id="@+id/rentDurationUnit"
+        	android:layout_width="120dp"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="30dp"
+        	android:textSize="30sp"
+    	    android:textStyle="bold" />
+    	
     </LinearLayout>
     
     <LinearLayout
@@ -161,7 +168,7 @@
     	    android:textSize="30sp"
     	    android:textStyle="bold"/>
     	<EditText
-    	    android:id="@+id/edit_my_book_for_rent_bookDescription"
+    	    android:id="@+id/createOrEditMyBookDescription"
     	    android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
@@ -180,18 +187,18 @@
     	android:orientation="horizontal" 
     	android:layout_marginTop="30dp">
     <Button
-        android:id="@+id/edit_my_book_for_rent_saveButton"
+        android:id="@+id/createOrEditMyBookSubmit"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginRight="20dp"
-        android:text="@string/save"
+        android:text="c or s"
         android:textSize="25sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:background="@drawable/custom_button4"
         android:onClick="save"/>
      <Button
-        android:id="@+id/edit_my_book_for_rent_cancelButton" 
+        android:id="@+id/createOrEditMyBookCancel" 
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"

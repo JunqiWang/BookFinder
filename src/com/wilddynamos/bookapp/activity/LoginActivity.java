@@ -54,7 +54,7 @@ public class LoginActivity extends Activity {
 					new Login(LoginActivity.this,
 							  email.getText().toString(),
 							  password.getText().toString())
-						.start();  
+						.start(); 
 //				signIn();
 			}
 		});

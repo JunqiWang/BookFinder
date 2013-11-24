@@ -1,0 +1,187 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp">
+    
+ 	<LinearLayout
+   	 android:gravity="center_horizontal"
+   	 android:layout_width="match_parent"
+   	 android:layout_height="wrap_content" >
+	    <TextView
+	       android:id="@+id/editMyBookForRentTitle"
+     	   android:layout_width="wrap_content"
+     	   android:layout_height="wrap_content"
+     	   android:textSize="15sp"
+     	   android:textStyle="bold"
+     	   android:layout_margin="10dp" />
+	</LinearLayout>
+ 	
+   <TextView
+       	android:text="@string/cover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"/>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="5dp"
+       android:orientation="horizontal" >
+
+       <LinearLayout
+           android:id="@+id/edit_my_book_for_rent_linearLayout1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical" >
+           <Button
+               android:layout_width="120dp"
+        	   android:layout_height="30dp"
+               android:layout_marginLeft="10dp"
+               android:text="@string/takePhoto"
+               android:textSize="13sp" />
+           <Button
+               android:layout_width="120dp"
+        	   android:layout_height="30dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="5dp"
+               android:text="@string/choosePhoto"
+               android:textSize="13sp" />
+       </LinearLayout>
+
+       <ImageView
+           android:layout_width="60dp"
+           android:layout_height="65dp"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentTop="true"
+           android:layout_marginRight="20dp"
+           android:contentDescription="@string/bookCover_alt"
+           android:src="@drawable/shape" />
+
+   </RelativeLayout>
+ 	
+    <LinearLayout
+    	android:layout_width="match_parent"
+   	 	android:layout_height="wrap_content"
+   	 	android:layout_marginTop="5dp">
+  	  <TextView
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/name"
+    	    android:textSize="15sp"/>
+  	  <EditText
+        	android:id="@+id/edit_my_book_for_rent_bookName"
+        	android:layout_marginLeft="5sp"
+        	android:layout_weight="1"
+        	android:layout_width="0dp"
+        	android:layout_height="25sp"
+        	android:inputType="text"
+        	android:background="@drawable/input_box" />
+  	  <requestFocus />
+  	
+	</LinearLayout>
+ 	
+	<LinearLayout
+    	android:layout_width="match_parent"
+   	 	android:layout_height="wrap_content"
+   	 	android:layout_marginTop="15dp">
+    	<TextView
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/price"
+        	android:textSize="15sp"
+        	android:layout_marginRight="5dp"/>
+    	<EditText
+        	android:id="@+id/edit_my_book_for_rent_bookPrice"
+        	android:layout_weight="1"
+        	android:layout_width="0dp"
+        	android:layout_height="25sp"
+        	android:inputType="number"
+        	android:background="@drawable/input_box" />
+    	<requestFocus />
+    	<TextView
+        	android:text="@string/per"
+       		android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="5dp"
+        	android:textSize="13sp"/>
+    	<Spinner
+    	    android:id="@+id/rentPriceUnitSelection"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="40sp"/>
+
+    </LinearLayout>
+   
+	<LinearLayout
+        android:layout_marginTop="15dp"
+    	android:layout_width="match_parent"
+   	 	android:layout_height="wrap_content">
+    	<TextView
+        	android:text="@string/rent"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="15sp"
+        	android:layout_marginRight="5dp"/>
+    	<EditText
+        	android:id="@+id/rentDuration"
+        	android:layout_weight="1"
+        	android:layout_width="0dp"
+        	android:layout_height="25sp"
+        	android:inputType="number"
+        	android:background="@drawable/input_box" />
+    	<requestFocus />
+
+    	<Spinner
+    	    android:id="@+id/rentDurationUnitSelection"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="40sp" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+    	android:layout_width="match_parent"
+   	 	android:layout_height="wrap_content"
+   	 	android:layout_marginTop="5dp" 
+   	 	android:orientation="vertical">
+    	<TextView
+      	  android:text="@string/description"
+      	  android:layout_width="wrap_content"
+       	  android:layout_height="wrap_content"
+       	  android:textSize="15sp"/>
+    	<EditText
+    	    android:id="@+id/edit_my_book_for_rent_bookDescription"
+    	    android:inputType="textMultiLine" 
+    		android:lines="2" 
+    		android:gravity="top|left" 
+    		android:maxLines="4" 
+    		android:layout_height="wrap_content" 
+    		android:layout_width="fill_parent" 
+    		android:scrollbars="vertical"
+    	    android:layout_marginTop="5dp"
+    	    android:background="@drawable/input_box"/>
+    	<requestFocus />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:gravity="center_horizontal"
+  		android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal" 
+    	android:layout_marginTop="5dp">
+    <Button
+        android:id="@+id/edit_my_book_for_rent_saveButton"
+        android:layout_width="61dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="11dp"
+        android:text="@string/save"
+        android:textSize="12sp"/>
+     <Button
+        android:layout_width="61dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="11dp"
+        android:text="@string/cancel"
+        android:textSize="12sp"/>
+	</LinearLayout>
+    
+</LinearLayout>

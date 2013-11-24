@@ -1,11 +1,9 @@
 package com.wilddynamos.bookapp.activity.post;
 
 import java.nio.charset.Charset;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.ws.remote.action.post.GetPostDetail;
 import com.wilddynamos.bookapp.ws.remote.action.post.LikeAPost;
@@ -47,6 +44,7 @@ public class PostDetailsActivity extends Activity {
 	
 	int id;
 	
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 		@Override
     	public void handleMessage(Message msg){
@@ -110,7 +108,6 @@ public class PostDetailsActivity extends Activity {
 				request.setClickable(false);
 				break;
 			case DialogInterface.BUTTON_NEGATIVE:
-//				new RequestBook(PostDetailsActivity.this, id, null).start();
 				break;
 			default:
 				new RequestBook(PostDetailsActivity.this, id, message.getText().toString()).start();
