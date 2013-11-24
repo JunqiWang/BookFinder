@@ -67,7 +67,6 @@ public class MyProfileActivity extends Activity {
 		changePassword = (Button) findViewById(R.id.change_password_button);
 		logout = (Button) findViewById(R.id.logout_button);
 		
-		
 		new GetMyProfile(this, this).start();
 	}
 
@@ -87,8 +86,12 @@ public class MyProfileActivity extends Activity {
 		address.setText(user.getAddress());
 		
 		String photoPath = user.getPhotoAddr();
-		Bitmap bmp = getBitmap(this, photoPath);
-		profileImage.setImageBitmap(bmp);
+		if (photoPath != null) {
+			System.out.println(photoPath);
+			//Bitmap bmp = getBitmap(this, photoPath);
+			Bitmap bmp = BitmapFactory.decodeFile(photoPath);
+			profileImage.setImageBitmap(bmp);
+		}
 	
 	}
 	

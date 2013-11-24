@@ -32,9 +32,10 @@ public class UserDataSource {
 	    dbHelper.close();
 	  }
 
-	  public User createUser(String email, String password, String name, Boolean gender, String campus,
+	  public User createUser(int id, String email, String password, String name, Boolean gender, String campus,
 			  String contact, String address, String photoPath) {
 	    ContentValues values = new ContentValues();
+	    values.put(UserSQLiteHelper.COLUMN_ID, id);
 	    values.put(UserSQLiteHelper.COLUMN_EMAIL, email);
 	    values.put(UserSQLiteHelper.COLUMN_PASSWORD, password);
 	    values.put(UserSQLiteHelper.COLUMN_NAME, name);
@@ -43,10 +44,9 @@ public class UserDataSource {
 	    values.put(UserSQLiteHelper.COLUMN_CONTACT, contact);
 	    values.put(UserSQLiteHelper.COLUMN_ADDRESS, address);
 	    values.put(UserSQLiteHelper.COLUMN_PHOTO, photoPath);
-	    long insertId = database.insert(UserSQLiteHelper.TABLE_USER, null,
-	        values);
+	    database.insert(UserSQLiteHelper.TABLE_USER, null, values);
 	    Cursor cursor = database.query(UserSQLiteHelper.TABLE_USER,
-	        allColumns, UserSQLiteHelper.COLUMN_ID + " = " + insertId, null,
+	        allColumns, UserSQLiteHelper.COLUMN_ID + " = " + id, null,
 	        null, null, null);
 	    cursor.moveToFirst();
 	    User newUser = cursorToUser(cursor);

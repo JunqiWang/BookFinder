@@ -34,9 +34,10 @@ public class EditMyProfile extends Thread {
 			userDataSource.open();
 			int sqliteResult = userDataSource.updateUser(user);
 			userDataSource.close();
-			System.out.println(sqliteResult);
-			
+			//System.out.println(sqliteResult);
+			System.out.println(byteArray.length);
 			String imageString = new String(byteArray, Charset.forName("ISO-8859-1"));
+			System.out.println(imageString.length());
 			
 			Map<String, String> params = new HashMap<String, String>();
 			params.put("id", String.valueOf(user.getId()));
@@ -45,7 +46,7 @@ public class EditMyProfile extends Thread {
 			params.put("campus", user.getCampus());
 			params.put("contact", user.getContact());
 			params.put("address", user.getAddress());
-			params.put("imgae",imageString);
+			params.put("image",imageString);
 			
 			InputStream is = Connection.requestByPost("/EditProfile", params);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));

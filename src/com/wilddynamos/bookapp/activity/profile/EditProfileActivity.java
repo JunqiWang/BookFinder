@@ -35,19 +35,19 @@ import com.wilddynamos.bookapp.ws.remote.action.profile.EditMyProfile;
 
 public class EditProfileActivity extends Activity {
 
-        ImageView profileImage;
-        EditText name;
-        EditText gender;
-        EditText campus;
-        EditText contact;
-        EditText address;
+        private ImageView profileImage;
+        private EditText name;
+        private EditText gender;
+        private EditText campus;
+        private EditText contact;
+        private EditText address;
         
-        Button takePhoto;
-        Button choosePhoto;
-        Button save;
-        Button cancel;
+        private Button takePhoto;
+        private Button choosePhoto;
+        private Button save;
+        private Button cancel;
         
-        private User user;
+        private User user = new User();
         private Context context;
         
         /***take photo ***/        
@@ -106,7 +106,6 @@ public class EditProfileActivity extends Activity {
     			public void onClick(View v) {
     				//deal with the taken photo
     				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    				System.out.println(mCurrentPhotoPath);
     				try{
     					File file = new File(mCurrentPhotoPath);
     					FileInputStream fis = new FileInputStream(file);
@@ -121,14 +120,16 @@ public class EditProfileActivity extends Activity {
 
     				user.setId(Connection.id);
     				user.setName(name.getEditableText().toString());
-    				user.setGender(name.getEditableText().toString().equals("M"));
-    				user.setCampus(name.getEditableText().toString());
-    				user.setContact(name.getEditableText().toString());
-    				user.setAddress(name.getEditableText().toString());
+    				user.setGender(gender.getEditableText().toString().equals("M"));
+    				user.setCampus(campus.getEditableText().toString());
+    				user.setContact(contact.getEditableText().toString());
+    				user.setAddress(address.getEditableText().toString());
     				user.setPhotoAddr(mCurrentPhotoPath);
+    				System.out.println(mCurrentPhotoPath);
     				
     				new EditMyProfile(EditProfileActivity.this, context, user, bytes)
     					.start();
+    				
     			}
     		});
                 /***take photo ***/
