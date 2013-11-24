@@ -12,6 +12,14 @@
      	   android:textStyle="bold"
      	   android:layout_margin="10dp" 
      	   android:layout_gravity="center"/>
+     <ProgressBar
+        android:id="@+id/ediprofile_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone" />
+     
    <TextView
        	android:layout_marginLeft="15dp"
        	android:text="@string/profilePhoto"
@@ -184,6 +192,7 @@
     	<requestFocus />
     	
     	<ImageView
+    	    android:id="@+id/edit_map"
     	    android:layout_width="20dp"
     	    android:layout_height="20dp"
     	    android:layout_marginLeft="20dp"
