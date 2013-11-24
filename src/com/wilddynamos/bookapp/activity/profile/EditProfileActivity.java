@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
@@ -46,6 +47,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.ZoomInOutActivity;
+import com.wilddynamos.bookapp.dblayout.UserDataSource;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
 import com.wilddynamos.bookapp.utils.TakePhoto;
@@ -126,6 +128,7 @@ public class EditProfileActivity extends Activity implements
     		super.onCreate(savedInstanceState);
             setContentView(R.layout.profile_editprofile);   
             
+            context = this;
             profileImage = (ImageView) findViewById(R.id.editprofile_image);
     		name = (EditText) findViewById(R.id.edit_name);
     		gender = (EditText) findViewById(R.id.edit_gender);
@@ -137,9 +140,35 @@ public class EditProfileActivity extends Activity implements
     		save = (Button) findViewById(R.id.editprofile_saveButton);
     		cancel = (Button) findViewById(R.id.editprofile_cancelButton);
     		
-    		mapImage = (ImageView) findViewById(R.id.edit_map);
     		
-    		context = this;
+    		Thread th = new Thread() {
+				@Override
+				public void run() {
+					UserDataSource userDataSource = new UserDataSource(context);
+					userDataSource.open();
+					user = userDataSource.getUser(Connection.id);
+					userDataSource.close();
+				}
+			};
+    		th.start();
+			
+			while(th.isAlive());
+			
+			name.setText(user.getName());
+			gender.setText(user.getGender() ? "Male" : "Female");
+			campus.setText(user.getCampus());
+			contact.setText(user.getContact());
+			myaddress.setText(user.getAddress());
+			
+			String photoPath = user.getPhotoAddr();
+			if (photoPath != null) {
+				System.out.println(photoPath);
+				//Bitmap bmp = getBitmap(this, photoPath);
+				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
+				profileImage.setImageBitmap(bmp);
+			}
+			
+    		mapImage = (ImageView) findViewById(R.id.edit_map);
     		
     		/***geolocation***/
     		  mActivityIndicator = (ProgressBar) findViewById(R.id.ediprofile_progress);
@@ -189,7 +218,7 @@ public class EditProfileActivity extends Activity implements
     				user.setContact(contact.getEditableText().toString());
     				user.setAddress(myaddress.getEditableText().toString());
     				user.setPhotoAddr(mCurrentPhotoPath);
-    				System.out.println(mCurrentPhotoPath);
+    				//System.out.println(mCurrentPhotoPath);
     				
     				new EditMyProfile(EditProfileActivity.this, context, user, bytes)
     					.start();
