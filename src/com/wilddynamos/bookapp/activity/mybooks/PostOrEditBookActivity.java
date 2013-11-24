@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -22,6 +23,8 @@ public class PostOrEditBookActivity extends Activity {
 	private EditText name;
 	private EditText price;
 	private Spinner per;
+	private LinearLayout rentOnly;
+	private TextView rentFor;
 	private EditText duration;
 	private TextView durationUnit;
 	private EditText description;
@@ -29,6 +32,7 @@ public class PostOrEditBookActivity extends Activity {
 	private Button cancel;
 	
 	private boolean isPost;
+	private int id;
 	private boolean isRent;
 	
 	@Override
@@ -38,6 +42,7 @@ public class PostOrEditBookActivity extends Activity {
 		
 		//initialisation
 		isPost = getIntent().getExtras().getBoolean("isPost");
+		id = getIntent().getExtras().getInt("id");
 		isRent = getIntent().getExtras().getBoolean("isRent");
 		
 		title = (TextView) findViewById(R.id.createOrEditMyBookTitle);
@@ -63,15 +68,18 @@ public class PostOrEditBookActivity extends Activity {
 
 			});
 			
+			rentFor = (TextView) findViewById(R.id.createOrEditMyBookRentFor);
 			duration = (EditText) findViewById(R.id.rentDuration);
 			durationUnit = (TextView) findViewById(R.id.rentDurationUnit);
+		} else {
+			per.setVisibility(Spinner.INVISIBLE);
+			rentOnly.setVisibility(LinearLayout.INVISIBLE);
 		}
 		
 		description = (EditText) findViewById(R.id.createOrEditMyBookDescription);
 		postOrSave = (Button) findViewById(R.id.createOrEditMyBookSubmit);
 		cancel = (Button) findViewById(R.id.createOrEditMyBookCancel);
 		//initialisation end
-		
 	}
 	
 

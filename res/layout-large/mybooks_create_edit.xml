@@ -123,6 +123,7 @@
     </LinearLayout>
    
 	<LinearLayout
+	    android:id="@+id/rentOnly"
         android:layout_width="fill_parent"
    	 	android:layout_height="wrap_content"
    	 	android:layout_marginTop="30dp"
@@ -130,6 +131,7 @@
         android:layout_marginLeft="30dp">
     	
     	<TextView
+    	    android:id="@+id/createOrEditMyBookRentFor"
         	android:text="@string/rent"
         	android:layout_width="130dp"
     	    android:layout_height="wrap_content"
