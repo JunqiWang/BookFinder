@@ -28,21 +28,21 @@ import com.wilddynamos.bookapp.ws.remote.action.post.RequestBook;
 
 public class PostDetailsActivity extends Activity {
 	
-	ImageView bg;
-	TextView verb;
-	TextView name;
-	TextView price;
-	ImageView cover;
-	TextView availableTime;
-	TextView owner;
-	TextView description;
-	ImageView likeIt;
-	TextView likes;
-	Button request;
+	private ImageView bg;
+	private TextView verb;
+	private TextView name;
+	private TextView price;
+	private ImageView cover;
+	private TextView availableTime;
+	private TextView owner;
+	private TextView description;
+	private ImageView likeIt;
+	private TextView likes;
+	private Button request;
 	
-	EditText message;
+	private EditText message;
 	
-	int id;
+	private int id;
 	
 	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
@@ -139,7 +139,7 @@ public class PostDetailsActivity extends Activity {
 				price.setText(jo.getString("price") 
 						+ " / " + (jo.getBoolean("per") ? "week" : "month"));
 				availableTime.setText("Available for " 
-						+ jo.getInt("availableTime") + (jo.getBoolean("per") ? " weeks" : " months"));
+						+ jo.getInt("availableTime") + (jo.getBoolean("per") ? " months" : " weeks"));
 				request.setText("Borrow");
 			}
 			s = jo.getString("cover");

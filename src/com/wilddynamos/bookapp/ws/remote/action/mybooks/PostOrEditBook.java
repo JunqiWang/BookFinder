@@ -1,5 +1,53 @@
 package com.wilddynamos.bookapp.ws.remote.action.mybooks;
 
-public class PostOrEditBook extends Thread {
+import java.util.HashMap;
+import java.util.Map;
 
+import com.wilddynamos.bookapp.activity.MultiWindowActivity;
+import com.wilddynamos.bookapp.activity.mybooks.PostOrEditBookActivity;
+import com.wilddynamos.bookapp.utils.DataUtils;
+import com.wilddynamos.bookapp.ws.remote.Connection;
+
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.widget.Toast;
+
+public class PostOrEditBook extends AsyncTask<String, Void, Boolean> {
+
+	private PostOrEditBookActivity a;
+	
+	public PostOrEditBook(PostOrEditBookActivity a) {
+		this.a = a;
+	}
+	
+	@Override
+	protected Boolean doInBackground(String... params) {
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("userId", Connection.id + "");
+		paramsMap.put("isRent", params[0]);
+		paramsMap.put("id", params[1]);
+		paramsMap.put("name", params[2]);
+		paramsMap.put("price", params[3]);
+		paramsMap.put("description", params[4]);
+		
+		if("true".equals(params[0])) {
+			paramsMap.put("perValue", params[5]);
+			paramsMap.put("duration", params[6]);
+			
+		}
+		
+		return "1".equals(DataUtils
+				.receiveFlag(Connection.requestByPost("/PostEditBook", paramsMap)));
+	}
+
+	@Override
+	protected void onPostExecute(Boolean success) {
+		if(success) {
+			Toast.makeText(a, "Success", Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(a, MultiWindowActivity.class);
+			intent.putExtra(MultiWindowActivity.TAB_SELECT, 1);
+			a.startActivity(intent);
+		} else
+			Toast.makeText(a, "Failed", Toast.LENGTH_SHORT).show();
+	}
 }

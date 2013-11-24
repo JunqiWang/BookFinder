@@ -24,7 +24,7 @@ public class GetPostDetail extends Thread {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("id", id + "");
 			
-			a.setJSONArray(DataUtils.receiveJSON(Connection.requestByGet("/GetPostDetail", map)));
+			a.setJSONArray(DataUtils.receiveJSON(Connection.requestByGet("/GetBookDetail", map)));
 
 			a.getHandler().sendEmptyMessage(1);
 			
