@@ -60,7 +60,7 @@
             android:label="@string/app_name" >
         </activity>
          <activity
-            android:name="com.wilddynamos.bookapp.activity.mybooks.PostNewBookForRentActivity"
+            android:name="com.wilddynamos.bookapp.activity.mybooks.PostOrEditBookActivity"
             android:label="@string/app_name" >
         </activity>
         <activity

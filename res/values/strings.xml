@@ -85,7 +85,7 @@
 <string name="post">Post</string>
 <!-- Mybooks list -->
 <string name="sell">Sell</string>
-<string name="rent">Rent: </string>
+<string name="rent">Rent for: </string>
 <string name="email">Email: </string>
 
 <!-- profile detail -->

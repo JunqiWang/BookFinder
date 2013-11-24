@@ -15,12 +15,12 @@ public class EditMyBookForRentActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mybooks_create_edit);
-		ShowSpinner showSpinner1 = new ShowSpinner((Spinner)findViewById(R.id.rentPriceUnitSelection));
-		ShowSpinner showSpinner2 = new ShowSpinner((Spinner)findViewById(R.id.rentDurationUnitSelection));
-		showSpinner1.setSpinner(this);
-		showSpinner1.setListener();
-		showSpinner2.setSpinner(this);
-		showSpinner2.setListener();
+//		ShowSpinner showSpinner1 = new ShowSpinner((Spinner)findViewById(R.id.rentPriceUnitSelection));
+//		ShowSpinner showSpinner2 = new ShowSpinner((Spinner)findViewById(R.id.rentDurationUnitSelection));
+//		showSpinner1.setSpinner(this);
+//		showSpinner1.setListener();
+//		showSpinner2.setSpinner(this);
+//		showSpinner2.setListener();
 	}
 	
 	public void save(View view){
