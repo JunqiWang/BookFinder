@@ -46,6 +46,7 @@ public class WaitingForRequest extends Thread {
 					noti.flags = Notification.FLAG_AUTO_CANCEL;
 					
 					Intent notiIntent = new Intent(service, MultiWindowActivity.class);
+					notiIntent.putExtra(MultiWindowActivity.TAB_SELECT, 1);
 					notiIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); 
 					
 					PendingIntent pendingIntent = PendingIntent.getActivity(service, 0,  

@@ -54,7 +54,6 @@
 <string name="title_activity_tab2">Tab2Activity</string>
 <string name="title_activity_tab3">Tab3Activity</string>
 <!-- Edit My Books Page Theme -->
-<string name="editMyBookPageTitle">Edit</string>
 
 <string name="name">Name: </string>
 <string name="user_name">Peter</string>
@@ -86,7 +85,7 @@
 <string name="post">Post</string>
 <!-- Mybooks list -->
 <string name="sell">Sell</string>
-<string name="rent">Rent: </string>
+<string name="rent">Rent for: </string>
 <string name="email">Email: </string>
 
 <!-- profile detail -->
