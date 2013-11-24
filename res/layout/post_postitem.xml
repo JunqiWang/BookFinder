@@ -2,17 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
 	android:id="@+id/RelativeLayout"  
 	android:layout_width="fill_parent"  
-	android:layout_height="25dp" 
-	android:background="@drawable/postlist_bg" >
+	android:layout_height="25dp">
 
    	<TextView    
    	    android:id="@+id/bookNamePostList"
 		android:layout_height="20dp"  
-		android:layout_width="135dp"
+		android:layout_width="140dp"
+		android:layout_marginLeft="2dp"
 		android:layout_centerVertical="true"
-		android:layout_marginLeft="3dp"
 		android:textSize="13sp"
-		android:maxLength="22" />
+		android:maxLength="11" />
 
 	<TextView  
 		android:id="@+id/bookPricePostList" 
@@ -22,7 +21,7 @@
 		android:layout_marginLeft="5dp"
 		android:layout_centerVertical="true"
 		android:textSize="13sp"
-		android:maxLength="8" /> 	
+		android:maxLength="6" /> 	
 		
 	<ImageView  
 		android:layout_width="18dp"  
@@ -38,9 +37,14 @@
 		android:layout_height="20dp"  
 		android:layout_width="wrap_content"          
 		android:layout_toRightOf="@+id/bookPricePostList"
-		android:layout_marginLeft="35dp"
+		android:layout_marginLeft="33dp"
 		android:layout_centerVertical="true"
-		android:textSize="13sp"
-		android:maxLength="4" />
+		android:textSize="18sp"
+		android:maxLength="2" />
+	<TextView
+	    android:layout_width="fill_parent"
+	    android:layout_height="4dp" 
+		android:background="#cccccc"
+		android:layout_alignParentBottom="true"/>
 		
 </RelativeLayout>

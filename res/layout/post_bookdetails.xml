@@ -1,169 +1,176 @@
-<?xml version="1.0" encoding="utf-8"?> 
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".PostListActivity" >
 
     <TextView
         android:id="@+id/bookdetails_titleBookDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:layout_marginLeft="15dp"
-        android:text="Borrow"
-        android:textSize="22sp" />
-    
+        android:layout_marginTop="25dp"
+        android:textSize="20sp" 
+        android:textStyle="bold"/>
+
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/bookdetails_titleBookDetail"
         android:layout_alignBottom="@id/bookdetails_titleBookDetail"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/bookdetails_titleBookDetail"
         android:text="@string/book_detail_title"
-        android:textSize="22sp" />
-    
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/bookdetails_coverBookDetail"
         android:layout_width="80dp"
         android:layout_height="100dp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="70dp"
         android:layout_marginRight="20dp"
-        android:src="@drawable/ic_launcher"
-        android:contentDescription="@string/cover" />
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_marginTop="70dp"
-        android:layout_marginLeft="15dp"
-        android:text="@string/name"
-        android:textSize="13sp" />
-    
+        android:contentDescription="@string/cover"
+        android:src="@drawable/ic_launcher" />
+<LinearLayout 
+     android:id="@+id/post_bookdetails_linear1"
+     android:layout_below="@id/textView1"
+     android:layout_marginTop="20dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"       
+        android:textSize="13sp" 
+        android:textStyle="bold"
+        android:text="@string/name"/>
     <TextView
         android:id="@+id/bookdetails_nameBookDetail"
-        android:layout_width="110dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="60dp"
-        android:textSize="13sp"
-        android:text="Head First Java O'Reily Carnegie Mellon University" />
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bookdetails_nameBookDetail"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:text="@string/price"
         android:textSize="13sp" />
-    
+</LinearLayout>
+
+<LinearLayout 
+     android:id="@+id/post_bookdetails_linear2"
+     android:layout_below="@id/post_bookdetails_linear1"
+     android:layout_marginTop="20dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"       
+        android:textSize="13sp" 
+        android:textStyle="bold"
+        android:text="@string/price"/>
     <TextView
         android:id="@+id/bookdetails_priceBookDetail"
-        android:layout_width="80dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/bookdetails_nameBookDetail"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="60dp"
-        android:textSize="13sp"
-        android:text="3 / week" />
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bookdetails_priceBookDetail"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="13sp"
-        android:text="@string/available" />
-    
+        android:textSize="13sp" />
+</LinearLayout>
+
+<LinearLayout 
+     android:id="@+id/post_bookdetails_linear3"
+     android:layout_below="@id/post_bookdetails_linear2"
+     android:layout_marginTop="20dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
     <TextView
         android:id="@+id/bookdetails_availableBookDetail"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bookdetails_priceBookDetail"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="87dp"
-        android:textSize="13sp"
-        android:text="20 weeks" />
-    
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/bookdetails_availableBookDetail"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="13sp"
-        android:text="@string/owner" />
+        android:layout_marginLeft="17dp"       
+        android:textSize="13sp" 
+        android:textStyle="bold"/>
     
+</LinearLayout>
+<LinearLayout 
+     android:id="@+id/post_bookdetails_linear4"
+     android:layout_below="@id/post_bookdetails_linear3"
+     android:layout_marginTop="20dp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"       
+        android:textSize="13sp" 
+        android:textStyle="bold"
+        android:text="@string/owner"/>
     <TextView
         android:id="@+id/bookdetails_ownerBookDetail"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:textSize="13sp" />
+</LinearLayout>
+	<TextView
+	    android:id="@+id/post_bookdetails_description"
+	    android:layout_below="@id/post_bookdetails_linear4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/bookdetails_availableBookDetail"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="60dp"
-        android:textSize="13sp"
-        android:text="Bob Singh" />
-    
-     <ScrollView
+        android:layout_marginLeft="17dp"      
+        android:layout_marginTop="15dp" 
+        android:textSize="13sp" 
+        android:textStyle="bold"
+        android:text="@string/description"/>
+    <ScrollView
         android:id="@+id/bookdetails_descriptionScrollBookDetail"
+        android:layout_below="@id/post_bookdetails_description"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
-        android:layout_below="@id/bookdetails_ownerBookDetail"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" >
-	    <TextView
-	        android:id="@+id/bookdetails_descriptionBookDetail"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:textSize="13sp"
-	        android:text="'This book is very good 
-	        This book is very good This book is very
-	        good This book is very good This book is
-	        very good This book is very good This book
-	        is very good This book is very good This 
-	        book is very good This book is very good 
-	        This book is very good This book is very 
-	        good This book is very good '" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp" >
+
+        <TextView
+            android:id="@+id/bookdetails_descriptionBookDetail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp" />
     </ScrollView>
-    
+
     <ImageView
         android:id="@+id/bookdetails_likeBookDetail"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_below="@id/bookdetails_descriptionScrollBookDetail"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="30dp"
-        android:src="@drawable/like"
-        android:contentDescription="@string/like" />
-    
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/like"
+        android:src="@drawable/ic_action_good" />
+
     <TextView
         android:id="@+id/bookdetails_likeNumBookDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/bookdetails_descriptionScrollBookDetail"
+        android:layout_marginLeft="70dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="60dp"
-        android:textSize="13sp"
-        android:text="23" />
+        android:textSize="13sp" 
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/bookdetails_request"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/bookdetails_likeBookDetail"
-        android:layout_marginTop="15dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bookdetails_likeNumBookDetail"
+        android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"
-        android:text="@string/borrow"
-        android:textSize="15sp" />
+        android:background="@drawable/custom_button3"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
     
+   <ImageView
+        android:id="@+id/bookdetails_background11"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha="0.3"
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image" />
+
 </RelativeLayout>
