@@ -30,7 +30,7 @@ public abstract class Connection {
 	
 	public static String sessionID = "";
 	
-	public static final String STRURI = "http://192.168.1.8:8080/BookAppServer_1110";
+	public static final String STRURI = "http://10.0.0.4:8080/BookAppServer";
 	
 	public static int id;
 	

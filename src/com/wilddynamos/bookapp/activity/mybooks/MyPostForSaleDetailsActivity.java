@@ -14,7 +14,7 @@ public class MyPostForSaleDetailsActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mybooks_mypostdetails);
+		setContentView(R.layout.mybooks_detail);
 		TextView tvPrice = (TextView)findViewById(R.id.postdetails_priceBookDetail);
 		TextView tvAvailable = (TextView)findViewById(R.id.postdetails_bookAvailable);
 		TextView tvAvailable2 = (TextView)findViewById(R.id.postdetails_availableBookDetail);
@@ -33,7 +33,11 @@ public class MyPostForSaleDetailsActivity extends Activity {
 	
 	/*edit button*/
 	public void editBook(View view){
-		Intent intent = new Intent(this, EditMyBookForSaleActivity.class);
+		Intent intent = new Intent(this, PostOrEditBookActivity.class);
+		intent.putExtra("isPost", false);
+		intent.putExtra("isRent", true);//TODO
+		intent.putExtra("id", 10);//TODO
+		intent.putExtra("name", "name");//TODO
 		startActivity(intent);
 	}
 	
