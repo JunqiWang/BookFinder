@@ -27,8 +27,8 @@ public class MyPostForRentDetailsActivity extends Activity {
 	
 	/*edit button*/
 	public void editBook(View view){
-		Intent intent = new Intent(this, EditMyBookForRentActivity.class);
-		startActivity(intent);
+//		Intent intent = new Intent(this, EditMyBookForRentActivity.class);
+//		startActivity(intent);
 	}
 	
 	/* see button*/

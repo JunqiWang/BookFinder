@@ -35,8 +35,8 @@ public class GetBookDetail extends AsyncTask<String, Void, JSONArray> {
 			paramsMap.put("isEdit", "1");
 		
 		try {
-			return DataUtils.receiveJSON(
-					Connection.requestByPost("/GetBookDetail", paramsMap));
+			return DataUtils.receiveJSON(Connection
+						.requestByPost("/GetBookDetail", paramsMap));
 			
 		} catch(Exception e) {
 			return null;
