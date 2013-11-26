@@ -162,36 +162,40 @@ public class MybooksList extends Activity {
     }
 
 
-	@SuppressLint("NewApi")
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		MenuItem searchItem = menu.findItem(R.id.action_search);
-	    SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-	    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-	    
-		return true;
-	}
+//	@SuppressLint("NewApi")
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.main, menu);
+//		MenuItem searchItem = menu.findItem(R.id.action_search);
+//	    SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+//	    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//	    
+//		return true;
+//	}
 	
 	public void showBookForRentInfo(View view){
-		Intent intent = new Intent(this, MyPostForRentDetailsActivity.class);
+		Intent intent = new Intent(this, MyPostDetailActivity.class);
+		intent.putExtra("id", 2);//TODO
 		startActivity(intent);
 	}
 	
 	public void showBookForSaleInfo(View view){
-		Intent intent = new Intent(this, MyPostForSaleDetailsActivity.class);
+		Intent intent = new Intent(this, MyPostDetailActivity.class);
+		intent.putExtra("id", 1);//TODO
 		startActivity(intent);
 	}
 	
 	public void showBorrowRequestDetails(View view){
-		Intent intent = new Intent(this, MyBorrowRequestDetailsActivity.class);
+		Intent intent = new Intent(this, MyRequestedDetailActivity.class);
+		intent.putExtra("id", 2);//TODO
 		startActivity(intent);
 	}
 	
 	public void showBuyRequestDetails(View view){
-		Intent intent = new Intent(this, MyBuyRequestDetailsActivity.class);
+		Intent intent = new Intent(this, MyRequestedDetailActivity.class);
+		intent.putExtra("id", 2);//TODO
 		startActivity(intent);
 	}
 

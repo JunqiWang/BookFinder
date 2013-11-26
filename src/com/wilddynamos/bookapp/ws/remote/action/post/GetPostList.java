@@ -30,6 +30,7 @@ public class GetPostList extends AsyncTask<String, Void, JSONArray> {
 		paramsMap.put("currentPage", params[0]);
 		paramsMap.put("sOrR", params[1]);
 		paramsMap.put("search", params[2]);
+		paramsMap.put("id", Connection.id + "");
 		
 		try {
 			return DataUtils.receiveJSON(

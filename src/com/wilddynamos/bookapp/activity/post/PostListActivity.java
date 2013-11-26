@@ -66,7 +66,7 @@ public class PostListActivity extends Activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.post_postlist);
+		setContentView(R.layout.post_list);
 
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		
@@ -217,7 +217,7 @@ public class PostListActivity extends Activity
 		
 		pla = new PostListAdapter(
 						this,
-						list, R.layout.post_postitem,
+						list, R.layout.post_item,
 						new String[] {"name", "price", "likes"},  
 						new int[] {R.id.bookNamePostList, R.id.bookPricePostList, R.id.likeNumPostList});
 		
@@ -300,7 +300,7 @@ public class PostListActivity extends Activity
 	}
 	
 	public void show(int position) {
-		Intent intent = new Intent(this, PostDetailsActivity.class);
+		Intent intent = new Intent(this, PostDetailActivity.class);
 		intent.putExtra("id", ids.get(position));
 		startActivity(intent);
 	}

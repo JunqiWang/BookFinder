@@ -173,14 +173,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		/*new for sell*/
 		public void newSell(View view){
 			Intent intent = new Intent(_context, PostOrEditBookActivity.class);
-			intent.putExtra("isRent", false);
+			intent.putExtra("sOrR", true);
 			intent.putExtra("isPost", true);
 			_context.startActivity(intent);
 		}
 		/* new for rent*/
 		public void newRent(View view){
 			Intent intent = new Intent(_context, PostOrEditBookActivity.class);
-			intent.putExtra("isRent", true);
+			intent.putExtra("sOrR", false);
 			intent.putExtra("isPost", true);
 			_context.startActivity(intent);
 		}

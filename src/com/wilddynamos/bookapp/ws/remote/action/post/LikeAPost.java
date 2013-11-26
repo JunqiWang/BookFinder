@@ -6,18 +6,18 @@ import java.util.Map;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.wilddynamos.bookapp.activity.post.PostDetailsActivity;
+import com.wilddynamos.bookapp.activity.BaseBookDetailActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
 public class LikeAPost extends AsyncTask<String, Void, Boolean> {
 	
-	private PostDetailsActivity a;
+	private BaseBookDetailActivity a;
 	
-	public LikeAPost(PostDetailsActivity a) {
+	public LikeAPost(BaseBookDetailActivity a) {
 		this.a = a;
 	}
-
+	
 	@Override
 	protected Boolean doInBackground(String... params) {
 		Map<String, String> paramsMap = new HashMap<String, String>();
@@ -37,7 +37,7 @@ public class LikeAPost extends AsyncTask<String, Void, Boolean> {
 	@Override
 	protected void onPostExecute(Boolean success) {
 		if(success)
-			a.setLikes();
+			a.setLikeNum();
 		else
 			Toast.makeText(a, "Oops!", Toast.LENGTH_SHORT).show();
 	}
