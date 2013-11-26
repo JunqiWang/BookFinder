@@ -1,9 +1,11 @@
 package com.wilddynamos.bookapp.activity.post;
 
 import java.nio.charset.Charset;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,8 +23,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.wilddynamos.bookapp.R;
-import com.wilddynamos.bookapp.ws.remote.action.post.GetPostDetail;
+import com.wilddynamos.bookapp.ws.remote.action.GetBookDetail;
 import com.wilddynamos.bookapp.ws.remote.action.post.LikeAPost;
 import com.wilddynamos.bookapp.ws.remote.action.post.RequestBook;
 
@@ -49,22 +52,11 @@ public class PostDetailsActivity extends Activity {
 		@Override
     	public void handleMessage(Message msg){
     		
-    		if(msg.what < 0)
-    			Toast.makeText(PostDetailsActivity.this, "Oops!", Toast.LENGTH_LONG).show();
-    		else if(msg.what == 1)
-    			fill();
-    		else if(msg.what == 2) {
-    			String s = (Integer.parseInt(likes.getText().toString()) + 1) + "";
-    			likes.setText(s);
-    		} else if(msg.what == 3)
+    		if(msg.what == 3)
     			Toast.makeText(PostDetailsActivity.this, "Your request has been sent", Toast.LENGTH_LONG).show();
-    		else
-    			Toast.makeText(PostDetailsActivity.this, "What happened?", Toast.LENGTH_LONG).show();
     	}
 	};
 	
-	private JSONArray jsonArray;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -86,7 +78,7 @@ public class PostDetailsActivity extends Activity {
 		
 		id = getIntent().getExtras().getInt("id");
 		
-		new GetPostDetail(this, id).start();
+		new GetBookDetail(this).execute(new String[]{id + ""});
 	}
 
 	@Override
@@ -103,20 +95,19 @@ public class PostDetailsActivity extends Activity {
 		public void onClick(DialogInterface dialog, int which) {
 			switch(which) {
 			case DialogInterface.BUTTON_POSITIVE:
-				new RequestBook(PostDetailsActivity.this, id, message.getText().toString()).start();
+				new RequestBook(PostDetailsActivity.this)
+						.execute(new String[]{id + "", message.getText().toString()});
 				request.setText("Has Requested");
 				request.setClickable(false);
 				break;
 			case DialogInterface.BUTTON_NEGATIVE:
 				break;
-			default:
-				new RequestBook(PostDetailsActivity.this, id, message.getText().toString()).start();
 			}
 		}
 		
 	};
 	
-	private void fill() {
+	public void fill(JSONArray jsonArray) {
 		if(jsonArray == null || jsonArray.length() == 0)
 			return;
 		
@@ -142,9 +133,9 @@ public class PostDetailsActivity extends Activity {
 						+ jo.getInt("availableTime") + (jo.getBoolean("per") ? " months" : " weeks"));
 				request.setText("Borrow");
 			}
-			s = jo.getString("cover");
-			hasRequested = jo.getBoolean("hasRequested");
 			
+			hasRequested = jo.getBoolean("hasRequested");
+			s = jo.getString("cover");
 		} catch (JSONException e) {
 		}
 		
@@ -190,19 +181,20 @@ public class PostDetailsActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				new LikeAPost(PostDetailsActivity.this, id).start();
+				new LikeAPost(PostDetailsActivity.this).execute(new String[]{id + ""});
 			}
 		});
 		
 		bg.setAlpha(0.3f);
 	}
+	
+	public void setLikes() {
+		String s = (Integer.parseInt(likes.getText().toString()) + 1) + "";
+		likes.setText(s);
+	}
 
 	public Handler getHandler() {
 		return handler;
-	}
-	
-	public void setJSONArray(JSONArray jsonArray) {
-		this.jsonArray = jsonArray;
 	}
 
 }

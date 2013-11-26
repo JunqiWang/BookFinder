@@ -7,9 +7,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -33,7 +30,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.ws.remote.action.post.GetPostList;
@@ -60,40 +56,12 @@ public class PostListActivity extends Activity
 	private boolean atTop = true;
 	private boolean atBottom = false;
 	
-	
-	@SuppressLint("HandlerLeak")
-	private Handler handler = new Handler() {
-
-		@Override
-    	public void handleMessage(Message msg){
-    		if(msg.what == -1) {
-    			Toast.makeText(PostListActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
-    			bookList.setTop(0);
-    			loadProgress.setVisibility(ProgressBar.INVISIBLE);
-    		}
-    		else if(msg.what == 1) {
-    			if(currentPage == 1)
-    				pour();
-    			else {
-    				loadData();
-    				pla.notifyDataSetChanged();
-    				loadProgress.setVisibility(ProgressBar.INVISIBLE);
-    			}
-    		} else {
-    			Toast.makeText(PostListActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-    			bookList.setTop(0);
-    			loadProgress.setVisibility(ProgressBar.INVISIBLE);
-    		}
-    	}
-	};
-	
-	private JSONArray jsonArray;
 	private List<Integer> ids;
 	private int currentPage;
 	private String sOrR = null;
 	private String search = "";
 	
-	private Thread load;
+	private GetPostList load;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +143,6 @@ public class PostListActivity extends Activity
 		
 	}
 	
-	@SuppressWarnings("deprecation")
 	private void refresh() {
 		bookList.setTop(50);
 		refreshProgress.setVisibility(ProgressBar.VISIBLE);
@@ -183,11 +150,11 @@ public class PostListActivity extends Activity
 		currentPage = 1;
 		
 		try {
-			load.stop();
+			load.cancel(true);
 		} catch(Exception e) {
 		}
-		load = new GetPostList(PostListActivity.this);
-		load.start();
+		load = new GetPostList(this);
+		load.execute(new String[]{currentPage + "", sOrR, search});
 	}
 
 	@Override
@@ -201,16 +168,16 @@ public class PostListActivity extends Activity
 			
 		    if (Math.abs(values[0]) > 16 || Math.abs(values[1]) > 16 || Math.abs(values[2]) > 16){
 		    	
-		    	refresh();
-
 				mSensorManager
 						.unregisterListener(this, 
 								mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+				
+				refresh();
 		    }
 		}
 	}
 	
-	private void loadData() {
+	public void loadData(JSONArray jsonArray) {
 		if(jsonArray == null)
 			return;
 		
@@ -238,11 +205,15 @@ public class PostListActivity extends Activity
 		
 		if(jsonArray.length() > 0)
 			currentPage ++;
+		
+		if(pla != null)
+			pla.notifyDataSetChanged();
+		loadProgress.setVisibility(ProgressBar.INVISIBLE);
 	}
 	
-	private void pour() {
+	public void pour(JSONArray jsonArray) {
 		list.clear();
-		loadData();
+		loadData(jsonArray);
 		
 		pla = new PostListAdapter(
 						this,
@@ -252,14 +223,14 @@ public class PostListActivity extends Activity
 		
 		bookList.setAdapter(pla);
 		
-		mSensorManager
-				.registerListener(
-						this, 
-						mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
-						SensorManager.SENSOR_DELAY_NORMAL);
-		
 		refreshProgress.setVisibility(ProgressBar.INVISIBLE);
 		bookList.setTop(0);
+		
+		mSensorManager
+			.registerListener(
+				this, 
+				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
+				SensorManager.SENSOR_DELAY_NORMAL);
 	}
 	
 	private class PostListAdapter extends SimpleAdapter {
@@ -288,7 +259,6 @@ public class PostListActivity extends Activity
 		refresh();
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		
@@ -318,11 +288,11 @@ public class PostListActivity extends Activity
 				loadProgress.setVisibility(ProgressBar.VISIBLE);
 				
 				try {
-					load.stop();
+					load.cancel(true);
 				} catch(Exception e) {
 				}
-				load = new GetPostList(PostListActivity.this);
-				load.start();
+				load = new GetPostList(this);
+				load.execute(new String[]{currentPage + "", sOrR, search});
 			}
 			break;
 		}
@@ -335,25 +305,4 @@ public class PostListActivity extends Activity
 		intent.putExtra("id", ids.get(position));
 		startActivity(intent);
 	}
-	
-	public Handler getHandler() {
-		return handler;
-	}
-	
-	public void setJSONArray(JSONArray jsonArray) {
-		this.jsonArray = jsonArray;
-	}
-	
-	public int getCurrentPage() {
-		return currentPage;
-	}
-	
-	public String getsOrR() {
-		return sOrR;
-	}
-	
-	public String getSearch() {
-		return search;
-	}
-
 }

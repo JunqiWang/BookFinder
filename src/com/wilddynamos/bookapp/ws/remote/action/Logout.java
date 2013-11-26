@@ -13,9 +13,9 @@ public class Logout extends Thread {
 
 	@Override
 	public void run() {
-		if("1".equals(DataUtils.receiveFlag(Connection.requestByGet("/Logout", null))))
-			a.getHandler().sendEmptyMessage(1);
-		else
-			a.getHandler().sendEmptyMessage(-1);
+//		if("1".equals(DataUtils.receiveFlag(Connection.requestByGet("/Logout", null))))
+//			a.getHandler().sendEmptyMessage(1);
+//		else
+//			a.getHandler().sendEmptyMessage(-1);
 	}
 }
