@@ -52,7 +52,7 @@ public class PostListActivity extends Activity
 	
 	private PostListAdapter pla;
 	
-	private List<Map<String, String>> list;
+	List<Map<String, String>> list;
 	private float yDown;
 	private float touchSlop;
 	private boolean willRefresh = false;
@@ -66,11 +66,8 @@ public class PostListActivity extends Activity
 
 		@Override
     	public void handleMessage(Message msg){
-    		if(msg.what == -1) {
+    		if(msg.what == -1)
     			Toast.makeText(PostListActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
-    			bookList.setTop(0);
-    			loadProgress.setVisibility(ProgressBar.INVISIBLE);
-    		}
     		else if(msg.what == 1) {
     			if(currentPage == 1)
     				pour();
@@ -79,11 +76,8 @@ public class PostListActivity extends Activity
     				pla.notifyDataSetChanged();
     				loadProgress.setVisibility(ProgressBar.INVISIBLE);
     			}
-    		} else {
+    		} else
     			Toast.makeText(PostListActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-    			bookList.setTop(0);
-    			loadProgress.setVisibility(ProgressBar.INVISIBLE);
-    		}
     	}
 	};
 	

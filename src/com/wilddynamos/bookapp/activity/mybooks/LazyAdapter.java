@@ -49,7 +49,7 @@ public class LazyAdapter extends BaseAdapter {
         requester = data.get(position);
  
         // Setting all values in listview
-        requesterName.setText(requester.get(RequesterListActivity.KEY_REQUEST_NAME));
+        requesterName.setText(requester.get("zhe"));
         profile_image.setImageResource(R.drawable.profile);
         return vi;
     }
