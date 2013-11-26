@@ -47,8 +47,8 @@ public class PostListActivity extends Activity
 						loadProgress;
 	
 	private PostListAdapter pla;
-	
 	private List<Map<String, String>> list;
+	
 	private float yDown;
 	private float touchSlop;
 	private boolean willRefresh = false;

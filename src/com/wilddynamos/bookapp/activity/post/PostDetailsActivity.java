@@ -7,9 +7,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -22,7 +19,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.ws.remote.action.GetBookDetail;
@@ -46,16 +42,6 @@ public class PostDetailsActivity extends Activity {
 	private EditText message;
 	
 	private int id;
-	
-	@SuppressLint("HandlerLeak")
-	private Handler handler = new Handler() {
-		@Override
-    	public void handleMessage(Message msg){
-    		
-    		if(msg.what == 3)
-    			Toast.makeText(PostDetailsActivity.this, "Your request has been sent", Toast.LENGTH_LONG).show();
-    	}
-	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +85,6 @@ public class PostDetailsActivity extends Activity {
 						.execute(new String[]{id + "", message.getText().toString()});
 				request.setText("Has Requested");
 				request.setClickable(false);
-				break;
-			case DialogInterface.BUTTON_NEGATIVE:
 				break;
 			}
 		}
@@ -192,9 +176,4 @@ public class PostDetailsActivity extends Activity {
 		String s = (Integer.parseInt(likes.getText().toString()) + 1) + "";
 		likes.setText(s);
 	}
-
-	public Handler getHandler() {
-		return handler;
-	}
-
 }
