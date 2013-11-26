@@ -5,6 +5,7 @@ import android.app.SearchManager;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -104,7 +105,17 @@ public class MultiWindowActivity extends TabActivity {
         for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {  
             View view = tabHost.getTabWidget().getChildAt(i);  
             TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);  
-            tv.setTextSize(18);  
+            if ((getResources().getConfiguration().screenLayout & 
+            	    Configuration.SCREENLAYOUT_SIZE_MASK) == 
+            	        Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            	  // on a large screen device ... 			
+            			tv.setTextSize(18);
+            	}
+            else{
+            	//on a normal screen device
+            		tv.setTextSize(14);
+            }
+             
        //     tv.setTypeface(Typeface.SERIF, 2); // text style  
             if (tabHost.getCurrentTab() == i) {//when selected
                 view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_selected)); 

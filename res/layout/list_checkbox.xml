@@ -2,23 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:gravity="center_horizontal"  
     android:orientation="horizontal"
-    android:padding="4dp">
+    android:padding="6dp">
      
     <CheckBox
         android:id="@+id/rentCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
         android:text="@string/rent"
-        android:textSize="13sp" />
+        android:textSize="18sp" />
     
     <CheckBox
         android:id="@+id/sellCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="75dp"
+        android:layout_marginLeft="130dp"
         android:text="@string/sell"
-        android:textSize="13sp" />
+        android:textSize="18sp" />
  
 </RelativeLayout>

@@ -63,8 +63,6 @@ public class EditProfileActivity extends Activity implements
         ImageView profileImage;
         ImageView mapImage;
         
-        ProgressBar mActivityIndicator;
-        
         EditText name;
         EditText gender;
         EditText campus;
@@ -166,14 +164,12 @@ public class EditProfileActivity extends Activity implements
 				//Bitmap bmp = getBitmap(this, photoPath);
 				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
 				profileImage.setImageBitmap(bmp);
-			} 
+			}  
 			
-    		mapImage = (ImageView) findViewById(R.id.edit_map);
+    		mapImage = (ImageView) findViewById(R.id.edit_map); 
     		
     		/***geolocation***/
-    		  mActivityIndicator = (ProgressBar) findViewById(R.id.ediprofile_progress);
-
-
+ 
     	        // Create a new global location parameters object
     	        mLocationRequest = LocationRequest.create();
 
@@ -412,9 +408,6 @@ public class EditProfileActivity extends Activity implements
                 // Get the current location
                 Location currentLocation = mLocationClient.getLastLocation();
 
-                // Turn the indefinite activity indicator on
-                mActivityIndicator.setVisibility(View.VISIBLE);
-
                 // Start the background task
                 (new EditProfileActivity.GetAddressTask(this)).execute(currentLocation);
             }
@@ -595,10 +588,6 @@ public class EditProfileActivity extends Activity implements
              */
             @Override
             protected void onPostExecute(String address) {
-
-                // Turn off the progress bar
-                mActivityIndicator.setVisibility(View.GONE);
-
                 // Set the address in the UI
                 myaddress.setText(address);
             }

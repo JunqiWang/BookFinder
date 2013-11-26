@@ -1,30 +1,34 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+   
+   <LinearLayout 
     android:layout_width="match_parent"  
-    android:layout_height="match_parent"  
+    android:layout_height="wrap_content"  
     android:orientation="vertical" 
     android:background="#ffffff">  
+
 <LinearLayout 
     android:id="@+id/header"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
 	android:gravity="center"
 	android:background="@layout/header_gradient"
-	android:paddingTop="3dip"
-	android:paddingBottom="3dip">
+	android:paddingTop="6dip"
+	android:paddingBottom="6dip">
      
      <TextView
        	android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_title"
-        android:textSize="17sp"
+        android:textSize="25sp"
         android:textColor="@color/white"
         android:textStyle="italic|bold"/>
-
 </LinearLayout>    
     
 <LinearLayout     
-    android:layout_marginTop="40dp"
-    android:layout_width="175dp"
+    android:layout_marginTop="50dp"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal">
@@ -34,12 +38,12 @@
         android:layout_height="wrap_content"
         android:text="@string/email"
         android:textColor="#372c24"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
     <EditText
         android:id="@+id/userInputEmail"
-        android:layout_marginTop="3dip"
-        android:layout_marginBottom="10dip"
-        android:layout_height="20dp"
+        android:layout_marginTop="6dip"
+        android:layout_marginBottom="15dip"
+        android:layout_height="30dp"
         android:layout_width="fill_parent"
         android:inputType="textEmailAddress"
         android:background="@drawable/gradient_bg"
@@ -49,12 +53,12 @@
         android:layout_height="wrap_content"
         android:text="@string/password"
         android:textColor="#372c24"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
     <EditText
         android:id="@+id/userInputPassword"
-        android:layout_marginTop="3dip"
-        android:layout_marginBottom="10dip"
-        android:layout_height="20dp"
+        android:layout_marginTop="6dip"
+        android:layout_marginBottom="15dip"
+        android:layout_height="30dp"
         android:layout_width="fill_parent"
         android:inputType= "textPassword"
         android:background="@drawable/gradient_bg"
@@ -64,36 +68,35 @@
 
     
      <CheckBox 
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/checkbox_remember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/remember_me"
-        android:textSize="13sp"
+        android:textSize="18sp"
         android:onClick="onCheckboxClicked"/>
-
 
     <Button
         android:id="@+id/login"
         android:layout_marginTop="25dp"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
         android:background="@drawable/custom_button"
         android:textColor="@color/white"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:text="@string/sign_in"/>
 
     <Button
         android:id="@+id/signup"
         android:layout_marginTop="15dp"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
         android:background="@drawable/custom_button"
         android:textColor="@color/white"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:text="@string/sign_up"
         android:layout_gravity="center"
@@ -102,14 +105,17 @@
    <Button
         android:id="@+id/forgotPwd"
         android:layout_marginTop="15dp"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
         android:background="@drawable/custom_button"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:text="@string/forget_password"
         android:layout_gravity="center"
         android:onClick="forgetPassword" />
-
 </LinearLayout>
+        
+
+</ScrollView>
+
