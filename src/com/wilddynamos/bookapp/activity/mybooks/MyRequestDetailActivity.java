@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.BaseBookDetailActivity;
 
-public class MyRequestedDetailActivity extends BaseBookDetailActivity {
+public class MyRequestDetailActivity extends BaseBookDetailActivity {
 	
 	private TextView owner;
 	private TextView hasResponded;

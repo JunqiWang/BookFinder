@@ -68,7 +68,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.wilddynamos.bookapp.activity.mybooks.MyRequestedDetailActivity"
+            android:name="com.wilddynamos.bookapp.activity.mybooks.MyRequestDetailActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
