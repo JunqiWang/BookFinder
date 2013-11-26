@@ -30,16 +30,17 @@ public class LoginActivity extends Activity {
                         @Override
                         public void onClick(View v) {
                                 
-                                if(!"".equals(email.getText().toString()) 
+                               if(!"".equals(email.getText().toString()) 
                                                 && !"".equals(password.getText().toString())) {
                                         
                                         Login login = new Login(LoginActivity.this);
                                         login.execute(new String[]{email.getText().toString(), 
                                                                                            password.getText().toString()}
-                                                                 );
-                                }
+                                                                 ); 
+                                } 
+              //          signIn();
                         }
-                });
+                }); 
     }
 
     public void signIn(){

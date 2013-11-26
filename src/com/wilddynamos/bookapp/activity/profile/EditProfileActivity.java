@@ -34,7 +34,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wilddynamos.bookapp.utils.LocationUtils;
@@ -159,7 +158,7 @@ public class EditProfileActivity extends Activity implements
 			gender.setText(user.getGender() ? "Male" : "Female");
 			campus.setText(user.getCampus());
 			contact.setText(user.getContact());
-			myaddress.setText(user.getAddress());
+			myaddress.setText(user.getAddress()); 
 			
 			String photoPath = user.getPhotoAddr();
 			if (photoPath != null) {
@@ -167,7 +166,7 @@ public class EditProfileActivity extends Activity implements
 				//Bitmap bmp = getBitmap(this, photoPath);
 				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
 				profileImage.setImageBitmap(bmp);
-			}
+			} 
 			
     		mapImage = (ImageView) findViewById(R.id.edit_map);
     		
@@ -289,12 +288,12 @@ public class EditProfileActivity extends Activity implements
                         /** take photo **/
                         case ACTION_TAKE_PHOTO: {
                                 if (resultCode == RESULT_OK) {
-                                      //  takePhotoAction.handleCameraPhoto( );
                                 	mCurrentPhotoPath = takePhotoAction.getPath();
                                 	 BitmapWorkerTask bitmapworker = new BitmapWorkerTask(mCurrentPhotoPath,profileImage);
                                      bitmapworker.execute();
-                                     takePhotoAction.galleryAddPic();
-                                     mImageBitmap = bitmapworker.getBitmap();
+                                     System.out.println(mCurrentPhotoPath);
+                                     takePhotoAction.galleryAddPic(mCurrentPhotoPath);
+                                    
                                 }
                                 break;
                         }
@@ -313,7 +312,6 @@ public class EditProfileActivity extends Activity implements
 
                             BitmapWorkerTask bitmapworker = new BitmapWorkerTask(mCurrentPhotoPath,profileImage);
                             bitmapworker.execute();
-                            mImageBitmap = bitmapworker.getBitmap();
                         }
                                  break;
                         }
