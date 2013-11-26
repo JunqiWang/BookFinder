@@ -2,13 +2,15 @@ package com.wilddynamos.bookapp.activity.mybooks;
 
 import java.util.ArrayList;
 import java.util.HashMap;
- 
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
+
 import com.wilddynamos.bookapp.R;
  
 public class RequesterListActivity extends Activity {
@@ -17,9 +19,11 @@ public class RequesterListActivity extends Activity {
     static final String KEY_REQUEST_NAME = "requester";
     static final String KEY_REQUESTER_IMAGE = "requester_image";
  
-    ListView list;
-    LazyAdapter adapter;
- 
+    private ListView list;
+    private LazyAdapter adapter;
+    private Button declineAll;
+    
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
