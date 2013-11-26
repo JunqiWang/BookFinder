@@ -5,35 +5,38 @@
     android:layout_height="fill_parent"
     tools:context=".PostListActivity" >
     
-     <ImageView
+    <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:alpha="0.3"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
-<LinearLayout
-    	android:id="@+id/post_postlist_linerlayout1"
-    	android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true">      
-    <EditText
-        android:id="@+id/searchContent"
-        android:layout_marginTop="10dp"
-        android:layout_width="320dp"
-        android:layout_height="40dp"
-        android:inputType="text"
-        android:background="@drawable/gradient_bg"
-        android:textSize="25sp" />
-  
-    <ImageView
-        android:id="@+id/searchIt"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_action_search"
-        android:contentDescription="@string/image"
-        android:onClick="searchPost" />
-</LinearLayout> 
+     
+	<LinearLayout
+	    	android:id="@+id/post_postlist_linerlayout1"
+	    	android:layout_marginTop="10dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true">
+	           
+	    <EditText
+	        android:id="@+id/searchContent"
+	        android:layout_width="450dp"
+	        android:layout_height="40dp"
+	        android:inputType="text"
+	        android:background="@drawable/gradient_bg"
+	        android:textSize="25sp" />
+	  
+	    <ImageView
+	        android:id="@+id/searchIt"
+	        android:layout_width="40dp"
+	        android:layout_height="40dp"
+	        android:src="@drawable/ic_action_search"
+	        android:contentDescription="@string/image"
+	        android:onClick="searchPost" />
+	    
+	</LinearLayout> 
+	
     <CheckBox
         android:id="@+id/rentCheckBox"
         android:layout_width="wrap_content"
@@ -75,19 +78,21 @@
 	    <ListView
 	        android:id="@+id/postlist"
 	        android:layout_width="match_parent"
-	        android:layout_height="605dp"
+	        android:layout_height="620dp"
 	        android:layout_centerHorizontal="true"
-	        android:cacheColorHint="@android:color/black" >
+	        android:cacheColorHint="@android:color/black"
+	        android:dividerHeight="7dp" >
 	    </ListView>
 	    
-	    <ProgressBar
-	        android:id="@+id/loadProgress"   
-	        android:layout_width="30dp"  
-	        android:layout_height="30dp"
-	        android:layout_alignParentBottom="true"
-	        android:layout_centerHorizontal="true"
-	        android:visibility="invisible" /> 
-	        
     </RelativeLayout>
+    
+    <ProgressBar
+        android:id="@+id/loadProgress"   
+        android:layout_width="30dp"  
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:visibility="invisible" /> 
 
 </RelativeLayout>

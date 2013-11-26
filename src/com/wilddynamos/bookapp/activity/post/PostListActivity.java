@@ -255,7 +255,6 @@ public class PostListActivity extends Activity
 	
 	public void searchPost(View view) {
 		search = searchContent.getText().toString();
-		
 		refresh();
 	}
 	
