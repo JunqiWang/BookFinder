@@ -81,10 +81,10 @@ public class MultiWindowActivity extends TabActivity {
               
             }       
         });
-		startService(new Intent(this, NotificationCenter.class));
+	//	startService(new Intent(this, NotificationCenter.class));
     }
 	
-	@SuppressLint("NewApi")
+/*	@SuppressLint("NewApi")
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -95,7 +95,7 @@ public class MultiWindowActivity extends TabActivity {
 	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName())); 
 	    myMenu = menu;
 		return true;
-	}
+	} */
 	
 	 /** 
      * update color and text in tabHost
@@ -107,10 +107,10 @@ public class MultiWindowActivity extends TabActivity {
             tv.setTextSize(18);  
        //     tv.setTypeface(Typeface.SERIF, 2); // text style  
             if (tabHost.getCurrentTab() == i) {//when selected
-                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_selected));//������������������  
-                tv.setTextColor(Color.DKGRAY);  
+                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_selected)); 
+                tv.setTextColor(Color.WHITE);  
             } else {//when not selected 
-                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_unselected));//������������������  
+                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_unselected)); 
                 tv.setTextColor(Color.WHITE);  
             }  
         }  

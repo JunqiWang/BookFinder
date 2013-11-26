@@ -9,17 +9,17 @@
                 android:orientation="vertical" 
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent">
+                 <TabWidget 
+                    android:id="@android:id/tabs"
+                    android:gravity="top"
+                    android:layout_height="fill_parent" 
+                    android:layout_width="fill_parent">
+                </TabWidget>
                 <FrameLayout 
                     android:id="@android:id/tabcontent"
                     android:layout_height="780dp"
                     android:layout_width="fill_parent">
-                </FrameLayout>
-                 <TabWidget 
-                    android:id="@android:id/tabs"
-                    android:gravity="bottom"
-                    android:layout_height="fill_parent" 
-                    android:layout_width="fill_parent">
-                </TabWidget>
+                </FrameLayout>             
         </LinearLayout>
 
 </TabHost>
