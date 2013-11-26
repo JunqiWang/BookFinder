@@ -34,10 +34,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wilddynamos.bookapp.utils.LocationUtils;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -62,8 +62,6 @@ public class EditProfileActivity extends Activity implements
 
         ImageView profileImage;
         ImageView mapImage;
-        
-        ProgressBar mActivityIndicator;
         
         EditText name;
         EditText gender;
@@ -158,7 +156,7 @@ public class EditProfileActivity extends Activity implements
 			gender.setText(user.getGender() ? "Male" : "Female");
 			campus.setText(user.getCampus());
 			contact.setText(user.getContact());
-			myaddress.setText(user.getAddress());
+			myaddress.setText(user.getAddress()); 
 			
 			String photoPath = user.getPhotoAddr();
 			if (photoPath != null) {
@@ -166,14 +164,12 @@ public class EditProfileActivity extends Activity implements
 				//Bitmap bmp = getBitmap(this, photoPath);
 				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
 				profileImage.setImageBitmap(bmp);
-			}
+			}  
 			
-    		mapImage = (ImageView) findViewById(R.id.edit_map);
+    		mapImage = (ImageView) findViewById(R.id.edit_map); 
     		
     		/***geolocation***/
-    		  mActivityIndicator = (ProgressBar) findViewById(R.id.ediprofile_progress);
-
-
+ 
     	        // Create a new global location parameters object
     	        mLocationRequest = LocationRequest.create();
 
@@ -288,12 +284,12 @@ public class EditProfileActivity extends Activity implements
                         /** take photo **/
                         case ACTION_TAKE_PHOTO: {
                                 if (resultCode == RESULT_OK) {
-                                      //  takePhotoAction.handleCameraPhoto( );
                                 	mCurrentPhotoPath = takePhotoAction.getPath();
                                 	 BitmapWorkerTask bitmapworker = new BitmapWorkerTask(mCurrentPhotoPath,profileImage);
                                      bitmapworker.execute();
-                                     takePhotoAction.galleryAddPic();
-                                     mImageBitmap = bitmapworker.getBitmap();
+                                     System.out.println(mCurrentPhotoPath);
+                                     takePhotoAction.galleryAddPic(mCurrentPhotoPath);
+                                    
                                 }
                                 break;
                         }
@@ -312,7 +308,6 @@ public class EditProfileActivity extends Activity implements
 
                             BitmapWorkerTask bitmapworker = new BitmapWorkerTask(mCurrentPhotoPath,profileImage);
                             bitmapworker.execute();
-                            mImageBitmap = bitmapworker.getBitmap();
                         }
                                  break;
                         }
@@ -412,9 +407,6 @@ public class EditProfileActivity extends Activity implements
 
                 // Get the current location
                 Location currentLocation = mLocationClient.getLastLocation();
-
-                // Turn the indefinite activity indicator on
-                mActivityIndicator.setVisibility(View.VISIBLE);
 
                 // Start the background task
                 (new EditProfileActivity.GetAddressTask(this)).execute(currentLocation);
@@ -596,10 +588,6 @@ public class EditProfileActivity extends Activity implements
              */
             @Override
             protected void onPostExecute(String address) {
-
-                // Turn off the progress bar
-                mActivityIndicator.setVisibility(View.GONE);
-
                 // Set the address in the UI
                 myaddress.setText(address);
             }

@@ -52,7 +52,7 @@
             android:label="@string/app_name"> 
         </activity>
         <activity
-            android:name="com.wilddynamos.bookapp.activity.post.PostDetailsActivity"
+            android:name="com.wilddynamos.bookapp.activity.post.PostDetailActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -64,11 +64,11 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.wilddynamos.bookapp.activity.mybooks.MyPostForSaleDetailsActivity"
+            android:name="com.wilddynamos.bookapp.activity.mybooks.MyPostDetailActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.wilddynamos.bookapp.activity.mybooks.MyPostForRentDetailsActivity"
+            android:name="com.wilddynamos.bookapp.activity.mybooks.MyRequestedDetailActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -89,7 +89,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-        	android:name="com.wilddynamos.bookapp.activity.mybooks.MyBoughtDetailsActivity"
+        	android:name="com.wilddynamos.bookapp.activity.mybooks.RequesterDetailActivity"
             android:label="@string/app_name" >
         </activity>
         <activity

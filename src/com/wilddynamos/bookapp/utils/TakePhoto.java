@@ -94,9 +94,9 @@ public class TakePhoto{
         }
 
         
-        public void galleryAddPic() {
+        public void galleryAddPic(String path) {
             Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-                File f = new File(mCurrentPhotoPath);
+                File f = new File(path);
             Uri contentUri = Uri.fromFile(f);
             mediaScanIntent.setData(contentUri);
             activity.sendBroadcast(mediaScanIntent);
@@ -125,7 +125,7 @@ public class TakePhoto{
                 if (mCurrentPhotoPath != null) {
                         BitmapWorkerTask task = new BitmapWorkerTask(mCurrentPhotoPath,imageView);
                     task.execute();
-                        galleryAddPic();
+                    //    galleryAddPic();
         //                mCurrentPhotoPath = null;
                 }
         } 

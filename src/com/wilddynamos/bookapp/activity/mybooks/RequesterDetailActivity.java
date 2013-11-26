@@ -6,7 +6,7 @@ import android.view.Menu;
 import com.wilddynamos.bookapp.R;
 
 
-public class MyBoughtDetailsActivity extends Activity {
+public class RequesterDetailActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

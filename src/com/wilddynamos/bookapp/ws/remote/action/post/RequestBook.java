@@ -6,15 +6,15 @@ import java.util.Map;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.wilddynamos.bookapp.activity.post.PostDetailsActivity;
+import com.wilddynamos.bookapp.activity.post.PostDetailActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
 public class RequestBook extends AsyncTask<String, Void, Boolean> {
 	
-	private PostDetailsActivity a;
+	private PostDetailActivity a;
 	
-	public RequestBook(PostDetailsActivity a) {
+	public RequestBook(PostDetailActivity a) {
 		this.a = a;
 	}
 
@@ -39,7 +39,7 @@ public class RequestBook extends AsyncTask<String, Void, Boolean> {
 	@Override
 	protected void onPostExecute(Boolean success) {
 		if(success)
-			a.setLikes();
+			a.setLikeNum();
 		else
 			Toast.makeText(a, "Oops!", Toast.LENGTH_SHORT).show();
 	}
