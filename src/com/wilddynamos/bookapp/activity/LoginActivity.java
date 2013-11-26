@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class LoginActivity extends Activity {
-	
-	private EditText email;
-	private EditText password;
-	private Button login;
+        
+        private EditText email;
+        private EditText password;
+        private Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,35 +26,36 @@ public class LoginActivity extends Activity {
         login = (Button) findViewById(R.id.login);
         
         login.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-				if(!"".equals(email.getText().toString()) 
-						&& !"".equals(password.getText().toString())) {
-					
-					Login login = new Login(LoginActivity.this);
-					login.execute(new String[]{email.getText().toString(), 
-											   password.getText().toString()}
-								 );
-				}
-			}
-		});
+                        
+                        @Override
+                        public void onClick(View v) {
+                                
+                               if(!"".equals(email.getText().toString()) 
+                                                && !"".equals(password.getText().toString())) {
+                                        
+                                        Login login = new Login(LoginActivity.this);
+                                        login.execute(new String[]{email.getText().toString(), 
+                                                                                           password.getText().toString()}
+                                                                 ); 
+                                } 
+              //          signIn();
+                        }
+                }); 
     }
 
     public void signIn(){
-    	Intent intent = new Intent(this, MultiWindowActivity.class);
-    	startActivity(intent);
+            Intent intent = new Intent(this, MultiWindowActivity.class);
+            startActivity(intent);
     }
     
     public void signUp(View view){
-    	Intent intent = new Intent(this, SignupActivity.class);
-    	startActivity(intent);
+            Intent intent = new Intent(this, SignupActivity.class);
+            startActivity(intent);
     }
     
     public void forgotPassword(View view) {
-    	Intent intent = new Intent(this, ForgotPasswordActivity.class);
-    	startActivity(intent);
+            Intent intent = new Intent(this, ForgotPasswordActivity.class);
+            startActivity(intent);
     }
     
 }
