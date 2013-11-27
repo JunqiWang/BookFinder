@@ -3,34 +3,43 @@ package com.wilddynamos.bookapp.ws.remote.action.post;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.wilddynamos.bookapp.activity.post.PostDetailsActivity;
+import android.os.AsyncTask;
+import android.widget.Toast;
+
+import com.wilddynamos.bookapp.activity.BaseBookDetailActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
-public class LikeAPost extends Thread {
+public class LikeAPost extends AsyncTask<String, Void, Boolean> {
 	
-	private PostDetailsActivity a;
+	private BaseBookDetailActivity a;
 	
-	private int id;
-	
-	public LikeAPost(PostDetailsActivity a, int id) {
+	public LikeAPost(BaseBookDetailActivity a) {
 		this.a = a;
-		this.id = id;
+	}
+	
+	@Override
+	protected Boolean doInBackground(String... params) {
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("id", params[0]);
+		
+		try {
+			if(DataUtils.receiveFlag(Connection.requestByGet("/Like", paramsMap)).equals("1"))
+				return true;
+			else
+				return false;
+			
+		} catch(Exception e) {
+			return false;
+		}
 	}
 
 	@Override
-	public void run() {
-		try {
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("id", id + "");
-			
-			if(DataUtils.receiveFlag(Connection.requestByGet("/Like", map)).equals("1"))
-				a.getHandler().sendEmptyMessage(2);
-			else
-				a.getHandler().sendEmptyMessage(-2);
-			
-		} catch(Exception e) {
-			a.getHandler().sendEmptyMessage(-2);
-		}
+	protected void onPostExecute(Boolean success) {
+		if(success)
+			a.setLikeNum();
+		else
+			Toast.makeText(a, "Oops!", Toast.LENGTH_SHORT).show();
 	}
+	
 }

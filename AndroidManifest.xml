@@ -20,7 +20,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.wilddynamos.bookapp.activity.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,76 +30,94 @@
         </activity>
         <activity
             android:name="com.wilddynamos.bookapp.activity.MultiWindowActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name="com.wilddynamos.bookapp.activity.post.PostListActivity"
-            android:label="@string/title_activity_tab1" >
+            android:label="@string/title_activity_tab1" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name="com.wilddynamos.bookapp.activity.mybooks.MybooksList"
-            android:label="@string/title_activity_tab2" >
+            android:label="@string/title_activity_tab2" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name="com.wilddynamos.bookapp.activity.profile.MyProfileActivity"
-            android:label="@string/title_activity_tab2" >
+            android:label="@string/title_activity_tab2" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
 		<activity
 		    android:name="com.wilddynamos.bookapp.activity.SignupActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="com.wilddynamos.bookapp.activity.profile.EditProfileActivity"
-            android:label="@string/app_name"> 
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden"> 
         </activity>
         <activity
-            android:name="com.wilddynamos.bookapp.activity.post.PostDetailsActivity"
-            android:label="@string/app_name" >
+            android:name="com.wilddynamos.bookapp.activity.post.PostDetailActivity"
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name="com.wilddynamos.bookapp.activity.mybooks.PostNewBookForSaleActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
          <activity
             android:name="com.wilddynamos.bookapp.activity.mybooks.PostOrEditBookActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
-            android:name="com.wilddynamos.bookapp.activity.mybooks.MyPostForSaleDetailsActivity"
-            android:label="@string/app_name" >
+            android:name="com.wilddynamos.bookapp.activity.mybooks.MyPostDetailActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="com.wilddynamos.bookapp.activity.mybooks.MyPostForRentDetailsActivity"
-            android:label="@string/app_name" >
+            android:name="com.wilddynamos.bookapp.activity.mybooks.MyRequestDetailActivity"
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name="com.wilddynamos.bookapp.activity.mybooks.RequesterListActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         
         <activity
             android:name="com.wilddynamos.bookapp.activity.mybooks.EditMyBookForRentActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="com.wilddynamos.bookapp.activity.mybooks.EditMyBookForSaleActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
 		<activity
             android:name="com.wilddynamos.bookapp.activity.mybooks.MyBuyRequestDetailsActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
-        	android:name="com.wilddynamos.bookapp.activity.mybooks.MyBoughtDetailsActivity"
-            android:label="@string/app_name" >
+        	android:name="com.wilddynamos.bookapp.activity.mybooks.RequesterDetailActivity"
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
         	android:name="com.wilddynamos.bookapp.activity.mybooks.MyBorrowRequestDetailsActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
          <activity
         	android:name="com.wilddynamos.bookapp.activity.ZoomInOutActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <service 
             android:name="com.wilddynamos.bookapp.service.NotificationCenter">

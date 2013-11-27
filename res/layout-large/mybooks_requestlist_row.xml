@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
         android:layout_alignTop="@+id/requesterName"
-        android:layout_toLeftOf="@+id/imageView1"
+        android:layout_toLeftOf="@+id/mybooks_requester_image"
         android:background="@drawable/custom_button4"
         android:textStyle="bold"
         android:textColor="#ffffff"

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.LoginActivity;
 import com.wilddynamos.bookapp.model.User;
+import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.action.profile.GetMyProfile;
 
 public class MyProfileActivity extends Activity {
@@ -122,5 +123,7 @@ public class MyProfileActivity extends Activity {
 		  }
 		  return bmp;
 		}
-	
+	public void zoomInOut(View view){
+	    	ZoomInOutAction.action(this,profileImage);
+		}
 }

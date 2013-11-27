@@ -34,6 +34,7 @@
            android:layout_height="wrap_content"
            android:orientation="vertical" >
            <Button
+               android:id="@+id/createOrEditTakePhoto"
                android:layout_width="180dp"
 	   		   android:layout_height="wrap_content"
 	    	   android:textSize="25sp"
@@ -42,6 +43,7 @@
         	   android:background="@drawable/custom_button3"
                android:text="@string/takePhoto"/>
            <Button
+               android:id="@+id/createOrEditChoosePhoto"
                android:layout_width="180dp"
 	   		   android:layout_height="wrap_content"
 	   		   android:layout_marginTop="20dp"
@@ -49,6 +51,7 @@
         	   android:textStyle="bold"
         	   android:textColor="@color/white"
         	   android:background="@drawable/custom_button3"
+        	   android:onClick="choosePhoto"
                android:text="@string/choosePhoto"/>
        </LinearLayout>
 
@@ -59,7 +62,8 @@
            android:layout_alignParentRight="true"
            android:layout_alignParentTop="true"
            android:contentDescription="@string/bookCover_alt"
-           android:src="@drawable/ic_launcher" />
+           android:src="@drawable/ic_launcher" 
+           android:onClick="zoomInOut"/>
       
    </RelativeLayout>
  	

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.json.JSONArray;
 
-import com.wilddynamos.bookapp.activity.mybooks.PostOrEditBookActivity;
+import com.wilddynamos.bookapp.activity.BaseBookDetailActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
@@ -14,33 +14,34 @@ import android.widget.Toast;
 
 public class GetBookDetail extends AsyncTask<String, Void, JSONArray> {
 
-	private PostOrEditBookActivity a;
+	private BaseBookDetailActivity bda;
 	
-	public GetBookDetail(PostOrEditBookActivity a) {
-		this.a = a;
+	public GetBookDetail(BaseBookDetailActivity bda) {
+		this.bda = bda;
 	}
 	
 	@Override
 	protected JSONArray doInBackground(String... params) {
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
-		paramsMap.put("isEdit", "1");
+		if(params.length >= 2)
+			paramsMap.put(params[1], "1");
 		
 		try {
-			return DataUtils.receiveJSON(
-					Connection.requestByPost("/GetBookDetail", paramsMap));
+			return DataUtils.receiveJSON(Connection
+						.requestByPost("/GetBookDetail", paramsMap));
 			
 		} catch(Exception e) {
-			System.out.println(e.toString());
 			return null;
 		}
 	}
 
 	@Override
 	protected void onPostExecute(JSONArray jsonArray) {
-		if(jsonArray == null || jsonArray.length() == 0)
-			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
-		else
-			a.fill(jsonArray);
+		if(bda != null)
+			if(jsonArray == null || jsonArray.length() == 0)
+				Toast.makeText(bda, "Oops", Toast.LENGTH_SHORT).show();
+			else
+				bda.fill(jsonArray);
 	}
 }

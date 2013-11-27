@@ -3,32 +3,54 @@ package com.wilddynamos.bookapp.ws.remote.action.post;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONArray;
+
+import android.os.AsyncTask;
+import android.widget.Toast;
+
 import com.wilddynamos.bookapp.activity.post.PostListActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
-public class GetPostList extends Thread {
+public class GetPostList extends AsyncTask<String, Void, JSONArray> {
 	
 	private PostListActivity a;
+	
+	private String currentPage;
 	
 	public GetPostList(PostListActivity a) {
 		this.a = a;
 	}
 
 	@Override
-	public void run() {
+	protected JSONArray doInBackground(String... params) {
+		this.currentPage = params[0];
+		
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("currentPage", params[0]);
+		paramsMap.put("sOrR", params[1]);
+		paramsMap.put("search", params[2]);
+		paramsMap.put("id", Connection.id + "");
+		
 		try {
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("currentPage", a.getCurrentPage() + "");
-			map.put("sOrR", a.getsOrR());
-			map.put("search", a.getSearch());
-			
-			a.setJSONArray(DataUtils.receiveJSON(Connection.requestByGet("/GetPosts", map)));
-
-			a.getHandler().sendEmptyMessage(1);
+			return DataUtils.receiveJSON(
+					Connection.requestByPost("/GetPosts", paramsMap));
 			
 		} catch(Exception e) {
-			a.getHandler().sendEmptyMessage(-1);
+			return null;
+		}
+	}
+
+	@Override
+	protected void onPostExecute(JSONArray jsonArray) {
+		if(jsonArray == null)
+			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
+		else {
+			if("1".equals(currentPage))
+				a.pour(jsonArray);
+			else {
+				a.loadData(jsonArray);
+			}
 		}
 	}
 }

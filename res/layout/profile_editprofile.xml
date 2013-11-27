@@ -1,39 +1,46 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="#FCFBE3">  
-
+    android:layout_height="fill_parent">  
+    
+     <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image"
+        android:alpha="0.3"/>
+     
+	 <ScrollView
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent">
+    	
+   <LinearLayout 
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical">  
+    	
 	<TextView 
      	   android:layout_width="wrap_content"
      	   android:layout_height="wrap_content"
      	   android:text="@string/editProfilePageTitle"
-     	   android:textSize="18sp"
+     	   android:textSize="25sp"
      	   android:textStyle="bold"
-     	   android:layout_margin="10dp" 
+     	   android:layout_margin="18dp" 
      	   android:layout_gravity="center"/>
-     <ProgressBar
-        android:id="@+id/ediprofile_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:indeterminate="true"
-        android:visibility="gone" />
      
    <TextView
-       	android:layout_marginLeft="15dp"
+       	android:layout_marginLeft="18dp"
        	android:text="@string/profilePhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"/>
 
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_marginTop="5dp"
-       android:layout_marginRight="15dp"
-       android:layout_marginLeft="15dp"
+       android:layout_marginTop="7dp"
+       android:layout_marginRight="18dp"
+       android:layout_marginLeft="18dp"
        android:orientation="horizontal" >
 
        <LinearLayout
@@ -44,9 +51,9 @@
 
            <Button
                android:id= "@+id/editprofile_take_photo_button"
-               android:layout_width="100dp"
-	   		   android:layout_height="35dp"
-	    	   android:textSize="13sp"
+               android:layout_width="120dp"
+	   		   android:layout_height="40dp"
+	    	   android:textSize="15sp"
         	   android:textStyle="bold"
         	   android:textColor="@color/white"
         	   android:background="@drawable/custom_button3"
@@ -54,10 +61,10 @@
 
            <Button
                android:id= "@+id/editprofile_choose_photo_button"
-               android:layout_width="100dp"
-	   		   android:layout_height="35dp"
-	    	   android:layout_marginTop="20dp"
-	    	   android:textSize="13sp"
+               android:layout_width="120dp"
+	   		   android:layout_height="40dp"
+	    	   android:layout_marginTop="18dp"
+	    	   android:textSize="15sp"
         	   android:textStyle="bold"
         	   android:textColor="@color/white"
         	   android:background="@drawable/custom_button3"
@@ -71,26 +78,27 @@
            android:layout_alignParentRight="true"
            android:layout_alignParentTop="true"
            android:contentDescription="@string/bookCover_alt"
-           android:src="@drawable/ic_launcher" />
+           android:src="@drawable/ic_launcher"
+           android:onClick="zoomInOut" />
    </RelativeLayout>
  	
     <LinearLayout
     	android:layout_width="fill_parent"
    	 	android:layout_height="wrap_content"
-   	 	android:layout_marginTop="15dp"
-   	 	android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp">
+   	 	android:layout_marginTop="12dp"
+   	 	android:layout_marginRight="18dp"
+        android:layout_marginLeft="18dp">
   	  <TextView
-    	    android:layout_width="115dp"
+    	    android:layout_width="85dp"
     	    android:layout_height="wrap_content"
-    	    android:textSize="15sp"
+    	    android:textSize="18sp"
     	    android:textStyle="bold"
     	    android:text="@string/name"/>
   	  <EditText
         	android:id="@+id/edit_name"
         	android:layout_weight="1"
         	android:layout_width="0dp"
-        	android:layout_height="20dp"
+        	android:layout_height="wrap_content"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
   	  <requestFocus/>
@@ -100,19 +108,19 @@
  	<LinearLayout
     	android:layout_width="fill_parent"
    	 	android:layout_height="wrap_content"
-   	 	android:layout_marginTop="15dp"
-   	 	android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp">
+   	 	android:layout_marginTop="18dp"
+   	 	android:layout_marginRight="18dp"
+        android:layout_marginLeft="18dp">
     	<TextView
-        	android:layout_width="115dp"
+        	android:layout_width="85dp"
     	    android:layout_height="wrap_content"
-    	    android:textSize="15sp"
+    	    android:textSize="18sp"
     	    android:textStyle="bold"
         	android:text="@string/gender"/>
     	<EditText
         	android:id="@+id/edit_gender"
         	android:layout_width="0dp"
-        	android:layout_height="20dp"
+        	android:layout_height="wrap_content"
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
@@ -124,19 +132,19 @@
 	<LinearLayout
     	android:layout_width="fill_parent"
    	 	android:layout_height="wrap_content"
-   	 	android:layout_marginTop="15dp"
-   	 	android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp">
+   	 	android:layout_marginTop="18dp"
+   	 	android:layout_marginRight="18dp"
+        android:layout_marginLeft="18dp">
     	<TextView
-        	android:layout_width="115dp"
+        	android:layout_width="85dp"
     	    android:layout_height="wrap_content"
-    	    android:textSize="15sp"
+    	    android:textSize="18sp"
     	    android:textStyle="bold"
         	android:text="@string/campus"/>
     	<EditText
         	android:id="@+id/edit_campus"
         	android:layout_width="0dp"
-        	android:layout_height="20dp"
+        	android:layout_height="wrap_content"
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
@@ -147,19 +155,19 @@
 	<LinearLayout
     	android:layout_width="fill_parent"
    	 	android:layout_height="wrap_content"
-   	 	android:layout_marginTop="15dp"
-   	 	android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp">
+   	 	android:layout_marginTop="18dp"
+   	 	android:layout_marginRight="18dp"
+        android:layout_marginLeft="18dp">
     	<TextView
-        	android:layout_width="115dp"
+        	android:layout_width="85dp"
     	    android:layout_height="wrap_content"
-    	    android:textSize="15sp"
+    	    android:textSize="18sp"
     	    android:textStyle="bold"
         	android:text="@string/contact"/>
     	<EditText
         	android:id="@+id/edit_contact"
         	android:layout_width="0dp"
-        	android:layout_height="20dp"
+        	android:layout_height="wrap_content"
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
@@ -169,33 +177,33 @@
 	<LinearLayout
     	android:layout_width="fill_parent"
    	 	android:layout_height="wrap_content"
-   	 	android:layout_marginTop="15dp"
-   	 	android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp">
+   	 	android:layout_marginTop="18dp"
+   	 	android:layout_marginRight="18dp"
+        android:layout_marginLeft="18dp">
     	<TextView
-        	android:layout_width="115dp"
+        	android:layout_width="85dp"
     	    android:layout_height="wrap_content"
-    	    android:textSize="15sp"
+    	    android:textSize="18sp"
     	    android:textStyle="bold"
         	android:text="@string/address"/>
     	<EditText
         	android:id="@+id/edit_address"
         	android:layout_width="0dp"
-        	android:layout_height="100dp"
+        	android:layout_height="60dp"
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="textMultiLine" 
     		android:minLines="2" 
     		android:gravity="top" 
     		android:maxLines="2"
-    		android:textSize="20sp" />
+    		android:textSize="18sp" />
     	<requestFocus />
     	
     	<ImageView
     	    android:id="@+id/edit_map"
-    	    android:layout_width="20dp"
-    	    android:layout_height="20dp"
-    	    android:layout_marginLeft="20dp"
+    	    android:layout_width="25dp"
+    	    android:layout_height="25dp"
+    	    android:layout_marginLeft="15dp"
     	    android:contentDescription="@string/bookCover_alt"
     	    android:src="@drawable/locate" />		
     </LinearLayout>
@@ -205,14 +213,14 @@
   		android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal" 
-    	android:layout_marginTop="30dp">
+    	android:layout_marginTop="20dp">
     <Button
         android:id="@+id/editprofile_saveButton"
         android:layout_width="70dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_marginRight="20dp"
         android:text="@string/save"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:background="@drawable/custom_button4"
@@ -220,14 +228,16 @@
      <Button
         android:id="@+id/editprofile_cancelButton" 
         android:layout_width="70dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:background="@drawable/custom_button2"
         android:text="@string/cancel"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:onClick="cancel"/>
 	</LinearLayout>
     
 </LinearLayout>
+</ScrollView>
+</RelativeLayout>

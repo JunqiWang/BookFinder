@@ -3,7 +3,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="#FCFBE3">  
-
 	<TextView 
      	   android:layout_width="wrap_content"
      	   android:layout_height="wrap_content"
@@ -12,14 +11,6 @@
      	   android:textStyle="bold"
      	   android:layout_margin="20dp" 
      	   android:layout_gravity="center"/>
-   <ProgressBar
-        android:id="@+id/ediprofile_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:indeterminate="true"
-        android:visibility="gone" />
-   
    <TextView
        	android:layout_marginLeft="30dp"
        	android:text="@string/profilePhoto"
@@ -71,7 +62,8 @@
            android:layout_alignParentRight="true"
            android:layout_alignParentTop="true"
            android:contentDescription="@string/bookCover_alt"
-           android:src="@drawable/ic_launcher" />
+           android:src="@drawable/ic_launcher" 
+           android:onClick="zoomInOut"/>
    </RelativeLayout>
  	
     <LinearLayout
@@ -230,4 +222,10 @@
         android:onClick="cancel"/>
 	</LinearLayout>
     
+    <ImageView
+       android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image"
+        android:alpha="0.3"/>
 </LinearLayout>
