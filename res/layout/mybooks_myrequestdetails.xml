@@ -11,7 +11,12 @@
         android:alpha="0.3"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
-     
+<ScrollView  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+ <RelativeLayout  
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">     
     <TextView
         android:id="@+id/myrequestdetails_requestdetailsTitle"
         android:layout_width="wrap_content"
@@ -176,4 +181,6 @@
         android:textColor="#ffffff"
         android:background="@drawable/custom_button2" />
     
+</RelativeLayout>
+</ScrollView>
 </RelativeLayout>
