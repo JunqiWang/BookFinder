@@ -99,6 +99,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 		
 		if(s != null && !"".equals(s)) {
 			byte[] cover = s.getBytes(Charset.forName("ISO-8859-1"));
+			System.out.println(cover.length);
 			coverImage = BitmapFactory.decodeByteArray(cover, 0, cover.length);
 			this.cover.setImageBitmap(coverImage);
 		}
