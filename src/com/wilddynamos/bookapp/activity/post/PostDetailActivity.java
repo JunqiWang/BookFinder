@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.BaseBookDetailActivity;
+import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.action.post.RequestBook;
 
 public class PostDetailActivity extends BaseBookDetailActivity {
@@ -106,4 +107,5 @@ public class PostDetailActivity extends BaseBookDetailActivity {
 			});
 		}
 	}
+
 }

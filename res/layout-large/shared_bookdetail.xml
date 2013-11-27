@@ -32,7 +32,8 @@
         android:layout_marginRight="40dp"
         android:layout_marginTop="140dp"
         android:contentDescription="@string/cover"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher" 
+        android:onClick="zoomInOut" />
     
 	<LinearLayout
 	     android:id="@+id/bookDetail_nameLine"
@@ -280,7 +281,10 @@
         android:visibility="invisible"
         android:onClick="withdraw" />
     
-	<ImageView
+	
+</RelativeLayout>
+</ScrollView>
+<ImageView
 		android:id="@+id/bookdetails_background11"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -288,6 +292,4 @@
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
 
-</RelativeLayout>
-</ScrollView>
 </RelativeLayout>

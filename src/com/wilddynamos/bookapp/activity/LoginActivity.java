@@ -50,8 +50,8 @@ public class LoginActivity extends Activity {
         			login.execute(new String[]{email.getText().toString(), 
         					password.getText().toString()}
         			); 
-        		}  
-        	//	signIn();
+        		} 
+     //   		signIn();
         	}
        }); 
     }

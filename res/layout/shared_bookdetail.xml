@@ -176,15 +176,14 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold" />
-    
-   <ImageView
+
+</RelativeLayout>
+</ScrollView>
+ <ImageView
         android:id="@+id/bookdetails_background11"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:alpha="0"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
-
-</RelativeLayout>
-</ScrollView>
 </RelativeLayout>
