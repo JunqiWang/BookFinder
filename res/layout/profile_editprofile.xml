@@ -1,14 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">  
-    
-     <ImageView
+       <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
         android:background="@drawable/bg1"
         android:contentDescription="@string/image"
-        android:alpha="0.3"/>
-     
+        android:alpha="0.3"/>   
 	 <ScrollView
     	android:layout_width="fill_parent"
     	android:layout_height="fill_parent">
@@ -78,7 +76,8 @@
            android:layout_alignParentRight="true"
            android:layout_alignParentTop="true"
            android:contentDescription="@string/bookCover_alt"
-           android:src="@drawable/ic_launcher" />
+           android:src="@drawable/ic_launcher"
+           android:onClick="zoomInOut" />
    </RelativeLayout>
  	
     <LinearLayout
@@ -239,4 +238,10 @@
     
 </LinearLayout>
 </ScrollView>
+   <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image"
+        android:alpha="0"/>
 </RelativeLayout>

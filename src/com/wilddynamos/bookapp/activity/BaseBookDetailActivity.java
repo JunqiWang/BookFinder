@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
+import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.action.GetBookDetail;
 import com.wilddynamos.bookapp.ws.remote.action.post.LikeAPost;
 
@@ -99,6 +100,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 		
 		if(s != null && !"".equals(s)) {
 			byte[] cover = s.getBytes(Charset.forName("ISO-8859-1"));
+			System.out.println(cover.length);
 			coverImage = BitmapFactory.decodeByteArray(cover, 0, cover.length);
 			this.cover.setImageBitmap(coverImage);
 		}
@@ -112,7 +114,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 		});
 		
 		fillFunctionSpecificView(jo);
-		bg.setAlpha(0.25f);
+		bg.setAlpha(0f);
 	}
 	
 	protected abstract void fillFunctionSpecificView(JSONObject jo);
@@ -120,5 +122,9 @@ public abstract class BaseBookDetailActivity extends Activity {
 	public void setLikeNum() {
 		String s = (Integer.parseInt(likeNum.getText().toString()) + 1) + "";
 		likeNum.setText(s);
+	}
+	
+	public void zoomInOut(View view){
+		ZoomInOutAction.action(this,cover);
 	}
 }

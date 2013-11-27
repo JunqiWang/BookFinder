@@ -29,7 +29,7 @@
 		android:layout_toRightOf="@+id/bookPricePostList"
 		android:layout_marginLeft="10dp"
 		android:layout_centerVertical="true"
-		android:src="@drawable/ic_launcher"
+		android:src="@drawable/ic_action_good"
 		android:contentDescription="@string/open" />  
 		
 	<TextView  

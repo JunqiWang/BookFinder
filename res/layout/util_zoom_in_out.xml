@@ -10,10 +10,11 @@
 
      
      <ImageView
-          android:id="@+id/imageView2"
+          android:id="@+id/zoom_in_out_imageView"
           android:layout_width="fill_parent"
           android:layout_height="fill_parent"
-          android:src="@drawable/ic_launcher" />
+          android:src="@drawable/ic_launcher"
+          android:contentDescription="@string/image" />
 
 
 </RelativeLayout>

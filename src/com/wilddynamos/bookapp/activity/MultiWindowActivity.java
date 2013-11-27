@@ -37,7 +37,7 @@ public class MultiWindowActivity extends TabActivity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.multiwindow);
-
+		System.out.println(0);
         // create the TabHost that will contain the Tabs                    
         tabHost = (TabHost)findViewById(android.R.id.tabhost);
         TabSpec tab1 = tabHost.newTabSpec("First Tab");
@@ -70,19 +70,9 @@ public class MultiWindowActivity extends TabActivity {
             public void onTabChanged(String arg0) { 
             	tabHost.setCurrentTabByTag(arg0);    
                 updateTab(tabHost);  
-         /*   	if(tabHost.getCurrentTab() < 2){
-            		getMenuInflater().inflate(R.menu.main, myMenu);
-            		MenuItem searchItem = myMenu.findItem(R.id.action_search);
-            	    SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-            	    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            	}else{
-            		getMenuInflater().inflate(R.menu.main, myMenu);
-            	} */
-              
             }       
         });
-	//	startService(new Intent(this, NotificationCenter.class));
+		startService(new Intent(this, NotificationCenter.class));
     }
 	
 /*	@SuppressLint("NewApi")

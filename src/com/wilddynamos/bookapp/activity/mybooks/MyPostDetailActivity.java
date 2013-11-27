@@ -1,10 +1,14 @@
 package com.wilddynamos.bookapp.activity.mybooks;
 
+import java.io.ByteArrayOutputStream;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.BaseBookDetailActivity;
+import com.wilddynamos.bookapp.activity.ZoomInOutActivity;
 
 public class MyPostDetailActivity extends BaseBookDetailActivity {
 	
@@ -145,6 +150,15 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 			intent.putExtra("duration", duration);
 		}
 		intent.putExtra("description", description);
+		
+		Drawable drawable = cover.getDrawable();
+		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
+		Bitmap bitmap = bitmapDrawable.getBitmap();
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+        byte[] bytes = stream.toByteArray(); 
+        intent.putExtra("BMP", bytes);
 		
 		startActivity(intent);
 	}
