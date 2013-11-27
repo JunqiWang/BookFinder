@@ -1,6 +1,8 @@
 package com.wilddynamos.bookapp.activity.mybooks;
 
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.Charset;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,6 +30,7 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 	private boolean per;
 	private int duration;
 	private String description;
+	private String coverString;
 	
 	@Override
 	protected void createFunctionSpecificView() {
@@ -50,7 +53,7 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 	protected void fillFunctionSpecificView(final JSONObject jo) {
 		
 		try {
-			
+			coverString = jo.getString("cover");
 			if(jo.getBoolean("sOrR")) {
 				this.sOrR = true;
 				
@@ -151,13 +154,13 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 		}
 		intent.putExtra("description", description);
 		
-		Drawable drawable = cover.getDrawable();
-		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
-		Bitmap bitmap = bitmapDrawable.getBitmap();
-		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//		Drawable drawable = cover.getDrawable();
+//		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
+//		Bitmap bitmap = bitmapDrawable.getBitmap();
+//		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
-        byte[] bytes = stream.toByteArray(); 
+        byte[] bytes = coverString.getBytes(Charset.forName("ISO-8859-1")); 
         intent.putExtra("BMP", bytes);
 		
 		startActivity(intent);
