@@ -114,7 +114,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 		});
 		
 		fillFunctionSpecificView(jo);
-		bg.setAlpha(0.25f);
+		bg.setAlpha(0f);
 	}
 	
 	protected abstract void fillFunctionSpecificView(JSONObject jo);

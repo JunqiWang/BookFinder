@@ -1,8 +1,21 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="#FCFBE3">  
+    android:layout_height="fill_parent">  
+    
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image"
+        android:alpha="0.3"/>
+     <ScrollView
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent">
+    	
+   <LinearLayout 
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical">  
 	<TextView 
      	   android:layout_width="wrap_content"
      	   android:layout_height="wrap_content"
@@ -222,10 +235,12 @@
         android:onClick="cancel"/>
 	</LinearLayout>
     
-    <ImageView
-       android:layout_width="fill_parent"
+</LinearLayout>
+</ScrollView>
+ <ImageView
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
         android:background="@drawable/bg1"
         android:contentDescription="@string/image"
         android:alpha="0.3"/>
-</LinearLayout>
+</RelativeLayout>

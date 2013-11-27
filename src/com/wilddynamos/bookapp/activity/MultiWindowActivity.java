@@ -72,7 +72,7 @@ public class MultiWindowActivity extends TabActivity {
                 updateTab(tabHost);  
             }       
         });
-	//	startService(new Intent(this, NotificationCenter.class));
+		startService(new Intent(this, NotificationCenter.class));
     }
 	
 /*	@SuppressLint("NewApi")
