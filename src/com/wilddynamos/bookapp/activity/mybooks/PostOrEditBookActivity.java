@@ -1,6 +1,8 @@
 package com.wilddynamos.bookapp.activity.mybooks;
 
 
+import java.io.ByteArrayOutputStream;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -28,9 +30,11 @@ import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
+import com.wilddynamos.bookapp.activity.ZoomInOutActivity;
 import com.wilddynamos.bookapp.activity.profile.EditProfileActivity;
 import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
 import com.wilddynamos.bookapp.utils.TakePhoto;
+import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.action.mybooks.PostOrEditBook;
 
 
@@ -85,7 +89,6 @@ public class PostOrEditBookActivity extends Activity {
 		isPost = getIntent().getExtras().getBoolean("isPost");
 		sOrR = getIntent().getExtras().getBoolean("sOrR");
 		id = getIntent().getExtras().getInt("id");
-		
 
 		
 		 byte[] bytes = getIntent().getByteArrayExtra("BMP");
@@ -93,6 +96,11 @@ public class PostOrEditBookActivity extends Activity {
 	    if(bitmap != null)
 	    	cover.setImageBitmap(bitmap);
 	    
+	    /***take photo ***/
+        mImageBitmap = null;
+        takePhotoAction = new TakePhoto(this,mCurrentPhotoPath, cover, takePhoto);
+        takePhotoAction.start();
+        
 		if(isPost) {
 			postOrSave.setText("Post");
 			
@@ -150,11 +158,7 @@ public class PostOrEditBookActivity extends Activity {
 		if(!isPost)
 			fill();
 		
-		 /***take photo ***/
-        mImageBitmap = null;
-        takePhotoAction = new TakePhoto(this,mCurrentPhotoPath, cover, takePhoto);
-        takePhotoAction.start();
-        /***take photo ***/
+		
        
 	}
 	
@@ -289,5 +293,11 @@ public class PostOrEditBookActivity extends Activity {
                                             ImageView.VISIBLE : ImageView.INVISIBLE
             );
     }
+    
+    /****image zoom in and out***/
+    public void zoomInOut(View view){
+    	ZoomInOutAction.action(this,cover);
+	}
+    
 } 
 

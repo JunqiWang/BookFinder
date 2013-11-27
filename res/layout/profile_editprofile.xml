@@ -78,7 +78,8 @@
            android:layout_alignParentRight="true"
            android:layout_alignParentTop="true"
            android:contentDescription="@string/bookCover_alt"
-           android:src="@drawable/ic_launcher" />
+           android:src="@drawable/ic_launcher"
+           android:onClick="zoomInOut" />
    </RelativeLayout>
  	
     <LinearLayout

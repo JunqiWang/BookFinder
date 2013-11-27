@@ -315,7 +315,6 @@ containing a value of this type.
         public static final int header=0x7f05000b;
         public static final int hybrid=0x7f050004;
         public static final int imageView1=0x7f05006d;
-        public static final int imageView2=0x7f0500c6;
         public static final int lblListHeader=0x7f050008;
         public static final int lblListItem=0x7f05000a;
         public static final int likeNumPostList=0x7f050073;
@@ -422,6 +421,7 @@ containing a value of this type.
         public static final int userName=0x7f0500c2;
         public static final int userPassword=0x7f0500c3;
         public static final int userPasswordConfirm=0x7f0500c4;
+        public static final int zoom_in_out_imageView=0x7f0500c6;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

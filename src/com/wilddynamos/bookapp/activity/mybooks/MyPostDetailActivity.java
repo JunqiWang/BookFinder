@@ -107,7 +107,6 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
 		Bitmap bitmap = bitmapDrawable.getBitmap();
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		System.out.println(bitmap.getRowBytes()*bitmap.getHeight());
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
         byte[] bytes = stream.toByteArray(); 

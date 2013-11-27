@@ -27,7 +27,8 @@
    		android:layout_width="160dp"
   		android:layout_height="200dp"
   		android:layout_alignParentRight="true"
-  		android:layout_marginRight="60dp" />
+  		android:layout_marginRight="60dp"
+  		android:onClick="zoomInOut" />
 <LinearLayout
      android:id="@+id/profile_detail_linear1"
      android:layout_below="@id/profile_photo_string"

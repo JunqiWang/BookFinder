@@ -3,6 +3,7 @@ package com.wilddynamos.bookapp.activity;
 import com.wilddynamos.bookapp.R;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.os.Bundle;
@@ -42,8 +43,10 @@ public class ZoomInOutActivity extends Activity implements OnTouchListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.util_zoom_in_out);
-        bitmap = (Bitmap)getIntent().getParcelableExtra("BitmapImage");
-        ImageView view = (ImageView) findViewById(R.id.imageView2);
+        byte[] bytes = getIntent().getByteArrayExtra("BMP");
+	    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+//        bitmap = (Bitmap)getIntent().getParcelableExtra("BitmapImage");
+        ImageView view = (ImageView) findViewById(R.id.zoom_in_out_imageView);
         view.setImageBitmap(bitmap);
         view.setOnTouchListener(this);
     }

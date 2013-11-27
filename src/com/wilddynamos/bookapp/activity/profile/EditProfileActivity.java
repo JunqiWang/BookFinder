@@ -46,11 +46,11 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
-import com.wilddynamos.bookapp.activity.ZoomInOutActivity;
 import com.wilddynamos.bookapp.dblayout.UserDataSource;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
 import com.wilddynamos.bookapp.utils.TakePhoto;
+import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 import com.wilddynamos.bookapp.ws.remote.action.profile.EditMyProfile;
 
@@ -139,7 +139,7 @@ public class EditProfileActivity extends Activity implements
     		cancel = (Button) findViewById(R.id.editprofile_cancelButton);
     		
     		
-    /*		Thread th = new Thread() {
+    		Thread th = new Thread() {
 				@Override
 				public void run() {
 					UserDataSource userDataSource = new UserDataSource(context);
@@ -164,7 +164,7 @@ public class EditProfileActivity extends Activity implements
 				//Bitmap bmp = getBitmap(this, photoPath);
 				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
 				profileImage.setImageBitmap(bmp);
-			}   */
+			}   
 			
     		mapImage = (ImageView) findViewById(R.id.edit_map); 
     		
@@ -237,12 +237,7 @@ public class EditProfileActivity extends Activity implements
                         startActivityForResult(i, ACTIVITY_SELECT_IMAGE); 
                         }
                 });
-                /****image zoom in and out***/
-                profileImage.setOnClickListener(new OnClickListener() {
-        		    public void onClick(View v) {
-        		    	zoomInOut(v);
-        		    }
-        		});
+            
                 /****geolocation***/
                 mapImage.setOnClickListener(new OnClickListener() {
         		    public void onClick(View v) {
@@ -269,13 +264,7 @@ public class EditProfileActivity extends Activity implements
         }
         /****image zoom in and out***/
         public void zoomInOut(View view){
-        	Drawable drawable = profileImage.getDrawable();
-    		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
-    		mImageBitmap = bitmapDrawable.getBitmap();
-    		System.out.println(mImageBitmap.getRowBytes() * mImageBitmap.getHeight());
-    		Intent intent = new Intent(this, ZoomInOutActivity.class);
-    		intent.putExtra("BitmapImage", mImageBitmap);  		
-    		startActivity(intent);
+        	ZoomInOutAction.action(this,profileImage);
     	}
         
         /***take photo ***/
