@@ -242,5 +242,5 @@
         android:layout_height="fill_parent" 
         android:background="@drawable/bg1"
         android:contentDescription="@string/image"
-        android:alpha="0.3"/>
+        android:alpha="0"/>
 </RelativeLayout>

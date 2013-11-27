@@ -103,6 +103,7 @@ public class MyProfileActivity extends Activity {
 	/* log out button */
 	public void logOut(View view){
 		Intent intent = new Intent(this, LoginActivity.class);
+		intent.putExtra("logout", "logout");
 		startActivity(intent);
 	}
 	

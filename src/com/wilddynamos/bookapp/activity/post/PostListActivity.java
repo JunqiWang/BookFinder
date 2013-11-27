@@ -213,6 +213,7 @@ public class PostListActivity extends Activity
 	}
 	
 	public void pour(JSONArray jsonArray) {
+		ids.clear();
 		list.clear();
 		loadData(jsonArray);
 		

@@ -57,8 +57,8 @@ public class LoginActivity extends Activity {
         			login.execute(new String[]{email.getText().toString(), 
         					password.getText().toString()}
         			); 
-        		}  
-        	//	signIn();
+        		} 
+     //   		signIn();
         	}
        }); 
     }
@@ -99,8 +99,6 @@ public class LoginActivity extends Activity {
 				})
 				.setNegativeButton("Cancel", null)
 				.show();
-    	Intent intent = new Intent(this, ForgotPasswordActivity.class);
-    	startActivity(intent);
     }
     
     public void onCheckboxClicked(View view){
@@ -177,5 +175,12 @@ public class LoginActivity extends Activity {
     	password.setText(mypassword);
     	cursor.close();
     	db.close();
+    	
+    	String is_logout = getIntent().getStringExtra("logout");
+    	if (is_logout == null){
+    		Intent intent = new Intent(this, MultiWindowActivity.class);
+        	startActivity(intent); 
+    	}
+
     }
 }

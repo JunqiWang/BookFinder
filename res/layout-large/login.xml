@@ -1,11 +1,18 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<ImageView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:contentDescription="@string/image"
+    android:background="#ffffff"/> 
+<ScrollView 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 <LinearLayout 
     android:layout_width="match_parent"  
-    android:layout_height="match_parent"  
-    android:orientation="vertical" 
-    android:background="#ffffff">  
+    android:layout_height="wrap_content"  
+    android:orientation="vertical">  
 
 <LinearLayout 
     android:id="@+id/header"
@@ -112,9 +119,10 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="@string/forget_password"
+        android:text="@string/forgot_password"
         android:layout_gravity="center"
-        android:onClick="forgotPassword" />
+        android:onClick="forgetPassword" />
 
 </LinearLayout>
 </ScrollView>
+</RelativeLayout>

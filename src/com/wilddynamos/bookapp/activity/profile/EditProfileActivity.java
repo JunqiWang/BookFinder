@@ -10,7 +10,9 @@ import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.database.Cursor;
@@ -42,6 +44,7 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
+import com.wilddynamos.bookapp.activity.mybooks.PostOrEditBookActivity;
 import com.wilddynamos.bookapp.dblayout.UserDataSource;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
@@ -50,6 +53,8 @@ import com.wilddynamos.bookapp.utils.TakePhoto;
 import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 import com.wilddynamos.bookapp.ws.remote.action.profile.EditMyProfile;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class EditProfileActivity extends Activity implements
 	LocationListener,
@@ -138,7 +143,7 @@ public class EditProfileActivity extends Activity implements
     		cancel = (Button) findViewById(R.id.editprofile_cancelButton);
     		
     		
-    		Thread th = new Thread() {
+  /*  		Thread th = new Thread() {
 				@Override
 				public void run() {
 					UserDataSource userDataSource = new UserDataSource(context);
@@ -162,7 +167,7 @@ public class EditProfileActivity extends Activity implements
 				System.out.println(photoPath);
 				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
 				profileImage.setImageBitmap(bmp);
-			}    
+			}    */
 			
     		mapImage = (ImageView) findViewById(R.id.edit_map); 
     		
@@ -263,11 +268,21 @@ public class EditProfileActivity extends Activity implements
         
         /* cancel button*/
         public void cancel(View view){
-                Intent intent = new Intent(this, MultiWindowActivity.class);
-                intent.putExtra(MultiWindowActivity.TAB_SELECT, 2);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);   
-                startActivity(intent);
+        	new AlertDialog.Builder(this)
+			.setTitle("Abort?")
+			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					Intent intent = new Intent(EditProfileActivity.this, 
+							MultiWindowActivity.class);
+					intent.putExtra(MultiWindowActivity.TAB_SELECT, 2);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  
+		            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP); 
+					startActivity(intent);
+				} 
+			})
+			.setNegativeButton("Back", null)
+			.show();
         }
         
         /****image zoom in and out***/

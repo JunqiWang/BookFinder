@@ -72,7 +72,6 @@ public class PostDetailActivity extends BaseBookDetailActivity {
 			hasRequested = jo.getBoolean("hasRequested");
 			
 		} catch (JSONException e) {
-			System.out.println(e.toString());
 		}
 		
 		if(hasRequested) {
@@ -106,4 +105,5 @@ public class PostDetailActivity extends BaseBookDetailActivity {
 			});
 		}
 	}
+
 }
