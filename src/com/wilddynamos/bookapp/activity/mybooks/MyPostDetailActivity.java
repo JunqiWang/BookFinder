@@ -1,9 +1,9 @@
 package com.wilddynamos.bookapp.activity.mybooks;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,38 +42,87 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 	}
 
 	@Override
-	protected void fillFunctionSpecificView(JSONObject jo) {
+	protected void fillFunctionSpecificView(final JSONObject jo) {
 		
 		try {
 			
 			if(jo.getBoolean("sOrR")) {
-				title.setText("I am selling this book");
 				this.sOrR = true;
+				
+				if(!jo.getBoolean("hasMadeRespond"))
+					title.setText("Selling this book");
+				else
+					title.setText("Have sold this book");
+				
 			} else {
-				title.setText("I am renting this book");
 				this.sOrR = false;
+				
+				if(!jo.getBoolean("hasMadeRespond"))
+					title.setText("Renting this book");
+				else
+					title.setText("Have rented this book out");
 			}
 			
 			this.per = jo.getBoolean("per");
 			this.duration = jo.getInt("availableTime");
 			this.description = jo.getString("description");
 			
-			requesterNum.setText(jo.getString("requesterNum"));
-			if(jo.getInt("requesterNum") == 0)
-				seeRequest.setClickable(false);
-			else
+			if(!jo.getBoolean("hasMadeRespond")) {
+				
+				requesterNum.setText(jo.getInt("requesterNum") + " request"
+						+ (jo.getInt("requesterNum") <= 1 ? "" : "s"));
+				
+				if(jo.getInt("requesterNum") == 0)
+					seeRequest.setClickable(false);
+				else
+					seeRequest.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							Intent intent = new Intent(
+									MyPostDetailActivity.this, RequesterListActivity.class);
+							
+							intent.putExtra("id", id);
+							
+							MyPostDetailActivity.this.startActivity(intent);
+						}
+					});
+				
+			} else {
+				requesterNum.setText("Who's using?");
+				seeRequest.setText("See");
+				
+				OnClickListener ocl = new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						new AlertDialog.Builder(MyPostDetailActivity.this)
+								.setTitle("You cannot modify because it is on using.")
+								.setPositiveButton("OK", null)
+								.show();
+					}
+				};
+				((Button) findViewById(R.id.bookDetail_myPost_edit))
+						.setOnClickListener(ocl);
+				((Button) findViewById(R.id.bookDetail_myPost_delete))
+						.setOnClickListener(ocl);
+				
 				seeRequest.setOnClickListener(new OnClickListener() {
 					
 					@Override
 					public void onClick(View v) {
 						Intent intent = new Intent(
-								MyPostDetailActivity.this, RequesterListActivity.class);
+								MyPostDetailActivity.this, RequesterDetailActivity.class);
 						
-						intent.putExtra("id", id);
+						try {
+							intent.putExtra("id", jo.getInt("requesterId"));
+						} catch (JSONException e) {
+						}
 						
 						MyPostDetailActivity.this.startActivity(intent);
 					}
 				});
+			}
 			like.setClickable(false);
 			
 		} catch (JSONException e) {

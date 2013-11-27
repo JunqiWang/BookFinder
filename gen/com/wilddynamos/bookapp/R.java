@@ -64,8 +64,8 @@ public final class R {
         public static final int LinearLayout01=0x7f090000;
         public static final int RelativeLayout=0x7f090069;
         public static final int acceptButton=0x7f090067;
-        public static final int action_search=0x7f0900c0;
-        public static final int action_settings=0x7f0900c1;
+        public static final int action_search=0x7f0900c2;
+        public static final int action_settings=0x7f0900c3;
         public static final int address=0x7f090083;
         public static final int address_string=0x7f090082;
         public static final int bookDetail_availableTime=0x7f0900ab;
@@ -76,11 +76,13 @@ public final class R {
         public static final int bookDetail_like=0x7f0900b1;
         public static final int bookDetail_likeNum=0x7f0900b2;
         public static final int bookDetail_myPost_buttons=0x7f0900b8;
+        public static final int bookDetail_myPost_delete=0x7f0900ba;
+        public static final int bookDetail_myPost_edit=0x7f0900b9;
         public static final int bookDetail_myPost_requestInfo=0x7f0900b3;
         public static final int bookDetail_myPost_requesterNum=0x7f0900b4;
         public static final int bookDetail_myPost_seeRequesters=0x7f0900b5;
         public static final int bookDetail_myRequest_hasResponded=0x7f0900b6;
-        public static final int bookDetail_myRequest_withdraw=0x7f0900b9;
+        public static final int bookDetail_myRequest_withdraw=0x7f0900bb;
         public static final int bookDetail_name=0x7f0900a7;
         public static final int bookDetail_nameLine=0x7f0900a6;
         public static final int bookDetail_owner=0x7f0900ad;
@@ -152,7 +154,7 @@ public final class R {
         public static final int gender_string=0x7f090079;
         public static final int header=0x7f090006;
         public static final int imageView1=0x7f090066;
-        public static final int imageView2=0x7f0900bf;
+        public static final int imageView2=0x7f0900c1;
         public static final int lblListHeader=0x7f090003;
         public static final int lblListItem=0x7f090005;
         public static final int likeNumPostList=0x7f09006c;
@@ -244,17 +246,17 @@ public final class R {
         public static final int searchIt=0x7f09006f;
         public static final int sellCheckBox=0x7f090002;
         public static final int signup=0x7f09000b;
-        public static final int signupButton=0x7f0900be;
+        public static final int signupButton=0x7f0900c0;
         public static final int textView1=0x7f090093;
         public static final int thumbnail=0x7f090063;
         public static final int titleBookDetail=0x7f090021;
         public static final int titleMyPostDetail=0x7f090022;
-        public static final int userEmail=0x7f0900ba;
+        public static final int userEmail=0x7f0900bc;
         public static final int userInputEmail=0x7f090007;
         public static final int userInputPassword=0x7f090008;
-        public static final int userName=0x7f0900bb;
-        public static final int userPassword=0x7f0900bc;
-        public static final int userPasswordConfirm=0x7f0900bd;
+        public static final int userName=0x7f0900bd;
+        public static final int userPassword=0x7f0900be;
+        public static final int userPasswordConfirm=0x7f0900bf;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

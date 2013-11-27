@@ -175,14 +175,6 @@
 	        android:textStyle="bold"
 	        android:text="@string/requesternum" />
 	    
-	    <TextView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="10dp"
-	        android:text="@string/request"
-	        android:textSize="25sp"
-	        android:textStyle="bold|italic" />
-	
 	    <Button
 	        android:id="@+id/bookDetail_myPost_seeRequesters"
 	        android:layout_width="80dp"
@@ -232,6 +224,7 @@
         android:visibility="invisible" >
         
 		<Button
+		    android:id="@+id/bookDetail_myPost_edit"
 	        android:layout_width="110dp"
 	        android:layout_height="wrap_content"
 	        android:text="@string/edit"
@@ -242,6 +235,7 @@
 	        android:onClick="editPost" />
 	    
 		<Button
+		    android:id="@+id/bookDetail_myPost_delete"
 	        android:layout_width="110dp"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="80dp"

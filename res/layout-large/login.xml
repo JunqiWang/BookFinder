@@ -111,6 +111,6 @@
         android:textStyle="bold"
         android:text="@string/forget_password"
         android:layout_gravity="center"
-        android:onClick="forgetPassword" />
+        android:onClick="forgotPassword" />
 
 </LinearLayout>
