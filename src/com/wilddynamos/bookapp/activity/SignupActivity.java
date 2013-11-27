@@ -4,7 +4,6 @@ package com.wilddynamos.bookapp.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,8 +21,6 @@ public class SignupActivity extends Activity {
 	private EditText confirmation;
 	private Button signup;
 	private Context context;
-	
-	private String[] params = null;
 	
 //	private Handler handler = new Handler() {
 //    	@Override
@@ -68,17 +65,15 @@ public class SignupActivity extends Activity {
         
         context = this;
         
-        params[0] = email.getEditableText().toString();
-        params[1] = name.getEditableText().toString();
-        params[2] = password.getEditableText().toString();
-        
         signup.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				if (password.getEditableText().toString().equals(confirmation.getEditableText().toString())) {
 					Signup su = new Signup(SignupActivity.this, context);
-					su.execute(params);
+					su.execute(new String[] {email.getEditableText().toString(), 
+		        			name.getEditableText().toString(), 
+		        			password.getEditableText().toString()});
 				}
 //				new Signup(SignupActivity.this,
 //						  email.getEditableText().toString(),

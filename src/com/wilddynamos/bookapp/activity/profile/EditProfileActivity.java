@@ -74,7 +74,6 @@ public class EditProfileActivity extends Activity implements
         
         private User user = new User();
         private Context context;
-        private String[] params = null;
         private String photoPath; 
         
         /***take photo ***/        
@@ -161,7 +160,6 @@ public class EditProfileActivity extends Activity implements
 			photoPath = user.getPhotoAddr();
 			if (photoPath != null) {
 				System.out.println(photoPath);
-				//Bitmap bmp = getBitmap(this, photoPath);
 				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
 				profileImage.setImageBitmap(bmp);
 			}    
@@ -207,19 +205,29 @@ public class EditProfileActivity extends Activity implements
     				}
     				byte[] bytes = bos.toByteArray();
 
-    				params[0] = String.valueOf(Connection.id);
-    				params[1] = name.getEditableText().toString();
-    				params[2] = gender.getEditableText().toString();
-    				params[3] = campus.getEditableText().toString();
-    				params[4] = contact.getEditableText().toString();
-    				params[5] = myaddress.getEditableText().toString();
-    				params[6] = mCurrentPhotoPath;
+//    				String[] params = new String[]{};
+//    				params[0] = String.valueOf(Connection.id);
+//    				params[1] = name.getEditableText().toString();
+//    				params[2] = gender.getEditableText().toString();
+//    				params[3] = campus.getEditableText().toString();
+//    				params[4] = contact.getEditableText().toString();
+//    				params[5] = myaddress.getEditableText().toString();
+//    				params[6] = mCurrentPhotoPath;
     				
     				String imageString = new String(bytes, Charset.forName("ISO-8859-1"));
-    				params[7] = imageString;
+//    				params[7] = imageString;
     				
     				EditMyProfile emp = new EditMyProfile(EditProfileActivity.this, context);
-    				emp.execute(params);
+    				emp.execute(new String[] {
+    						String.valueOf(Connection.id),
+    						name.getEditableText().toString(),
+    						gender.getEditableText().toString(),
+    						campus.getEditableText().toString(),
+    						contact.getEditableText().toString(),
+    						myaddress.getEditableText().toString(),
+    						mCurrentPhotoPath,
+    						imageString
+    				});
     				
     			}
     		}); 

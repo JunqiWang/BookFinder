@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.SignupActivity;
 import com.wilddynamos.bookapp.dblayout.UserDataSource;
+import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
@@ -90,13 +91,25 @@ public class Signup extends AsyncTask<String, Void, String> {
 	@Override
 	protected void onPostExecute(String result) {
 		if(result.equals("1")) {
-			Connection.login(email, password);
+//			Connection.login(email, password);
+//			
+//			UserDataSource userDataSource = new UserDataSource(context);
+//			userDataSource.open();
+//			userDataSource.createUser(Connection.id, email, password, 
+//					name, null, null, null, null, null);
+//			userDataSource.close();
 			
-			UserDataSource userDataSource = new UserDataSource(context);
-			userDataSource.open();
-			userDataSource.createUser(Connection.id, email, password, 
-					name, null, null, null, null, null);
-			userDataSource.close();
+			new Thread() {
+				@Override
+				public void run() {
+					Connection.login(email, password);
+					UserDataSource userDataSource = new UserDataSource(context);
+					userDataSource.open();
+					userDataSource.createUser(Connection.id, email, 
+							password, name, null, null, null, null, null);
+					userDataSource.close();
+				}
+			}.start();
 			
 			Toast.makeText(a, "Welcome, new friend!", Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(a, MultiWindowActivity.class);

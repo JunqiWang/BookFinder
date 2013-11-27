@@ -99,8 +99,9 @@ public class EditMyProfile extends AsyncTask<String, Void, String> {
 		paramsMap.put("contact", params[4]);
 		paramsMap.put("address", params[5]);
 		paramsMap.put("image", params[7]);
+//		System.out.println(paramsMap);
 		
-		return DataUtils.receiveFlag(Connection.requestByPost("/PostEditBook", paramsMap));
+		return DataUtils.receiveFlag(Connection.requestByPost("/EditProfile", paramsMap));
 	}
 
 	@Override
