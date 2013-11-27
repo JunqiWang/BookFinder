@@ -4,48 +4,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.os.AsyncTask;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.wilddynamos.bookapp.activity.mybooks.RequesterListActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
-public class GetRequestList extends AsyncTask<String, Void, String> {
+public class DeclineAll extends AsyncTask<String, Void, String> {
 
 	private RequesterListActivity a;
 
 	
-	public GetRequestList(RequesterListActivity a) {
+	public DeclineAll(RequesterListActivity a) {
 		this.a = a;
 	}
 	
 	@Override
 	protected String doInBackground(String... params) {
-		try{
-			Map<String, String> paramsMap = new HashMap<String, String>();
-			paramsMap.put("id", params[0]);
-			paramsMap.put("currentPage", params[1]);
 		
-			a.setJSONArray(DataUtils.receiveJSON(Connection.requestByGet("/GetRequests", paramsMap)));
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("id", params[0]);
 		
-			return "1";
-		}
-		catch(Exception e) {
-			return "-1";
-		}
+		return DataUtils.receiveFlag(Connection.requestByGet("/DeclineAll", paramsMap));
+	
 	}
 
 	@Override
 	protected void onPostExecute(String result) {
 		if(result.equals("1")) {
-			if(a.getCurrentPage() == 1)
-				a.pour();
-			else {
-				a.loadData();
-				a.getLazyAdapter().notifyDataSetChanged();
-				a.getLoadProgress().setVisibility(ProgressBar.INVISIBLE);
-			}
+			Toast.makeText(a, "All requests are declined!", Toast.LENGTH_SHORT).show();
 		} 
 		else if (result.equals("-1"))
 			Toast.makeText(a, "Oops!", Toast.LENGTH_SHORT).show();

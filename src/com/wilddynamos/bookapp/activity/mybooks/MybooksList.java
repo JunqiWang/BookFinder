@@ -177,11 +177,13 @@ public class MybooksList extends Activity {
 	
 	public void showBookForRentInfo(View view){
 		Intent intent = new Intent(this, MyPostForRentDetailsActivity.class);
+//		intent.putExtra("bookId", bookId);
 		startActivity(intent);
 	}
 	
 	public void showBookForSaleInfo(View view){
 		Intent intent = new Intent(this, MyPostForSaleDetailsActivity.class);
+//		intent.putExtra("bookId", bookId);
 		startActivity(intent);
 	}
 	

@@ -1,8 +1,12 @@
 package com.wilddynamos.bookapp.activity.mybooks;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,10 +15,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -23,14 +26,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.post.PostDetailsActivity;
-import com.wilddynamos.bookapp.activity.post.PostListActivity;
-import com.wilddynamos.bookapp.activity.post.PostListActivity.PostListAdapter;
-import com.wilddynamos.bookapp.ws.remote.action.mybooks.GetMyRequestList;
-import com.wilddynamos.bookapp.ws.remote.action.post.GetPostList;
+import com.wilddynamos.bookapp.ws.remote.action.profile.DeclineAll;
+import com.wilddynamos.bookapp.ws.remote.action.profile.GetRequestList;
  
 public class RequesterListActivity extends Activity
 		implements SensorEventListener, OnTouchListener	{
@@ -42,9 +42,11 @@ public class RequesterListActivity extends Activity
     
     private ListView requesterList;
     private Button declineButton;
-    private LazyAdapter adapter;
+    private LazyAdapter la;
     
-    List<Map<String, String>> list;
+    private int bookId;
+    
+    ArrayList<HashMap<String, String>> requesterArray;
     private float yDown;
 	private float touchSlop;
 	private boolean willRefresh = false;
@@ -54,26 +56,10 @@ public class RequesterListActivity extends Activity
 	
     private List<Integer> ids;
     private int currentPage;
-    private Thread load;
     
-    private Handler handler = new Handler() {
-
-		@Override
-    	public void handleMessage(Message msg){
-    		if(msg.what == -1)
-    			Toast.makeText(RequesterListActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
-    		else if(msg.what == 1) {
-    			if(currentPage == 1)
-    				pour();
-    			else {
-    				//loadData();
-    				//pla.notifyDataSetChanged();
-    				loadProgress.setVisibility(ProgressBar.INVISIBLE);
-    			}
-    		} else
-    			Toast.makeText(RequesterListActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-    	}
-	};
+	private String[] params = null; 
+    private JSONArray jsonArray;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,10 +73,20 @@ public class RequesterListActivity extends Activity
 		declineButton = (Button) findViewById(R.id.declineButton);
 		
 		
-		list = new ArrayList<Map<String, String>>();
+		requesterArray = new ArrayList<HashMap<String, String>>();
 		ids = new ArrayList<Integer>();
 		
+		params[0] = String.valueOf(bookId);
+		
 		refresh();
+		
+		declineButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DeclineAll da =  new DeclineAll(RequesterListActivity.this);
+				da.execute();
+			}
+		});	
 		
 		requesterList.setOnItemClickListener(new OnItemClickListener() {
 			 
@@ -123,36 +119,10 @@ public class RequesterListActivity extends Activity
 					atBottom = false;
 			}
 		});
-//        ArrayList<HashMap<String, String>> requestList = new ArrayList<HashMap<String, String>>();
-//        
-//        HashMap<String, String> map = new HashMap<String, String>();
-//      
-//        map.put(KEY_REQUEST_NAME, "Jun qi wang");
-//        requestList.add(map);
-//       
-//        map = new HashMap<String, String>();
-//        map.put(KEY_REQUEST_NAME, "Zhe Qian");
-//        requestList.add(map);
-//        
-//        list = (ListView)findViewById(R.id.request_list);
-// 
-//        // Getting adapter by passing data ArrayList
-//        adapter = new LazyAdapter(this, requestList);
-//        list.setAdapter(adapter);
-// 
-//        // Click event for single list row
-//        list.setOnItemClickListener(new OnItemClickListener() {
-// 
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view,
-//                    int position, long id) {
-// 
-//            }
-//        });
     }
     
     public void showRequester(int position) {
-		Intent intent = new Intent(this, PostDetailsActivity.class); //need another activity
+		Intent intent = new Intent(this, RequesterDetailsActivity.class); //need another activity
 		intent.putExtra("id", ids.get(position));
 		startActivity(intent);
 	}
@@ -178,7 +148,6 @@ public class RequesterListActivity extends Activity
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		
@@ -207,12 +176,9 @@ public class RequesterListActivity extends Activity
 				willLoad = false;
 				loadProgress.setVisibility(ProgressBar.VISIBLE);
 				
-				try {
-					load.stop();
-				} catch(Exception e) {
-				}
-				load = new GetMyRequestList(RequesterListActivity.this);
-				load.start();
+				GetRequestList load = new GetRequestList(RequesterListActivity.this);
+				params[1] = String.valueOf(currentPage);
+				load.execute(params);
 			}
 			break;
 		}
@@ -220,50 +186,80 @@ public class RequesterListActivity extends Activity
 		return false;
 	}
 	
-	public Handler getHandler() {
-		return handler;
-	}
-	
 	public int getCurrentPage() {
 		return currentPage;
 	}
 	
+	public int getBookId() {
+		return bookId;
+	}
+	
+	public List<Integer> getIds() {
+		return ids;
+	}
+	
+	public LazyAdapter getLazyAdapter() {
+		return la;
+	}
+	
+	public ProgressBar getLoadProgress() {
+		return loadProgress;
+	}
+	
+	public void setJSONArray(JSONArray jsonArray) {
+		this.jsonArray = jsonArray;
+	}
+	
 	//private methods
-    @SuppressWarnings("deprecation")
 	private void refresh() {
 		requesterList.setTop(50);
 		refreshProgress.setVisibility(ProgressBar.VISIBLE);
 		
 		currentPage = 1;
 		
-		try {
-			load.stop();
-		} catch(Exception e) {
-		}
-		load = new GetMyRequestList(RequesterListActivity.this);
-		load.start();
+		GetRequestList load = new GetRequestList(RequesterListActivity.this);
+		params[1] = String.valueOf(currentPage);
+		load.execute(params);
 	}
     
-    private void pour() {
-		list.clear();
+    public void pour() {
+		requesterArray.clear();
 		loadData();
 		
-		pla = new LAdapter(
-						this,
-						list, R.layout.post_postitem,
-						new String[] {"name", "price", "likes"},  
-						new int[] {R.id.bookNamePostList, R.id.bookPricePostList, R.id.likeNumPostList});
+		la = new LazyAdapter(this, requesterArray);
 		
-		requesterList.setAdapter(pla);
+		requesterList.setAdapter(la);
 		
-		mSensorManager
-				.registerListener(
-						this, 
-						mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
+		mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
 						SensorManager.SENSOR_DELAY_NORMAL);
 		
 		refreshProgress.setVisibility(ProgressBar.INVISIBLE);
 		requesterList.setTop(0);
+	}
+    
+    public void loadData() {
+		if(jsonArray == null)
+			return;
+		
+		try {
+			for(int i = 0; i < jsonArray.length(); i ++) {
+				JSONObject jo = jsonArray.getJSONObject(i);
+				
+				ids.add(jo.getInt("id"));
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("name", jo.getString("name"));
+				map.put("photo", jo.getString("photo"));
+				
+				requesterArray.add(map);
+			}
+			
+		} catch (JSONException e) {
+		}
+		
+		if(jsonArray.length() > 0)
+			currentPage ++;
 	}
     
 }

@@ -34,6 +34,7 @@ public class MyPostForRentDetailsActivity extends Activity {
 	/* see button*/
 	public void showRequesterList(View view){
 		Intent intent = new Intent(this, RequesterListActivity.class);
+		//intent.putExtra("book_id", bookId);
 		startActivity(intent);
 	}
 }

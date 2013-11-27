@@ -10,14 +10,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.LoginActivity;
@@ -38,19 +35,19 @@ public class MyProfileActivity extends Activity {
 	
 	private User user;
 	
-	@SuppressLint("HandlerLeak")
-	private Handler handler = new Handler() {
-		@Override
-    	public void handleMessage(Message msg){
-    		
-    		if(msg.what < 0)
-    			Toast.makeText(MyProfileActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
-    		else if(msg.what == 1)
-    			fill();
-    		else
-    			Toast.makeText(MyProfileActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-    	}
-	};
+//	@SuppressLint("HandlerLeak")
+//	private Handler handler = new Handler() {
+//		@Override
+//    	public void handleMessage(Message msg){
+//    		
+//    		if(msg.what < 0)
+//    			Toast.makeText(MyProfileActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
+//    		else if(msg.what == 1)
+//    			fill();
+//    		else
+//    			Toast.makeText(MyProfileActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
+//    	}
+//	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +64,9 @@ public class MyProfileActivity extends Activity {
 		changePassword = (Button) findViewById(R.id.change_password_button);
 		logout = (Button) findViewById(R.id.logout_button);
 		
-		new GetMyProfile(this, this).start();
+//		new GetMyProfile(this, this).start();
+		GetMyProfile gmp = new GetMyProfile(this, this);
+		gmp.execute();
 	}
 
 	@Override
@@ -78,7 +77,7 @@ public class MyProfileActivity extends Activity {
 	}
 	
 	@SuppressLint("NewApi")
-	private void fill() {
+	public void fill() {
 		name.setText(user.getName());
 		gender.setText(user.getGender()? "Male" : "Female");
 		campus.setText(user.getCampus());
@@ -104,10 +103,6 @@ public class MyProfileActivity extends Activity {
 	public void logOut(View view){
 		Intent intent = new Intent(this, LoginActivity.class);
 		startActivity(intent);
-	}
-	
-	public Handler getHandler() {
-		return handler;
 	}
 	
 	public void setUser(User user) {

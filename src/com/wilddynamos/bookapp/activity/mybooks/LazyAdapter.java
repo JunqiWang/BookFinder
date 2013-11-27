@@ -1,24 +1,31 @@
 package com.wilddynamos.bookapp.activity.mybooks;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
-import android.app.Activity;
+
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.wilddynamos.bookapp.R;
+import com.wilddynamos.bookapp.ws.remote.action.profile.AcceptRequest;
  
 public class LazyAdapter extends BaseAdapter {
  
-    private Activity activity;
+    private RequesterListActivity activity;
     private ArrayList<HashMap<String,String>> data;
-    private static LayoutInflater inflater=null;
+    private static LayoutInflater inflater = null;
  
-    public LazyAdapter(Activity a, ArrayList<HashMap<String,String>> d) {
+    public LazyAdapter(RequesterListActivity a, ArrayList<HashMap<String,String>> d) {
         activity = a;
         data = d;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -43,14 +50,32 @@ public class LazyAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.mybooks_requestlist_row, null);
  
         TextView requesterName = (TextView)vi.findViewById(R.id.requesterName); // title
-        ImageView profile_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
- 
+        ImageView profileImage = (ImageView)vi.findViewById(R.id.mybooks_requester_image); // thumb image
+        Button acceptButton = (Button)vi.findViewById(R.id.acceptButton);
+        
+        final int pos = position;
+        acceptButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				AcceptRequest ar = new AcceptRequest(activity);
+				String[] params = {String.valueOf(activity.getBookId()), 
+						String.valueOf(activity.getIds().get(pos))};
+				ar.execute(params);
+			}
+		});	
+        
         HashMap<String, String> requester = new HashMap<String, String>();
         requester = data.get(position);
  
         // Setting all values in listview
-        requesterName.setText(requester.get("zhe"));
-        profile_image.setImageResource(R.drawable.profile);
+        requesterName.setText(requester.get("name"));
+        String s = requester.get("photo");
+        if(s != null && !"".equals(s)) {
+			byte[] image = s.getBytes(Charset.forName("ISO-8859-1"));
+			Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+			profileImage.setImageBitmap(bitmap);
+		}
+        
         return vi;
     }
 }

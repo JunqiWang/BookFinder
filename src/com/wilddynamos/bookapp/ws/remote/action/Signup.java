@@ -1,9 +1,5 @@
 package com.wilddynamos.bookapp.ws.remote.action;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,9 +10,7 @@ import android.widget.Toast;
 
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.SignupActivity;
-import com.wilddynamos.bookapp.activity.mybooks.PostOrEditBookActivity;
 import com.wilddynamos.bookapp.dblayout.UserDataSource;
-import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
@@ -67,12 +61,15 @@ import com.wilddynamos.bookapp.ws.remote.Connection;
 public class Signup extends AsyncTask<String, Void, String> {
 
 	private SignupActivity a;
+	private Context context;
+	
 	private String email;
 	private String name;
 	private String password;
 	
-	public Signup(SignupActivity a) {
+	public Signup(SignupActivity a, Context context) {
 		this.a = a;
+		this.context = context;
 	}
 	
 	@Override
@@ -94,15 +91,16 @@ public class Signup extends AsyncTask<String, Void, String> {
 	protected void onPostExecute(String result) {
 		if(result.equals("1")) {
 			Connection.login(email, password);
+			
 			UserDataSource userDataSource = new UserDataSource(context);
 			userDataSource.open();
-			User user = userDataSource.createUser(Connection.id, email.getEditableText().toString(), 
-					password.getEditableText().toString(), 
-					name.getEditableText().toString(), null, null, null, null, null);
+			userDataSource.createUser(Connection.id, email, password, 
+					name, null, null, null, null, null);
 			userDataSource.close();
+			
 			Toast.makeText(a, "Welcome, new friend!", Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(a, MultiWindowActivity.class);
-			intent.putExtra(MultiWindowActivity.TAB_SELECT, 1);
+			//intent.putExtra(MultiWindowActivity.TAB_SELECT, 1);
 			a.startActivity(intent);
 		} 
 		else if (result.equals("-1"))
