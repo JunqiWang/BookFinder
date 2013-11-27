@@ -34,7 +34,6 @@ public abstract class BaseBookDetailActivity extends Activity {
 	protected TextView likeNum;
 	
 	protected int id;
-	protected Bitmap coverImage;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,6 @@ public abstract class BaseBookDetailActivity extends Activity {
 		setContentView(R.layout.shared_bookdetail);
 		
 		bg = (ImageView) findViewById(R.id.bookdetails_background11);
-		bg.setAlpha(1f);
 		
 		title = (TextView) findViewById(R.id.bookDetail_title);
 		name = (TextView) findViewById(R.id.bookDetail_name);
@@ -101,7 +99,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 		if(s != null && !"".equals(s)) {
 			byte[] cover = s.getBytes(Charset.forName("ISO-8859-1"));
 			System.out.println(cover.length);
-			coverImage = BitmapFactory.decodeByteArray(cover, 0, cover.length);
+			Bitmap coverImage = BitmapFactory.decodeByteArray(cover, 0, cover.length);
 			this.cover.setImageBitmap(coverImage);
 		}
 		
@@ -114,7 +112,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 		});
 		
 		fillFunctionSpecificView(jo);
-		bg.setAlpha(0f);
+		bg.setAlpha(0.25f);
 	}
 	
 	protected abstract void fillFunctionSpecificView(JSONObject jo);
