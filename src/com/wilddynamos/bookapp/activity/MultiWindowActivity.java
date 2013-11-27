@@ -37,7 +37,7 @@ public class MultiWindowActivity extends TabActivity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.multiwindow);
-
+		System.out.println(0);
         // create the TabHost that will contain the Tabs                    
         tabHost = (TabHost)findViewById(android.R.id.tabhost);
         TabSpec tab1 = tabHost.newTabSpec("First Tab");

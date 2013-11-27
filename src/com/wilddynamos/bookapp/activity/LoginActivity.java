@@ -36,22 +36,22 @@ public class LoginActivity extends Activity {
         rememberme = (CheckBox) findViewById(R.id.checkbox_remember);
         mDbHelper = new RememberMeDbHelper(getApplicationContext());
         
-        setRememberMe();
+        setRemember();
         
         login.setOnClickListener(new OnClickListener() {
                         
         	@Override
         	public void onClick(View v) {
 
-        		if(!"".equals(email.getText().toString()) 
+     /*   		if(!"".equals(email.getText().toString()) 
         				&& !"".equals(password.getText().toString())) {
                                         
         			Login login = new Login(LoginActivity.this);
         			login.execute(new String[]{email.getText().toString(), 
         					password.getText().toString()}
         			); 
-        		}  
-       // 		signIn();
+        		}  */
+        		signIn();
         	}
        }); 
     }
@@ -62,6 +62,8 @@ public class LoginActivity extends Activity {
     	if(rememberme.isChecked()){
     		remember();
     	}
+    	else
+    		notRemember();
     }
     
     public void signUp(View view){
@@ -95,18 +97,33 @@ public class LoginActivity extends Activity {
     		RememberMeColumn.TABLE_NAME,
     	    null,
     	    values);
+    	db.close();
     }
     
-    public void  setRememberMe(){
+    public void notRemember(){
     	SQLiteDatabase db = mDbHelper.getWritableDatabase();
+    	db.delete(RememberMeColumn.TABLE_NAME, null, null);
+    	db.close();
+    }
+    
+    public void  setRemember(){
+    	SQLiteDatabase db = mDbHelper.getWritableDatabase();
+    	
+    	Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '"+RememberMeColumn.TABLE_NAME+"'", null);
+    	if (cursor.getCount() <= 0 || cursor == null){
+    		rememberme.setChecked(false);
+    		cursor.close();
+    		db.close();
+    		return;
+    	}
     	String[] projection = {
     			RememberMeColumn.COLUMN_NAME_C1,
     			RememberMeColumn.COLUMN_NAME_C2
     		};
-
+    	
     	String sortOrder = RememberMeColumn._ID + " DESC";
 
-    	Cursor	cursor = db.query(
+    		cursor = db.query(
     			RememberMeColumn.TABLE_NAME,  			// The table to query
     		    projection,                             // The columns to return
     		    null,                                	// The columns for the WHERE clause
@@ -115,9 +132,11 @@ public class LoginActivity extends Activity {
     		    null,                                   // don't filter by row groups
     		    sortOrder                               // The sort order
     		);
-    	if (cursor.getCount() <= 0)
+    	if (cursor.getCount() <= 0){
+    		rememberme.setChecked(false);
+    		cursor.close();
     		return;
-    	
+    	}
     	cursor.moveToFirst();
     		
     	String myemail = cursor.getString(
@@ -126,9 +145,10 @@ public class LoginActivity extends Activity {
     	String mypassword = cursor.getString(
     			cursor.getColumnIndex(RememberMeColumn.COLUMN_NAME_C2)
     	);
-    	
+    	rememberme.setChecked(true);
     	email.setText(myemail);
     	password.setText(mypassword);
     	cursor.close();
+    	db.close();
     }
 }

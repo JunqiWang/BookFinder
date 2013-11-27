@@ -82,7 +82,7 @@ public class PostListActivity extends Activity
 		list = new ArrayList<Map<String, String>>();
 		ids = new ArrayList<Integer>();
 		
-		refresh();
+//		refresh();
 		
 		rent.setOnCheckedChangeListener(new CheckBoxListener());
 		sell.setOnCheckedChangeListener(new CheckBoxListener());

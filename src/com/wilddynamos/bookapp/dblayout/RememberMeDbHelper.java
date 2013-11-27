@@ -19,7 +19,7 @@ public class RememberMeDbHelper extends SQLiteOpenHelper {
 	
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "RememberMe0.db";
+    public static final String DATABASE_NAME = "RememberMe3.db";
 
     public RememberMeDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
