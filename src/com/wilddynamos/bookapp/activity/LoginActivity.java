@@ -175,5 +175,12 @@ public class LoginActivity extends Activity {
     	password.setText(mypassword);
     	cursor.close();
     	db.close();
+    	
+    	String is_logout = getIntent().getStringExtra("logout");
+    	if (is_logout == null){
+    		Intent intent = new Intent(this, MultiWindowActivity.class);
+        	startActivity(intent); 
+    	}
+
     }
 }
