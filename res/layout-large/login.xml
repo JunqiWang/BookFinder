@@ -112,7 +112,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="@string/forget_password"
+        android:text="@string/forgot_password"
         android:layout_gravity="center"
         android:onClick="forgotPassword" />
 

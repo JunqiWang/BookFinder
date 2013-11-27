@@ -345,7 +345,7 @@ public final class R {
          */
         public static final int editProfilePageTitle=0x7f06003e;
         public static final int email=0x7f06004e;
-        public static final int forget_password=0x7f060015;
+        public static final int forgot_password=0x7f060015;
         public static final int gender=0x7f060040;
         public static final int get_address=0x7f06005c;
         public static final int get_location=0x7f06005d;

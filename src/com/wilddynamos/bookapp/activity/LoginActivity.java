@@ -99,8 +99,6 @@ public class LoginActivity extends Activity {
 				})
 				.setNegativeButton("Cancel", null)
 				.show();
-    	Intent intent = new Intent(this, ForgotPasswordActivity.class);
-    	startActivity(intent);
     }
     
     public void onCheckboxClicked(View view){
