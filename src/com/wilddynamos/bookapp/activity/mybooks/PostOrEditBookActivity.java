@@ -30,8 +30,6 @@ import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
-import com.wilddynamos.bookapp.activity.ZoomInOutActivity;
-import com.wilddynamos.bookapp.activity.profile.EditProfileActivity;
 import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
 import com.wilddynamos.bookapp.utils.TakePhoto;
 import com.wilddynamos.bookapp.utils.ZoomInOutAction;
