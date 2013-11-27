@@ -323,8 +323,6 @@ containing a value of this type.
         public static final int login=0x7f05000f;
         public static final int logout_button=0x7f05008d;
         public static final int lvExp=0x7f050046;
-        public static final int my_books_name=0x7f05005b;
-        public static final int my_books_profile_name_string=0x7f05005a;
         public static final int mybooks_profile_address=0x7f050067;
         public static final int mybooks_profile_address_string=0x7f050066;
         public static final int mybooks_profile_campus=0x7f050061;
@@ -339,6 +337,8 @@ containing a value of this type.
         public static final int mybooks_profile_linear3=0x7f05005f;
         public static final int mybooks_profile_linear4=0x7f050062;
         public static final int mybooks_profile_linear5=0x7f050065;
+        public static final int mybooks_profile_name=0x7f05005b;
+        public static final int mybooks_profile_name_string=0x7f05005a;
         public static final int mybooks_profile_photo=0x7f050057;
         public static final int mybooks_requester_image=0x7f05006f;
         public static final int myrequestdetails_availableBookDetail=0x7f05004f;

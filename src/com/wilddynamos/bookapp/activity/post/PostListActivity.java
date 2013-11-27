@@ -47,13 +47,9 @@ public class PostListActivity extends Activity
 						loadProgress;
 	
 	private PostListAdapter pla;
-<<<<<<< HEAD
-	
-	List<Map<String, String>> list;
-=======
+
 	private List<Map<String, String>> list;
 	
->>>>>>> 02105ebf329293d47457b8a6dcded63a0362a919
 	private float yDown;
 	private float touchSlop;
 	private boolean willRefresh = false;
@@ -61,31 +57,6 @@ public class PostListActivity extends Activity
 	private boolean atTop = true;
 	private boolean atBottom = false;
 	
-<<<<<<< HEAD
-	
-	@SuppressLint("HandlerLeak")
-	private Handler handler = new Handler() {
-
-		@Override
-    	public void handleMessage(Message msg){
-    		if(msg.what == -1)
-    			Toast.makeText(PostListActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
-    		else if(msg.what == 1) {
-    			if(currentPage == 1)
-    				pour();
-    			else {
-    				loadData();
-    				pla.notifyDataSetChanged();
-    				loadProgress.setVisibility(ProgressBar.INVISIBLE);
-    			}
-    		} else
-    			Toast.makeText(PostListActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-    	}
-	};
-	
-	private JSONArray jsonArray;
-=======
->>>>>>> 02105ebf329293d47457b8a6dcded63a0362a919
 	private List<Integer> ids;
 	private int currentPage;
 	private String sOrR = null;

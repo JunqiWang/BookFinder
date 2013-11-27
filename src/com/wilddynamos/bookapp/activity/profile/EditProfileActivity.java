@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,8 +25,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -33,10 +32,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import com.wilddynamos.bookapp.utils.LocationUtils;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -49,6 +45,7 @@ import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.dblayout.UserDataSource;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
+import com.wilddynamos.bookapp.utils.LocationUtils;
 import com.wilddynamos.bookapp.utils.TakePhoto;
 import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.Connection;
@@ -77,6 +74,8 @@ public class EditProfileActivity extends Activity implements
         
         private User user = new User();
         private Context context;
+        private String[] params = null;
+        private String photoPath; 
         
         /***take photo ***/        
         private static final int ACTION_TAKE_PHOTO = 1;
@@ -99,27 +98,27 @@ public class EditProfileActivity extends Activity implements
          // Handles to UI widgets
 
          
-        @SuppressLint("HandlerLeak")
-        private Handler handler = new Handler() {
-    		@Override
-        	public void handleMessage(Message msg){
-        		
-        		if(msg.what == -1)
-        			Toast.makeText(EditProfileActivity.this, "Exceptions!", Toast.LENGTH_SHORT).show();
-        		else if(msg.what == -2) 
-        			Toast.makeText(EditProfileActivity.this, "Both sqlite and mysql wrong!", Toast.LENGTH_SHORT).show();
-        		else if(msg.what == -3) 
-        			Toast.makeText(EditProfileActivity.this, "Mysql wrong!", Toast.LENGTH_SHORT).show();
-        		else if(msg.what == -4) 
-        			Toast.makeText(EditProfileActivity.this, "Sqlite wrong!", Toast.LENGTH_SHORT).show();
-        		else if(msg.what == 1) {
-        			Toast.makeText(EditProfileActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
-        			save();
-        		}
-        		else
-        			Toast.makeText(EditProfileActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-        	}
-    	};
+//        @SuppressLint("HandlerLeak")
+//        private Handler handler = new Handler() {
+//    		@Override
+//        	public void handleMessage(Message msg){
+//        		
+//        		if(msg.what == -1)
+//        			Toast.makeText(EditProfileActivity.this, "Exceptions!", Toast.LENGTH_SHORT).show();
+//        		else if(msg.what == -2) 
+//        			Toast.makeText(EditProfileActivity.this, "Both sqlite and mysql wrong!", Toast.LENGTH_SHORT).show();
+//        		else if(msg.what == -3) 
+//        			Toast.makeText(EditProfileActivity.this, "Mysql wrong!", Toast.LENGTH_SHORT).show();
+//        		else if(msg.what == -4) 
+//        			Toast.makeText(EditProfileActivity.this, "Sqlite wrong!", Toast.LENGTH_SHORT).show();
+//        		else if(msg.what == 1) {
+//        			Toast.makeText(EditProfileActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
+//        			save();
+//        		}
+//        		else
+//        			Toast.makeText(EditProfileActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
+//        	}
+//    	};
     	
     	@Override
     	public void onCreate(Bundle savedInstanceState){
@@ -127,6 +126,7 @@ public class EditProfileActivity extends Activity implements
             setContentView(R.layout.profile_editprofile);   
             
             context = this;
+            
             profileImage = (ImageView) findViewById(R.id.editprofile_image);
     		name = (EditText) findViewById(R.id.edit_name);
     		gender = (EditText) findViewById(R.id.edit_gender);
@@ -156,9 +156,9 @@ public class EditProfileActivity extends Activity implements
 			gender.setText(user.getGender() ? "Male" : "Female");
 			campus.setText(user.getCampus());
 			contact.setText(user.getContact());
-			myaddress.setText(user.getAddress()); 
+			myaddress.setText(user.getAddress());
 			
-			String photoPath = user.getPhotoAddr();
+			photoPath = user.getPhotoAddr();
 			if (photoPath != null) {
 				System.out.println(photoPath);
 				//Bitmap bmp = getBitmap(this, photoPath);
@@ -207,17 +207,19 @@ public class EditProfileActivity extends Activity implements
     				}
     				byte[] bytes = bos.toByteArray();
 
-    				user.setId(Connection.id);
-    				user.setName(name.getEditableText().toString());
-    				user.setGender(gender.getEditableText().toString().equals("M"));
-    				user.setCampus(campus.getEditableText().toString());
-    				user.setContact(contact.getEditableText().toString());
-    				user.setAddress(myaddress.getEditableText().toString());
-    				user.setPhotoAddr(mCurrentPhotoPath);
-    				//System.out.println(mCurrentPhotoPath);
+    				params[0] = String.valueOf(Connection.id);
+    				params[1] = name.getEditableText().toString();
+    				params[2] = gender.getEditableText().toString();
+    				params[3] = campus.getEditableText().toString();
+    				params[4] = contact.getEditableText().toString();
+    				params[5] = myaddress.getEditableText().toString();
+    				params[6] = mCurrentPhotoPath;
     				
-    				new EditMyProfile(EditProfileActivity.this, context, user, bytes)
-    					.start();
+    				String imageString = new String(bytes, Charset.forName("ISO-8859-1"));
+    				params[7] = imageString;
+    				
+    				EditMyProfile emp = new EditMyProfile(EditProfileActivity.this, context);
+    				emp.execute(params);
     				
     			}
     		}); 
@@ -231,7 +233,6 @@ public class EditProfileActivity extends Activity implements
                 choosePhoto.setOnClickListener(new OnClickListener(){
                         @Override
                         public void onClick(View v) {
-                                // TODO Auto-generated method stub
                                 Intent i = new Intent(Intent.ACTION_PICK,
                                    android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);                       
                         startActivityForResult(i, ACTIVITY_SELECT_IMAGE); 
@@ -259,9 +260,6 @@ public class EditProfileActivity extends Activity implements
                 startActivity(intent);
         }
         
-        public Handler getHandler() {
-                return handler;
-        }
         /****image zoom in and out***/
         public void zoomInOut(View view){
         	ZoomInOutAction.action(this,profileImage);

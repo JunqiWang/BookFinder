@@ -17,6 +17,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.AbsListView;
@@ -28,7 +29,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.wilddynamos.bookapp.R;
-import com.wilddynamos.bookapp.activity.post.PostDetailsActivity;
 import com.wilddynamos.bookapp.ws.remote.action.profile.DeclineAll;
 import com.wilddynamos.bookapp.ws.remote.action.profile.GetRequestList;
  
@@ -57,8 +57,8 @@ public class RequesterListActivity extends Activity
     private List<Integer> ids;
     private int currentPage;
     
-	private String[] params = null; 
     private JSONArray jsonArray;
+    private GetRequestList load;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,11 +72,10 @@ public class RequesterListActivity extends Activity
 		loadProgress = (ProgressBar) findViewById(R.id.loadProgress);
 		declineButton = (Button) findViewById(R.id.declineButton);
 		
+		touchSlop = ViewConfiguration.get(this).getScaledTouchSlop();
 		
 		requesterArray = new ArrayList<HashMap<String, String>>();
 		ids = new ArrayList<Integer>();
-		
-		params[0] = String.valueOf(bookId);
 		
 		refresh();
 		
@@ -122,7 +121,7 @@ public class RequesterListActivity extends Activity
     }
     
     public void showRequester(int position) {
-		Intent intent = new Intent(this, RequesterDetailsActivity.class); //need another activity
+		Intent intent = new Intent(this, RequesterDetailActivity.class); //need another activity
 		intent.putExtra("id", ids.get(position));
 		startActivity(intent);
 	}
@@ -176,9 +175,12 @@ public class RequesterListActivity extends Activity
 				willLoad = false;
 				loadProgress.setVisibility(ProgressBar.VISIBLE);
 				
+				try {
+					load.cancel(true);
+				} catch(Exception e) {
+				}
 				GetRequestList load = new GetRequestList(RequesterListActivity.this);
-				params[1] = String.valueOf(currentPage);
-				load.execute(params);
+				load.execute(new String[] {String.valueOf(bookId), String.valueOf(currentPage)});
 			}
 			break;
 		}
@@ -217,9 +219,12 @@ public class RequesterListActivity extends Activity
 		
 		currentPage = 1;
 		
+		try {
+			load.cancel(true);
+		} catch(Exception e) {
+		}
 		GetRequestList load = new GetRequestList(RequesterListActivity.this);
-		params[1] = String.valueOf(currentPage);
-		load.execute(params);
+		load.execute(new String[] {String.valueOf(bookId), String.valueOf(currentPage)});
 	}
     
     public void pour() {
@@ -230,11 +235,12 @@ public class RequesterListActivity extends Activity
 		
 		requesterList.setAdapter(la);
 		
+		refreshProgress.setVisibility(ProgressBar.INVISIBLE);
+		requesterList.setTop(0);
+		
 		mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
 						SensorManager.SENSOR_DELAY_NORMAL);
 		
-		refreshProgress.setVisibility(ProgressBar.INVISIBLE);
-		requesterList.setTop(0);
 	}
     
     public void loadData() {
