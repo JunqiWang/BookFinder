@@ -70,16 +70,6 @@ public class MultiWindowActivity extends TabActivity {
             public void onTabChanged(String arg0) { 
             	tabHost.setCurrentTabByTag(arg0);    
                 updateTab(tabHost);  
-         /*   	if(tabHost.getCurrentTab() < 2){
-            		getMenuInflater().inflate(R.menu.main, myMenu);
-            		MenuItem searchItem = myMenu.findItem(R.id.action_search);
-            	    SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-            	    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            	    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            	}else{
-            		getMenuInflater().inflate(R.menu.main, myMenu);
-            	} */
-              
             }       
         });
 	//	startService(new Intent(this, NotificationCenter.class));

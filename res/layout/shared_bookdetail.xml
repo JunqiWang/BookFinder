@@ -33,7 +33,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="70dp"
         android:contentDescription="@string/cover"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:onClick="zoomInOut" />
 <LinearLayout 
      android:id="@+id/post_bookdetails_linear1"
      android:layout_below="@id/textView1"
