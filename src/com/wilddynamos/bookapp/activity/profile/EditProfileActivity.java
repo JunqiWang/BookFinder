@@ -272,8 +272,9 @@ public class EditProfileActivity extends Activity implements
         	Drawable drawable = profileImage.getDrawable();
     		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
     		mImageBitmap = bitmapDrawable.getBitmap();
+    		System.out.println(mImageBitmap.getRowBytes() * mImageBitmap.getHeight());
     		Intent intent = new Intent(this, ZoomInOutActivity.class);
-    		intent.putExtra("BitmapImage", mImageBitmap);
+    		intent.putExtra("BitmapImage", mImageBitmap);  		
     		startActivity(intent);
     	}
         
