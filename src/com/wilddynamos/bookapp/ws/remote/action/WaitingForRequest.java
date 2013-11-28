@@ -14,6 +14,7 @@ import android.content.Intent;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
+import com.wilddynamos.bookapp.activity.mybooks.MyPostDetailActivity;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
 public class WaitingForRequest extends Thread {
@@ -39,14 +40,15 @@ public class WaitingForRequest extends Thread {
 			
 			while((str = br.readLine()) != null) {
 
-				if(str.contains("New")) {
+				if(str.contains("Req")) {
+					int bookId = Integer.parseInt(str.substring(3));
 					Notification noti = new Notification(R.drawable.app_cover,  
 				                "New Request Coming", System.currentTimeMillis());
 					
 					noti.flags = Notification.FLAG_AUTO_CANCEL;
 					
-					Intent notiIntent = new Intent(service, MultiWindowActivity.class);
-					notiIntent.putExtra(MultiWindowActivity.TAB_SELECT, 1);
+					Intent notiIntent = new Intent(service, MyPostDetailActivity.class);
+					notiIntent.putExtra("id", bookId);
 					notiIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); 
 					
 					PendingIntent pendingIntent = PendingIntent.getActivity(service, 0,  

@@ -70,11 +70,14 @@ public class LoginActivity extends Activity {
 			}
 		});
 	}
+	
 	@Override
 	protected void onRestart(){
 		super.onRestart();
 		setRemember();
-	} 
+		block.setAlpha(0f);
+	}
+	
 	public void signIn() {
 		Intent intent = new Intent(this, MultiWindowActivity.class);
 		startActivity(intent);
