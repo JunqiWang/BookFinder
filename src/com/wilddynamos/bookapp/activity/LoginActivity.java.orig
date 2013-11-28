@@ -178,11 +178,16 @@ public class LoginActivity extends Activity {
     	
     	String is_logout = getIntent().getStringExtra("logout");
     	if (is_logout == null){
+<<<<<<< HEAD
+    		Intent intent = new Intent(this, MultiWindowActivity.class);
+        	startActivity(intent); 
+    	} 
+=======
     		Login login = new Login(LoginActivity.this);
 			login.execute(new String[]{email.getText().toString(), 
 					password.getText().toString()});
     	}
-
+>>>>>>> 879ad122d2e2a98cc910527704c080d115ebb84d
 
     }
 }
