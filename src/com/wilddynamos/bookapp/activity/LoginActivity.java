@@ -104,7 +104,7 @@ public class LoginActivity extends Activity {
     public void onCheckboxClicked(View view){
     	if (((CheckBox) view).isChecked()) {
 			Toast.makeText(LoginActivity.this,
-		 	   "Warning:Your password will be saved", Toast.LENGTH_LONG).show();
+		 	   "Warning:Login infro will be saved", Toast.LENGTH_LONG).show();
 		}
     }
     
@@ -117,7 +117,7 @@ public class LoginActivity extends Activity {
     	ContentValues values = new ContentValues();
     	values.put(RememberMeColumn.COLUMN_NAME_C1, myemail);
     	values.put(RememberMeColumn.COLUMN_NAME_C2, mypassword);
-    	
+    	db.delete(RememberMeColumn.TABLE_NAME, null, null);
     	db.insert(
     		RememberMeColumn.TABLE_NAME,
     	    null,
