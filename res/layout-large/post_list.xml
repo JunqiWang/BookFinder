@@ -24,7 +24,7 @@
 	        android:layout_width="450dp"
 	        android:layout_height="40dp"
 	        android:inputType="text"
-	        android:background="@drawable/gradient_bg"
+	        android:background="#ffffff"
 	        android:textSize="25sp" />
 	  
 	    <ImageView

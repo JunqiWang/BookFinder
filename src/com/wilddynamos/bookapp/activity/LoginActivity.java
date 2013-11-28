@@ -180,7 +180,7 @@ public class LoginActivity extends Activity {
     	if (is_logout == null){
     		Intent intent = new Intent(this, MultiWindowActivity.class);
         	startActivity(intent); 
-    	}
+    	} 
 
     }
 }
