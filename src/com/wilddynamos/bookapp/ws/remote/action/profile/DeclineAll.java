@@ -3,9 +3,12 @@ package com.wilddynamos.bookapp.ws.remote.action.profile;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.wilddynamos.bookapp.activity.MultiWindowActivity;
+import com.wilddynamos.bookapp.activity.mybooks.MyPostDetailActivity;
 import com.wilddynamos.bookapp.activity.mybooks.RequesterListActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
@@ -19,12 +22,13 @@ public class DeclineAll extends AsyncTask<String, Void, String> {
 		this.a = a;
 	}
 	
+	private int id;
 	@Override
 	protected String doInBackground(String... params) {
 		
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
-		
+		id = Integer.parseInt(params[0]);
 		return DataUtils.receiveFlag(Connection.requestByGet("/DeclineAll", paramsMap));
 	
 	}
@@ -33,6 +37,9 @@ public class DeclineAll extends AsyncTask<String, Void, String> {
 	protected void onPostExecute(String result) {
 		if(result.equals("1")) {
 			Toast.makeText(a, "All requests are declined!", Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(a, MyPostDetailActivity.class);
+            intent.putExtra("id", id);
+            a.startActivity(intent);
 		} 
 		else if (result.equals("-1"))
 			Toast.makeText(a, "Oops!", Toast.LENGTH_SHORT).show();

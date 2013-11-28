@@ -3,8 +3,10 @@ package com.wilddynamos.bookapp.activity.mybooks;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -24,11 +26,13 @@ public class LazyAdapter extends BaseAdapter {
     private RequesterListActivity activity;
     private ArrayList<HashMap<String,String>> data;
     private static LayoutInflater inflater = null;
- 
-    public LazyAdapter(RequesterListActivity a, ArrayList<HashMap<String,String>> d) {
+    private List<Integer> ids;
+    
+    public LazyAdapter(RequesterListActivity a, ArrayList<HashMap<String,String>> d, List<Integer> ids) {
         activity = a;
         data = d;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.ids = ids;
     //    imageLoader=  new ImageLoader(activity.getApplicationContext());
     }
  
@@ -50,7 +54,8 @@ public class LazyAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.mybooks_requestlist_row, null);
  
         TextView requesterName = (TextView)vi.findViewById(R.id.requesterName); // title
-        ImageView profileImage = (ImageView)vi.findViewById(R.id.mybooks_requester_image); // thumb image
+        ImageView profileImage = (ImageView)vi.findViewById(R.id.mybooks_requester_image);
+        Button viewButton = (Button)vi.findViewById(R.id.viewButton);
         Button acceptButton = (Button)vi.findViewById(R.id.acceptButton);
         
         final int pos = position;
@@ -63,6 +68,14 @@ public class LazyAdapter extends BaseAdapter {
 				ar.execute(params);
 			}
 		});	
+        
+        viewButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+            	showRequester(pos);
+			}
+		});	
+        
         
         HashMap<String, String> requester = new HashMap<String, String>();
         requester = data.get(position);
@@ -78,4 +91,10 @@ public class LazyAdapter extends BaseAdapter {
         
         return vi;
     }
+    
+    public void showRequester(int position) {
+		Intent intent = new Intent(activity, RequesterDetailActivity.class); 
+		intent.putExtra("id", ids.get(position));
+		activity.startActivity(intent);
+	}
 }

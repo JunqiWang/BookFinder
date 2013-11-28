@@ -222,56 +222,56 @@ containing a value of this type.
     }
     public static final class id {
         public static final int LinearLayout01=0x7f050005;
-        public static final int RelativeLayout=0x7f050069;
+        public static final int RelativeLayout=0x7f05006a;
         public static final int acceptButton=0x7f050067;
-        public static final int action_search=0x7f0500c2;
-        public static final int action_settings=0x7f0500c3;
-        public static final int address=0x7f050083;
-        public static final int address_string=0x7f050082;
-        public static final int bookDetail_availableTime=0x7f0500ab;
-        public static final int bookDetail_cover=0x7f0500a5;
-        public static final int bookDetail_description=0x7f0500b0;
-        public static final int bookDetail_descriptionScroll=0x7f0500af;
-        public static final int bookDetail_durationLine=0x7f0500aa;
-        public static final int bookDetail_like=0x7f0500b1;
-        public static final int bookDetail_likeNum=0x7f0500b2;
-        public static final int bookDetail_myPost_buttons=0x7f0500b8;
-        public static final int bookDetail_myPost_delete=0x7f0500ba;
-        public static final int bookDetail_myPost_edit=0x7f0500b9;
-        public static final int bookDetail_myPost_requestInfo=0x7f0500b3;
-        public static final int bookDetail_myPost_requesterNum=0x7f0500b4;
-        public static final int bookDetail_myPost_seeRequesters=0x7f0500b5;
-        public static final int bookDetail_myRequest_hasResponded=0x7f0500b6;
-        public static final int bookDetail_myRequest_withdraw=0x7f0500bb;
-        public static final int bookDetail_name=0x7f0500a7;
-        public static final int bookDetail_nameLine=0x7f0500a6;
-        public static final int bookDetail_owner=0x7f0500ad;
-        public static final int bookDetail_ownerLine=0x7f0500ac;
-        public static final int bookDetail_post_request=0x7f0500b7;
-        public static final int bookDetail_price=0x7f0500a9;
-        public static final int bookDetail_priceLine=0x7f0500a8;
-        public static final int bookDetail_theDescriptionWord=0x7f0500ae;
-        public static final int bookDetail_title=0x7f0500a4;
-        public static final int bookNamePostList=0x7f05006a;
-        public static final int bookPricePostList=0x7f05006b;
-        public static final int bookdetails_availableBookDetail=0x7f05009a;
-        public static final int bookdetails_background11=0x7f0500a3;
-        public static final int bookdetails_coverBookDetail=0x7f050094;
-        public static final int bookdetails_descriptionBookDetail=0x7f05009f;
-        public static final int bookdetails_descriptionScrollBookDetail=0x7f05009e;
-        public static final int bookdetails_likeBookDetail=0x7f0500a0;
-        public static final int bookdetails_likeNumBookDetail=0x7f0500a1;
-        public static final int bookdetails_nameBookDetail=0x7f050096;
-        public static final int bookdetails_ownerBookDetail=0x7f05009c;
-        public static final int bookdetails_priceBookDetail=0x7f050098;
-        public static final int bookdetails_request=0x7f0500a2;
-        public static final int bookdetails_titleBookDetail=0x7f050092;
-        public static final int campus=0x7f05007d;
-        public static final int campus_string=0x7f05007c;
-        public static final int change_password_button=0x7f050085;
+        public static final int action_search=0x7f0500c3;
+        public static final int action_settings=0x7f0500c4;
+        public static final int address=0x7f050084;
+        public static final int address_string=0x7f050083;
+        public static final int bookDetail_availableTime=0x7f0500ac;
+        public static final int bookDetail_cover=0x7f0500a6;
+        public static final int bookDetail_description=0x7f0500b1;
+        public static final int bookDetail_descriptionScroll=0x7f0500b0;
+        public static final int bookDetail_durationLine=0x7f0500ab;
+        public static final int bookDetail_like=0x7f0500b2;
+        public static final int bookDetail_likeNum=0x7f0500b3;
+        public static final int bookDetail_myPost_buttons=0x7f0500b9;
+        public static final int bookDetail_myPost_delete=0x7f0500bb;
+        public static final int bookDetail_myPost_edit=0x7f0500ba;
+        public static final int bookDetail_myPost_requestInfo=0x7f0500b4;
+        public static final int bookDetail_myPost_requesterNum=0x7f0500b5;
+        public static final int bookDetail_myPost_seeRequesters=0x7f0500b6;
+        public static final int bookDetail_myRequest_hasResponded=0x7f0500b7;
+        public static final int bookDetail_myRequest_withdraw=0x7f0500bc;
+        public static final int bookDetail_name=0x7f0500a8;
+        public static final int bookDetail_nameLine=0x7f0500a7;
+        public static final int bookDetail_owner=0x7f0500ae;
+        public static final int bookDetail_ownerLine=0x7f0500ad;
+        public static final int bookDetail_post_request=0x7f0500b8;
+        public static final int bookDetail_price=0x7f0500aa;
+        public static final int bookDetail_priceLine=0x7f0500a9;
+        public static final int bookDetail_theDescriptionWord=0x7f0500af;
+        public static final int bookDetail_title=0x7f0500a5;
+        public static final int bookNamePostList=0x7f05006b;
+        public static final int bookPricePostList=0x7f05006c;
+        public static final int bookdetails_availableBookDetail=0x7f05009b;
+        public static final int bookdetails_background11=0x7f0500a4;
+        public static final int bookdetails_coverBookDetail=0x7f050095;
+        public static final int bookdetails_descriptionBookDetail=0x7f0500a0;
+        public static final int bookdetails_descriptionScrollBookDetail=0x7f05009f;
+        public static final int bookdetails_likeBookDetail=0x7f0500a1;
+        public static final int bookdetails_likeNumBookDetail=0x7f0500a2;
+        public static final int bookdetails_nameBookDetail=0x7f050097;
+        public static final int bookdetails_ownerBookDetail=0x7f05009d;
+        public static final int bookdetails_priceBookDetail=0x7f050099;
+        public static final int bookdetails_request=0x7f0500a3;
+        public static final int bookdetails_titleBookDetail=0x7f050093;
+        public static final int campus=0x7f05007e;
+        public static final int campus_string=0x7f05007d;
+        public static final int change_password_button=0x7f050086;
         public static final int checkbox_remember=0x7f05000e;
-        public static final int contact=0x7f050080;
-        public static final int contact_string=0x7f05007f;
+        public static final int contact=0x7f050081;
+        public static final int contact_string=0x7f050080;
         public static final int createOrEditChoosePhoto=0x7f050014;
         public static final int createOrEditMyBookCancel=0x7f050020;
         public static final int createOrEditMyBookCover=0x7f050015;
@@ -286,38 +286,38 @@ containing a value of this type.
         public static final int createOrEditTakePhoto=0x7f050013;
         public static final int declineButton=0x7f050062;
         public static final int editMyBookForSaleTitle=0x7f050037;
-        public static final int edit_address=0x7f05008e;
-        public static final int edit_button=0x7f050084;
-        public static final int edit_campus=0x7f05008c;
-        public static final int edit_contact=0x7f05008d;
-        public static final int edit_gender=0x7f05008b;
-        public static final int edit_map=0x7f05008f;
+        public static final int edit_address=0x7f05008f;
+        public static final int edit_button=0x7f050085;
+        public static final int edit_campus=0x7f05008d;
+        public static final int edit_contact=0x7f05008e;
+        public static final int edit_gender=0x7f05008c;
+        public static final int edit_map=0x7f050090;
         public static final int edit_my_book_for_sale_bookDescription=0x7f05003c;
         public static final int edit_my_book_for_sale_bookName=0x7f05003a;
         public static final int edit_my_book_for_sale_bookPrice=0x7f05003b;
         public static final int edit_my_book_for_sale_cancelButton=0x7f05003e;
         public static final int edit_my_book_for_sale_linearLayout1=0x7f050038;
         public static final int edit_my_book_for_sale_saveButton=0x7f05003d;
-        public static final int edit_name=0x7f05008a;
-        public static final int editprofile_cancelButton=0x7f050091;
-        public static final int editprofile_choose_photo_button=0x7f050089;
+        public static final int edit_name=0x7f05008b;
+        public static final int editprofile_cancelButton=0x7f050092;
+        public static final int editprofile_choose_photo_button=0x7f05008a;
         public static final int editprofile_image=0x7f050039;
-        public static final int editprofile_linearLayout1=0x7f050087;
-        public static final int editprofile_saveButton=0x7f050090;
-        public static final int editprofile_take_photo_button=0x7f050088;
+        public static final int editprofile_linearLayout1=0x7f050088;
+        public static final int editprofile_saveButton=0x7f050091;
+        public static final int editprofile_take_photo_button=0x7f050089;
         public static final int forgotPwd=0x7f050011;
-        public static final int gender=0x7f05007a;
-        public static final int gender_string=0x7f050079;
+        public static final int gender=0x7f05007b;
+        public static final int gender_string=0x7f05007a;
         public static final int header=0x7f05000b;
         public static final int hybrid=0x7f050004;
         public static final int imageView1=0x7f050066;
         public static final int lblListHeader=0x7f050008;
         public static final int lblListItem=0x7f05000a;
-        public static final int likeNumPostList=0x7f05006c;
+        public static final int likeNumPostList=0x7f05006d;
         public static final int list_image=0x7f050064;
-        public static final int loadProgress=0x7f050072;
+        public static final int loadProgress=0x7f050073;
         public static final int login=0x7f05000f;
-        public static final int logout_button=0x7f050086;
+        public static final int logout_button=0x7f050087;
         public static final int lvExp=0x7f05003f;
         public static final int mybooks_profile_address=0x7f050060;
         public static final int mybooks_profile_address_string=0x7f05005f;
@@ -353,17 +353,17 @@ containing a value of this type.
         public static final int myrequestdetails_priceBookDetail=0x7f050045;
         public static final int myrequestdetails_requestdetailsTitle=0x7f050040;
         public static final int myrequestdetails_responseDetail=0x7f05004e;
-        public static final int name=0x7f050077;
-        public static final int name_string=0x7f050076;
+        public static final int name=0x7f050078;
+        public static final int name_string=0x7f050077;
         public static final int new_button=0x7f050009;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int post_bookdetails_description=0x7f05009d;
-        public static final int post_bookdetails_linear1=0x7f050095;
-        public static final int post_bookdetails_linear2=0x7f050097;
-        public static final int post_bookdetails_linear3=0x7f050099;
-        public static final int post_bookdetails_linear4=0x7f05009b;
-        public static final int post_postlist_linerlayout1=0x7f05006d;
+        public static final int post_bookdetails_description=0x7f05009e;
+        public static final int post_bookdetails_linear1=0x7f050096;
+        public static final int post_bookdetails_linear2=0x7f050098;
+        public static final int post_bookdetails_linear3=0x7f05009a;
+        public static final int post_bookdetails_linear4=0x7f05009c;
+        public static final int post_postlist_linerlayout1=0x7f05006e;
         public static final int postdetails_availableBookDetail=0x7f05002a;
         public static final int postdetails_bookAvailable=0x7f050029;
         public static final int postdetails_coverBookDetail=0x7f050023;
@@ -384,15 +384,15 @@ containing a value of this type.
         public static final int postdetails_request=0x7f050033;
         public static final int postdetails_requestNum=0x7f050032;
         public static final int postdetails_seeRequsts=0x7f050034;
-        public static final int postlist=0x7f050071;
-        public static final int profile_detail_linear1=0x7f050075;
-        public static final int profile_detail_linear2=0x7f050078;
-        public static final int profile_detail_linear3=0x7f05007b;
-        public static final int profile_detail_linear4=0x7f05007e;
-        public static final int profile_detail_linear5=0x7f050081;
-        public static final int profile_image=0x7f050074;
-        public static final int profile_photo_string=0x7f050073;
-        public static final int refreshProgress=0x7f050070;
+        public static final int postlist=0x7f050072;
+        public static final int profile_detail_linear1=0x7f050076;
+        public static final int profile_detail_linear2=0x7f050079;
+        public static final int profile_detail_linear3=0x7f05007c;
+        public static final int profile_detail_linear4=0x7f05007f;
+        public static final int profile_detail_linear5=0x7f050082;
+        public static final int profile_image=0x7f050075;
+        public static final int profile_photo_string=0x7f050074;
+        public static final int refreshProgress=0x7f050071;
         public static final int rentCheckBox=0x7f050006;
         public static final int rentDuration=0x7f05001c;
         public static final int rentDurationUnit=0x7f05001d;
@@ -400,23 +400,24 @@ containing a value of this type.
         public static final int request_list=0x7f050061;
         public static final int requesterName=0x7f050065;
         public static final int satellite=0x7f050002;
-        public static final int searchContent=0x7f05006e;
-        public static final int searchIt=0x7f05006f;
+        public static final int searchContent=0x7f05006f;
+        public static final int searchIt=0x7f050070;
         public static final int sellCheckBox=0x7f050007;
         public static final int signup=0x7f050010;
-        public static final int signupButton=0x7f0500c0;
+        public static final int signupButton=0x7f0500c1;
         public static final int terrain=0x7f050003;
-        public static final int textView1=0x7f050093;
+        public static final int textView1=0x7f050094;
         public static final int thumbnail=0x7f050063;
         public static final int titleBookDetail=0x7f050021;
         public static final int titleMyPostDetail=0x7f050022;
-        public static final int userEmail=0x7f0500bc;
+        public static final int userEmail=0x7f0500bd;
         public static final int userInputEmail=0x7f05000c;
         public static final int userInputPassword=0x7f05000d;
-        public static final int userName=0x7f0500bd;
-        public static final int userPassword=0x7f0500be;
-        public static final int userPasswordConfirm=0x7f0500bf;
-        public static final int zoom_in_out_imageView=0x7f0500c1;
+        public static final int userName=0x7f0500be;
+        public static final int userPassword=0x7f0500bf;
+        public static final int userPasswordConfirm=0x7f0500c0;
+        public static final int viewButton=0x7f050069;
+        public static final int zoom_in_out_imageView=0x7f0500c2;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -447,21 +448,21 @@ containing a value of this type.
         public static final int main=0x7f090000;
     }
     public static final class string {
-        public static final int IO_Exception_getFromLocation=0x7f06007a;
-        public static final int accept=0x7f06006b;
+        public static final int IO_Exception_getFromLocation=0x7f06007b;
+        public static final int accept=0x7f06006c;
         public static final int action_search=0x7f060029;
         public static final int action_settings=0x7f060028;
         /**  Add New Book For Rent Theme 
          */
-        public static final int addNewBookForRentTitle=0x7f060063;
-        public static final int address=0x7f06005f;
+        public static final int addNewBookForRentTitle=0x7f060064;
+        public static final int address=0x7f060060;
         /**  GeoLocation User interface labels and strings 
  Address format 
          */
-        public static final int address_output_string=0x7f06006e;
+        public static final int address_output_string=0x7f06006f;
         /**  photos 
          */
-        public static final int album_name=0x7f06006c;
+        public static final int album_name=0x7f06006d;
         public static final int app_name=0x7f060027;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -488,16 +489,16 @@ containing a value of this type.
         public static final int auth_client_using_bad_version_title=0x7f060013;
         public static final int available=0x7f060033;
         public static final int availableBookDetail=0x7f060038;
-        public static final int bookCover_alt=0x7f060051;
+        public static final int bookCover_alt=0x7f060052;
         /**  Book Details 
          */
         public static final int book_detail_title=0x7f060032;
         public static final int borrow=0x7f060036;
-        public static final int campus=0x7f06005b;
-        public static final int cancel=0x7f060054;
-        public static final int cannot=0x7f06006d;
-        public static final int change_password=0x7f060061;
-        public static final int choosePhoto=0x7f060056;
+        public static final int campus=0x7f06005c;
+        public static final int cancel=0x7f060055;
+        public static final int cannot=0x7f06006e;
+        public static final int change_password=0x7f060062;
+        public static final int choosePhoto=0x7f060057;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -568,9 +569,9 @@ containing a value of this type.
         public static final int confirmation=0x7f060031;
         /**  Messages 
          */
-        public static final int connected=0x7f060071;
+        public static final int connected=0x7f060072;
         public static final int connection_error_code=0x7f060019;
-        public static final int connection_error_code_unknown=0x7f060072;
+        public static final int connection_error_code_unknown=0x7f060073;
         public static final int connection_error_disabled=0x7f06001a;
         public static final int connection_error_internal=0x7f06001b;
         public static final int connection_error_invalid=0x7f06001c;
@@ -584,111 +585,112 @@ containing a value of this type.
         public static final int connection_error_outdated=0x7f060024;
         public static final int connection_error_sign_in_required=0x7f060025;
         public static final int connection_error_unknown=0x7f060026;
-        public static final int connection_failed=0x7f060073;
-        public static final int contact=0x7f06005d;
+        public static final int connection_failed=0x7f060074;
+        public static final int contact=0x7f06005e;
         /**  <string name="rent">Rent for </string> 
          */
-        public static final int cover=0x7f060050;
-        public static final int decline=0x7f06006a;
-        public static final int delete=0x7f060046;
-        public static final int description=0x7f060052;
+        public static final int cover=0x7f060051;
+        public static final int decline=0x7f06006b;
+        public static final int delete=0x7f060047;
+        public static final int description=0x7f060053;
         public static final int descriptionBookDetail=0x7f06003d;
-        public static final int disconnected=0x7f060074;
-        public static final int duration=0x7f060048;
-        public static final int edit=0x7f060045;
+        public static final int disconnected=0x7f060075;
+        public static final int duration=0x7f060049;
+        public static final int edit=0x7f060046;
         /**  Edit My Profile Page Theme 
          */
-        public static final int editProfilePageTitle=0x7f060057;
-        public static final int email=0x7f060067;
+        public static final int editProfilePageTitle=0x7f060058;
+        public static final int email=0x7f060068;
         public static final int forgot_password=0x7f06002e;
-        public static final int gender=0x7f060059;
-        public static final int get_address=0x7f060075;
-        public static final int get_location=0x7f060076;
-        public static final int illegal_argument_exception=0x7f060077;
+        public static final int gender=0x7f06005a;
+        public static final int get_address=0x7f060076;
+        public static final int get_location=0x7f060077;
+        public static final int illegal_argument_exception=0x7f060078;
         public static final int image=0x7f06002a;
-        public static final int invalid_action=0x7f060078;
-        public static final int invalid_integer_id=0x7f060079;
+        public static final int invalid_action=0x7f060079;
+        public static final int invalid_integer_id=0x7f06007a;
         /**  Latitude, longitude format 
          */
-        public static final int latitude_longitude=0x7f06006f;
+        public static final int latitude_longitude=0x7f060070;
         /**  Menu title 
  Labels 
          */
-        public static final int latlng=0x7f060070;
+        public static final int latlng=0x7f060071;
         public static final int like=0x7f060035;
         public static final int likenum=0x7f06003a;
-        public static final int location_requested=0x7f06007b;
-        public static final int location_update_error=0x7f06007d;
-        public static final int location_update_error_detail=0x7f06007e;
-        public static final int location_update_missing_update=0x7f06007f;
-        public static final int location_updated=0x7f06007c;
-        public static final int location_updates_stopped=0x7f060080;
-        public static final int log_new_location=0x7f060081;
+        public static final int location_requested=0x7f06007c;
+        public static final int location_update_error=0x7f06007e;
+        public static final int location_update_error_detail=0x7f06007f;
+        public static final int location_update_missing_update=0x7f060080;
+        public static final int location_updated=0x7f06007d;
+        public static final int location_updates_stopped=0x7f060081;
+        public static final int log_new_location=0x7f060082;
         public static final int login_title=0x7f06002f;
-        public static final int logout=0x7f060062;
+        public static final int logout=0x7f060063;
         /**  My Books 
          */
         public static final int my_post=0x7f060041;
         /**  Edit My Books Page Theme 
          */
-        public static final int name=0x7f06004c;
+        public static final int name=0x7f06004d;
         public static final int nameBookDetail=0x7f06003c;
-        public static final int no_address_found=0x7f060082;
-        public static final int no_connection=0x7f060083;
-        public static final int no_geocoder_available=0x7f060084;
-        public static final int no_location_available=0x7f060085;
-        public static final int no_resolution=0x7f060087;
+        public static final int no_address_found=0x7f060083;
+        public static final int no_connection=0x7f060084;
+        public static final int no_geocoder_available=0x7f060085;
+        public static final int no_location_available=0x7f060086;
+        public static final int no_resolution=0x7f060088;
         /**  post list 
          */
         public static final int open=0x7f060040;
         public static final int owner=0x7f060034;
         public static final int ownerBookDetail=0x7f060039;
         public static final int password=0x7f060030;
-        public static final int per=0x7f06004f;
-        public static final int periodic_update_stop=0x7f060088;
-        public static final int play_services_available=0x7f060089;
-        public static final int post=0x7f060064;
-        public static final int price=0x7f06004e;
+        public static final int per=0x7f060050;
+        public static final int periodic_update_stop=0x7f060089;
+        public static final int play_services_available=0x7f06008a;
+        public static final int post=0x7f060065;
+        public static final int price=0x7f06004f;
         public static final int pricedetail=0x7f060037;
-        public static final int profilePhoto=0x7f060058;
+        public static final int profilePhoto=0x7f060059;
         /**  profile detail 
          */
-        public static final int profile_detail_photo=0x7f060068;
+        public static final int profile_detail_photo=0x7f060069;
         public static final int remember_me=0x7f06002b;
-        public static final int rent=0x7f060066;
-        public static final int request=0x7f060043;
+        public static final int rent=0x7f060067;
+        public static final int request=0x7f060044;
         /**  mybooks_requestlist 
          */
-        public static final int request_list=0x7f060069;
-        public static final int request_location_updates_in_progress=0x7f06008a;
+        public static final int request_list=0x7f06006a;
+        public static final int request_location_updates_in_progress=0x7f06008b;
         public static final int requestdetailsTitle=0x7f06003f;
         public static final int requesternum=0x7f06003b;
-        public static final int resolved=0x7f060086;
+        public static final int resolved=0x7f060087;
         public static final int responseDetail=0x7f06003e;
-        public static final int save=0x7f060053;
-        public static final int seeRequest=0x7f060044;
+        public static final int save=0x7f060054;
+        public static final int seeRequest=0x7f060045;
         /**  Mybooks list 
          */
-        public static final int sell=0x7f060065;
+        public static final int sell=0x7f060066;
         public static final int sign_in=0x7f06002c;
         public static final int sign_up=0x7f06002d;
-        public static final int start_updates=0x7f06008b;
-        public static final int stop_updates=0x7f06008c;
-        public static final int takePhoto=0x7f060055;
-        public static final int titleMyPostDetail=0x7f060042;
+        public static final int start_updates=0x7f06008c;
+        public static final int stop_updates=0x7f06008d;
+        public static final int takePhoto=0x7f060056;
+        public static final int titleMyPostDetail=0x7f060043;
         /**  MultiWindow 
          */
-        public static final int title_activity_tab1=0x7f060049;
-        public static final int title_activity_tab2=0x7f06004a;
-        public static final int title_activity_tab3=0x7f06004b;
-        public static final int unknown=0x7f06008d;
-        public static final int unknown_activity_request_code=0x7f06008e;
-        public static final int user_address=0x7f060060;
-        public static final int user_campus=0x7f06005c;
-        public static final int user_contact=0x7f06005e;
-        public static final int user_gender=0x7f06005a;
-        public static final int user_name=0x7f06004d;
-        public static final int withdraw=0x7f060047;
+        public static final int title_activity_tab1=0x7f06004a;
+        public static final int title_activity_tab2=0x7f06004b;
+        public static final int title_activity_tab3=0x7f06004c;
+        public static final int unknown=0x7f06008e;
+        public static final int unknown_activity_request_code=0x7f06008f;
+        public static final int user_address=0x7f060061;
+        public static final int user_campus=0x7f06005d;
+        public static final int user_contact=0x7f06005f;
+        public static final int user_gender=0x7f06005b;
+        public static final int user_name=0x7f06004e;
+        public static final int view=0x7f060042;
+        public static final int withdraw=0x7f060048;
     }
     public static final class style {
         /** 

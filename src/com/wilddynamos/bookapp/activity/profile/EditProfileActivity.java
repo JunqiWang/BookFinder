@@ -143,7 +143,7 @@ public class EditProfileActivity extends Activity implements
     		cancel = (Button) findViewById(R.id.editprofile_cancelButton);
     		
     		
-  /*  		Thread th = new Thread() {
+    		Thread th = new Thread() {
 				@Override
 				public void run() {
 					UserDataSource userDataSource = new UserDataSource(context);
@@ -167,7 +167,7 @@ public class EditProfileActivity extends Activity implements
 				System.out.println(photoPath);
 				Bitmap bmp = BitmapFactory.decodeFile(photoPath);
 				profileImage.setImageBitmap(bmp);
-			}    */
+			}    
 			
     		mapImage = (ImageView) findViewById(R.id.edit_map); 
     		

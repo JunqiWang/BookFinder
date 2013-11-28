@@ -42,6 +42,7 @@
 
 <!-- My Books -->
 <string name="my_post">My Book for</string>
+<string name="view">View</string>
 <string name="titleMyPostDetail">Sell</string>
 <string name="request">requests</string>
 <string name="seeRequest">More</string>

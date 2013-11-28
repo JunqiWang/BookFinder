@@ -26,6 +26,7 @@ public class GetRequestList extends AsyncTask<String, Void, String> {
 			Map<String, String> paramsMap = new HashMap<String, String>();
 			paramsMap.put("id", params[0]);
 			paramsMap.put("currentPage", params[1]);
+			System.out.println(paramsMap);
 		
 			a.setJSONArray(DataUtils.receiveJSON(Connection.requestByGet("/GetRequests", paramsMap)));
 		
@@ -44,7 +45,7 @@ public class GetRequestList extends AsyncTask<String, Void, String> {
 			else {
 				a.loadData();
 				a.getLazyAdapter().notifyDataSetChanged();
-				a.getLoadProgress().setVisibility(ProgressBar.INVISIBLE);
+//				a.getLoadProgress().setVisibility(ProgressBar.INVISIBLE);
 			}
 		} 
 		else if (result.equals("-1"))

@@ -44,9 +44,10 @@ public class RequesterDetailActivity extends Activity {
 		contact = (TextView) findViewById(R.id.mybooks_profile_contact);
 		address = (TextView) findViewById(R.id.mybooks_profile_address);
 		
-		GetRequestDetail gmp = new GetRequestDetail(this);
+		GetRequestDetail grd = new GetRequestDetail(this);
 		String params[] = {String.valueOf(requesterId)};
-		gmp.execute(params);
+		System.out.println(params[0]);
+		grd.execute(params);
 
 	}
 

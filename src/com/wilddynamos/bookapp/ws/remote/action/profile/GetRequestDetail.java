@@ -36,6 +36,7 @@ public class GetRequestDetail extends AsyncTask<String, Void, JSONArray> {
 
 	@Override
 	protected void onPostExecute(JSONArray jsonArray) {
+		System.out.println(jsonArray);
 		if(a != null)
 			if(jsonArray == null || jsonArray.length() == 0)
 				Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();

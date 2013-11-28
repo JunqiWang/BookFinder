@@ -7,52 +7,47 @@
 
     <!-- ListRow Left sied Thumbnail image -->
 
-    <LinearLayout
-        android:id="@+id/thumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="5dip"
-        android:background="@drawable/image_bg"
-        android:padding="3dip" >
 
-        <ImageView
-            android:id="@+id/list_image"
-            android:layout_width="50dip"
-            android:layout_height="50dip"
-            android:src="@drawable/profile" 
-            android:contentDescription="@string/image"/>
-    </LinearLayout>
+
+	<ImageView
+        android:id="@+id/mybooks_requester_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/profile" 
+        android:contentDescription="@string/image"/>
+
 
     <TextView
         android:id="@+id/requesterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
+        
+        android:layout_toRightOf="@+id/mybooks_requester_image"
         android:text="@string/user_name"
         android:textColor="#040404"
         android:textSize="25sp"
         android:textStyle="bold"
         android:typeface="sans" />
 	
-
-    <ImageView
-        android:id="@+id/mybooks_requester_image"
+    <Button
+        android:id="@+id/viewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_action_user"
-        android:contentDescription="@string/image" />
-
+        android:layout_margin="10dip"
+        android:layout_alignTop="@+id/requesterName"
+        android:layout_toLeftOf="@+id/acceptButton"
+        android:background="@drawable/custom_button4"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:text="@string/view" />
+    
     <Button
         android:id="@+id/acceptButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
         android:layout_alignTop="@+id/requesterName"
-        android:layout_toLeftOf="@+id/mybooks_requester_image"
+        android:layout_alignParentRight="true"
         android:background="@drawable/custom_button4"
         android:textStyle="bold"
         android:textColor="#ffffff"
