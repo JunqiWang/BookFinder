@@ -22,6 +22,34 @@ public class SignupActivity extends Activity {
 	private Button signup;
 	private Context context;
 	
+//	private Handler handler = new Handler() {
+//    	@Override
+//    	public void handleMessage(Message msg){
+//    		
+//    		if(msg.what == -1)
+//    			Toast.makeText(SignupActivity.this, "Failed...", Toast.LENGTH_SHORT).show();
+//    		else if(msg.what == -2)
+//    			Toast.makeText(SignupActivity.this, "Email exists!", Toast.LENGTH_SHORT).show();
+//    		else if (msg.what == 1) {
+//    			new Thread() {
+//    				@Override
+//    				public void run() {
+//    					Connection.login(email.getEditableText().toString(), 
+//    							password.getEditableText().toString());
+//    					UserDataSource userDataSource = new UserDataSource(context);
+//    					userDataSource.open();
+//    					User user = userDataSource.createUser(Connection.id, email.getEditableText().toString(), 
+//    							password.getEditableText().toString(), 
+//    							name.getEditableText().toString(), null, null, null, null, null);
+//    					userDataSource.close();
+//    				}
+//    			}.start();
+//    			
+//    			Toast.makeText(SignupActivity.this, "Welcome, new friend!", Toast.LENGTH_SHORT).show();
+//    		} else
+//    			Toast.makeText(SignupActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
+//    	}
+//	};
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +69,7 @@ public class SignupActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+<<<<<<< HEAD
 				if (password.getEditableText().toString().equals(confirmation.getEditableText().toString())) {
 					Signup su = new Signup(SignupActivity.this, context);
 					su.execute(new String[] {email.getEditableText().toString(), 
@@ -53,6 +82,21 @@ public class SignupActivity extends Activity {
 //						  password.getEditableText().toString(),
 //						  context)
 //					.start();
+=======
+				if(!isValidEmail(email.getText().toString())){
+					Toast.makeText(SignupActivity.this,
+							"Email Format Invalid", Toast.LENGTH_SHORT)
+							.show();
+					return;
+				}
+				if (password.getEditableText().toString().equals(confirmation.getEditableText().toString())) 
+				new Signup(SignupActivity.this,
+						  email.getEditableText().toString(),
+						  name.getEditableText().toString(),
+						  password.getEditableText().toString(),
+						  context)
+					.start();
+>>>>>>> 79613219b4f13412a6b556993407856f564b3f79
 				else Toast.makeText(SignupActivity.this, "Password confirmation not match!", Toast.LENGTH_LONG).show();
 			}
 		});
@@ -65,6 +109,8 @@ public class SignupActivity extends Activity {
         return true;
     } */
     
+<<<<<<< HEAD
+=======
     public void signUp(){
     	/*Post List is a fragment activity in MultiWindowActivity*/
     	Intent intent = new Intent(this, MultiWindowActivity.class);
@@ -82,4 +128,5 @@ public class SignupActivity extends Activity {
 	        return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
 	    }
 	}
+>>>>>>> 79613219b4f13412a6b556993407856f564b3f79
 }
