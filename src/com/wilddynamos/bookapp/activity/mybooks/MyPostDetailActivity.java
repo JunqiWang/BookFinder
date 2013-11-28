@@ -46,9 +46,13 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 
 	@Override
 	protected void fillFunctionSpecificView(final JSONObject jo) {
-		
+//		System.out.println(jo.toString());
 		try {
-			coverString = jo.getString("cover");
+			try {
+				coverString = jo.getString("cover");
+			} catch(JSONException e) {
+			}
+			
 			if(jo.getBoolean("sOrR")) {
 				this.sOrR = true;
 				
@@ -59,9 +63,11 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 				
 			} else {
 				this.sOrR = false;
-				
+				System.out.println("reached0");
 				this.per = jo.getBoolean("per");
+				System.out.println("reached1");
 				this.duration = jo.getInt("availableTime");
+				System.out.println("reached2");
 				
 				if(!jo.getBoolean("hasMadeRespond"))
 					title.setText("Renting this book");
@@ -150,8 +156,10 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 		}
 		intent.putExtra("description", description);
 		
-        byte[] bytes = coverString.getBytes(Charset.forName("ISO-8859-1")); 
-        intent.putExtra("BMP", bytes);
+		if(coverString != null) {
+			byte[] bytes = coverString.getBytes(Charset.forName("ISO-8859-1")); 
+			intent.putExtra("BMP", bytes);
+		}
 		
 		startActivity(intent);
 	}
