@@ -246,7 +246,10 @@ public class RequesterListActivity extends Activity {
 				HashMap<String, String> map = new HashMap<String, String>();
 				
 				map.put("name", jo.getString("name"));
-				map.put("photo", jo.getString("photo"));
+				try{
+					map.put("photo", jo.getString("photo"));
+				}
+				catch(JSONException e){}
 				
 				requesterArray.add(map);
 			}

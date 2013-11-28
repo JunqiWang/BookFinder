@@ -182,8 +182,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="40dp"
 	        android:textSize="25sp"
-	        android:textStyle="bold"
-	        android:text="@string/requesternum" />
+	        android:textStyle="bold" />
 	
 	    <Button
 	        android:id="@+id/bookDetail_myPost_seeRequesters"
