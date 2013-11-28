@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
+import com.wilddynamos.bookapp.activity.ChangePasswordActivity;
 import com.wilddynamos.bookapp.activity.LoginActivity;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.ZoomInOutAction;
@@ -65,7 +66,6 @@ public class MyProfileActivity extends Activity {
 		contact = (TextView) findViewById(R.id.contact);
 		address = (TextView) findViewById(R.id.address);
 		edit = (Button) findViewById(R.id.edit_button);
-		changePassword = (Button) findViewById(R.id.change_password_button);
 		logout = (Button) findViewById(R.id.logout_button);
 		
 		new GetMyProfile(this, this).start();
@@ -132,4 +132,8 @@ public class MyProfileActivity extends Activity {
 	public void zoomInOut(View view){
 	    	ZoomInOutAction.action(this,profileImage);
 		}
+	public void changePassword(View view){
+		Intent intent = new Intent(this, ChangePasswordActivity.class);
+		startActivity(intent);
+	}
 }

@@ -119,6 +119,11 @@
             android:label="@string/app_name" 
             android:windowSoftInputMode="stateHidden">
         </activity>
+          <activity
+        	android:name="com.wilddynamos.bookapp.activity.ChangePasswordActivity"
+            android:label="@string/app_name" 
+            android:windowSoftInputMode="stateHidden">
+        </activity>
         <service 
             android:name="com.wilddynamos.bookapp.service.NotificationCenter">
         </service>

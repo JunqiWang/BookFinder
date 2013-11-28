@@ -10,7 +10,7 @@
 		android:layout_width="140dp"
 		android:layout_marginLeft="2dp"
 		android:layout_centerVertical="true"
-		android:textSize="13sp"
+		android:textSize="15sp"
 		android:maxLength="11" />
 
 	<TextView  
@@ -20,7 +20,7 @@
 		android:layout_toRightOf="@+id/bookNamePostList"
 		android:layout_marginLeft="5dp"
 		android:layout_centerVertical="true"
-		android:textSize="13sp"
+		android:textSize="15sp"
 		android:maxLength="6" /> 	
 		
 	<ImageView  
@@ -39,8 +39,7 @@
 		android:layout_toRightOf="@+id/bookPricePostList"
 		android:layout_marginLeft="33dp"
 		android:layout_centerVertical="true"
-		android:textSize="18sp"
-		android:maxLength="2" />
+		android:textSize="15sp"/>
 	<TextView
 	    android:layout_width="fill_parent"
 	    android:layout_height="4dp" 

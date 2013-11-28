@@ -108,6 +108,7 @@ public class LoginActivity extends Activity {
 	public void onCheckboxClicked(View view) {
 		if (((CheckBox) view).isChecked()) {
 			Toast.makeText(LoginActivity.this,
+//<<<<<<< HEAD
 					"Warning:Your password will be saved", Toast.LENGTH_SHORT)
 					.show();
 		}
@@ -182,4 +183,87 @@ public class LoginActivity extends Activity {
 		} else
 			block.setAlpha(0f);
 	}
+//=======
+//		 	   "Warning:Login infro will be saved", Toast.LENGTH_LONG).show();
+//		}
+//    }
+//    
+//    public void remember(){
+//    	SQLiteDatabase db = mDbHelper.getWritableDatabase();
+//    	
+//    	String myemail = email.getText().toString();
+//    	String mypassword = password.getText().toString();
+//   
+//    	ContentValues values = new ContentValues();
+//    	values.put(RememberMeColumn.COLUMN_NAME_C1, myemail);
+//    	values.put(RememberMeColumn.COLUMN_NAME_C2, mypassword);
+//    	db.delete(RememberMeColumn.TABLE_NAME, null, null);
+//    	db.insert(
+//    		RememberMeColumn.TABLE_NAME,
+//    	    null,
+//    	    values);
+//    	db.close();
+//    }
+//    
+//    public void notRemember(){
+//    	SQLiteDatabase db = mDbHelper.getWritableDatabase();
+//    	db.delete(RememberMeColumn.TABLE_NAME, null, null);
+//    	db.close();
+//    }
+//    
+//    public void  setRemember(){
+//    	SQLiteDatabase db = mDbHelper.getWritableDatabase();
+//    	
+//    	Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '"+RememberMeColumn.TABLE_NAME+"'", null);
+//    	if (cursor.getCount() <= 0 || cursor == null){
+//    		rememberme.setChecked(false);
+//    		cursor.close();
+//    		db.close();
+//    		return;
+//    	}
+//    	String[] projection = {
+//    			RememberMeColumn.COLUMN_NAME_C1,
+//    			RememberMeColumn.COLUMN_NAME_C2
+//    		};
+//    	
+//    	String sortOrder = RememberMeColumn._ID + " DESC";
+//
+//    		cursor = db.query(
+//    			RememberMeColumn.TABLE_NAME,  			// The table to query
+//    		    projection,                             // The columns to return
+//    		    null,                                	// The columns for the WHERE clause
+//    		    null,                            		// The values for the WHERE clause
+//    		    null,                                   // don't group the rows
+//    		    null,                                   // don't filter by row groups
+//    		    sortOrder                               // The sort order
+//    		);
+//    	if (cursor.getCount() <= 0){
+//    		rememberme.setChecked(false);
+//    		cursor.close();
+//    		return;
+//    	}
+//    	cursor.moveToFirst();
+//    		
+//    	String myemail = cursor.getString(
+//    			cursor.getColumnIndex(RememberMeColumn.COLUMN_NAME_C1)
+//    	);
+//    	String mypassword = cursor.getString(
+//    			cursor.getColumnIndex(RememberMeColumn.COLUMN_NAME_C2)
+//    	);
+//    	rememberme.setChecked(true);
+//    	email.setText(myemail);
+//    	password.setText(mypassword);
+//    	cursor.close();
+//    	db.close();
+//    	
+//    	String is_logout = getIntent().getStringExtra("logout");
+//    	if (is_logout == null){
+//    		Login login = new Login(LoginActivity.this);
+//			login.execute(new String[]{email.getText().toString(), 
+//					password.getText().toString()});
+//    	}
+//
+//
+//    }
+//>>>>>>> 58948b7f36e2de565f7ba72c9d7767a121fac43d
 }
