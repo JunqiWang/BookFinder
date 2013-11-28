@@ -77,6 +77,12 @@ public class SignupActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				if(!isValidEmail(email.getText().toString())){
+					Toast.makeText(SignupActivity.this,
+							"Email Format Invalid", Toast.LENGTH_SHORT)
+							.show();
+					return;
+				}
 				if (password.getEditableText().toString().equals(confirmation.getEditableText().toString())) 
 				new Signup(SignupActivity.this,
 						  email.getEditableText().toString(),
@@ -105,4 +111,12 @@ public class SignupActivity extends Activity {
     public Handler getHandler() {
     	return handler;
     }
+    
+	public final static boolean isValidEmail(CharSequence target) {
+	    if (target == null) {
+	        return false;
+	    } else {
+	        return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+	    }
+	}
 }
