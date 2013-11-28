@@ -1,6 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">  
+    android:layout_height="fill_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">  
        <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
@@ -99,7 +101,6 @@
         	android:layout_height="wrap_content"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
-  	  <requestFocus/>
   	
 	</LinearLayout>
  	
@@ -123,7 +124,6 @@
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
 
-    	<requestFocus/>
     	
     </LinearLayout>
    
@@ -146,7 +146,6 @@
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
-    	<requestFocus />
 
     </LinearLayout>
     
@@ -169,7 +168,6 @@
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
-    	<requestFocus />
     </LinearLayout>
     
 	<LinearLayout
@@ -195,7 +193,6 @@
     		android:gravity="top" 
     		android:maxLines="2"
     		android:textSize="18sp" />
-    	<requestFocus />
     	
     	<ImageView
     	    android:id="@+id/edit_map"

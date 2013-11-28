@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".PostListActivity" >
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
     
     <ImageView
         android:layout_width="fill_parent"
@@ -21,7 +22,7 @@
 	           
 	    <EditText
 	        android:id="@+id/searchContent"
-	        android:layout_width="350dp"
+	        android:layout_width="250dp"
 	        android:layout_height="40dp"
 	        android:inputType="text"
 	        android:background="#ffffff"

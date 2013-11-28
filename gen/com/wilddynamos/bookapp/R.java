@@ -224,7 +224,11 @@ containing a value of this type.
     }
     public static final class id {
         public static final int LinearLayout01=0x7f050005;
+<<<<<<< HEAD
         public static final int RelativeLayout=0x7f050070;
+=======
+        public static final int RelativeLayout=0x7f05006f;
+>>>>>>> c25c849420e458b57cab45d241fd527c059d7cb2
         public static final int acceptButton=0x7f05006d;
         public static final int action_search=0x7f0500b9;
         public static final int action_settings=0x7f0500ba;
@@ -304,7 +308,6 @@ containing a value of this type.
         public static final int gender_string=0x7f050081;
         public static final int header=0x7f050010;
         public static final int hybrid=0x7f050004;
-        public static final int imageView1=0x7f05006c;
         public static final int lblListHeader=0x7f05000d;
         public static final int lblListItem=0x7f05000f;
         public static final int likeNumPostList=0x7f050073;
@@ -405,11 +408,19 @@ containing a value of this type.
         public static final int userEmail=0x7f0500b3;
         public static final int userInputEmail=0x7f050011;
         public static final int userInputPassword=0x7f050012;
+<<<<<<< HEAD
         public static final int userName=0x7f0500b4;
         public static final int userPassword=0x7f0500b5;
         public static final int userPasswordConfirm=0x7f0500b6;
         public static final int viewButton=0x7f05006f;
         public static final int zoom_in_out_imageView=0x7f0500b8;
+=======
+        public static final int userName=0x7f0500b3;
+        public static final int userPassword=0x7f0500b4;
+        public static final int userPasswordConfirm=0x7f0500b5;
+        public static final int viewButton=0x7f05006c;
+        public static final int zoom_in_out_imageView=0x7f0500b7;
+>>>>>>> c25c849420e458b57cab45d241fd527c059d7cb2
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -648,7 +659,11 @@ containing a value of this type.
         public static final int profilePhoto=0x7f06005a;
         /**  profile detail 
          */
+<<<<<<< HEAD
         public static final int profile_detail_photo=0x7f06006a;
+=======
+        public static final int profile_detail_title=0x7f06006a;
+>>>>>>> c25c849420e458b57cab45d241fd527c059d7cb2
         public static final int remember_me=0x7f06002b;
         public static final int rent=0x7f060068;
         public static final int request=0x7f060045;
