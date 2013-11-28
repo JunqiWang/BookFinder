@@ -190,13 +190,13 @@ public class MybooksList extends Activity {
 	
 	public void showBorrowRequestDetails(View view){
 		Intent intent = new Intent(this, MyRequestDetailActivity.class);
-		intent.putExtra("id", 2);//TODO
+		intent.putExtra("id", 39);//TODO
 		startActivity(intent);
 	}
 	
 	public void showBuyRequestDetails(View view){
 		Intent intent = new Intent(this, MyRequestDetailActivity.class);
-		intent.putExtra("id", 2);//TODO
+		intent.putExtra("id", 39);//TODO
 		startActivity(intent);
 	}
 
