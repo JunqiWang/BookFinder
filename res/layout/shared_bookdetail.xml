@@ -147,7 +147,7 @@
             android:textSize="20sp" />     
     </ScrollView>
 <!-- use for edit --> 
-    <LinearLayout
+ <LinearLayout
         android:id="@+id/bookDetail_myPost_requestInfo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
