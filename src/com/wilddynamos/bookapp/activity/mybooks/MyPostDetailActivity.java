@@ -60,14 +60,15 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 			} else {
 				this.sOrR = false;
 				
+				this.per = jo.getBoolean("per");
+				this.duration = jo.getInt("availableTime");
+				
 				if(!jo.getBoolean("hasMadeRespond"))
 					title.setText("Renting this book");
 				else
 					title.setText("Have rented this book out");
 			}
 			
-			this.per = jo.getBoolean("per");
-			this.duration = jo.getInt("availableTime");
 			this.description = jo.getString("description");
 			
 			if(!jo.getBoolean("hasMadeRespond")) {

@@ -86,11 +86,14 @@ public class LoginActivity extends Activity {
 	        public void onTextChanged(CharSequence s, int start, int before, int count) {} 
 	    });  */
 	}
+	
 	@Override
 	protected void onRestart(){
 		super.onRestart();
 		setRemember();
-	} 
+		block.setAlpha(0f);
+	}
+	
 	public void signIn() {
 		Intent intent = new Intent(this, MultiWindowActivity.class);
 		startActivity(intent);

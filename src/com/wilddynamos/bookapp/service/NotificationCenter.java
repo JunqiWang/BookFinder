@@ -1,6 +1,6 @@
 package com.wilddynamos.bookapp.service;
 
-import com.wilddynamos.bookapp.ws.remote.action.WaitingForRequest;
+import com.wilddynamos.bookapp.ws.remote.action.WaitingForMessage;
 
 import android.app.Service;
 import android.content.Intent;
@@ -18,7 +18,7 @@ public class NotificationCenter extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		if(t == null || !t.isAlive()) {
-			t = new WaitingForRequest(this);
+			t = new WaitingForMessage(this);
 			t.start();
 		}
 		 
