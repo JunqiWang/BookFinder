@@ -43,6 +43,7 @@
 
 <!-- My Books -->
 <string name="my_post">My Book for</string>
+<string name="view">View</string>
 <string name="titleMyPostDetail">Sell</string>
 <string name="request">requests</string>
 <string name="seeRequest">More</string>
@@ -91,7 +92,7 @@
 <string name="email">Email: </string>
 
 <!-- profile detail -->
-<string name="profile_detail_photo">Profile Photo</string>
+<string name="profile_detail_title">Profile</string>
 
 <!-- mybooks_requestlist -->
 <string name="request_list">Request List</string>

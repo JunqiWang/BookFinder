@@ -176,6 +176,7 @@ public class MybooksList extends Activity {
 //	}
 	
 	public void showBookForRentInfo(View view){
+
 		Intent intent = new Intent(this, MyPostDetailActivity.class);
 		intent.putExtra("id", 2);//TODO
 		startActivity(intent);

@@ -45,6 +45,7 @@ public class PostListActivity extends Activity implements SensorEventListener,
 	private ProgressBar refreshProgress, loadProgress;
 
 	private PostListAdapter pla;
+
 	private List<Map<String, String>> list;
 
 	private float yDown;
