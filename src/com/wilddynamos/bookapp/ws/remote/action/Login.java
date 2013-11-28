@@ -28,7 +28,9 @@ public class Login extends AsyncTask<String, Void, Boolean> {
 		if(success) {
 			Toast.makeText(a, "Logged in", Toast.LENGTH_SHORT).show();
 			a.signIn();
-		} else
+		} else {
 			Toast.makeText(a, "Failed", Toast.LENGTH_SHORT).show();
+			a.block.setAlpha(0f);
+		}
 	}
 }

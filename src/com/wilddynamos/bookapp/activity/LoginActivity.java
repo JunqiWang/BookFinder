@@ -27,7 +27,7 @@ public class LoginActivity extends Activity {
 	private EditText email;
 	private EditText password;
 	private Button login;
-	private ImageView block;
+	public ImageView block;
 
 	private ForgotPwd forgotPwd;
 

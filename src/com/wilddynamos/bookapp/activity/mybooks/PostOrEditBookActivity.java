@@ -1,6 +1,7 @@
 package com.wilddynamos.bookapp.activity.mybooks;
 
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.Charset;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -49,7 +50,6 @@ public class PostOrEditBookActivity extends Activity {
 	private EditText description;
 	private Button postOrSave;
 	private Button takePhoto;
-	private Button choosePhoto;
 	private boolean isPost;
 	private boolean sOrR;
 	private Integer id = null;
@@ -80,11 +80,11 @@ public class PostOrEditBookActivity extends Activity {
 		postOrSave = (Button) findViewById(R.id.createOrEditMyBookSubmit);
 
 		takePhoto = (Button) findViewById(R.id.createOrEditTakePhoto);
-		choosePhoto = (Button) findViewById(R.id.createOrEditChoosePhoto);
 
 		isPost = getIntent().getExtras().getBoolean("isPost");
 		sOrR = getIntent().getExtras().getBoolean("sOrR");
-		id = getIntent().getExtras().getInt("id");
+		if((id = getIntent().getExtras().getInt("id")) == 0)
+			id = null;
 
 		byte[] bytes = getIntent().getByteArrayExtra("BMP");
 
@@ -190,17 +190,25 @@ public class PostOrEditBookActivity extends Activity {
 			return;
 		}
 
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		Drawable drawable = cover.getDrawable();
+		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
+		Bitmap bitmap = bitmapDrawable.getBitmap();
+		bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] coverBytes = stream.toByteArray();
+        String coverString = new String(coverBytes, Charset.forName("ISO-8859-1"));
+        
 		String[] params = null;
 
 		if (!sOrR)
 			params = new String[] { !sOrR + "", id == null ? null : id + "",
-					name.getText().toString(), price.getText().toString(),
+					name.getText().toString(), coverString, price.getText().toString(),
 					description.getText().toString(), perValue + "",
-					duration.getText().toString() };
+					duration.getText().toString()};
 		else
 			params = new String[] { !sOrR + "", id == null ? null : id + "",
-					name.getText().toString(), price.getText().toString(),
-					description.getText().toString() };
+					name.getText().toString(), coverString, price.getText().toString(),
+					description.getText().toString(), coverString };
 
 		PostOrEditBook submit = new PostOrEditBook(this);
 		submit.execute(params);
