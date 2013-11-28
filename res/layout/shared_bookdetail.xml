@@ -17,12 +17,12 @@
     android:layout_height="wrap_content" >
      <TextView
         android:id="@+id/bookDetail_title"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
+        android:layout_margin="15dp"
         android:textSize="20sp" 
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:gravity="center"/>
 
     <ImageView
         android:id="@+id/bookDetail_cover"
@@ -38,7 +38,6 @@
 	<LinearLayout
 	     android:id="@+id/bookDetail_nameLine"
 	     android:layout_below="@id/bookDetail_title"
-	     android:layout_marginTop="20dp"
 	     android:layout_width="fill_parent"
 	     android:layout_height="wrap_content">
 	     
@@ -107,7 +106,7 @@
 	     android:visibility="invisible" >
 	    
 	    <TextView
-	        android:layout_width="60dp"
+	        android:layout_width="65dp"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="17dp"       
 	        android:textSize="20sp" 
@@ -147,9 +146,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp" />     
     </ScrollView>
-
-   
-    
+<!-- use for edit --> 
     <LinearLayout
         android:id="@+id/bookDetail_myPost_requestInfo"
         android:layout_width="fill_parent"
@@ -180,14 +177,14 @@
 	        android:id="@+id/bookDetail_myPost_requesterNum"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="40dp"
+	        android:layout_marginLeft="20dp"
 	        android:textSize="15sp"
 	        android:textStyle="bold"
 	        android:text="@string/requesternum" />
 	
 	    <Button
 	        android:id="@+id/bookDetail_myPost_seeRequesters"
-	        android:layout_width="60dp"
+	        android:layout_width="wrap_content"
 	        android:layout_height="40dp"
 	        android:layout_marginLeft="15dp"
 	        android:text="@string/seeRequest"
@@ -195,8 +192,7 @@
 	        android:textStyle="bold"
 	        android:textColor="#ffffff"
 	        android:background="@drawable/custom_button4" />
-        
-    </LinearLayout>
+</LinearLayout>
     
     <TextView
         android:id="@+id/bookDetail_myRequest_hasResponded"
@@ -204,31 +200,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="15dp"
-        android:layout_below="@id/bookDetail_myPost_requestInfo"
-        android:layout_marginTop="25dp"
+        android:layout_below="@id/bookDetail_descriptionScroll"
+        android:layout_marginTop="12dp"
         android:visibility="invisible" 
         android:textSize="20sp"
         android:textStyle="bold" />
 	    
     <Button
         android:id="@+id/bookDetail_post_request"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bookDetail_myPost_requestInfo"
-        android:layout_marginTop="25dp"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/bookDetail_myRequest_hasResponded"
+        android:layout_marginTop="12dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/custom_button3"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:visibility="invisible" />
-    
+<!-- edit and delete -->    
     <LinearLayout 
         android:id="@+id/bookDetail_myPost_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/bookDetail_myPost_requestInfo"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="12dp"
         android:layout_centerHorizontal="true"
         android:visibility="invisible" >
         
@@ -259,13 +255,13 @@
     
     <Button
         android:id="@+id/bookDetail_myRequest_withdraw"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bookDetail_myPost_requestInfo"
-        android:layout_marginTop="25dp"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/bookDetail_myRequest_hasResponded"
+        android:layout_marginTop="12dp"
         android:layout_centerHorizontal="true"
         android:text="@string/withdraw"
-        android:textSize="25sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:background="@drawable/custom_button2"
