@@ -38,7 +38,7 @@ public class MyRequestDetailActivity extends BaseBookDetailActivity {
 		try {
 			owner.setText(jo.getString("owner"));
 			
-			if(jo.get("hasResponded") == null) {
+			if(jo.getInt("hasResponded") == 0) {
 				hasResponded.setText("(Owner has not responded.)");
 				hasResponded.setVisibility(TextView.VISIBLE);
 				withdraw.setVisibility(Button.VISIBLE);
@@ -51,12 +51,12 @@ public class MyRequestDetailActivity extends BaseBookDetailActivity {
 				
 			} else {
 				if(jo.getBoolean("sOrR")) {
-					if(jo.getBoolean("hasResponded"))
+					if(jo.getInt("hasResponded") == 1)
 						title.setText("Have bought this book.");
 					else
 						title.setText("Your request been declined");
 				} else {
-					if(jo.getBoolean("hasResponded"))
+					if(jo.getInt("hasResponded") == -1)
 						title.setText("Using this book");
 					else
 						title.setText("Your request been declined");

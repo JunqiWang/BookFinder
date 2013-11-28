@@ -118,7 +118,7 @@ public class LoginActivity extends Activity {
     	values.put(RememberMeColumn.COLUMN_NAME_C1, myemail);
     	values.put(RememberMeColumn.COLUMN_NAME_C2, mypassword);
     	
-    	long count = db.insert(
+    	db.insert(
     		RememberMeColumn.TABLE_NAME,
     	    null,
     	    values);
@@ -178,8 +178,9 @@ public class LoginActivity extends Activity {
     	
     	String is_logout = getIntent().getStringExtra("logout");
     	if (is_logout == null){
-    		Intent intent = new Intent(this, MultiWindowActivity.class);
-        	startActivity(intent); 
+    		Login login = new Login(LoginActivity.this);
+			login.execute(new String[]{email.getText().toString(), 
+					password.getText().toString()});
     	}
 
     }
