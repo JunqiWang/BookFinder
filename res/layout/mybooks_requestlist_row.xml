@@ -37,14 +37,17 @@
         android:typeface="sans" />
 	
 
-    <ImageView
-        android:id="@+id/imageView1"
+   <Button
+        android:id="@+id/viewButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_action_user"
-        android:contentDescription="@string/image" />
+        android:layout_height="35dp"
+        android:layout_margin="5dip"
+        android:layout_alignTop="@+id/requesterName"
+        android:layout_toLeftOf="@+id/acceptButton"
+        android:background="@drawable/custom_button4"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:text="@string/view" />
 
     <Button
         android:id="@+id/acceptButton"
@@ -52,7 +55,7 @@
         android:layout_height="35dp"
         android:layout_margin="5dip"
         android:layout_alignTop="@+id/requesterName"
-        android:layout_toLeftOf="@+id/imageView1"
+        android:layout_alignParentRight="true"
         android:background="@drawable/custom_button4"
         android:textStyle="bold"
         android:textColor="#ffffff"
