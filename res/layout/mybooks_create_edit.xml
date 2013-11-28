@@ -65,8 +65,8 @@
         	   android:textColor="@color/white"
         	   android:background="@drawable/custom_button3"
                android:text="@string/choosePhoto"/>
-       </LinearLayout>
-
+      </LinearLayout>
+      
       <ImageView
            android:id="@+id/createOrEditMyBookCover"
            android:layout_width="120dp"
@@ -75,17 +75,15 @@
            android:layout_alignParentTop="true"
            android:contentDescription="@string/bookCover_alt"
            android:src="@drawable/ic_launcher" 
-           android:onClick="zoomInOut"/>
-      
+           android:onClick="zoomInOut"/>      
    </RelativeLayout>
  	
-    <LinearLayout
+   <LinearLayout
     	android:layout_width="fill_parent"
    	 	android:layout_height="wrap_content"
    	 	android:layout_marginTop="12dp"
    	 	android:layout_marginRight="18dp"
-        android:layout_marginLeft="18dp">
-      
+        android:layout_marginLeft="18dp">    
 	  	<TextView
 	  	    android:layout_width="85dp"
     	    android:layout_height="wrap_content"
@@ -98,9 +96,7 @@
         	android:layout_width="0dp"
         	android:layout_height="wrap_content"
         	android:background="@drawable/gradient_bg" 
-        	android:inputType="text"/>
-  	  <requestFocus/>
-  	
+        	android:inputType="text"/>	
 	</LinearLayout>
  	
 	<LinearLayout
@@ -108,8 +104,7 @@
    	 	android:layout_height="wrap_content"
    	 	android:layout_marginTop="18dp"
    	 	android:layout_marginRight="18dp"
-        android:layout_marginLeft="18dp">
-  	  
+        android:layout_marginLeft="18dp"> 	  
     	<TextView
         	android:layout_width="85dp"
     	    android:layout_height="wrap_content"
@@ -135,8 +130,7 @@
         	android:id="@+id/rentPriceUnitSelection"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
-        	android:textSize="18sp"/>
-    	
+        	android:textSize="18sp"/>    	
     </LinearLayout>
    
 	<LinearLayout
@@ -145,8 +139,7 @@
    	 	android:layout_height="wrap_content"
    	 	android:layout_marginTop="18dp"
    	 	android:layout_marginRight="18dp"
-        android:layout_marginLeft="18dp">
-    	
+        android:layout_marginLeft="18dp">    	
     	<TextView
     	    android:id="@+id/createOrEditMyBookRentFor"
         	android:text="@string/duration"
@@ -167,8 +160,7 @@
         	android:layout_height="wrap_content"
         	android:layout_marginLeft="10dp"
         	android:textSize="18sp"
-    	    android:textStyle="bold" />
-    	
+    	    android:textStyle="bold" />    	
     </LinearLayout>
     
     <LinearLayout
@@ -201,8 +193,7 @@
   		android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal" 
-    	android:layout_marginTop="20dp" >
-    	
+    	android:layout_marginTop="20dp" >   	
 	    <Button
 	        android:id="@+id/createOrEditMyBookSubmit"
 	        android:layout_width="70dp"
@@ -224,8 +215,7 @@
         	android:textStyle="bold"
 	        android:background="@drawable/custom_button2"
 	        android:text="@string/cancel"
-	        android:onClick="cancel"/>
-	    
+	        android:onClick="cancel"/>	    
 	</LinearLayout>
     
 </LinearLayout>

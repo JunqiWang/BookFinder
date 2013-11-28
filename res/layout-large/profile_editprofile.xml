@@ -100,8 +100,6 @@
         	android:layout_height="40dp"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
-  	  <requestFocus/>
-  	
 	</LinearLayout>
  	
  	<LinearLayout
@@ -124,8 +122,6 @@
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
 
-    	<requestFocus/>
-    	
     </LinearLayout>
    
 	<LinearLayout
@@ -147,8 +143,6 @@
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
-    	<requestFocus />
-
     </LinearLayout>
     
 	<LinearLayout
@@ -170,7 +164,6 @@
         	android:layout_weight="1"
         	android:background="@drawable/gradient_bg" 
         	android:inputType="text"/>
-    	<requestFocus />
     </LinearLayout>
     
 	<LinearLayout
@@ -195,9 +188,7 @@
     		android:minLines="2" 
     		android:gravity="top" 
     		android:maxLines="2"
-    		android:textSize="20sp" />
-    	<requestFocus />
-    	
+    		android:textSize="20sp" /> 
     	<ImageView
     	    android:id="@+id/edit_map"
     	    android:layout_width="40dp"

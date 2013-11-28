@@ -23,8 +23,7 @@
      	android:textSize="35sp"
      	android:textStyle="bold"
      	android:layout_margin="20dp"
-     	android:gravity="center"/>
- 	
+     	android:gravity="center"/>	
    <TextView
        	android:text="@string/cover"
        	android:layout_marginLeft="30dp"
@@ -75,8 +74,7 @@
            android:layout_alignParentTop="true"
            android:contentDescription="@string/bookCover_alt"
            android:src="@drawable/ic_launcher" 
-           android:onClick="zoomInOut"/>
-      
+           android:onClick="zoomInOut"/>      
    </RelativeLayout>
  	
     <LinearLayout
@@ -84,8 +82,7 @@
    	 	android:layout_height="wrap_content"
    	 	android:layout_marginTop="30dp"
    	 	android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp">
-      
+        android:layout_marginLeft="30dp">    
 	  	<TextView
 	  	    android:layout_width="130dp"
 	  	    android:layout_height="wrap_content"
@@ -98,8 +95,7 @@
 	      	android:layout_width="0dp"
 	      	android:layout_height="40dp"
 	      	android:background="@drawable/gradient_bg" 
-	      	android:inputType="text"/>
-  	
+	      	android:inputType="text"/>	
 	</LinearLayout>
  	
 	<LinearLayout
@@ -107,8 +103,7 @@
    	 	android:layout_height="wrap_content"
    	 	android:layout_marginTop="30dp"
    	 	android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp">
-  	  
+        android:layout_marginLeft="30dp"> 	  
     	<TextView
         	android:layout_width="130dp"
     	    android:layout_height="wrap_content"
@@ -134,8 +129,7 @@
         	android:id="@+id/rentPriceUnitSelection"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
-        	android:textSize="25sp"/>
-    	
+        	android:textSize="25sp"/> 	
     </LinearLayout>
    
 	<LinearLayout
@@ -144,8 +138,7 @@
    	 	android:layout_height="wrap_content"
    	 	android:layout_marginTop="30dp"
    	 	android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp">
-    	
+        android:layout_marginLeft="30dp">    	
     	<TextView
     	    android:id="@+id/createOrEditMyBookRentFor"
         	android:text="@string/duration"
@@ -166,8 +159,7 @@
         	android:layout_height="wrap_content"
         	android:layout_marginLeft="30dp"
         	android:textSize="30sp"
-    	    android:textStyle="bold" />
-    	
+    	    android:textStyle="bold" />    	
     </LinearLayout>
     
     <LinearLayout
@@ -200,8 +192,7 @@
   		android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal" 
-    	android:layout_marginTop="30dp" >
-    	
+    	android:layout_marginTop="30dp" >   	
 	    <Button
 	        android:id="@+id/createOrEditMyBookSubmit"
 	        android:layout_width="120dp"
@@ -222,8 +213,7 @@
 	        android:background="@drawable/custom_button2"
 	        android:text="@string/cancel"
 	        android:textSize="25sp"
-	        android:onClick="cancel"/>
-	    
+	        android:onClick="cancel"/>	    
 	</LinearLayout>
     
 </LinearLayout>

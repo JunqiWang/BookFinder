@@ -648,7 +648,7 @@ containing a value of this type.
         public static final int profilePhoto=0x7f06005a;
         /**  profile detail 
          */
-        public static final int profile_detail_photo=0x7f06006a;
+        public static final int profile_detail_title=0x7f06006a;
         public static final int remember_me=0x7f06002b;
         public static final int rent=0x7f060068;
         public static final int request=0x7f060045;
