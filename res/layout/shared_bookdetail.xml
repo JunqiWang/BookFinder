@@ -42,7 +42,7 @@
 	     android:layout_height="wrap_content">
 	     
 	    <TextView
-	        android:layout_width="60dp"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="17dp"       
 	        android:textSize="20sp" 
@@ -51,6 +51,7 @@
 	    
 	    <TextView
 	        android:id="@+id/bookDetail_name"
+	        android:layout_marginLeft="3dp"
 	        android:layout_width="150dp"
 	        android:layout_height="wrap_content"
 	        android:textSize="20sp" />
@@ -65,7 +66,7 @@
 	     android:layout_height="wrap_content">
 	    
 	    <TextView
-	        android:layout_width="80dp"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="17dp"       
 	        android:textSize="20sp" 
@@ -74,6 +75,7 @@
 	    
 	    <TextView
 	        android:id="@+id/bookDetail_price"
+	        android:layout_marginLeft="3dp"
 	        android:layout_width="150dp"
 	        android:layout_height="wrap_content"
 	        android:textSize="20sp" />
@@ -106,7 +108,7 @@
 	     android:visibility="invisible" >
 	    
 	    <TextView
-	        android:layout_width="65dp"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="17dp"       
 	        android:textSize="20sp" 
@@ -115,6 +117,7 @@
 	    
 	    <TextView
 	        android:id="@+id/bookDetail_owner"
+	        android:layout_marginLeft="3dp"
 	        android:layout_width="150dp"
 	        android:layout_height="wrap_content"
 	        android:textSize="20sp" />
