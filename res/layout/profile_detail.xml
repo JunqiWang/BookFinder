@@ -173,7 +173,8 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@drawable/custom_button"
-        android:text="@string/change_password"/>
+        android:text="@string/change_password"
+        android:onClick="changePassword"/>
 
 	<Button
 	    android:id="@+id/logout_button"
