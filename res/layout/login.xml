@@ -125,4 +125,11 @@
         
 
 </ScrollView>
+ <ImageView
+        android:id="@+id/login_block"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ffffff"
+        android:alpha="1"
+        android:contentDescription="@string/image" />
 </RelativeLayout>

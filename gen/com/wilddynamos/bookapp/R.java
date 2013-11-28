@@ -73,12 +73,12 @@ public final class R {
         public static final int bookDetail_description=0x7f09009f;
         public static final int bookDetail_descriptionScroll=0x7f09009e;
         public static final int bookDetail_durationLine=0x7f090099;
-        public static final int bookDetail_like=0x7f0900a0;
-        public static final int bookDetail_likeNum=0x7f0900a1;
+        public static final int bookDetail_like=0x7f0900a1;
+        public static final int bookDetail_likeNum=0x7f0900a2;
         public static final int bookDetail_myPost_buttons=0x7f0900a7;
         public static final int bookDetail_myPost_delete=0x7f0900a9;
         public static final int bookDetail_myPost_edit=0x7f0900a8;
-        public static final int bookDetail_myPost_requestInfo=0x7f0900a2;
+        public static final int bookDetail_myPost_requestInfo=0x7f0900a0;
         public static final int bookDetail_myPost_requesterNum=0x7f0900a3;
         public static final int bookDetail_myPost_seeRequesters=0x7f0900a4;
         public static final int bookDetail_myRequest_hasResponded=0x7f0900a5;
