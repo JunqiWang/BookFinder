@@ -74,7 +74,7 @@ public class LoginActivity extends Activity {
 	protected void onRestart(){
 		super.onRestart();
 		setRemember();
-	}
+	} 
 	public void signIn() {
 		Intent intent = new Intent(this, MultiWindowActivity.class);
 		startActivity(intent);

@@ -233,12 +233,12 @@ containing a value of this type.
         public static final int bookDetail_description=0x7f0500a4;
         public static final int bookDetail_descriptionScroll=0x7f0500a3;
         public static final int bookDetail_durationLine=0x7f05009e;
-        public static final int bookDetail_like=0x7f0500a5;
-        public static final int bookDetail_likeNum=0x7f0500a6;
+        public static final int bookDetail_like=0x7f0500a6;
+        public static final int bookDetail_likeNum=0x7f0500a7;
         public static final int bookDetail_myPost_buttons=0x7f0500ac;
         public static final int bookDetail_myPost_delete=0x7f0500ae;
         public static final int bookDetail_myPost_edit=0x7f0500ad;
-        public static final int bookDetail_myPost_requestInfo=0x7f0500a7;
+        public static final int bookDetail_myPost_requestInfo=0x7f0500a5;
         public static final int bookDetail_myPost_requesterNum=0x7f0500a8;
         public static final int bookDetail_myPost_seeRequesters=0x7f0500a9;
         public static final int bookDetail_myRequest_hasResponded=0x7f0500aa;
