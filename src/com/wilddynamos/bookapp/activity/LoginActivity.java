@@ -144,6 +144,7 @@ public class LoginActivity extends Activity {
 			rememberme.setChecked(false);
 			cursor.close();
 			db.close();
+			block.setAlpha(0f);
 			return;
 		}
 		String[] projection = { RememberMeColumn.COLUMN_NAME_C1,
@@ -162,6 +163,7 @@ public class LoginActivity extends Activity {
 		if (cursor.getCount() <= 0) {
 			rememberme.setChecked(false);
 			cursor.close();
+			block.setAlpha(0f);
 			return;
 		}
 		cursor.moveToFirst();
