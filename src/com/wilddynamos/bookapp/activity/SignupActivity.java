@@ -65,15 +65,6 @@ public class SignupActivity extends Activity {
         return true;
     } */
     
-    public void signUp(){
-    	/*Post List is a fragment activity in MultiWindowActivity*/
-    	Intent intent = new Intent(this, MultiWindowActivity.class);
-    	startActivity(intent);
-    }
-    
-    public Handler getHandler() {
-    	return handler;
-    }
     
 	public final static boolean isValidEmail(CharSequence target) {
 	    if (target == null) {
