@@ -71,7 +71,7 @@
 
        <ImageView
            android:id="@+id/editprofile_image"
-           android:layout_width="120dp"
+           android:layout_width="80dp"
            android:layout_height="100dp"
            android:layout_alignParentRight="true"
            android:layout_alignParentTop="true"

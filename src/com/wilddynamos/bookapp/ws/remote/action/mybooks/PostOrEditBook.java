@@ -27,12 +27,13 @@ public class PostOrEditBook extends AsyncTask<String, Void, Boolean> {
 		paramsMap.put("isRent", params[0]);
 		paramsMap.put("id", params[1]);
 		paramsMap.put("name", params[2]);
-		paramsMap.put("price", params[3]);
-		paramsMap.put("description", params[4]);
+		paramsMap.put("cover", params[3]);
+		paramsMap.put("price", params[4]);
+		paramsMap.put("description", params[5]);
 		
 		if("true".equals(params[0])) {
-			paramsMap.put("perValue", params[5]);
-			paramsMap.put("duration", params[6]);
+			paramsMap.put("perValue", params[6]);
+			paramsMap.put("duration", params[7]);
 			
 		}
 		
