@@ -1,9 +1,10 @@
 package com.wilddynamos.bookapp.activity.mybooks;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.BaseBookDetailActivity;
+import com.wilddynamos.bookapp.ws.remote.Connection;
+import com.wilddynamos.bookapp.ws.remote.action.mybooks.WithdrawRequest;
 
 public class MyRequestDetailActivity extends BaseBookDetailActivity {
 	
@@ -69,6 +72,16 @@ public class MyRequestDetailActivity extends BaseBookDetailActivity {
 	}
 	
 	public void withdraw(View view){
-		//TODO
+		new AlertDialog.Builder(this)
+		.setTitle("Sure to withdraw this request?")
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				WithdrawRequest wr = new WithdrawRequest(MyRequestDetailActivity.this);
+				wr.execute(new String[] {String.valueOf(id), String.valueOf(Connection.id)});
+			} 
+		})
+		.setNegativeButton("No", null)
+		.show();
 	}
 }

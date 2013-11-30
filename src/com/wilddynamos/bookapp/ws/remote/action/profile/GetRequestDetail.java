@@ -21,24 +21,24 @@ public class GetRequestDetail extends AsyncTask<String, Void, JSONArray> {
 	}
 
 	@Override
-	protected JSONArray doInBackground(String... params) {
+	protected JSONArray doInBackground(String... params) {		//send request id to server
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
 
 		try {
-			return DataUtils.receiveJSON(Connection.requestByPost("/Profile",
-					paramsMap));
-
-		} catch (Exception e) {
+			return DataUtils.receiveJSON(Connection.requestByPost("/GetRequestDetail", paramsMap));
+			
+		} catch(Exception e) {
 			return null;
 		}
 	}
 
 	@Override
 	protected void onPostExecute(JSONArray jsonArray) {
-		if (jsonArray == null || jsonArray.length() == 0)
-			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
-		else
-			a.fill(jsonArray);
+		if(a != null)
+			if(jsonArray == null || jsonArray.length() == 0)
+				Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
+			else
+				a.fill(jsonArray);		//after getting data froms server, fill the profile views
 	}
 }

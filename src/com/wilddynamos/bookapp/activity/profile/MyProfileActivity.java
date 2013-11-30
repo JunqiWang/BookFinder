@@ -3,7 +3,6 @@ package com.wilddynamos.bookapp.activity.profile;
 import java.io.IOException;
 import java.io.InputStream;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,13 +11,11 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.ChangePasswordActivity;
-import com.wilddynamos.bookapp.activity.LoginActivity;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.action.Logout;
@@ -26,15 +23,12 @@ import com.wilddynamos.bookapp.ws.remote.action.profile.GetMyProfile;
 
 public class MyProfileActivity extends Activity {
 	
-	ImageView profileImage;
-	TextView name;
-	TextView gender;
-	TextView campus;
-	TextView contact;
-	TextView address;
-	Button edit;
-	Button changePassword;
-	Button logout;
+	private ImageView profileImage;
+	private TextView name;
+	private TextView gender;
+	private TextView campus;
+	private TextView contact;
+	private TextView address;
 	
 	private User user;
 	
@@ -49,8 +43,6 @@ public class MyProfileActivity extends Activity {
 		campus = (TextView) findViewById(R.id.campus);
 		contact = (TextView) findViewById(R.id.contact);
 		address = (TextView) findViewById(R.id.address);
-		edit = (Button) findViewById(R.id.edit_button);
-		logout = (Button) findViewById(R.id.logout_button);
 		
 //		new GetMyProfile(this, this).start();
 		GetMyProfile gmp = new GetMyProfile(this);

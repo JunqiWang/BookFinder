@@ -15,52 +15,6 @@ import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
-//public class EditMyProfile extends Thread {
-//	
-//	private EditProfileActivity a;
-//	private Context context;
-//	private User user;
-//	private byte[] byteArray;
-//	
-//	public EditMyProfile(EditProfileActivity a, Context context, User user, byte[] byteArray) {
-//		this.a = a;
-//		this.context = context;
-//		this.user = user;
-//		this.byteArray = byteArray;
-//	}
-//	
-//	public void run() {
-//		try {
-//			UserDataSource userDataSource = new UserDataSource(context);
-//			userDataSource.open();
-//			int sqliteResult = userDataSource.updateUser(user);
-//			userDataSource.close();
-//			//System.out.println(sqliteResult);
-//			System.out.println(byteArray.length);
-//			String imageString = new String(byteArray, Charset.forName("ISO-8859-1"));
-//			System.out.println(imageString.length());
-//			
-//			Map<String, String> params = new HashMap<String, String>();
-//			params.put("id", String.valueOf(user.getId()));
-//			params.put("name", user.getName());
-//			params.put("gender", user.getGender() ? "M" : "F");
-//			params.put("campus", user.getCampus());
-//			params.put("contact", user.getContact());
-//			params.put("address", user.getAddress());
-//			params.put("image",imageString);
-//			
-//			InputStream is = Connection.requestByPost("/EditProfile", params);
-//			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-//			String result = br.readLine();
-//			
-//			
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			a.getHandler().sendEmptyMessage(-1);
-//		}
-//	}
-//
-//}
 public class EditMyProfile extends AsyncTask<String, Void, String> {
 
 	private EditProfileActivity a;
@@ -75,7 +29,7 @@ public class EditMyProfile extends AsyncTask<String, Void, String> {
 	@Override
 	protected String doInBackground(String... params) {
 		
-		//sqlite3 operations
+		//update profile in sqlite
 		UserDataSource userDataSource = new UserDataSource(context);
 		userDataSource.open();
 		
@@ -91,6 +45,7 @@ public class EditMyProfile extends AsyncTask<String, Void, String> {
 		sqliteResult = userDataSource.updateUser(user);
 		userDataSource.close();
 		
+		//send the new profile data to server
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
 		paramsMap.put("name", params[1]);
@@ -99,7 +54,6 @@ public class EditMyProfile extends AsyncTask<String, Void, String> {
 		paramsMap.put("contact", params[4]);
 		paramsMap.put("address", params[5]);
 		paramsMap.put("image", params[7]);
-//		System.out.println(paramsMap);
 		
 		return DataUtils.receiveFlag(Connection.requestByPost("/EditProfile", paramsMap));
 	}
@@ -112,7 +66,7 @@ public class EditMyProfile extends AsyncTask<String, Void, String> {
 			Toast.makeText(a, "Mysql wrong!", Toast.LENGTH_SHORT).show();
 		else if ((sqliteResult != 1) && result.equals("1"))
 			Toast.makeText(a, "Sqlite wrong!", Toast.LENGTH_SHORT).show();
-		else if ((sqliteResult == 1) && result.equals("1")) {
+		else if ((sqliteResult == 1) && result.equals("1")) { 	//after data updated successfully, go to my profile activity
 			Toast.makeText(a, "Profile updated!", Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(a, MultiWindowActivity.class);
             intent.putExtra(MultiWindowActivity.TAB_SELECT, 2);

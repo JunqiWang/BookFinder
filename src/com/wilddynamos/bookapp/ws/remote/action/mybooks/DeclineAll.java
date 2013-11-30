@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.mybooks.MyPostDetailActivity;
 import com.wilddynamos.bookapp.activity.mybooks.RequesterListActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
@@ -24,7 +23,7 @@ public class DeclineAll extends AsyncTask<String, Void, String> {
 	
 	private int id;
 	@Override
-	protected String doInBackground(String... params) {
+	protected String doInBackground(String... params) {		//send book_id to server
 		
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
@@ -35,7 +34,7 @@ public class DeclineAll extends AsyncTask<String, Void, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		if(result.equals("1")) {
+		if(result.equals("1")) {	//after successfully declined all requests, go to book detail activity
 			Toast.makeText(a, "All requests are declined!", Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(a, MyPostDetailActivity.class);
             intent.putExtra("id", id);

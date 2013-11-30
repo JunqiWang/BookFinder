@@ -9,6 +9,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,26 +22,15 @@ import com.wilddynamos.bookapp.ws.remote.action.mybooks.DeclineAll;
 import com.wilddynamos.bookapp.ws.remote.action.mybooks.GetRequestList;
  
 public class RequesterListActivity extends Activity {
-//		implements OnTouchListener	{
-	
-    // All static variables
-//    private SensorManager mSensorManager = null;
-//    private ProgressBar refreshProgress,
-//						loadProgress;
+
     
     private ListView requesterList;
     private Button declineButton;
     private LazyAdapter la;
     
-    private int bookId;
+    private int bookId;			//book id for the requests
     
     ArrayList<HashMap<String, String>> requesterArray;
-//    private float yDown;
-//	private float touchSlop;
-//	private boolean willRefresh = false;
-//	private boolean willLoad = false;
-//	private boolean atTop = true;
-//	private boolean atBottom = false;
 	
     private List<Integer> ids;
     private int currentPage;
@@ -52,132 +43,34 @@ public class RequesterListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mybooks_requestlist);
         
-        bookId = getIntent().getIntExtra("id", 0);
-        
-//      mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        bookId = getIntent().getIntExtra("id", 0);	//get book id from the former activity
         
         requesterList = (ListView) findViewById(R.id.request_list);
-//      refreshProgress = (ProgressBar) findViewById(R.id.refreshProgress);
-//		loadProgress = (ProgressBar) findViewById(R.id.loadProgress);
 		declineButton = (Button) findViewById(R.id.declineButton);
-		
-//		touchSlop = ViewConfiguration.get(this).getScaledTouchSlop();
 		
 		requesterArray = new ArrayList<HashMap<String, String>>();
 		ids = new ArrayList<Integer>();
 		
-		refresh();
+		refresh();		//refresh the page on create to get updated data
 		
 		declineButton.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
-				DeclineAll da =  new DeclineAll(RequesterListActivity.this);
-				da.execute(new String[] {String.valueOf(bookId)});
+			public void onClick(View v) {	//dialog for confirmation to decline all requests
+				new AlertDialog.Builder(RequesterListActivity.this)
+				.setTitle("Decline all requests?")
+				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						DeclineAll da =  new DeclineAll(RequesterListActivity.this);
+						da.execute(new String[] {String.valueOf(bookId)});
+					} 
+				})
+				.setNegativeButton("Back", null)
+				.show();
 			}
 		});	
-		
-//		requesterList.setOnItemClickListener(new OnItemClickListener() {
-//			 
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view,
-//                    int position, long id) {
-//            	System.out.println("haha");
-//            	showRequester(position);
-//            }
-//		});
-		
-//		requesterList.setOnTouchListener(this);
-//		requesterList.setOnScrollListener(new OnScrollListener() {
-//			
-//			@Override
-//			public void onScrollStateChanged(AbsListView view, int scrollState) {
-//			}
-//			
-//			@Override
-//			public void onScroll(AbsListView view, int firstVisibleItem,
-//					int visibleItemCount, int totalItemCount) {
-//				if(firstVisibleItem == 0)
-//					atTop = true;
-//				else
-//					atTop = false;
-//				
-//				if(firstVisibleItem + visibleItemCount == totalItemCount 
-//						&& firstVisibleItem != 0)
-//					atBottom = true;
-//				else
-//					atBottom = false;
-//			}
-//		});
     }
     
-//    public void showRequester(int position) {
-//		Intent intent = new Intent(this, RequesterDetailActivity.class); 
-//		intent.putExtra("id", ids.get(position));
-//		startActivity(intent);
-//	}
-    
-
-//	@Override
-//	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-//	}
-
-//	@Override
-//	public void onSensorChanged(SensorEvent event) {
-//		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
-//			float[] values = event.values;
-//			
-//		    if (Math.abs(values[0]) > 16 || Math.abs(values[1]) > 16 || Math.abs(values[2]) > 16){
-//		    	
-//		    	refresh();
-//
-//				mSensorManager
-//						.unregisterListener(this, 
-//								mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
-//		    }
-//		}
-//	}
-	
-//	@Override
-//	public boolean onTouch(View v, MotionEvent event) {
-//		
-//		switch(event.getAction()) {
-//		case MotionEvent.ACTION_DOWN:
-//			yDown = event.getRawY();
-//			break;
-//		case MotionEvent.ACTION_MOVE:
-//			float yMove = event.getRawY();
-//			float distance = yMove - yDown;
-//			
-//			if(Math.abs(distance) < touchSlop)
-//				return false;
-//			else if(distance < 0 && atBottom)
-//				willLoad = true;
-//			else if(distance > 0 && atTop)
-//				willRefresh = true;
-//			
-//			break;
-//		case MotionEvent.ACTION_UP:
-//			if(willRefresh) {
-//				willRefresh = false;
-//				refresh();
-//			}
-//			if(willLoad) {
-//				willLoad = false;
-////				loadProgress.setVisibility(ProgressBar.VISIBLE);
-//				
-//				try {
-//					load.cancel(true);
-//				} catch(Exception e) {
-//				}
-//				GetRequestList load = new GetRequestList(RequesterListActivity.this);
-//				load.execute(new String[] {String.valueOf(bookId), String.valueOf(currentPage)});
-//			}
-//			break;
-//		}
-//		
-//		return false;
-//	}
-	
 	public int getCurrentPage() {
 		return currentPage;
 	}
@@ -194,18 +87,12 @@ public class RequesterListActivity extends Activity {
 		return la;
 	}
 	
-//	public ProgressBar getLoadProgress() {
-//		return loadProgress;
-//	}
-	
 	public void setJSONArray(JSONArray jsonArray) {
 		this.jsonArray = jsonArray;
 	}
 	
-	//private methods
 	private void refresh() {
-		requesterList.setTop(50);
-//		refreshProgress.setVisibility(ProgressBar.VISIBLE);
+		requesterList.setTop(50);	
 		
 		currentPage = 1;
 		
@@ -213,11 +100,13 @@ public class RequesterListActivity extends Activity {
 			load.cancel(true);
 		} catch(Exception e) {
 		}
+		
+		//new getrequestlist async task to get requesters data from server
 		GetRequestList load = new GetRequestList(RequesterListActivity.this);
 		load.execute(new String[] {String.valueOf(bookId), String.valueOf(currentPage)});
 	}
     
-    public void pour() {
+    public void pour() {		//clear the requester array and load data, using adapter to set the list
 		requesterArray.clear();
 		loadData();
 		
@@ -225,15 +114,10 @@ public class RequesterListActivity extends Activity {
 		
 		requesterList.setAdapter(la);
 		
-//		refreshProgress.setVisibility(ProgressBar.INVISIBLE);
 		requesterList.setTop(0);
-		
-//		mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
-//						SensorManager.SENSOR_DELAY_NORMAL);
-		
 	}
     
-    public void loadData() {
+    public void loadData() {	//convert jsonArray data to hashmap, for following setting
 		if(jsonArray == null)
 			return;
 		

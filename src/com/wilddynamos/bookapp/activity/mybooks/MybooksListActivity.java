@@ -46,27 +46,24 @@ public class MybooksListActivity extends Activity {
         buyIds = new ArrayList<Integer>();
         borrowIds = new ArrayList<Integer>();
         
-        System.out.println("before load");
+        //new a getmybooks async task to get books of user id 
         GetMyBooks gmb = new GetMyBooks(this);
-        gmb.execute(new String[] {String.valueOf(Connection.id)});
-        System.out.println("after load");
+        gmb.execute(new String[] {String.valueOf(Connection.id)}); 
         
-        // setting list adapter
-        
-     
 	}
 	
-	public void loadData(JSONArray jsonArray) {
+	public void loadData(JSONArray jsonArray) {	//get data from the server and set headers and children for different kind of list
 		
 		System.out.println("haha");
 		listDataHeader = new ArrayList<String>();
       	listDataChild = new HashMap<String, List<String>>();
-
+      	
+      	// new 4 headers
       	listDataHeader.add("Sell");
       	listDataHeader.add("Rent");
       	listDataHeader.add("Buy");
       	listDataHeader.add("Borrow");
-      	System.out.println("hahahahaha");
+      	
       	List<String> sell = new ArrayList<String>();
       	List<String> rent = new ArrayList<String>();
       	List<String> buy = new ArrayList<String>();
@@ -75,6 +72,7 @@ public class MybooksListActivity extends Activity {
 		if(jsonArray == null)
 			return;
 		
+		// set books to different lists according to the type and sOrR attributes
 		try {
 			for(int i = 0; i < jsonArray.length(); i ++) {
 				JSONObject jo = jsonArray.getJSONObject(i);
@@ -118,55 +116,6 @@ public class MybooksListActivity extends Activity {
 		
 	}
 	
-//	private void loadData(JSONArray jsonArray) {
-//        listDataHeader = new ArrayList<String>();
-//        listDataChild = new HashMap<String, List<String>>();
-// 
-//        listDataHeader.add("Sell");
-//        listDataHeader.add("Rent");
-//        listDataHeader.add("Buy");
-//        listDataHeader.add("Borrow");
-//        
-//        
-//        List<String> sell = new ArrayList<String>();
-//        sell.add("The Shawshank Redemption");
-//        sell.add("The Godfather");
-//        sell.add("The Godfather: Part II");
-//        sell.add("Pulp Fiction");
-//        sell.add("The Good, the Bad and the Ugly");
-//        sell.add("The Dark Knight");
-//        sell.add("12 Angry Men");
-// 
-//        List<String> rent = new ArrayList<String>();
-//        rent.add("The Conjuring");
-//        rent.add("Despicable Me 2");
-//        rent.add("Turbo");
-//        rent.add("Grown Ups 2");
-//        rent.add("Red 2");
-//        rent.add("The Wolverine");
-// 
-//        List<String> buy = new ArrayList<String>();
-//        buy.add("2 Guns");
-//        buy.add("The Smurfs 2");
-//        buy.add("The Spectacular Now");
-//        buy.add("The Canyons");
-//        buy.add("Europa Report");
-//        
-//        List<String> borrow = new ArrayList<String>();
-//        borrow.add("2 Guns");
-//        borrow.add("The Smurfs 2");
-//        borrow.add("The Spectacular Now");
-//        borrow.add("The Canyons");
-//        borrow.add("Europa Report");
-// 
-//        listDataChild.put(listDataHeader.get(0), sell); // Header, Child data
-//        listDataChild.put(listDataHeader.get(1), rent);
-//        listDataChild.put(listDataHeader.get(2), buy);
-//        listDataChild.put(listDataHeader.get(3), borrow);
-//        
-//       
-//    }
-	
 	public void showBookForSaleInfo(View view, int childPosition){
 		Intent intent = new Intent(this, MyPostDetailActivity.class);
 		intent.putExtra("id", sellIds.get(childPosition));
@@ -192,7 +141,8 @@ public class MybooksListActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	public void fill() {
+	public void fill() {	
+		//set the adapter
 		listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 		expListView.setAdapter(listAdapter);
 		
@@ -200,7 +150,7 @@ public class MybooksListActivity extends Activity {
 
 	        	@Override
 	        	public void onGroupExpand(int arg0) {
-	        	        // TODO Auto-generated method stub
+	        	        // set other lists to collapse when one is open
 	        	        for(int i=0;i<listAdapter.getGroupCount();i++)
 	        	        {
 	        	                if(arg0!=i)
@@ -213,11 +163,7 @@ public class MybooksListActivity extends Activity {
 	        	                
 	        });
 	        expListView.setGroupIndicator(null);
-//			ArrayAdapter adapter = new ArrayAdapter<String>(this, 
-//			android.R.layout.simple_list_item_1, new String[]{"abc", "def", "ghi"});
-//			ListView listView = (ListView) findViewById(R.id.postlist);
-//			listView.setBackgroundColor(0);
-//			listView.setAdapter(adapter);
+	        //set listener for each list's children according to their types
 	        expListView.setOnChildClickListener(new OnChildClickListener() {
 	            @Override
 	            public boolean onChildClick(ExpandableListView expandablelistview,

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,8 +52,15 @@ public class RequesterDetailActivity extends Activity {
 
 	}
 
-	public void fill(JSONArray jsonArray) {
-		if (jsonArray == null || jsonArray.length() == 0)
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	public void fill(JSONArray jsonArray) {		//method to fill the layout with the data from server
+		if(jsonArray == null || jsonArray.length() == 0)
 			return;
 
 		JSONObject jo = null;

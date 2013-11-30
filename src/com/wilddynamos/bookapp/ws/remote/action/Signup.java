@@ -11,53 +11,8 @@ import android.widget.Toast;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.SignupActivity;
 import com.wilddynamos.bookapp.dblayout.UserDataSource;
-import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
-
-//public class Signup extends Thread {
-//	
-//	private SignupActivity a;
-//	
-//	private String email, name, pwd;
-//	
-//	private Context context;
-//	
-//	public Signup(SignupActivity a, String email, String name, String pwd, Context context) {
-//		this.a = a;
-//		this.email = email;
-//		this.name = name;
-//		this.pwd = pwd;
-//		this.context = context;
-//	}
-//
-//	@Override
-//	public void run() {
-//		Map<String, String> params = new HashMap<String, String>();
-//		params.put("email", email);
-//		params.put("name", name);
-//		params.put("password", pwd);
-//		try{
-//			InputStream is = Connection.requestByPost("/Signup", params);
-//			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-//			String result = br.readLine();
-//			
-//			
-//				if(result.equals("-1")) 
-//					a.getHandler().sendEmptyMessage(-1);
-//				else if (result.equals("-2"))
-//					a.getHandler().sendEmptyMessage(-2);
-//				else if (result.equals("1")) {
-//					a.getHandler().sendEmptyMessage(1);
-//					
-//				}
-//			}
-//
-//		catch(IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//}
 
 public class Signup extends AsyncTask<String, Void, String> {
 
@@ -74,7 +29,7 @@ public class Signup extends AsyncTask<String, Void, String> {
 	}
 	
 	@Override
-	protected String doInBackground(String... params) {
+	protected String doInBackground(String... params) {		//background: send email, name and pwd to server to signup as a new user
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		
 		email = params[0];
@@ -91,15 +46,8 @@ public class Signup extends AsyncTask<String, Void, String> {
 	@Override
 	protected void onPostExecute(String result) {
 		if(result.equals("1")) {
-//			Connection.login(email, password);
-//			
-//			UserDataSource userDataSource = new UserDataSource(context);
-//			userDataSource.open();
-//			userDataSource.createUser(Connection.id, email, password, 
-//					name, null, null, null, null, null);
-//			userDataSource.close();
 			
-			new Thread() {
+			new Thread() {				//new thread to add new user into sqlite
 				@Override
 				public void run() {
 					Connection.login(email, password);
@@ -112,7 +60,7 @@ public class Signup extends AsyncTask<String, Void, String> {
 			}.start();
 			
 			Toast.makeText(a, "Welcome, new friend!", Toast.LENGTH_SHORT).show();
-			Intent intent = new Intent(a, MultiWindowActivity.class);
+			Intent intent = new Intent(a, MultiWindowActivity.class);	//same as pages after login
 			//intent.putExtra(MultiWindowActivity.TAB_SELECT, 1);
 			a.startActivity(intent);
 		} 
