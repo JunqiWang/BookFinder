@@ -41,6 +41,19 @@ public class SignupActivity extends Activity {
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
+		
+		if ((name.getText().toString() == null || "".equals(name.getText()
+				.toString()))
+				|| (name.getText().toString() == null || "".equals(name
+						.getText().toString()))
+				|| (name.getText().toString() == null || "".equals(name
+						.getText().toString()))
+				|| (name.getText().toString() == null || "".equals(name
+						.getText().toString()))) {
+			Toast.makeText(this, "Please fill in all fields",
+					Toast.LENGTH_SHORT).show();
+			return;
+		}
 		if (!isValidEmail(email.getText().toString())) {
 			Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show();
 			return;
