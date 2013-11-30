@@ -24,45 +24,6 @@ import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.ws.remote.action.mybooks.AcceptRequest;
 
 public class LazyAdapter extends BaseAdapter {
-<<<<<<< HEAD
- 
-    private RequesterListActivity activity;
-    private ArrayList<HashMap<String,String>> data;
-    private static LayoutInflater inflater = null;
-    private List<Integer> ids;
-    
-    public LazyAdapter(RequesterListActivity a, ArrayList<HashMap<String,String>> d, List<Integer> ids) {
-        activity = a;
-        data = d;
-        inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.ids = ids;
-    }
- 
-    public int getCount() {
-        return data.size();
-    }
- 
-    public Object getItem(int position) {
-        return position;
-    }
- 
-    public long getItemId(int position) {
-        return position;
-    }
- 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View vi = convertView;
-        if(convertView == null)		//inflate the view
-            vi = inflater.inflate(R.layout.mybooks_requestlist_item, null);
- 
-        TextView requesterName = (TextView)vi.findViewById(R.id.requesterName); // title
-        ImageView profileImage = (ImageView)vi.findViewById(R.id.mybooks_requester_image);
-        Button viewButton = (Button)vi.findViewById(R.id.viewButton);
-        Button acceptButton = (Button)vi.findViewById(R.id.acceptButton);
-        
-        final int pos = position;
-        acceptButton.setOnClickListener(new OnClickListener() {
-=======
 
 	private RequesterListActivity activity;
 	private ArrayList<HashMap<String, String>> data;
@@ -106,7 +67,7 @@ public class LazyAdapter extends BaseAdapter {
 
 		final int pos = position;
 		acceptButton.setOnClickListener(new OnClickListener() {
->>>>>>> e6b07cf664c2e75b1df3e1b6a64655045dd9b3f8
+
 			@Override
 			public void onClick(View v) {
 				new AlertDialog.Builder(activity)
