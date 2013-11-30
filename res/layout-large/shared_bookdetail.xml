@@ -13,6 +13,7 @@
         android:alpha="0.3"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
+
     <!-- ScrollView for the rotation of screen -->
 
     <ScrollView
@@ -33,6 +34,7 @@
                 android:gravity="center"
                 android:textSize="40sp"
                 android:textStyle="bold" />
+
             <!-- book cover -->
 
             <ImageView
@@ -45,6 +47,7 @@
                 android:contentDescription="@string/cover"
                 android:onClick="zoomInOut"
                 android:src="@drawable/ic_launcher" />
+
             <!-- name -->
 
             <LinearLayout
@@ -69,6 +72,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="25sp" />
             </LinearLayout>
+
             <!-- price -->
 
             <LinearLayout
@@ -93,6 +97,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="25sp" />
             </LinearLayout>
+
             <!-- duration -->
 
             <LinearLayout
@@ -110,6 +115,7 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
             <!-- owner -->
 
             <LinearLayout
@@ -135,6 +141,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="25sp" />
             </LinearLayout>
+
             <!-- description -->
 
             <TextView
@@ -154,8 +161,8 @@
                 android:layout_height="150dp"
                 android:layout_below="@id/bookDetail_theDescriptionWord"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
                 android:maxLines="5"
                 android:scrollbars="vertical"
                 android:textSize="25sp" />
@@ -210,6 +217,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
             <!-- for has responded -->
 
             <TextView
@@ -237,6 +245,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:visibility="invisible" />
+
             <!-- edit and delete -->
 
             <LinearLayout
@@ -273,6 +282,7 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
             <!-- withdraw -->
 
             <Button
@@ -291,6 +301,7 @@
                 android:visibility="invisible" />
         </RelativeLayout>
     </ScrollView>
+
     <!-- Background used when loading -->
 
     <ImageView

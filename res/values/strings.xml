@@ -33,76 +33,76 @@
 	        book is very good This book is very good 
 	        This book is very good This book is very 
 	        good This book is very good  </string>
-<string name="responseDetail">Owner has not responded.</string>
-<string name="requestdetailsTitle">Requesting to Borrow</string>
-<!-- post list -->
-<string name="open">Open</string>
+    <string name="responseDetail">Owner has not responded.</string>
+    <string name="requestdetailsTitle">Requesting to Borrow</string>
+    <!-- post list -->
+    <string name="open">Open</string>
 
-<!-- My Books -->
-<string name="my_post">My Book for</string>
-<string name="view">View</string>
-<string name="titleMyPostDetail">Sell</string>
-<string name="request">requests</string>
-<string name="seeRequest">More</string>
-<string name="edit">Edit</string>
-<string name="delete">Delete</string>
-<string name="withdraw">Withdraw</string>
-<string name="duration">Rent for: </string>
+    <!-- My Books -->
+    <string name="my_post">My Book for</string>
+    <string name="view">View</string>
+    <string name="titleMyPostDetail">Sell</string>
+    <string name="request">requests</string>
+    <string name="seeRequest">More</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="duration">Rent for: </string>
 
-<!-- MultiWindow -->
-<string name="title_activity_tab1">Tab1Activity</string>
-<string name="title_activity_tab2">Tab2Activity</string>
-<string name="title_activity_tab3">Tab3Activity</string>
-<!-- Edit My Books Page Theme -->
+    <!-- MultiWindow -->
+    <string name="title_activity_tab1">Tab1Activity</string>
+    <string name="title_activity_tab2">Tab2Activity</string>
+    <string name="title_activity_tab3">Tab3Activity</string>
+    <!-- Edit My Books Page Theme -->
 
-<string name="name">Name: </string>
-<string name="user_name">Peter</string>
-<string name="price">Price: $</string>
-<string name="per"> per </string>
-<!-- <string name="rent">Rent for </string> -->
-<string name="cover">Cover</string>
-<string name="bookCover_alt">Book Cover</string>
-<string name="description">Description: </string>
-<string name="save">Save</string>
-<string name="cancel">Cancel</string>
-<string name="takePhoto">take photo</string>
-<string name="choosePhoto">choose photo</string>
-<!-- Edit My Profile Page Theme -->
-<string name="editProfilePageTitle">Edit Profile</string>
-<string name="profilePhoto">Profile Photo</string>
-<string name="gender">Gender:</string>
-<string name="user_gender">M</string>
-<string name="campus">Campus:</string>
-<string name="user_campus">Pittsburg</string>
-<string name="contact">Contact:</string>
-<string name="user_contact">4567506567</string>
-<string name="address">Address:</string>
-<string name="user_address">Pittsburg</string>
-<string name="change_password">Change Password</string>
-<string name="logout">Logout</string>
-<!-- Add New Book For Rent Theme -->
-<string name="addNewBookForRentTitle">Post New Book For Rent</string>
-<string name="post">Post</string>
-<!-- Mybooks list -->
-<string name="sell">Sell</string>
-<string name="rent">Rent</string>
-<string name="email">Email: </string>
+    <string name="name">Name: </string>
+    <string name="user_name">Peter</string>
+    <string name="price">Price: $</string>
+    <string name="per"> per </string>
+    <!-- <string name="rent">Rent for </string> -->
+    <string name="cover">Cover</string>
+    <string name="bookCover_alt">Book Cover</string>
+    <string name="description">Description: </string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="takePhoto">take photo</string>
+    <string name="choosePhoto">choose photo</string>
+    <!-- Edit My Profile Page Theme -->
+    <string name="editProfilePageTitle">Edit Profile</string>
+    <string name="profilePhoto">Profile Photo</string>
+    <string name="gender">Gender:</string>
+    <string name="user_gender">M</string>
+    <string name="campus">Campus:</string>
+    <string name="user_campus">Pittsburg</string>
+    <string name="contact">Contact:</string>
+    <string name="user_contact">4567506567</string>
+    <string name="address">Address:</string>
+    <string name="user_address">Pittsburg</string>
+    <string name="change_password">Change Password</string>
+    <string name="logout">Logout</string>
+    <!-- Add New Book For Rent Theme -->
+    <string name="addNewBookForRentTitle">Post New Book For Rent</string>
+    <string name="post">Post</string>
+    <!-- Mybooks list -->
+    <string name="sell">Sell</string>
+    <string name="rent">Rent</string>
+    <string name="email">Email: </string>
 
-<!-- profile detail -->
-<string name="profile_title">Profile</string>
+    <!-- profile detail -->
+    <string name="profile_title">Profile</string>
 
-<!-- mybooks_requestlist -->
-<string name="request_list">Request List</string>
-<string name="decline">Decline</string>
-<string name="decline_all">Decline All</string>
-<string name="accept">Accept</string>
+    <!-- mybooks_requestlist -->
+    <string name="request_list">Request List</string>
+    <string name="decline">Decline</string>
+    <string name="decline_all">Decline All</string>
+    <string name="accept">Accept</string>
 
-<!-- photos -->
-<string name="album_name">Bookapp_album</string>
-<string name="cannot">Bookapp cannot</string>
+    <!-- photos -->
+    <string name="album_name">Bookapp_album</string>
+    <string name="cannot">Bookapp cannot</string>
 
+    <!-- GeoLocation User interface labels and strings -->
 
-  <!-- GeoLocation User interface labels and strings -->
 
     <!-- Address format -->
     <string name="address_output_string">%1$s %2$s %3$s</string>

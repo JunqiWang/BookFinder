@@ -29,8 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/profile_title"
                 android:layout_marginTop="25dp"
+                android:text="@string/profile_title"
                 android:textSize="35sp"
                 android:textStyle="bold" />
             <!-- Profile image -->
@@ -243,6 +243,7 @@
                 android:visibility="invisible" >
 
                 <Button
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_button4"
@@ -253,6 +254,7 @@
                     android:textStyle="bold" />
 
                 <Button
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
