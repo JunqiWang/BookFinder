@@ -39,7 +39,7 @@
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="com.wilddynamos.bookapp.activity.mybooks.MybooksListActivity"
+            android:name="com.wilddynamos.bookapp.activity.mybooks.MyBookListActivity"
             android:label="@string/title_activity_tab2"
             android:windowSoftInputMode="stateHidden" >
         </activity>

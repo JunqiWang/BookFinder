@@ -191,13 +191,13 @@ public final class R {
         public static final int mybooks_mybookslist=0x7f030008;
         public static final int mybooks_requestlist=0x7f030009;
         public static final int mybooks_requestlist_item=0x7f03000a;
-        public static final int mybooks_spinneritem=0x7f03000b;
-        public static final int post_item=0x7f03000c;
-        public static final int post_list=0x7f03000d;
-        public static final int profile_detail=0x7f03000e;
-        public static final int profile_edit=0x7f03000f;
-        public static final int shared_bookdetail=0x7f030010;
-        public static final int signup=0x7f030011;
+        public static final int post_item=0x7f03000b;
+        public static final int post_list=0x7f03000c;
+        public static final int profile_detail=0x7f03000d;
+        public static final int profile_edit=0x7f03000e;
+        public static final int shared_bookdetail=0x7f03000f;
+        public static final int signup=0x7f030010;
+        public static final int spinneritem=0x7f030011;
         public static final int util_zoom_in_out=0x7f030012;
     }
     public static final class menu {

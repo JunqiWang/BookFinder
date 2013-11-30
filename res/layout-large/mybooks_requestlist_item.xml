@@ -13,6 +13,7 @@
         android:id="@+id/mybooks_requester_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
         android:contentDescription="@string/image"
         android:src="@drawable/profile" />
     <!-- Name -->
@@ -21,6 +22,7 @@
         android:id="@+id/requesterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/mybooks_requester_image"
         android:text="@string/user_name"
         android:textColor="#040404"
@@ -31,7 +33,7 @@
 
     <Button
         android:id="@+id/viewButton"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/requesterName"
         android:layout_margin="10dip"
@@ -44,7 +46,7 @@
 
     <Button
         android:id="@+id/acceptButton"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/requesterName"

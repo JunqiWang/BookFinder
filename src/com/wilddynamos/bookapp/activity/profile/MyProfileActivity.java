@@ -1,5 +1,7 @@
 package com.wilddynamos.bookapp.activity.profile;
 
+import java.nio.charset.Charset;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -44,6 +46,18 @@ public class MyProfileActivity extends BaseProfileActivity {
 
 	public void editProfile(View view) {
 		Intent intent = new Intent(this, EditProfileActivity.class);
+		
+		intent.putExtra("name", name.getText().toString());
+		intent.putExtra("gender", "Male".equals(gender.getText().toString()));
+		intent.putExtra("campus", campus.getText().toString());
+		intent.putExtra("contact", contact.getText().toString());
+		intent.putExtra("address", address.getText().toString());
+
+		if (profileImageString != null && !"".equals(profileImageString)) {
+			byte[] bytes = profileImageString.getBytes(Charset.forName("ISO-8859-1"));
+			intent.putExtra("BMP", bytes);
+		}
+		
 		startActivity(intent);
 	}
 

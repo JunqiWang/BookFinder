@@ -46,7 +46,6 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 
 	@Override
 	protected void fillFunctionSpecificView(final JSONObject jo) {
-		// System.out.println(jo.toString());
 		try {
 			try {
 				coverString = jo.getString("cover");

@@ -92,7 +92,7 @@
                     android:layout_alignParentTop="true"
                     android:contentDescription="@string/bookCover_alt"
                     android:onClick="zoomInOut"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_action_user" />
             </RelativeLayout>
             <!-- Name -->
 
@@ -134,13 +134,10 @@
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/edit_gender"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/gradient_bg"
-                    android:inputType="text" />
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <!-- Campus -->
 
@@ -265,12 +262,5 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:alpha="0"
-        android:background="@drawable/bg1"
-        android:contentDescription="@string/image" />
 
 </RelativeLayout>

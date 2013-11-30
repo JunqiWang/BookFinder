@@ -43,10 +43,9 @@
                 android:layout_below="@id/profile_title"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="50dp"
-                android:alpha="0.5"
                 android:contentDescription="@string/image"
                 android:onClick="zoomInOut"
-                android:src="#FFFFFF" />
+                android:src="@drawable/ic_action_user" />
 
             <LinearLayout
                 android:id="@+id/profile_nameLine"

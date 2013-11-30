@@ -27,6 +27,8 @@ public abstract class BaseProfileActivity extends Activity {
 	protected TextView contact;
 	protected TextView address;
 
+	protected String profileImageString = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,15 +61,16 @@ public abstract class BaseProfileActivity extends Activity {
 			contact.setText(jo.getString("contact"));
 			address.setText(jo.getString("address"));
 
-			String s = jo.getString("cover");
-			if (s != null && !"".equals(s)) {
-				byte[] cover = s.getBytes(Charset.forName("ISO-8859-1"));
-				System.out.println(cover.length);
+			profileImageString = jo.getString("photo");
+			if (profileImageString != null && !"".equals(profileImageString)) {
+				byte[] cover = profileImageString.getBytes(Charset
+						.forName("ISO-8859-1"));
 				Bitmap coverImage = BitmapFactory.decodeByteArray(cover, 0,
 						cover.length);
 				profileImage.setImageBitmap(coverImage);
 			}
 		} catch (Exception e) {
+			System.out.println(e.toString());
 		}
 
 		bg.setAlpha(0f);
