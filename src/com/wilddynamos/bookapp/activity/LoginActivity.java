@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+/** Activity for Login in **/
 public class LoginActivity extends Activity {
 
 	private EditText email;
@@ -46,14 +47,14 @@ public class LoginActivity extends Activity {
 		block = (ImageView) findViewById(R.id.login_block);
 
 		mDbHelper = new RememberMeDbHelper(getApplicationContext());
-
+		// If the user is remembered, it will automatically log in
 		setRemember();
-
+		// Validation for log in
 		login.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				
+
 				if (!"".equals(email.getText().toString())
 						&& !"".equals(password.getText().toString())) {
 
@@ -69,40 +70,33 @@ public class LoginActivity extends Activity {
 				// signIn();
 			}
 		});
-		
-/*		email.addTextChangedListener(new TextWatcher() { 
-	        public void afterTextChanged(Editable s) { 
-	            if (email.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+") && s.length() > 0)
-	            {
-	            	 System.out.println("--------Valid Email--------");
-	            }
-	            else
-	            {
-	            	System.out.println("invalid email");
-	            }
-	        } 
-	        public void beforeTextChanged(CharSequence s, int start, int count, int after) {} 
-	        public void onTextChanged(CharSequence s, int start, int before, int count) {} 
-	    });  */
+
 	}
-	
+
+	/**
+	 * If user return from other activity and the user is remembered, it will
+	 * automatically log in
+	 **/
 	@Override
-	protected void onRestart(){
+	protected void onRestart() {
 		super.onRestart();
 		setRemember();
 		block.setAlpha(0f);
 	}
-	
+
+	/** redirect to post list page **/
 	public void signIn() {
 		Intent intent = new Intent(this, MultiWindowActivity.class);
 		startActivity(intent);
 	}
 
+	/** redirect to sign up page **/
 	public void signUp(View view) {
 		Intent intent = new Intent(this, SignupActivity.class);
 		startActivity(intent);
 	}
 
+	/** forget password **/
 	public void forgotPassword(View view) {
 		final EditText email = new EditText(this);
 		forgotPwd = new ForgotPwd(this);
@@ -127,6 +121,7 @@ public class LoginActivity extends Activity {
 						}).setNegativeButton("Cancel", null).show();
 	}
 
+	/** choose if remember me **/
 	public void onCheckboxClicked(View view) {
 		if (((CheckBox) view).isChecked()) {
 			Toast.makeText(LoginActivity.this,
@@ -135,6 +130,7 @@ public class LoginActivity extends Activity {
 		}
 	}
 
+	/** save log in data to database when user select remember me **/
 	public void remember() {
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
@@ -149,12 +145,14 @@ public class LoginActivity extends Activity {
 		db.close();
 	}
 
+	/** when user do not select remember me, clear the database **/
 	public void notRemember() {
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 		db.delete(RememberMeColumn.TABLE_NAME, null, null);
 		db.close();
 	}
 
+	/** automatically log in when the user is remembered **/
 	public void setRemember() {
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
@@ -198,7 +196,7 @@ public class LoginActivity extends Activity {
 		password.setText(mypassword);
 		cursor.close();
 		db.close();
-		
+
 		String is_logout = getIntent().getStringExtra("logout");
 		if (is_logout == null) {
 			Login login = new Login(LoginActivity.this);

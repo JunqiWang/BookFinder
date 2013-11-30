@@ -23,177 +23,170 @@ import android.widget.ImageView;
 
 import com.wilddynamos.bookapp.R;
 
+/*** API for taking photo **/
 
+public class TakePhoto {
+	private static final int ACTION_TAKE_PHOTO = 1;
 
-public class TakePhoto{
-        private static final int ACTION_TAKE_PHOTO = 1;
+	private String mCurrentPhotoPath;
+	private ImageView imageView;
 
-        private String mCurrentPhotoPath;
-        private ImageView imageView;
+	private static final String JPEG_FILE_PREFIX = "IMG_";
+	private static final String JPEG_FILE_SUFFIX = ".jpg";
 
-        private static final String JPEG_FILE_PREFIX = "IMG_";
-        private static final String JPEG_FILE_SUFFIX = ".jpg";
+	private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 
-        private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
-        
-        private Button takePhoto;
-        
-        Activity activity;
-        /***take photo **/        
-        /* Photo album for this application */
-        public TakePhoto(Activity activity, String mCurrentPhotoPath, ImageView imageView, Button button){
-                this.activity = activity;
-                this.mCurrentPhotoPath = mCurrentPhotoPath;
-                this.imageView = imageView;
-                this.takePhoto = button;
-        }
-        private String getAlbumName() {
-                return activity.getString(R.string.album_name);
-        }
+	private Button takePhoto;
 
-        
-        private File getAlbumDir() {
-                File storageDir = null;
+	Activity activity;
 
-                if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-                        
-                        storageDir = mAlbumStorageDirFactory.getAlbumStorageDir(getAlbumName());
+	public TakePhoto(Activity activity, String mCurrentPhotoPath,
+			ImageView imageView, Button button) {
+		this.activity = activity;
+		this.mCurrentPhotoPath = mCurrentPhotoPath;
+		this.imageView = imageView;
+		this.takePhoto = button;
+	}
 
-                        if (storageDir != null) {
-                                if (! storageDir.mkdirs()) {
-                                        if (! storageDir.exists()){
-                                                Log.d("CameraSample", "failed to create directory");
-                                                return null;
-                                        }
-                                }
-                        }
-                        
-                } else {
-                        Log.v(activity.getString(R.string.app_name), "External storage is not mounted READ/WRITE.");
-                }
-                
-                return storageDir;
-        }
+	private String getAlbumName() {
+		return activity.getString(R.string.album_name);
+	}
 
-        @SuppressLint("SimpleDateFormat")
-        private File createImageFile() throws IOException {
-                // Create an image file name
-                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
-                File albumF = getAlbumDir();
-                File imageF = File.createTempFile(imageFileName, JPEG_FILE_SUFFIX, albumF);
-                return imageF;
-        }
+	/** get photo album for this application **/
+	private File getAlbumDir() {
+		File storageDir = null;
 
-        private File setUpPhotoFile() throws IOException {
-                
-                File f = createImageFile();
-                mCurrentPhotoPath = f.getAbsolutePath();
-                
-                return f;
-        }
+		if (Environment.MEDIA_MOUNTED.equals(Environment
+				.getExternalStorageState())) {
 
-        
-        public void galleryAddPic(String path) {
-            Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-                File f = new File(path);
-            Uri contentUri = Uri.fromFile(f);
-            mediaScanIntent.setData(contentUri);
-            activity.sendBroadcast(mediaScanIntent);
-        }
-        
-        public void dispatchTakePictureIntent(int actionCode) {
+			storageDir = mAlbumStorageDirFactory
+					.getAlbumStorageDir(getAlbumName());
 
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+			if (storageDir != null) {
+				if (!storageDir.mkdirs()) {
+					if (!storageDir.exists()) {
+						Log.d("CameraSample", "failed to create directory");
+						return null;
+					}
+				}
+			}
 
-                File f = null;
-                        
-                try {
-                        f = setUpPhotoFile();
-                        mCurrentPhotoPath = f.getAbsolutePath();
-                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                } catch (IOException e) {
-                        e.printStackTrace();
-                        f = null;
-                        mCurrentPhotoPath = null;
-                } 
-                activity.startActivityForResult(takePictureIntent, actionCode);
-        }
+		} else {
+			Log.v(activity.getString(R.string.app_name),
+					"External storage is not mounted READ/WRITE.");
+		}
 
-        public void handleCameraPhoto( ) {
+		return storageDir;
+	}
 
-                if (mCurrentPhotoPath != null) {
-                        BitmapWorkerTask task = new BitmapWorkerTask(mCurrentPhotoPath,imageView);
-                    task.execute();
-                    //    galleryAddPic();
-        //                mCurrentPhotoPath = null;
-                }
-        } 
+	/** Create an image file **/
+	@SuppressLint("SimpleDateFormat")
+	private File createImageFile() throws IOException {
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+				.format(new Date());
+		String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
+		File albumF = getAlbumDir();
+		File imageF = File.createTempFile(imageFileName, JPEG_FILE_SUFFIX,
+				albumF);
+		return imageF;
+	}
 
-        Button.OnClickListener mTakePicOnClickListener = 
-                new Button.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                        dispatchTakePictureIntent(ACTION_TAKE_PHOTO);
-                }
-        };
+	/** set up photo file **/
+	private File setUpPhotoFile() throws IOException {
 
+		File f = createImageFile();
+		mCurrentPhotoPath = f.getAbsolutePath();
 
-        /**
-         * Indicates whether the specified action can be used as an intent. This
-         * method queries the package manager for installed packages that can
-         * respond to an intent with the specified action. If no suitable package is
-         * found, this method returns false.
-         * http://android-developers.blogspot.com/2009/01/can-i-use-this-intent.html
-         *
-         * @param context The application's environment.
-         * @param action The Intent action to check for availability.
-         *
-         * @return True if an Intent with the specified action can be sent and
-         *         responded to, false otherwise.
-         */
-        public static boolean isIntentAvailable(Context context, String action) {
-                final PackageManager packageManager = context.getPackageManager();
-                final Intent intent = new Intent(action);
-                List<ResolveInfo> list =
-                        packageManager.queryIntentActivities(intent,
-                                        PackageManager.MATCH_DEFAULT_ONLY);
-                return list.size() > 0;
-        }
+		return f;
+	}
 
-        private void setBtnListenerOrDisable( 
-                        Button btn, 
-                        Button.OnClickListener onClickListener,
-                        String intentName
-        ) {
-                if (isIntentAvailable(activity, intentName)) {
-                        btn.setOnClickListener(onClickListener);                
-                } else {
-                        btn.setText( 
-                                activity.getText(R.string.cannot).toString() + " " + btn.getText());
-                        btn.setClickable(false);
-                }
-        }
-        
-        public void start(){
-                //it has define take photo button above
-                setBtnListenerOrDisable( 
-                                takePhoto, 
-                                mTakePicOnClickListener,
-                                MediaStore.ACTION_IMAGE_CAPTURE
-                );
-                                
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
-                                        mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
-                                } else {
-                                        mAlbumStorageDirFactory = new BaseAlbumDirFactory();
-                                }
-                                /**take photo **/
-        }
-        
-        public String getPath(){
-        	return mCurrentPhotoPath;
-        }
-/***take photo **/        
+	/** show picture in gallery **/
+	public void galleryAddPic(String path) {
+		Intent mediaScanIntent = new Intent(
+				"android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+		File f = new File(path);
+		Uri contentUri = Uri.fromFile(f);
+		mediaScanIntent.setData(contentUri);
+		activity.sendBroadcast(mediaScanIntent);
+	}
+
+	/** start taking photo activity **/
+	public void dispatchTakePictureIntent(int actionCode) {
+
+		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+		File f = null;
+
+		try {
+			f = setUpPhotoFile();
+			mCurrentPhotoPath = f.getAbsolutePath();
+			takePictureIntent
+					.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+		} catch (IOException e) {
+			e.printStackTrace();
+			f = null;
+			mCurrentPhotoPath = null;
+		}
+		activity.startActivityForResult(takePictureIntent, actionCode);
+	}
+
+	/** handle camera photo **/
+	public void handleCameraPhoto() {
+
+		if (mCurrentPhotoPath != null) {
+			BitmapWorkerTask task = new BitmapWorkerTask(mCurrentPhotoPath,
+					imageView);
+			task.execute();
+			// galleryAddPic();
+			// mCurrentPhotoPath = null;
+		}
+	}
+
+	Button.OnClickListener mTakePicOnClickListener = new Button.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			dispatchTakePictureIntent(ACTION_TAKE_PHOTO);
+		}
+	};
+
+	/** Indicates whether the specified action can be used as an intent. **/
+	public static boolean isIntentAvailable(Context context, String action) {
+		final PackageManager packageManager = context.getPackageManager();
+		final Intent intent = new Intent(action);
+		List<ResolveInfo> list = packageManager.queryIntentActivities(intent,
+				PackageManager.MATCH_DEFAULT_ONLY);
+		return list.size() > 0;
+	}
+
+	/** set button listener **/
+	private void setBtnListenerOrDisable(Button btn,
+			Button.OnClickListener onClickListener, String intentName) {
+		if (isIntentAvailable(activity, intentName)) {
+			btn.setOnClickListener(onClickListener);
+		} else {
+			btn.setText(activity.getText(R.string.cannot).toString() + " "
+					+ btn.getText());
+			btn.setClickable(false);
+		}
+	}
+
+	/** start taking photo action **/
+	public void start() {
+		// it has define take photo button above
+		setBtnListenerOrDisable(takePhoto, mTakePicOnClickListener,
+				MediaStore.ACTION_IMAGE_CAPTURE);
+		// differet API use different storage dir
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+			mAlbumStorageDirFactory = new FroyoAlbumDirFactory();
+		} else {
+			mAlbumStorageDirFactory = new BaseAlbumDirFactory();
+		}
+
+	}
+
+	/** get the path of the photo **/
+	public String getPath() {
+		return mCurrentPhotoPath;
+	}
 
 }

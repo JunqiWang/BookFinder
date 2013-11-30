@@ -19,6 +19,7 @@ import com.wilddynamos.bookapp.activity.post.PostListActivity;
 import com.wilddynamos.bookapp.activity.profile.MyProfileActivity;
 import com.wilddynamos.bookapp.service.NotificationCenter;
 
+/** Activity for multiwindow display **/
 @SuppressWarnings("deprecation")
 public class MultiWindowActivity extends TabActivity {
 	public final static String TAB_SELECT = "tab_select";
