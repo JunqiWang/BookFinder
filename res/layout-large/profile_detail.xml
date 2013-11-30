@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for profile -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
+
+    <!-- Background -->
 
     <ImageView
         android:layout_width="fill_parent"
@@ -8,6 +12,7 @@
         android:alpha="0.3"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
+    <!-- ScrollView for the rotation of screen -->
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -16,6 +21,8 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
+
+            <!-- Title -->
 
             <TextView
                 android:id="@+id/profile_photo_string"
@@ -26,6 +33,7 @@
                 android:text="@string/profile_detail_title"
                 android:textSize="35sp"
                 android:textStyle="bold" />
+            <!-- Profile image -->
 
             <ImageView
                 android:id="@+id/profile_image"
@@ -37,6 +45,7 @@
                 android:contentDescription="@string/image"
                 android:onClick="zoomInOut"
                 android:src="@drawable/ic_launcher" />
+            <!-- Name -->
 
             <LinearLayout
                 android:id="@+id/profile_detail_linear1"
@@ -61,6 +70,7 @@
                     android:text="@string/user_name"
                     android:textSize="30sp" />
             </LinearLayout>
+            <!-- Gender -->
 
             <LinearLayout
                 android:id="@+id/profile_detail_linear2"
@@ -85,6 +95,7 @@
                     android:text="@string/user_gender"
                     android:textSize="30sp" />
             </LinearLayout>
+            <!-- Campus -->
 
             <LinearLayout
                 android:id="@+id/profile_detail_linear3"
@@ -109,6 +120,7 @@
                     android:text="@string/user_campus"
                     android:textSize="30sp" />
             </LinearLayout>
+            <!-- Cotact -->
 
             <LinearLayout
                 android:id="@+id/profile_detail_linear4"
@@ -133,6 +145,7 @@
                     android:text="@string/user_contact"
                     android:textSize="30sp" />
             </LinearLayout>
+            <!-- Address -->
 
             <LinearLayout
                 android:id="@+id/profile_detail_linear5"
@@ -166,6 +179,8 @@
                 android:layout_marginTop="60dp"
                 android:orientation="vertical" >
 
+                <!-- Edit Button -->
+
                 <Button
                     android:id="@+id/edit_button"
                     android:layout_width="300dp"
@@ -176,6 +191,7 @@
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold" />
+                <!-- Change Password Button -->
 
                 <Button
                     android:id="@+id/change_password_button"
@@ -188,6 +204,7 @@
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold" />
+                <!-- Logout Button -->
 
                 <Button
                     android:id="@+id/logout_button"

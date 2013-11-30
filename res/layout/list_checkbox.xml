@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Check Box in ListView -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"  
+    android:gravity="center_horizontal"
     android:orientation="horizontal"
-    android:padding="6dp">
-     
+    android:padding="6dp" >
+
     <CheckBox
         android:id="@+id/rentCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rent"
         android:textSize="18sp" />
-    
+
     <CheckBox
         android:id="@+id/sellCheckBox"
         android:layout_width="wrap_content"
@@ -20,5 +21,5 @@
         android:layout_marginLeft="130dp"
         android:text="@string/sell"
         android:textSize="18sp" />
- 
+
 </RelativeLayout>

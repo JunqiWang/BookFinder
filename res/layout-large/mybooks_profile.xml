@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- Layout for my profile page -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
+
+    <!-- Background -->
 
     <ImageView
         android:layout_width="fill_parent"
@@ -8,6 +12,7 @@
         android:alpha="0.3"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
+    <!-- ScrollView for the rotation of screen -->
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -16,6 +21,8 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
+
+            <!-- title -->
 
             <TextView
                 android:id="@+id/profile_title"
@@ -26,6 +33,7 @@
                 android:text="@string/profile_detail_title"
                 android:textSize="30sp"
                 android:textStyle="bold" />
+            <!-- Profile Image -->
 
             <ImageView
                 android:id="@+id/mybooks_profile_image"
@@ -36,6 +44,7 @@
                 android:layout_marginRight="60dp"
                 android:layout_marginTop="50dp"
                 android:contentDescription="@string/image" />
+            <!-- Name -->
 
             <LinearLayout
                 android:id="@+id/profile_nameLine"
@@ -59,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="30sp" />
             </LinearLayout>
+            <!-- Gender -->
 
             <LinearLayout
                 android:id="@+id/profile_emailLine"
@@ -81,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="30sp" />
             </LinearLayout>
+            <!-- Campus -->
 
             <LinearLayout
                 android:id="@+id/mybooks_profile_linear2"
@@ -104,6 +115,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="30sp" />
             </LinearLayout>
+            <!-- Contact -->
 
             <LinearLayout
                 android:id="@+id/mybooks_profile_linear3"
@@ -127,6 +139,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="30sp" />
             </LinearLayout>
+            <!-- Address -->
 
             <LinearLayout
                 android:id="@+id/mybooks_profile_linear4"
