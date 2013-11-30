@@ -44,7 +44,6 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
-import com.wilddynamos.bookapp.activity.mybooks.PostOrEditBookActivity;
 import com.wilddynamos.bookapp.dblayout.UserDataSource;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.BitmapWorkerTask;
@@ -53,8 +52,6 @@ import com.wilddynamos.bookapp.utils.TakePhoto;
 import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 import com.wilddynamos.bookapp.ws.remote.action.profile.EditMyProfile;
-import android.view.View;
-import android.view.View.OnClickListener;
 
 public class EditProfileActivity extends Activity implements
 	LocationListener,
@@ -75,7 +72,6 @@ public class EditProfileActivity extends Activity implements
         private Button takePhoto;
         private Button choosePhoto;
         private Button save;
-        private Button cancel;
         
         private User user = new User();
         private Context context;
@@ -99,31 +95,6 @@ public class EditProfileActivity extends Activity implements
          // Stores the current instantiation of the location client in this object
          private LocationClient mLocationClient;
 
-         // Handles to UI widgets
-
-         
-//        @SuppressLint("HandlerLeak")
-//        private Handler handler = new Handler() {
-//    		@Override
-//        	public void handleMessage(Message msg){
-//        		
-//        		if(msg.what == -1)
-//        			Toast.makeText(EditProfileActivity.this, "Exceptions!", Toast.LENGTH_SHORT).show();
-//        		else if(msg.what == -2) 
-//        			Toast.makeText(EditProfileActivity.this, "Both sqlite and mysql wrong!", Toast.LENGTH_SHORT).show();
-//        		else if(msg.what == -3) 
-//        			Toast.makeText(EditProfileActivity.this, "Mysql wrong!", Toast.LENGTH_SHORT).show();
-//        		else if(msg.what == -4) 
-//        			Toast.makeText(EditProfileActivity.this, "Sqlite wrong!", Toast.LENGTH_SHORT).show();
-//        		else if(msg.what == 1) {
-//        			Toast.makeText(EditProfileActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
-//        			save();
-//        		}
-//        		else
-//        			Toast.makeText(EditProfileActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-//        	}
-//    	};
-    	
     	@Override
     	public void onCreate(Bundle savedInstanceState){
     		super.onCreate(savedInstanceState);
@@ -140,10 +111,9 @@ public class EditProfileActivity extends Activity implements
     		takePhoto = (Button) findViewById(R.id.editprofile_take_photo_button);
     		choosePhoto = (Button) findViewById(R.id.editprofile_choose_photo_button);
     		save = (Button) findViewById(R.id.editprofile_saveButton);
-    		cancel = (Button) findViewById(R.id.editprofile_cancelButton);
     		
     		
-    		Thread th = new Thread() {
+    		Thread th = new Thread() {		//get the original profile from sqlite and set them into the edittext
 				@Override
 				public void run() {
 					UserDataSource userDataSource = new UserDataSource(context);
@@ -196,44 +166,45 @@ public class EditProfileActivity extends Activity implements
     		save.setOnClickListener(new OnClickListener() {
     			@Override
     			public void onClick(View v) {
-    				//deal with the taken photo
-    				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    				try{
-    					File file = new File(mCurrentPhotoPath);
-    					FileInputStream fis = new FileInputStream(file);
-    					byte[] buf = new byte[1024 * 1024];
-    					for(int readNum; (readNum = fis.read(buf)) != -1;)
-    						bos.write(buf, 0, readNum);
-    					fis.close();
-    				} catch(Exception e) {
-    					e.printStackTrace();
-    				}
-    				byte[] bytes = bos.toByteArray();
-
-//    				String[] params = new String[]{};
-//    				params[0] = String.valueOf(Connection.id);
-//    				params[1] = name.getEditableText().toString();
-//    				params[2] = gender.getEditableText().toString();
-//    				params[3] = campus.getEditableText().toString();
-//    				params[4] = contact.getEditableText().toString();
-//    				params[5] = myaddress.getEditableText().toString();
-//    				params[6] = mCurrentPhotoPath;
-    				
-    				String imageString = new String(bytes, Charset.forName("ISO-8859-1"));
-//    				params[7] = imageString;
-    				
-    				EditMyProfile emp = new EditMyProfile(EditProfileActivity.this, context);
-    				emp.execute(new String[] {
-    						String.valueOf(Connection.id),
-    						name.getEditableText().toString(),
-    						gender.getEditableText().toString(),
-    						campus.getEditableText().toString(),
-    						contact.getEditableText().toString(),
-    						myaddress.getEditableText().toString(),
-    						mCurrentPhotoPath,
-    						imageString
-    				});
-    				
+    				//dialog for confirmation to save the newly entered profile data
+    				new AlertDialog.Builder(EditProfileActivity.this)
+    				.setTitle("Sure to save the profile?")
+    				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    					@Override
+    					public void onClick(DialogInterface dialog, int which) {
+    						ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    	    				try{
+    	    					//get the photo from certain path and turn that into byte array
+    	    					File file = new File(mCurrentPhotoPath);
+    	    					FileInputStream fis = new FileInputStream(file);
+    	    					byte[] buf = new byte[1024 * 1024];
+    	    					for(int readNum; (readNum = fis.read(buf)) != -1;)
+    	    						bos.write(buf, 0, readNum);
+    	    					fis.close();
+    	    				} catch(Exception e) {
+    	    					e.printStackTrace();
+    	    				}
+    	    				byte[] bytes = bos.toByteArray();
+    	    				
+    	    				//use the ISO-8859-1 to code the bytearray to string
+    	    				String imageString = new String(bytes, Charset.forName("ISO-8859-1"));
+    	    				
+    	    				//new a editmyprofile async task to send the data to server to update
+    	    				EditMyProfile emp = new EditMyProfile(EditProfileActivity.this, context);
+    	    				emp.execute(new String[] {
+    	    						String.valueOf(Connection.id),
+    	    						name.getEditableText().toString(),
+    	    						gender.getEditableText().toString(),
+    	    						campus.getEditableText().toString(),
+    	    						contact.getEditableText().toString(),
+    	    						myaddress.getEditableText().toString(),
+    	    						mCurrentPhotoPath,
+    	    						imageString
+    	    				});
+    					} 
+    				})
+    				.setNegativeButton("No", null)
+    				.show();
     			}
     		}); 
                 /***take photo ***/
@@ -329,8 +300,6 @@ public class EditProfileActivity extends Activity implements
                               Toast.LENGTH_SHORT).show();
                 } // switch
         }
-
-        // Some lifecycle callbacks so that the image can survive orientation change
 
         @Override
         protected void onSaveInstanceState(Bundle outState) {

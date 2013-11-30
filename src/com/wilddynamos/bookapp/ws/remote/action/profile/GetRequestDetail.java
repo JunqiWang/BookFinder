@@ -22,7 +22,7 @@ public class GetRequestDetail extends AsyncTask<String, Void, JSONArray> {
 	}
 	
 	@Override
-	protected JSONArray doInBackground(String... params) {
+	protected JSONArray doInBackground(String... params) {		//send request id to server
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
 		
@@ -36,11 +36,10 @@ public class GetRequestDetail extends AsyncTask<String, Void, JSONArray> {
 
 	@Override
 	protected void onPostExecute(JSONArray jsonArray) {
-		System.out.println(jsonArray);
 		if(a != null)
 			if(jsonArray == null || jsonArray.length() == 0)
 				Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
 			else
-				a.fill(jsonArray);
+				a.fill(jsonArray);		//after getting data froms server, fill the profile views
 	}
 }

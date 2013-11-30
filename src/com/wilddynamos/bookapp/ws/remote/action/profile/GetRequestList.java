@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.os.AsyncTask;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.wilddynamos.bookapp.activity.mybooks.RequesterListActivity;
@@ -21,7 +20,7 @@ public class GetRequestList extends AsyncTask<String, Void, String> {
 	}
 	
 	@Override
-	protected String doInBackground(String... params) {
+	protected String doInBackground(String... params) {		//send book_id and current page to server
 		try{
 			Map<String, String> paramsMap = new HashMap<String, String>();
 			paramsMap.put("id", params[0]);
@@ -41,11 +40,10 @@ public class GetRequestList extends AsyncTask<String, Void, String> {
 	protected void onPostExecute(String result) {
 		if(result.equals("1")) {
 			if(a.getCurrentPage() == 1)
-				a.pour();
+				a.pour();		//pour data if current page equals to 1
 			else {
-				a.loadData();
+				a.loadData();		//if current page not equals to 1, load data with json array.
 				a.getLazyAdapter().notifyDataSetChanged();
-//				a.getLoadProgress().setVisibility(ProgressBar.INVISIBLE);
 			}
 		} 
 		else if (result.equals("-1"))

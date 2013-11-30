@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -33,7 +35,6 @@ public class LazyAdapter extends BaseAdapter {
         data = d;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.ids = ids;
-    //    imageLoader=  new ImageLoader(activity.getApplicationContext());
     }
  
     public int getCount() {
@@ -50,7 +51,7 @@ public class LazyAdapter extends BaseAdapter {
  
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
-        if(convertView == null)
+        if(convertView == null)		//inflate the view
             vi = inflater.inflate(R.layout.mybooks_requestlist_row, null);
  
         TextView requesterName = (TextView)vi.findViewById(R.id.requesterName); // title
@@ -62,10 +63,19 @@ public class LazyAdapter extends BaseAdapter {
         acceptButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				AcceptRequest ar = new AcceptRequest(activity);
-				String[] params = {String.valueOf(activity.getBookId()), 
-						String.valueOf(activity.getIds().get(pos))};
-				ar.execute(params);
+				new AlertDialog.Builder(activity)	//a dialog box for user to confirm the accept operation
+				.setTitle("Accept this requests?")
+				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					@Override		//after user click the yes button, new a relative asynctask to connect to the server
+					public void onClick(DialogInterface dialog, int which) {
+						AcceptRequest ar = new AcceptRequest(activity);
+						String[] params = {String.valueOf(activity.getBookId()), 
+								String.valueOf(activity.getIds().get(pos))};
+						ar.execute(params);
+					} 
+				})
+				.setNegativeButton("No", null) // do nothing if user clicks no
+				.show();
 			}
 		});	
         
@@ -78,11 +88,10 @@ public class LazyAdapter extends BaseAdapter {
         
         
         HashMap<String, String> requester = new HashMap<String, String>();
-        requester = data.get(position);
+        requester = data.get(position); 	//get data according to the position
  
-        // Setting all values in listview
         requesterName.setText(requester.get("name"));
-        String s = requester.get("photo");
+        String s = requester.get("photo"); //decode the byte array to string than to bitmap
         if(s != null && !"".equals(s)) {
 			byte[] image = s.getBytes(Charset.forName("ISO-8859-1"));
 			Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);

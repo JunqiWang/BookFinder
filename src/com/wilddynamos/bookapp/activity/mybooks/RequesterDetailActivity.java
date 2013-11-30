@@ -44,6 +44,7 @@ public class RequesterDetailActivity extends Activity {
 		contact = (TextView) findViewById(R.id.mybooks_profile_contact);
 		address = (TextView) findViewById(R.id.mybooks_profile_address);
 		
+		// new getrequestdetail async task to get the specified requeseters profile data from server
 		GetRequestDetail grd = new GetRequestDetail(this);
 		String params[] = {String.valueOf(requesterId)};
 		System.out.println(params[0]);
@@ -58,7 +59,7 @@ public class RequesterDetailActivity extends Activity {
 		return true;
 	}
 	
-	public void fill(JSONArray jsonArray) {
+	public void fill(JSONArray jsonArray) {		//method to fill the layout with the data from server
 		if(jsonArray == null || jsonArray.length() == 0)
 			return;
 		

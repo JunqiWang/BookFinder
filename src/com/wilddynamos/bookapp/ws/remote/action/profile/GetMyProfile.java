@@ -9,31 +9,6 @@ import com.wilddynamos.bookapp.dblayout.UserDataSource;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
-//public class GetMyProfile extends Thread {
-//	
-//	private MyProfileActivity a;
-//	private Context context;
-//	
-//	public GetMyProfile(MyProfileActivity a, Context context) {
-//		this.a = a;
-//		this.context = context;
-//	}
-//	
-//	public void run() {
-//		try {
-//			UserDataSource userDataSource = new UserDataSource(context);
-//			userDataSource.open();
-//			a.setUser(userDataSource.getUser(Connection.id));
-//			userDataSource.close();
-//			
-//			a.getHandler().sendEmptyMessage(1);
-//			
-//		} catch(Exception e) {
-//			a.getHandler().sendEmptyMessage(-1);
-//		}
-//	}
-//}
-
 public class GetMyProfile extends AsyncTask<String, Void, Boolean> {
 
 	private MyProfileActivity a;
@@ -46,7 +21,7 @@ public class GetMyProfile extends AsyncTask<String, Void, Boolean> {
 	}
 	
 	@Override
-	protected Boolean doInBackground(String... params) {
+	protected Boolean doInBackground(String... params) {		//
 		UserDataSource userDataSource = new UserDataSource(context);
 		userDataSource.open();
 		User user = userDataSource.getUser(Connection.id);

@@ -41,30 +41,22 @@ public class SignupActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				//check if password equals to the confirmed password
 				if (password.getEditableText().toString().equals(confirmation.getEditableText().toString())) {
+					//if confirmed, new a signup async task to connect to server
 					Signup su = new Signup(SignupActivity.this, context);
 					su.execute(new String[] {email.getEditableText().toString(), 
 		        			name.getEditableText().toString(), 
 		        			password.getEditableText().toString()});
 				}
-//				new Signup(SignupActivity.this,
-//						  email.getEditableText().toString(),
-//						  name.getEditableText().toString(),
-//						  password.getEditableText().toString(),
-//						  context)
-//					.start();
+
 				else Toast.makeText(SignupActivity.this, "Password confirmation not match!", Toast.LENGTH_LONG).show();
 			}
 		});
     }
 
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    } */
-	public final static boolean isValidEmail(CharSequence target) {
+
+	public final static boolean isValidEmail(CharSequence target) { //email validation
 	    if (target == null) {
 	        return false;
 	    } else {

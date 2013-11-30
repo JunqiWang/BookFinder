@@ -18,8 +18,8 @@ import com.wilddynamos.bookapp.R;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		
 	    private Context _context;
-	    private List<String> _listDataHeader; 
-	    private HashMap<String, List<String>> _listDataChild;
+	    private List<String> _listDataHeader; 	//list header of the expandable view
+	    private HashMap<String, List<String>> _listDataChild;	//child of each header(header as key, children as values)
 	 
 	    public ExpandableListAdapter(Context context, List<String> listDataHeader,
 	            HashMap<String, List<String>> listChildData) {
@@ -128,7 +128,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	            new_image.setOnClickListener(new OnClickListener(){
 					@Override
 					public void onClick(View arg0) {
-						// TODO Auto-generated method stub
 						newSell(arg0);
 					}
 	            	
@@ -139,7 +138,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	            new_image.setOnClickListener(new OnClickListener(){
 					@Override
 					public void onClick(View arg0) {
-						// TODO Auto-generated method stub
 						newRent(arg0);
 					}
 	            	
@@ -170,14 +168,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	    }
 	    
 		/*new for sell*/
-		public void newSell(View view){
+		public void newSell(View view){			// new a book for sell
 			Intent intent = new Intent(_context, PostOrEditBookActivity.class);
 			intent.putExtra("sOrR", true);
 			intent.putExtra("isPost", true);
 			_context.startActivity(intent);
 		}
 		/* new for rent*/
-		public void newRent(View view){
+		public void newRent(View view){			// new a book for rent
 			Intent intent = new Intent(_context, PostOrEditBookActivity.class);
 			intent.putExtra("sOrR", false);
 			intent.putExtra("isPost", true);

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.wilddynamos.bookapp.activity.MultiWindowActivity;
 import com.wilddynamos.bookapp.activity.mybooks.MyPostDetailActivity;
 import com.wilddynamos.bookapp.activity.mybooks.RequesterListActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
@@ -21,9 +20,9 @@ public class AcceptRequest extends AsyncTask<String, Void, String> {
 	public AcceptRequest(RequesterListActivity a) {
 		this.a = a;
 	}
-	///since long time ago there gonna be a lonely
+	
 	@Override
-	protected String doInBackground(String... params) {
+	protected String doInBackground(String... params) {		//send the accepted book_id and requester_id to server 
 		
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("bookId", params[0]);
@@ -36,7 +35,7 @@ public class AcceptRequest extends AsyncTask<String, Void, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		if(result.equals("1")) {
+		if(result.equals("1")) {		//after successfully accepting the request, go to book detail activity
 			Toast.makeText(a, "You've accepted the request!", Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(a, MyPostDetailActivity.class);
             intent.putExtra("id", id);

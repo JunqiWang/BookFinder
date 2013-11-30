@@ -12,7 +12,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,31 +24,14 @@ import com.wilddynamos.bookapp.ws.remote.action.profile.GetMyProfile;
 
 public class MyProfileActivity extends Activity {
 	
-	ImageView profileImage;
-	TextView name;
-	TextView gender;
-	TextView campus;
-	TextView contact;
-	TextView address;
-	Button edit;
-	Button changePassword;
-	Button logout;
+	private ImageView profileImage;
+	private TextView name;
+	private TextView gender;
+	private TextView campus;
+	private TextView contact;
+	private TextView address;
 	
 	private User user;
-	
-//	@SuppressLint("HandlerLeak")
-//	private Handler handler = new Handler() {
-//		@Override
-//    	public void handleMessage(Message msg){
-//    		
-//    		if(msg.what < 0)
-//    			Toast.makeText(MyProfileActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
-//    		else if(msg.what == 1)
-//    			fill();
-//    		else
-//    			Toast.makeText(MyProfileActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-//    	}
-//	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +44,6 @@ public class MyProfileActivity extends Activity {
 		campus = (TextView) findViewById(R.id.campus);
 		contact = (TextView) findViewById(R.id.contact);
 		address = (TextView) findViewById(R.id.address);
-		edit = (Button) findViewById(R.id.edit_button);
-		logout = (Button) findViewById(R.id.logout_button);
 		
 //		new GetMyProfile(this, this).start();
 		GetMyProfile gmp = new GetMyProfile(this, this);
