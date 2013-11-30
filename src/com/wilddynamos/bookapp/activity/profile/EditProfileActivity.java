@@ -50,6 +50,7 @@ import com.wilddynamos.bookapp.utils.ZoomInOutAction;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 import com.wilddynamos.bookapp.ws.remote.action.profile.EditProfile;
 
+/** Edit profile Activity **/
 public class EditProfileActivity extends Activity implements LocationListener,
 		GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener {
@@ -67,7 +68,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 	private Button choosePhoto;
 	private Button save;
 
-	/*** take photo ***/
+	/** params in taking photo **/
 	private static final int ACTION_TAKE_PHOTO = 1;
 	private static final String BITMAP_STORAGE_KEY = "viewbitmap";
 	private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
@@ -76,9 +77,10 @@ public class EditProfileActivity extends Activity implements LocationListener,
 
 	TakePhoto takePhotoAction;
 
-	/*** choose photo ***/
+	/** params in choose photo **/
 	final int ACTIVITY_SELECT_IMAGE = 5;
-	/*** geolocation ***/
+
+	/** params in geolocation **/
 	// A request to connect to Location Services
 	private LocationRequest mLocationRequest;
 
@@ -168,14 +170,14 @@ public class EditProfileActivity extends Activity implements LocationListener,
 						imageString });
 			}
 		});
-		/*** take photo ***/
+
+		/** take photo **/
 		mImageBitmap = null;
 		takePhotoAction = new TakePhoto(this, mCurrentPhotoPath, profileImage,
 				takePhoto);
 		takePhotoAction.start();
-		/*** take photo ***/
 
-		/**** choose Photo **/
+		/** choose Photo **/
 		choosePhoto.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -186,7 +188,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 			}
 		});
 
-		/**** geolocation ***/
+		/** geolocation **/
 		mapImage.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				getAddress(v);
@@ -194,13 +196,14 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		});
 	}
 
+	/** save button **/
 	public void save() {
 		Intent intent = new Intent(this, MultiWindowActivity.class);
 		intent.putExtra(MultiWindowActivity.TAB_SELECT, 2);
 		startActivity(intent);
 	}
 
-	/* cancel button */
+	/** cancel button **/
 	public void cancel(View view) {
 		new AlertDialog.Builder(this)
 				.setTitle("Abort?")
@@ -221,15 +224,16 @@ public class EditProfileActivity extends Activity implements LocationListener,
 						}).setNegativeButton("Back", null).show();
 	}
 
-	/**** image zoom in and out ***/
+	/** image zoom in and out **/
 	public void zoomInOut(View view) {
 		ZoomInOutAction.action(this, profileImage);
 	}
 
-	/*** take photo ***/
+	/** result from take photo and choose photo **/
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
+
 		/** take photo **/
 		case ACTION_TAKE_PHOTO: {
 			if (resultCode == RESULT_OK) {
@@ -243,6 +247,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 			}
 			break;
 		}
+
 		/** choose photo **/
 		case ACTIVITY_SELECT_IMAGE: {
 			if (resultCode == RESULT_OK) {
@@ -266,9 +271,10 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		default:
 			Toast.makeText(EditProfileActivity.this, "SMS not delivered",
 					Toast.LENGTH_SHORT).show();
-		} // switch
+		}
 	}
 
+	/** Save Instance when stop **/
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		Drawable drawable = profileImage.getDrawable();
@@ -280,6 +286,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		super.onSaveInstanceState(outState);
 	}
 
+	/** Recover Instance **/
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
@@ -291,7 +298,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 						: ImageView.INVISIBLE);
 	}
 
-	/*** geolocation ***/
+	/** geolocation **/
 	/*
 	 * Called when the Activity is no longer visible at all. Stop updates and
 	 * disconnect.
