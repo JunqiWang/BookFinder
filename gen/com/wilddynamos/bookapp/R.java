@@ -66,7 +66,7 @@ public final class R {
         public static final int LinearLayout01=0x7f09000a;
         public static final int RelativeLayout=0x7f090026;
         public static final int acceptButton=0x7f090024;
-        public static final int action_settings=0x7f090072;
+        public static final int action_settings=0x7f090071;
         public static final int bookDetail_availableTime=0x7f09005a;
         public static final int bookDetail_block=0x7f09006b;
         public static final int bookDetail_cover=0x7f090054;
@@ -168,7 +168,6 @@ public final class R {
         public static final int searchIt=0x7f09002c;
         public static final int sellCheckBox=0x7f090001;
         public static final int signup=0x7f090007;
-        public static final int signupButton=0x7f090070;
         public static final int thumbnail=0x7f090020;
         public static final int userEmail=0x7f09006c;
         public static final int userInputEmail=0x7f090003;
@@ -177,7 +176,7 @@ public final class R {
         public static final int userPassword=0x7f09006e;
         public static final int userPasswordConfirm=0x7f09006f;
         public static final int viewButton=0x7f090023;
-        public static final int zoom_in_out_imageView=0x7f090071;
+        public static final int zoom_in_out_imageView=0x7f090070;
     }
     public static final class layout {
         public static final int header_gradient=0x7f030000;
