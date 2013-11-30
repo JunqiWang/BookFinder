@@ -3,24 +3,30 @@ package com.wilddynamos.bookapp.ws.remote.action.mybooks;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.wilddynamos.bookapp.activity.mybooks.MyPostDetailActivity;
 import com.wilddynamos.bookapp.activity.mybooks.RequesterListActivity;
+import com.wilddynamos.bookapp.activity.mybooks.RequesterProfileActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
 public class AcceptRequest extends AsyncTask<String, Void, String> {
 
-	private RequesterListActivity a;
+	private Activity a;
 	private int id;
 	
 	public AcceptRequest(RequesterListActivity a) {
 		this.a = a;
 	}
 	
+	public AcceptRequest(RequesterProfileActivity a) {
+		this.a = a;
+	}
+	///since long time ago there gonna be a lonely
 	@Override
 	protected String doInBackground(String... params) {		//send the accepted book_id and requester_id to server 
 		

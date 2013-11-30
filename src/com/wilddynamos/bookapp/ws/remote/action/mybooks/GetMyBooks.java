@@ -8,16 +8,15 @@ import org.json.JSONArray;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.wilddynamos.bookapp.activity.mybooks.MybooksListActivity;
-import com.wilddynamos.bookapp.activity.post.PostListActivity;
+import com.wilddynamos.bookapp.activity.mybooks.MyBookListActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
 public class GetMyBooks extends AsyncTask<String, Void, JSONArray> {
 	
-	private MybooksListActivity a;
+	private MyBookListActivity a;
 	
-	public GetMyBooks(MybooksListActivity a) {
+	public GetMyBooks(MyBookListActivity a) {
 		this.a = a;
 	}
 

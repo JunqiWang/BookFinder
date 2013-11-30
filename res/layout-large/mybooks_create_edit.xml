@@ -1,8 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for create and edit mybooks page -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true" >
+
+    <!-- Background -->
 
     <ImageView
         android:layout_width="fill_parent"
@@ -10,6 +14,7 @@
         android:alpha="0.3"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
+    <!-- ScrollView for the rotation of screen -->
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -19,6 +24,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
+            <!-- Title -->
 
             <TextView
                 android:id="@+id/createOrEditMyBookTitle"
@@ -50,6 +57,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
 
+                    <!-- take photo button -->
+
                     <Button
                         android:id="@+id/createOrEditTakePhoto"
                         android:layout_width="180dp"
@@ -59,6 +68,7 @@
                         android:textColor="@color/white"
                         android:textSize="25sp"
                         android:textStyle="bold" />
+                    <!-- choose photo button -->
 
                     <Button
                         android:id="@+id/createOrEditChoosePhoto"
@@ -72,6 +82,7 @@
                         android:textSize="25sp"
                         android:textStyle="bold" />
                 </LinearLayout>
+                <!-- cover's photo -->
 
                 <ImageView
                     android:id="@+id/createOrEditMyBookCover"
@@ -79,10 +90,12 @@
                     android:layout_height="130dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
+                    android:alpha="0.75"
                     android:contentDescription="@string/bookCover_alt"
                     android:onClick="zoomInOut"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/app_cover" />
             </RelativeLayout>
+            <!-- edit name -->
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -106,6 +119,7 @@
                     android:background="@drawable/gradient_bg"
                     android:inputType="text" />
             </LinearLayout>
+            <!-- edit price -->
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -140,10 +154,10 @@
 
                 <Spinner
                     android:id="@+id/rentPriceUnitSelection"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp" />
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
+            <!-- edit rent duration -->
 
             <LinearLayout
                 android:id="@+id/createOrEditMyBookPerRentOnly"
@@ -177,6 +191,7 @@
                     android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
+            <!-- edit description -->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -212,8 +227,11 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
 
+                <!-- save button -->
+
                 <Button
                     android:id="@+id/createOrEditMyBookSubmit"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="20dp"
@@ -222,9 +240,11 @@
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold" />
+                <!-- cancel button -->
 
                 <Button
                     android:id="@+id/createOrEditMyBookCancel"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"

@@ -34,20 +34,46 @@ import android.widget.SimpleAdapter;
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.ws.remote.action.post.GetPostList;
 
+/**
+ * New posts list
+ * 
+ * @author JunqiWang
+ * 
+ */
 public class PostListActivity extends Activity implements SensorEventListener,
 		OnTouchListener {
 
+	/**
+	 * For the feature "shake to refresh"
+	 */
 	private SensorManager mSensorManager = null;
 
+	/**
+	 * View widgets
+	 */
 	private EditText searchContent;
 	private CheckBox rent, sell;
 	private ListView bookList;
 	private ProgressBar refreshProgress, loadProgress;
 
+	/**
+	 * List content adapter
+	 */
 	private PostListAdapter pla;
 
+	/**
+	 * List content
+	 */
 	private List<Map<String, String>> list;
+	/**
+	 * Record the id's of items
+	 */
+	private List<Integer> ids;
 
+	/**
+	 * For the feature "shake to refresh" as well as "pull down to refresh" and
+	 * "pull up to load more"
+	 */
 	private float yDown;
 	private float touchSlop;
 	private boolean willRefresh = false;
@@ -55,11 +81,24 @@ public class PostListActivity extends Activity implements SensorEventListener,
 	private boolean atTop = true;
 	private boolean atBottom = false;
 
-	private List<Integer> ids;
+	/**
+	 * For refresh or load --- split page
+	 */
 	private int currentPage;
+
+	/**
+	 * Flag used for open book detail activity
+	 */
 	private String sOrR = null;
+
+	/**
+	 * Content in the view EditText "searchContent"
+	 */
 	private String search = "";
 
+	/**
+	 * AsyncTask for load the list
+	 */
 	private GetPostList load;
 
 	@Override
@@ -81,6 +120,7 @@ public class PostListActivity extends Activity implements SensorEventListener,
 		list = new ArrayList<Map<String, String>>();
 		ids = new ArrayList<Integer>();
 
+		// First load the data when create
 		refresh();
 
 		rent.setOnCheckedChangeListener(new CheckBoxListener());
@@ -119,13 +159,19 @@ public class PostListActivity extends Activity implements SensorEventListener,
 		});
 	}
 
+	/**
+	 * Stop the feature "shake to refresh"
+	 */
 	@Override
 	protected void onPause() {
 		mSensorManager.unregisterListener(this,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
 		super.onPause();
 	}
-	
+
+	/**
+	 * Make the feature "shake to refresh" available again
+	 */
 	@Override
 	protected void onRestart() {
 		super.onRestart();
@@ -134,6 +180,12 @@ public class PostListActivity extends Activity implements SensorEventListener,
 				SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
+	/**
+	 * Filter out the books by condition "sell" or "rent"
+	 * 
+	 * @author JunqiWang
+	 * 
+	 */
 	private class CheckBoxListener implements OnCheckedChangeListener {
 
 		@Override
@@ -157,24 +209,13 @@ public class PostListActivity extends Activity implements SensorEventListener,
 
 	}
 
-	private void refresh() {
-		bookList.setTop(50);
-		refreshProgress.setVisibility(ProgressBar.VISIBLE);
-
-		currentPage = 1;
-
-		try {
-			load.cancel(true);
-		} catch (Exception e) {
-		}
-		load = new GetPostList(this);
-		load.execute(new String[] { currentPage + "", sOrR, search });
-	}
-
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 	}
 
+	/**
+	 * Shake to refresh
+	 */
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
@@ -191,6 +232,28 @@ public class PostListActivity extends Activity implements SensorEventListener,
 		}
 	}
 
+	/**
+	 * Refresh the list
+	 */
+	private void refresh() {
+		bookList.setTop(50);
+		refreshProgress.setVisibility(ProgressBar.VISIBLE);
+
+		currentPage = 1;
+
+		try {
+			load.cancel(true);
+		} catch (Exception e) {
+		}
+		load = new GetPostList(this);
+		load.execute(new String[] { currentPage + "", sOrR, search });
+	}
+
+	/**
+	 * Load data, page splitted
+	 * 
+	 * @param jsonArray
+	 */
 	public void loadData(JSONArray jsonArray) {
 		if (jsonArray == null)
 			return;
@@ -227,6 +290,11 @@ public class PostListActivity extends Activity implements SensorEventListener,
 		loadProgress.setVisibility(ProgressBar.INVISIBLE);
 	}
 
+	/**
+	 * Refreshed data, first page
+	 * 
+	 * @param jsonArray
+	 */
 	public void pour(JSONArray jsonArray) {
 		ids.clear();
 		list.clear();
@@ -246,6 +314,12 @@ public class PostListActivity extends Activity implements SensorEventListener,
 				SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
+	/**
+	 * List content adapter
+	 * 
+	 * @author JunqiWang
+	 * 
+	 */
 	private class PostListAdapter extends SimpleAdapter {
 		private int[] colors = { R.color.gray, R.color.white };
 
@@ -266,11 +340,19 @@ public class PostListActivity extends Activity implements SensorEventListener,
 		}
 	}
 
+	/**
+	 * Search book
+	 * 
+	 * @param view
+	 */
 	public void searchPost(View view) {
 		search = searchContent.getText().toString();
 		refresh();
 	}
 
+	/**
+	 * Pull down to refresh, pull up to load more
+	 */
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 
@@ -312,6 +394,12 @@ public class PostListActivity extends Activity implements SensorEventListener,
 		return false;
 	}
 
+	/**
+	 * Go to book detail page, pass book id
+	 * 
+	 * @param position
+	 *            the position of the item in the list
+	 */
 	public void show(int position) {
 		Intent intent = new Intent(this, PostDetailActivity.class);
 		intent.putExtra("id", ids.get(position));

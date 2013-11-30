@@ -1,56 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for item in requestlist -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_selector"
     android:orientation="horizontal"
     android:padding="5dip" >
 
-    <!-- ListRow Left sied Thumbnail image -->
+    <!-- Image -->
 
-
-
-	<ImageView
+    <ImageView
         android:id="@+id/mybooks_requester_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/profile" 
-        android:contentDescription="@string/image"/>
-
+        android:layout_marginLeft="10dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/profile" />
+    <!-- Name -->
 
     <TextView
         android:id="@+id/requesterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        
+        android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/mybooks_requester_image"
         android:text="@string/user_name"
         android:textColor="#040404"
         android:textSize="25sp"
         android:textStyle="bold"
         android:typeface="sans" />
-	
+    <!-- View Button -->
+
     <Button
         android:id="@+id/viewButton"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dip"
         android:layout_alignTop="@+id/requesterName"
+        android:layout_margin="10dip"
         android:layout_toLeftOf="@+id/acceptButton"
-        android:background="@drawable/custom_button4"
-        android:textStyle="bold"
+        android:background="@drawable/custom_button"
+        android:text="@string/view"
         android:textColor="#ffffff"
-        android:text="@string/view" />
-    
+        android:textStyle="bold" />
+    <!-- Accept Button -->
+
     <Button
         android:id="@+id/acceptButton"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dip"
-        android:layout_alignTop="@+id/requesterName"
         android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/requesterName"
+        android:layout_margin="10dip"
         android:background="@drawable/custom_button4"
-        android:textStyle="bold"
+        android:text="@string/accept"
         android:textColor="#ffffff"
-        android:text="@string/accept" />
-  
+        android:textStyle="bold" />
+
 </RelativeLayout>

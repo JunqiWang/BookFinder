@@ -12,33 +12,42 @@ import com.wilddynamos.bookapp.activity.mybooks.MyRequestDetailActivity;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
-public class WithdrawRequest extends AsyncTask<String, Void, String> {
+public class WithdrawRequest extends AsyncTask<String, Void, Boolean> {
 
 	private MyRequestDetailActivity a;
-	
+
 	public WithdrawRequest(MyRequestDetailActivity a) {
 		this.a = a;
 	}
-	
+
 	@Override
-	protected String doInBackground(String... params) {	 	//asynctask background, connect to server
+	protected Boolean doInBackground(String... params) {
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("bookId", params[0]);
 		paramsMap.put("requesterId", params[1]);
-		
-		return DataUtils.receiveFlag(Connection.requestByPost("/WithdrawRequest", paramsMap));
+
+		try {
+			return "1".equals(DataUtils.receiveFlag(Connection.requestByPost(
+					"/WithdrawRequest", paramsMap)));
+		} catch (Exception e) {
+			return false;
+		}
 
 	}
 
 	@Override
-	protected void onPostExecute(String result) {			//after get result from server 
-		if(result.equals("1")) {
+	protected void onPostExecute(Boolean success) { // after get result from
+													// server
+		if (success) {
 			Toast.makeText(a, "Request withdrew!", Toast.LENGTH_SHORT).show();
-			Intent intent = new Intent(a, MultiWindowActivity.class);	//go to mybooks if get withdrew
+			Intent intent = new Intent(a, MultiWindowActivity.class); // go to
+																		// mybooks
+																		// if
+																		// get
+																		// withdrew
 			intent.putExtra(MultiWindowActivity.TAB_SELECT, 1);
 			a.startActivity(intent);
-		}
-		else
+		} else
 			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
 	}
 }

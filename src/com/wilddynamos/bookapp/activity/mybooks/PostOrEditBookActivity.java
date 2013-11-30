@@ -87,14 +87,6 @@ public class PostOrEditBookActivity extends Activity {
 		if ((id = getIntent().getExtras().getInt("id")) == 0)
 			id = null;
 
-		byte[] bytes = getIntent().getByteArrayExtra("BMP");
-
-		if (bytes != null) {
-			Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,
-					bytes.length);
-			cover.setImageBitmap(bitmap);
-		}
-
 		/*** take photo ***/
 		mImageBitmap = null;
 		takePhotoAction = new TakePhoto(this, mCurrentPhotoPath, cover,
@@ -123,7 +115,7 @@ public class PostOrEditBookActivity extends Activity {
 			durationUnit.setText("week");
 
 			per.setAdapter(new ArrayAdapter<String>(this,
-					R.layout.mybooks_spinneritem, new String[] { "week",
+					R.layout.spinneritem, new String[] { "week",
 							"month" }));
 			per.setOnItemSelectedListener(new OnItemSelectedListener() {
 				@Override
@@ -160,13 +152,19 @@ public class PostOrEditBookActivity extends Activity {
 
 	private void fill() {
 		name.setText(getIntent().getExtras().getString("name"));
-		// TODO read cover form sd card sqlite
 		price.setText(getIntent().getExtras().getString("price"));
 		if (!sOrR) {
 			per.setSelection(getIntent().getExtras().getBoolean("per") ? 1 : 0);
 			duration.setText(getIntent().getExtras().getInt("duration") + "");
 		}
 		description.setText(getIntent().getExtras().getString("description"));
+
+		byte[] bytes = getIntent().getByteArrayExtra("BMP");
+		if (bytes != null) {
+			Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,
+					bytes.length);
+			cover.setImageBitmap(bitmap);
+		}
 	}
 
 	/**** choose Photo **/
