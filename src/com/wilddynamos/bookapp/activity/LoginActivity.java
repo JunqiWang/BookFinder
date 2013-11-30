@@ -6,7 +6,9 @@ import com.wilddynamos.bookapp.dblayout.RememberMeDbHelper;
 import com.wilddynamos.bookapp.dblayout.RememberMeContract.RememberMeColumn;
 import com.wilddynamos.bookapp.ws.remote.action.Login;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,6 +18,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -48,6 +51,7 @@ public class LoginActivity extends Activity {
 
 		mDbHelper = new RememberMeDbHelper(getApplicationContext());
 		// If the user is remembered, it will automatically log in
+	
 		setRemember();
 		// Validation for log in
 		login.setOnClickListener(new OnClickListener() {
@@ -81,7 +85,7 @@ public class LoginActivity extends Activity {
 	protected void onRestart() {
 		super.onRestart();
 		setRemember();
-		block.setAlpha(0f);
+		mySetAlpha();
 	}
 
 	/** redirect to post list page **/
@@ -163,7 +167,7 @@ public class LoginActivity extends Activity {
 			rememberme.setChecked(false);
 			cursor.close();
 			db.close();
-			block.setAlpha(0f);
+			mySetAlpha();
 			return;
 		}
 		String[] projection = { RememberMeColumn.COLUMN_NAME_C1,
@@ -182,7 +186,7 @@ public class LoginActivity extends Activity {
 		if (cursor.getCount() <= 0) {
 			rememberme.setChecked(false);
 			cursor.close();
-			block.setAlpha(0f);
+			mySetAlpha();
 			return;
 		}
 		cursor.moveToFirst();
@@ -202,6 +206,19 @@ public class LoginActivity extends Activity {
 			Login login = new Login(LoginActivity.this);
 			login.execute(new String[] { myemail, mypassword });
 		} else
-			block.setAlpha(0f);
+			mySetAlpha();
+	}
+	
+	@SuppressLint("NewApi")
+	public void mySetAlpha(){
+		if (Build.VERSION.SDK_INT < 11) {
+	        final AlphaAnimation animation = new AlphaAnimation(255, 0);
+	        animation.setDuration(1000);
+	        animation.setFillAfter(true);
+	        block.startAnimation(animation);
+	    } else
+	    	block.setAlpha(0f);
 	}
 }
+
+

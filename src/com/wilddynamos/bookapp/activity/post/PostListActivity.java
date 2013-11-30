@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -17,6 +18,7 @@ import android.hardware.SensorManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.animation.AlphaAnimation;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.AbsListView.OnScrollListener;
@@ -236,7 +238,12 @@ public class PostListActivity extends Activity implements SensorEventListener,
 	 * Refresh the list
 	 */
 	private void refresh() {
-		bookList.setTop(50);
+/*		if (Build.VERSION.SDK_INT < 11) {
+			 LayoutParams layoutParams=new LayoutParams(int width, int height);
+			 layoutParams.setMargins(0, int top, int right, int bottom);
+			 bookList.setLayoutParams(layoutParams);
+	    } else
+	    	bookList.setTop(50); */
 		refreshProgress.setVisibility(ProgressBar.VISIBLE);
 
 		currentPage = 1;
