@@ -254,9 +254,8 @@ containing a value of this type.
         public static final int bookNamePostList=0x7f05002c;
         public static final int bookPricePostList=0x7f05002d;
         public static final int bookdetails_background11=0x7f05006f;
-        public static final int chagePassword_cancelButton=0x7f05003a;
-        public static final int chagePassword_saveButton=0x7f050039;
-        public static final int changepassword_confirm=0x7f050038;
+        public static final int chagePassword_cancel=0x7f05003a;
+        public static final int chagePassword_save=0x7f050039;
         public static final int checkbox_remember=0x7f05000a;
         public static final int createOrEditChoosePhoto=0x7f050012;
         public static final int createOrEditMyBookCancel=0x7f05001e;
@@ -297,6 +296,7 @@ containing a value of this type.
         public static final int mybooks_requester_image=0x7f05002a;
         public static final int newPassword=0x7f050037;
         public static final int new_button=0x7f050021;
+        public static final int newpassword_confirm=0x7f050038;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int oldPassword=0x7f050036;
