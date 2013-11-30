@@ -127,7 +127,7 @@ public class EditProfileActivity extends Activity implements
     	@Override
     	public void onCreate(Bundle savedInstanceState){
     		super.onCreate(savedInstanceState);
-            setContentView(R.layout.profile_editprofile);   
+            setContentView(R.layout.profile_edit);   
             
             context = this;
             

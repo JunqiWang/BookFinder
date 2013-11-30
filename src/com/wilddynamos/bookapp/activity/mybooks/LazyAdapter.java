@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
-import com.wilddynamos.bookapp.ws.remote.action.profile.AcceptRequest;
+import com.wilddynamos.bookapp.ws.remote.action.mybooks.AcceptRequest;
  
 public class LazyAdapter extends BaseAdapter {
  
@@ -51,7 +51,7 @@ public class LazyAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         if(convertView == null)
-            vi = inflater.inflate(R.layout.mybooks_requestlist_row, null);
+            vi = inflater.inflate(R.layout.mybooks_requestlist_item, null);
  
         TextView requesterName = (TextView)vi.findViewById(R.id.requesterName); // title
         ImageView profileImage = (ImageView)vi.findViewById(R.id.mybooks_requester_image);

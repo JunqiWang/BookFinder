@@ -12,9 +12,46 @@
         android:alpha="0.3"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
+<<<<<<< HEAD
+     
+	<LinearLayout
+	    	android:id="@+id/post_postlist_linerlayout1"
+	    	android:layout_marginTop="10dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true">
+	           
+	    <EditText
+	        android:id="@+id/searchContent"
+	        android:layout_width="270dp"
+	        android:layout_height="40dp"
+	        android:inputType="text"
+	        android:background="#ffffff"
+	        android:textSize="25sp" />
+	  
+	    <ImageView
+	        android:id="@+id/searchIt"
+	        android:layout_width="40dp"
+	        android:layout_height="40dp"
+	        android:src="@drawable/ic_action_search"
+	        android:contentDescription="@string/image"
+	        android:onClick="searchPost" />
+	    
+	</LinearLayout> 
+<LinearLayout
+    	android:id="@+id/post_postlist_linerlayout2"
+    	android:layout_below="@id/post_postlist_linerlayout1"
+    	android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">  	
+    <CheckBox
+        android:id="@+id/rentCheckBox"
+=======
 
     <LinearLayout
         android:id="@+id/post_postlist_linerlayout1"
+>>>>>>> 0fa44ad6a42ea2b8dd1ff150a0c10566495cd597
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

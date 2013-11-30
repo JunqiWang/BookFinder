@@ -20,7 +20,7 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
-import com.wilddynamos.bookapp.activity.mybooks.MybooksList;
+import com.wilddynamos.bookapp.activity.mybooks.MybooksListActivity;
 import com.wilddynamos.bookapp.activity.post.PostListActivity;
 import com.wilddynamos.bookapp.activity.profile.MyProfileActivity;
 import com.wilddynamos.bookapp.service.NotificationCenter;
@@ -51,7 +51,7 @@ public class MultiWindowActivity extends TabActivity {
         tab1.setContent(new Intent(this,PostListActivity.class));
                     
         tab2.setIndicator("My Books");
-        tab2.setContent(new Intent(this,MybooksList.class));
+        tab2.setContent(new Intent(this,MybooksListActivity.class));
         
         tab3.setIndicator("Profile");
         tab3.setContent(new Intent(this,MyProfileActivity.class));

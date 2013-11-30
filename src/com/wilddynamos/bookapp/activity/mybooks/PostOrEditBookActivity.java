@@ -42,7 +42,7 @@ public class PostOrEditBookActivity extends Activity {
 	private ImageView cover;
 	private EditText price;
 	private TextView wordPer;
-	Spinner per;
+	private Spinner per;
 	private Boolean perValue;
 	private LinearLayout rentOnly;
 	private EditText duration;
@@ -50,6 +50,7 @@ public class PostOrEditBookActivity extends Activity {
 	private EditText description;
 	private Button postOrSave;
 	private Button takePhoto;
+
 	private boolean isPost;
 	private boolean sOrR;
 	private Integer id = null;
@@ -83,7 +84,7 @@ public class PostOrEditBookActivity extends Activity {
 
 		isPost = getIntent().getExtras().getBoolean("isPost");
 		sOrR = getIntent().getExtras().getBoolean("sOrR");
-		if((id = getIntent().getExtras().getInt("id")) == 0)
+		if ((id = getIntent().getExtras().getInt("id")) == 0)
 			id = null;
 
 		byte[] bytes = getIntent().getByteArrayExtra("BMP");
@@ -192,22 +193,25 @@ public class PostOrEditBookActivity extends Activity {
 
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		Drawable drawable = cover.getDrawable();
-		BitmapDrawable bitmapDrawable = (BitmapDrawable)drawable;
+		BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
 		Bitmap bitmap = bitmapDrawable.getBitmap();
 		bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] coverBytes = stream.toByteArray();
-        String coverString = new String(coverBytes, Charset.forName("ISO-8859-1"));
-        
+		byte[] coverBytes = stream.toByteArray();
+		String coverString = new String(coverBytes,
+				Charset.forName("ISO-8859-1"));
+
 		String[] params = null;
 
 		if (!sOrR)
 			params = new String[] { !sOrR + "", id == null ? null : id + "",
-					name.getText().toString(), coverString, price.getText().toString(),
+					name.getText().toString(), coverString,
+					price.getText().toString(),
 					description.getText().toString(), perValue + "",
-					duration.getText().toString()};
+					duration.getText().toString() };
 		else
 			params = new String[] { !sOrR + "", id == null ? null : id + "",
-					name.getText().toString(), coverString, price.getText().toString(),
+					name.getText().toString(), coverString,
+					price.getText().toString(),
 					description.getText().toString(), coverString };
 
 		PostOrEditBook submit = new PostOrEditBook(this);

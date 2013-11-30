@@ -3,9 +3,7 @@ package com.wilddynamos.bookapp.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -66,7 +64,6 @@ public class SignupActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     } */
-    
 	public final static boolean isValidEmail(CharSequence target) {
 	    if (target == null) {
 	        return false;
