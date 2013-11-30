@@ -35,7 +35,7 @@ public class MyBookListActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mybooks_mybookslist);
+		setContentView(R.layout.mybooks_list);
 
 		expListView = (ExpandableListView) findViewById(R.id.lvExp);
 
