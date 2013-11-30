@@ -29,13 +29,13 @@ public class SignupActivity extends Activity {
 	}
 
 	public void signUp(View view) {
-		if ((email.getText().toString() == null || "".equals(email.getText()
+		if ((password.getText().toString() == null || "".equals(password.getText()
 				.toString()))
-				|| (email.getText().toString() == null || "".equals(email
+				|| (password.getText().toString() == null || "".equals(password
 						.getText().toString()))
-				|| (email.getText().toString() == null || "".equals(email
+				|| (password.getText().toString() == null || "".equals(password
 						.getText().toString()))
-				|| (email.getText().toString() == null || "".equals(email
+				|| (password.getText().toString() == null || "".equals(password
 						.getText().toString()))) {
 			Toast.makeText(this, "Please fill in all fields",
 					Toast.LENGTH_SHORT).show();
