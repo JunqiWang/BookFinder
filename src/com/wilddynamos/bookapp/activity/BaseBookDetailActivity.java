@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -40,7 +39,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.shared_bookdetail);
 		
-		bg = (ImageView) findViewById(R.id.bookdetails_background11);
+		bg = (ImageView) findViewById(R.id.bookDetail_block);
 		
 		title = (TextView) findViewById(R.id.bookDetail_title);
 		name = (TextView) findViewById(R.id.bookDetail_name);
@@ -62,14 +61,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 	
 	protected abstract String[] getParams();
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-	//	getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	public void fill(JSONArray jsonArray) {
+	public final void fill(JSONArray jsonArray) {
 		if(jsonArray == null || jsonArray.length() == 0)
 			return;
 		
@@ -117,12 +109,12 @@ public abstract class BaseBookDetailActivity extends Activity {
 	
 	protected abstract void fillFunctionSpecificView(JSONObject jo);
 	
-	public void setLikeNum() {
+	public final void setLikeNum() {
 		String s = (Integer.parseInt(likeNum.getText().toString()) + 1) + "";
 		likeNum.setText(s);
 	}
 	
-	public void zoomInOut(View view){
+	public final void zoomInOut(View view){
 		ZoomInOutAction.action(this,cover);
 	}
 }

@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:text="@string/profile_detail_title"
         android:gravity="center"/>
   
     <ImageView 

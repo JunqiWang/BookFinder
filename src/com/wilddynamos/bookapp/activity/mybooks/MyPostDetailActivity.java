@@ -124,10 +124,11 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 					@Override
 					public void onClick(View v) {
 						Intent intent = new Intent(MyPostDetailActivity.this,
-								RequesterDetailActivity.class);
+								RequesterProfileActivity.class);
 
 						try {
 							intent.putExtra("id", jo.getInt("requesterId"));
+							intent.putExtra("responded", true);
 						} catch (JSONException e) {
 						}
 

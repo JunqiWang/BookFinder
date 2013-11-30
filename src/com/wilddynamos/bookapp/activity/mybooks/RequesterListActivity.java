@@ -221,7 +221,7 @@ public class RequesterListActivity extends Activity {
 		requesterArray.clear();
 		loadData();
 		
-		la = new LazyAdapter(this, requesterArray, ids);
+		la = new LazyAdapter(this, requesterArray, ids, bookId);
 		
 		requesterList.setAdapter(la);
 		

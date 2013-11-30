@@ -18,12 +18,12 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/profile_photo_string"
-                android:layout_width="fill_parent"
+                android:id="@+id/profile_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                android:text="@string/profile_detail_title"
+                android:layout_centerHorizontal="true"
+                android:text="@string/profile_title"
+                android:layout_marginTop="25dp"
                 android:textSize="35sp"
                 android:textStyle="bold" />
 
@@ -32,21 +32,22 @@
                 android:layout_width="160dp"
                 android:layout_height="200dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="60dp"
-                android:layout_marginTop="80dp"
+                android:layout_below="@id/profile_title"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="50dp"
+                android:alpha="0.5"
                 android:contentDescription="@string/image"
                 android:onClick="zoomInOut"
-                android:src="@drawable/ic_launcher" />
+                android:src="#FFFFFF" />
 
             <LinearLayout
-                android:id="@+id/profile_detail_linear1"
-                android:layout_width="fill_parent"
+                android:id="@+id/profile_nameLine"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_photo_string"
+                android:layout_below="@id/profile_title"
                 android:layout_marginTop="30dp" >
 
                 <TextView
-                    android:id="@+id/name_string"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
@@ -55,22 +56,42 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/name"
+                    android:id="@+id/profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/user_name"
                     android:textSize="30sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/profile_detail_linear2"
-                android:layout_width="fill_parent"
+                android:id="@+id/profile_emailLine"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_detail_linear1"
+                android:layout_below="@id/profile_nameLine"
                 android:layout_marginTop="30dp" >
 
                 <TextView
-                    android:id="@+id/gender_string"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="@string/email"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profile_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_genderLine"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_emailLine"
+                android:layout_marginTop="30dp" >
+
+                <TextView
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
@@ -79,22 +100,20 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/gender"
+                    android:id="@+id/profile_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/user_gender"
                     android:textSize="30sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/profile_detail_linear3"
+                android:id="@+id/profile_campusLine"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_detail_linear2"
+                android:layout_below="@id/profile_genderLine"
                 android:layout_marginTop="30dp" >
 
                 <TextView
-                    android:id="@+id/campus_string"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
@@ -103,22 +122,20 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/campus"
+                    android:id="@+id/profile_campus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/user_campus"
                     android:textSize="30sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/profile_detail_linear4"
+                android:id="@+id/profile_contactLine"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_detail_linear3"
+                android:layout_below="@id/profile_campusLine"
                 android:layout_marginTop="30dp" >
 
                 <TextView
-                    android:id="@+id/contact_string"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
@@ -127,22 +144,20 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/contact"
+                    android:id="@+id/profile_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/user_contact"
                     android:textSize="30sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/profile_detail_linear5"
+                android:id="@+id/profile_addrLine"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_detail_linear4"
+                android:layout_below="@id/profile_contactLine"
                 android:layout_marginTop="30dp" >
 
                 <TextView
-                    android:id="@+id/address_string"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
@@ -151,23 +166,23 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/address"
+                    android:id="@+id/profile_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/user_address"
                     android:textSize="30sp" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/profile_self"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_detail_linear5"
+                android:layout_below="@id/profile_addrLine"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="60dp"
-                android:orientation="vertical" >
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:visibility="invisible" >
 
                 <Button
-                    android:id="@+id/edit_button"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_button"
@@ -178,7 +193,6 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/change_password_button"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -190,7 +204,6 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/logout_button"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -202,7 +215,48 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_requester"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_addrLine"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:orientation="horizontal"
+                android:visibility="invisible" >
+
+                <Button
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_button4"
+                    android:onClick="acceptRequest"
+                    android:text="@string/accept"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:background="@drawable/custom_button2"
+                    android:gravity="center"
+                    android:onClick="declineRequest"
+                    android:text="@string/decline"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/profile_block"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha="1"
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image" />
 
 </RelativeLayout>

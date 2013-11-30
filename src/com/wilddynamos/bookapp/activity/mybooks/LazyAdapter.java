@@ -27,13 +27,15 @@ public class LazyAdapter extends BaseAdapter {
     private ArrayList<HashMap<String,String>> data;
     private static LayoutInflater inflater = null;
     private List<Integer> ids;
+    private int bookId;
     
-    public LazyAdapter(RequesterListActivity a, ArrayList<HashMap<String,String>> d, List<Integer> ids) {
+    public LazyAdapter(RequesterListActivity a, ArrayList<HashMap<String,String>> d, List<Integer> ids, int bookId) {
         activity = a;
         data = d;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.ids = ids;
     //    imageLoader=  new ImageLoader(activity.getApplicationContext());
+        this.bookId = bookId;
     }
  
     public int getCount() {
@@ -93,8 +95,9 @@ public class LazyAdapter extends BaseAdapter {
     }
     
     public void showRequester(int position) {
-		Intent intent = new Intent(activity, RequesterDetailActivity.class); 
+		Intent intent = new Intent(activity, RequesterProfileActivity.class); 
 		intent.putExtra("id", ids.get(position));
+		intent.putExtra("bookId", bookId);
 		activity.startActivity(intent);
 	}
 }

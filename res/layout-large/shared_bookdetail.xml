@@ -280,7 +280,7 @@
     </ScrollView>
 
     <ImageView
-        android:id="@+id/bookdetails_background11"
+        android:id="@+id/bookDetail_block"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:alpha="1"

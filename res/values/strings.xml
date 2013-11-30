@@ -92,11 +92,12 @@
 <string name="email">Email: </string>
 
 <!-- profile detail -->
-<string name="profile_detail_title">Profile</string>
+<string name="profile_title">Profile</string>
 
 <!-- mybooks_requestlist -->
 <string name="request_list">Request List</string>
-<string name="decline">Decline All</string>
+<string name="decline">Decline</string>
+<string name="decline_all">Decline All</string>
 <string name="accept">Accept</string>
 
 <!-- photos -->
