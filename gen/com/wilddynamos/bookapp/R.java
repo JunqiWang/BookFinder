@@ -94,9 +94,8 @@ public final class R {
         public static final int bookNamePostList=0x7f090027;
         public static final int bookPricePostList=0x7f090028;
         public static final int bookdetails_background11=0x7f09006a;
-        public static final int chagePassword_cancelButton=0x7f090035;
-        public static final int chagePassword_saveButton=0x7f090034;
-        public static final int changepassword_confirm=0x7f090033;
+        public static final int chagePassword_cancel=0x7f090035;
+        public static final int chagePassword_save=0x7f090034;
         public static final int checkbox_remember=0x7f090005;
         public static final int createOrEditChoosePhoto=0x7f09000d;
         public static final int createOrEditMyBookCancel=0x7f090019;
@@ -136,6 +135,7 @@ public final class R {
         public static final int mybooks_requester_image=0x7f090025;
         public static final int newPassword=0x7f090032;
         public static final int new_button=0x7f09001c;
+        public static final int newpassword_confirm=0x7f090033;
         public static final int oldPassword=0x7f090031;
         public static final int post_postlist_linerlayout1=0x7f09002a;
         public static final int post_postlist_linerlayout2=0x7f09002d;
