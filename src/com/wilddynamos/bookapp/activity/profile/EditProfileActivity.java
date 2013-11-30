@@ -196,14 +196,12 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		});
 	}
 
-	/** save button **/
 	public void save() {
 		Intent intent = new Intent(this, MultiWindowActivity.class);
 		intent.putExtra(MultiWindowActivity.TAB_SELECT, 2);
 		startActivity(intent);
 	}
 
-	/** cancel button **/
 	public void cancel(View view) {
 		new AlertDialog.Builder(this)
 				.setTitle("Abort?")
