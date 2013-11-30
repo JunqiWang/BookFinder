@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?> 
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Layout for create and edit mybooks page -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -90,9 +90,10 @@
                     android:layout_height="130dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
+                    android:alpha="0.5"
                     android:contentDescription="@string/bookCover_alt"
                     android:onClick="zoomInOut"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="#FFFFFF" />
             </RelativeLayout>
             <!-- edit name -->
 
@@ -153,9 +154,8 @@
 
                 <Spinner
                     android:id="@+id/rentPriceUnitSelection"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp" />
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <!-- edit rent duration -->
 

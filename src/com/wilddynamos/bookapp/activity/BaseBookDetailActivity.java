@@ -113,7 +113,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 				price.setText(jo.getString("price") + " ");
 			else {
 				price.setText(jo.getString("price") + " / "
-						+ (jo.getBoolean("per") ? "week" : "month"));
+						+ (jo.getBoolean("per") ? "month" : "week"));
 				availableTime.setText("Available for "
 						+ jo.getInt("availableTime")
 						+ (jo.getBoolean("per") ? " months" : " weeks"));
