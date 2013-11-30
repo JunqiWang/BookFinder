@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.BaseProfileActivity;
-import com.wilddynamos.bookapp.activity.ChangePasswordActivity;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.ws.local.GetMyProfile;
 import com.wilddynamos.bookapp.ws.remote.action.Logout;

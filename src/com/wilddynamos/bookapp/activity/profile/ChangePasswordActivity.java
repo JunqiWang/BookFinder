@@ -1,4 +1,4 @@
-package com.wilddynamos.bookapp.activity;
+package com.wilddynamos.bookapp.activity.profile;
 
 
 
@@ -20,7 +20,7 @@ public class ChangePasswordActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.changepassword);
+        setContentView(R.layout.profile_changepassword);
         
         oldPassword = (EditText) findViewById(R.id.oldPassword);
         newPassword = (EditText) findViewById(R.id.newPassword);
