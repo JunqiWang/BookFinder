@@ -136,7 +136,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/custom_button"
-                android:onClick="forgetPassword"
+                android:onClick="forgotPassword"
                 android:text="@string/forgot_password"
                 android:textColor="@color/white"
                 android:textSize="20sp"
