@@ -52,7 +52,7 @@ public class LazyAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         if(convertView == null)		//inflate the view
-            vi = inflater.inflate(R.layout.mybooks_requestlist_row, null);
+            vi = inflater.inflate(R.layout.mybooks_requestlist_item, null);
  
         TextView requesterName = (TextView)vi.findViewById(R.id.requesterName); // title
         ImageView profileImage = (ImageView)vi.findViewById(R.id.mybooks_requester_image);
