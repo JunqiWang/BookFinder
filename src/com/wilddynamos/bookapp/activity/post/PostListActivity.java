@@ -7,7 +7,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,7 +40,6 @@ import com.wilddynamos.bookapp.ws.remote.action.post.GetPostList;
  * @author JunqiWang
  * 
  */
-@SuppressLint("NewApi")
 public class PostListActivity extends Activity implements SensorEventListener,
 		OnTouchListener {
 
@@ -237,7 +235,6 @@ public class PostListActivity extends Activity implements SensorEventListener,
 	/**
 	 * Refresh the list
 	 */
-	@SuppressLint("NewApi")
 	private void refresh() {
 		bookList.setTop(50);
 		refreshProgress.setVisibility(ProgressBar.VISIBLE);
