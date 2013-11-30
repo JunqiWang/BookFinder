@@ -177,10 +177,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bookDetail_descriptionScroll"
-                android:layout_marginLeft="90dp"
+                android:layout_marginLeft="95dp"
                 android:layout_marginTop="13dp"
                 android:layout_toRightOf="@id/bookDetail_likeNum"
-                android:gravity="center"
                 android:orientation="horizontal"
                 android:visibility="invisible" >
 
@@ -188,7 +187,6 @@
                     android:id="@+id/bookDetail_myPost_requesterNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 

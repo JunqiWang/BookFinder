@@ -21,6 +21,7 @@ import com.wilddynamos.bookapp.activity.ChangePasswordActivity;
 import com.wilddynamos.bookapp.activity.LoginActivity;
 import com.wilddynamos.bookapp.model.User;
 import com.wilddynamos.bookapp.utils.ZoomInOutAction;
+import com.wilddynamos.bookapp.ws.remote.action.Logout;
 import com.wilddynamos.bookapp.ws.remote.action.profile.GetMyProfile;
 
 public class MyProfileActivity extends Activity {
@@ -37,20 +38,6 @@ public class MyProfileActivity extends Activity {
 	
 	private User user;
 	
-//	@SuppressLint("HandlerLeak")
-//	private Handler handler = new Handler() {
-//		@Override
-//    	public void handleMessage(Message msg){
-//    		
-//    		if(msg.what < 0)
-//    			Toast.makeText(MyProfileActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
-//    		else if(msg.what == 1)
-//    			fill();
-//    		else
-//    			Toast.makeText(MyProfileActivity.this, "What happened?", Toast.LENGTH_SHORT).show();
-//    	}
-//	};
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,7 +53,7 @@ public class MyProfileActivity extends Activity {
 		logout = (Button) findViewById(R.id.logout_button);
 		
 //		new GetMyProfile(this, this).start();
-		GetMyProfile gmp = new GetMyProfile(this, this);
+		GetMyProfile gmp = new GetMyProfile(this);
 		gmp.execute();
 	}
 
@@ -77,7 +64,6 @@ public class MyProfileActivity extends Activity {
 		return true;
 	}
 	
-	@SuppressLint("NewApi")
 	public void fill() {
 		name.setText(user.getName());
 		gender.setText(user.getGender()? "Male" : "Female");
@@ -102,9 +88,7 @@ public class MyProfileActivity extends Activity {
 	}
 	/* log out button */
 	public void logOut(View view){
-		Intent intent = new Intent(this, LoginActivity.class);
-		intent.putExtra("logout", "logout");
-		startActivity(intent);
+		new Logout(this).execute();
 	}
 	
 	public void setUser(User user) {

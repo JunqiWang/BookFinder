@@ -16,8 +16,8 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.wilddynamos.bookapp.R;
-import com.wilddynamos.bookapp.ws.remote.action.profile.DeclineAll;
-import com.wilddynamos.bookapp.ws.remote.action.profile.GetRequestList;
+import com.wilddynamos.bookapp.ws.remote.action.mybooks.DeclineAll;
+import com.wilddynamos.bookapp.ws.remote.action.mybooks.GetRequestList;
  
 public class RequesterListActivity extends Activity {
 //		implements OnTouchListener	{
