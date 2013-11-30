@@ -15,17 +15,16 @@ import com.wilddynamos.bookapp.ws.remote.Connection;
 public class GetRequestDetail extends AsyncTask<String, Void, JSONArray> {
 
 	private RequesterDetailActivity a;
-	
-	
+
 	public GetRequestDetail(RequesterDetailActivity a) {
 		this.a = a;
 	}
-	
+
 	@Override
 	protected JSONArray doInBackground(String... params) {		//send request id to server
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
-		
+
 		try {
 			return DataUtils.receiveJSON(Connection.requestByPost("/GetRequestDetail", paramsMap));
 			

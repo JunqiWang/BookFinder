@@ -1,21 +1,47 @@
 package com.wilddynamos.bookapp.ws.remote.action;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.widget.Toast;
+
 import com.wilddynamos.bookapp.activity.LoginActivity;
+import com.wilddynamos.bookapp.activity.profile.MyProfileActivity;
+import com.wilddynamos.bookapp.service.NotificationCenter;
 import com.wilddynamos.bookapp.utils.DataUtils;
 import com.wilddynamos.bookapp.ws.remote.Connection;
 
-public class Logout extends Thread {
-	private LoginActivity a;
-	
-	public Logout(LoginActivity a) {
+public class Logout extends AsyncTask<Void, Void, Boolean> {
+	private MyProfileActivity a;
+
+	public Logout(MyProfileActivity a) {
 		this.a = a;
 	}
 
 	@Override
-	public void run() {
-//		if("1".equals(DataUtils.receiveFlag(Connection.requestByGet("/Logout", null))))
-//			a.getHandler().sendEmptyMessage(1);
-//		else
-//			a.getHandler().sendEmptyMessage(-1);
+	protected Boolean doInBackground(Void... params) {
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("id", Connection.id + "");
+
+		if ("1".equals(DataUtils.receiveFlag(Connection.requestByGet("/Logout",
+				paramsMap)))) {
+
+			NotificationCenter.handler.sendEmptyMessage(-1);
+			return true;
+		} else
+			return false;
+	}
+
+	protected void onPostExecute(Boolean success) {
+		System.out.println(success);
+		if (success) {
+			Toast.makeText(a, "Logged out", Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(a, LoginActivity.class);
+			intent.putExtra("logout", "logout");
+			a.startActivity(intent);
+		} else
+			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
 	}
 }

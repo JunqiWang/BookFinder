@@ -1,196 +1,208 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">  
-	
+    android:layout_height="fill_parent" >
+
     <ImageView
-       android:layout_width="fill_parent"
-        android:layout_height="fill_parent" 
-        android:background="@drawable/bg1"
-        android:contentDescription="@string/image"
-        android:alpha="0.3"/>
-       
-    <ScrollView
-    	android:layout_width="fill_parent"
-    	android:layout_height="fill_parent">
-    
-    <RelativeLayout 
-   	 	android:layout_width="fill_parent"
-   	 	android:layout_height="wrap_content">  
-    <TextView
-        android:layout_marginTop="30dp"
-        android:id="@+id/profile_photo_string"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:text="@string/profile_detail_title"
-        android:gravity="center" />
-  
-    <ImageView 
-   		android:id="@+id/profile_image"
-   		android:layout_marginTop="80dp"
-   		android:src="@drawable/ic_launcher"
-   		android:contentDescription="@string/image"
-   		android:layout_width="160dp"
-  		android:layout_height="200dp"
-  		android:layout_alignParentRight="true"
-  		android:layout_marginRight="60dp"
-  		android:onClick="zoomInOut" />
-<LinearLayout
-     android:id="@+id/profile_detail_linear1"
-     android:layout_below="@id/profile_photo_string"
-     android:layout_marginTop="30dp"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content">
-	<TextView
-	    android:id="@+id/name_string"	   
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/name"
-        android:textStyle="bold"
-        android:layout_marginLeft="35dp" />
-	
-	<TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/user_name" />
-</LinearLayout>	
+        android:layout_height="fill_parent"
+        android:alpha="0.3"
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image" />
 
-<LinearLayout
-     android:id="@+id/profile_detail_linear2"
-     android:layout_below="@id/profile_detail_linear1"
-     android:layout_marginTop="30dp"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content">	
-	<TextView
-        android:id="@+id/gender_string"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/gender"
-        android:textStyle="bold"
-        android:layout_marginLeft="35dp" />
-	
-	<TextView
-        android:id="@+id/gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/user_gender" />
-</LinearLayout>	
-<LinearLayout 
-     android:id="@+id/profile_detail_linear3"
-     android:layout_below="@id/profile_detail_linear2"
-     android:layout_marginTop="30dp"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content">
-	<TextView
-        android:id="@+id/campus_string"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/campus"
-        android:textStyle="bold"
-        android:layout_marginLeft="35dp" />	
-	<TextView
-        android:id="@+id/campus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/user_campus" />
-</LinearLayout>	
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-<LinearLayout 
-     android:id="@+id/profile_detail_linear4"
-     android:layout_below="@id/profile_detail_linear3"
-     android:layout_marginTop="30dp"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content">
-	<TextView
-        android:id="@+id/contact_string"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:text="@string/contact"
-        android:layout_marginLeft="35dp" />
-	
-	<TextView
-        android:id="@+id/contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/user_contact" />
-</LinearLayout>	
-<LinearLayout 
-     android:id="@+id/profile_detail_linear5"
-     android:layout_below="@id/profile_detail_linear4"
-     android:layout_marginTop="30dp"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content">
-	<TextView
-        android:id="@+id/address_string"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:text="@string/address"
-        android:layout_marginLeft="35dp" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-	<TextView
-        android:id="@+id/address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="@string/user_address" />
-</LinearLayout>		
+            <TextView
+                android:id="@+id/profile_photo_string"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="@string/profile_detail_title"
+                android:textSize="35sp"
+                android:textStyle="bold" />
 
-	<Button
-	    android:id="@+id/edit_button"	    
-	    android:layout_below="@id/profile_detail_linear5"
-	 	android:layout_alignLeft="@+id/change_password_button"
-	 	android:layout_marginTop="60dp"
-	    android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_button"
-	    android:text="@string/edit"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-	    android:onClick="editProfile" />
-	
-	<Button 
-	  	android:id="@+id/change_password_button"
-	    android:layout_below="@id/edit_button"
-	    android:layout_marginTop="30dp" 
-	    android:layout_centerHorizontal="true"
-	    android:layout_width="300dp"
-        android:layout_height="wrap_content" 
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@drawable/custom_button"
-        android:text="@string/change_password"
-        android:onClick="changePassword"/>
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="160dp"
+                android:layout_height="200dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="80dp"
+                android:contentDescription="@string/image"
+                android:onClick="zoomInOut"
+                android:src="@drawable/ic_launcher" />
 
-	<Button
-	    android:id="@+id/logout_button"
-	    android:layout_width="300dp"
-	    android:layout_height="wrap_content"
-	    android:layout_alignLeft="@+id/change_password_button"
-	    android:layout_below="@+id/change_password_button"
-	    android:layout_marginTop="30dp"
-	    android:background="@drawable/custom_button2"
-	    android:gravity="center"
-	    android:onClick="logOut"
-	    android:text="@string/logout"
-	    android:textColor="@color/white"
-	    android:textSize="25sp"
-	    android:textStyle="bold" />
-	
-</RelativeLayout>
-</ScrollView>
+            <LinearLayout
+                android:id="@+id/profile_detail_linear1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_photo_string"
+                android:layout_marginTop="30dp" >
+
+                <TextView
+                    android:id="@+id/name_string"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="@string/name"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_name"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_detail_linear2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_detail_linear1"
+                android:layout_marginTop="30dp" >
+
+                <TextView
+                    android:id="@+id/gender_string"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="@string/gender"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_gender"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_detail_linear3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_detail_linear2"
+                android:layout_marginTop="30dp" >
+
+                <TextView
+                    android:id="@+id/campus_string"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="@string/campus"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/campus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_campus"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_detail_linear4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_detail_linear3"
+                android:layout_marginTop="30dp" >
+
+                <TextView
+                    android:id="@+id/contact_string"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="@string/contact"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_contact"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_detail_linear5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_detail_linear4"
+                android:layout_marginTop="30dp" >
+
+                <TextView
+                    android:id="@+id/address_string"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="@string/address"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_address"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_detail_linear5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/edit_button"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_button"
+                    android:onClick="editProfile"
+                    android:text="@string/edit"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/change_password_button"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_button"
+                    android:onClick="changePassword"
+                    android:text="@string/change_password"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/logout_button"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_button2"
+                    android:gravity="center"
+                    android:onClick="logOut"
+                    android:text="@string/logout"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
 </RelativeLayout>

@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
-import com.wilddynamos.bookapp.ws.remote.action.profile.AcceptRequest;
+import com.wilddynamos.bookapp.ws.remote.action.mybooks.AcceptRequest;
  
 public class LazyAdapter extends BaseAdapter {
  

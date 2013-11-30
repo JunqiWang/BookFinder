@@ -1,4 +1,4 @@
-package com.wilddynamos.bookapp.ws.remote.action.profile;
+package com.wilddynamos.bookapp.ws.remote.action.mybooks;
 
 import java.util.HashMap;
 import java.util.Map;

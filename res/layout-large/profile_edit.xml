@@ -21,11 +21,11 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/createOrEditMyBookTitle"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="20dp"
-                android:gravity="center"
+                android:text="@string/editProfilePageTitle"
                 android:textSize="35sp"
                 android:textStyle="bold" />
 
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="@string/cover"
+                android:text="@string/profilePhoto"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -46,12 +46,13 @@
                 android:orientation="horizontal" >
 
                 <LinearLayout
+                    android:id="@+id/editprofile_linearLayout1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
 
                     <Button
-                        android:id="@+id/createOrEditTakePhoto"
+                        android:id="@+id/editprofile_take_photo_button"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/custom_button3"
@@ -61,12 +62,11 @@
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/createOrEditChoosePhoto"
+                        android:id="@+id/editprofile_choose_photo_button"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/custom_button3"
-                        android:onClick="choosePhoto"
                         android:text="@string/choosePhoto"
                         android:textColor="@color/white"
                         android:textSize="25sp"
@@ -74,7 +74,7 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/createOrEditMyBookCover"
+                    android:id="@+id/editprofile_image"
                     android:layout_width="120dp"
                     android:layout_height="130dp"
                     android:layout_alignParentRight="true"
@@ -99,7 +99,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/createOrEditMyBookName"
+                    android:id="@+id/edit_name"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -117,36 +117,20 @@
                 <TextView
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/price"
+                    android:text="@string/gender"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/createOrEditMyBookPrice"
+                    android:id="@+id/edit_gender"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_bg"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/createOrEditMyBookPer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/per"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/rentPriceUnitSelection"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp" />
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/createOrEditMyBookPerRentOnly"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -154,77 +138,100 @@
                 android:layout_marginTop="30dp" >
 
                 <TextView
-                    android:id="@+id/createOrEditMyBookRentFor"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/duration"
+                    android:text="@string/campus"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/rentDuration"
+                    android:id="@+id/edit_campus"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/gradient_bg"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/rentDurationUnit"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical" >
+                android:layout_marginTop="30dp" >
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/description"
+                    android:text="@string/contact"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/createOrEditMyBookDescription"
-                    android:layout_width="fill_parent"
+                    android:id="@+id/edit_contact"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient_bg"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp" >
+
+                <TextView
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:text="@string/address"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edit_address"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
                     android:background="@drawable/gradient_bg"
                     android:gravity="top"
                     android:inputType="textMultiLine"
-                    android:maxLines="6"
-                    android:minLines="6" />
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/edit_map"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:contentDescription="@string/bookCover_alt"
+                    android:src="@drawable/locate" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="60dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/createOrEditMyBookSubmit"
+                    android:id="@+id/editprofile_saveButton"
                     android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/custom_button4"
                     android:onClick="save"
+                    android:text="@string/save"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/createOrEditMyBookCancel"
+                    android:id="@+id/editprofile_cancelButton"
                     android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -237,5 +244,12 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha="0"
+        android:background="@drawable/bg1"
+        android:contentDescription="@string/image" />
 
 </RelativeLayout>
