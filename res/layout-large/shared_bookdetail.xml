@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for bookdetail -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
+
+    <!-- Background -->
 
     <ImageView
         android:layout_width="fill_parent"
@@ -10,6 +13,7 @@
         android:alpha="0.3"
         android:background="@drawable/bg1"
         android:contentDescription="@string/image" />
+    <!-- ScrollView for the rotation of screen -->
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -19,6 +23,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
+            <!-- title -->
+
             <TextView
                 android:id="@+id/bookDetail_title"
                 android:layout_width="fill_parent"
@@ -27,6 +33,7 @@
                 android:gravity="center"
                 android:textSize="40sp"
                 android:textStyle="bold" />
+            <!-- book cover -->
 
             <ImageView
                 android:id="@+id/bookDetail_cover"
@@ -38,6 +45,7 @@
                 android:contentDescription="@string/cover"
                 android:onClick="zoomInOut"
                 android:src="@drawable/ic_launcher" />
+            <!-- name -->
 
             <LinearLayout
                 android:id="@+id/bookDetail_nameLine"
@@ -61,6 +69,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="25sp" />
             </LinearLayout>
+            <!-- price -->
 
             <LinearLayout
                 android:id="@+id/bookDetail_priceLine"
@@ -84,6 +93,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="25sp" />
             </LinearLayout>
+            <!-- duration -->
 
             <LinearLayout
                 android:id="@+id/bookDetail_durationLine"
@@ -100,6 +110,7 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
+            <!-- owner -->
 
             <LinearLayout
                 android:id="@+id/bookDetail_ownerLine"
@@ -124,6 +135,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="25sp" />
             </LinearLayout>
+            <!-- description -->
 
             <TextView
                 android:id="@+id/bookDetail_theDescriptionWord"
@@ -136,20 +148,17 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <ScrollView
-                android:id="@+id/bookDetail_descriptionScroll"
+            <TextView
+                android:id="@+id/bookDetail_description"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:layout_below="@id/bookDetail_theDescriptionWord"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp" >
-
-                <TextView
-                    android:id="@+id/bookDetail_description"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp" />
-            </ScrollView>
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:maxLines="5"
+                android:scrollbars="vertical"
+                android:textSize="25sp" />
 
             <!-- use for edit -->
 
@@ -157,7 +166,7 @@
                 android:id="@+id/bookDetail_like"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_below="@id/bookDetail_descriptionScroll"
+                android:layout_below="@id/bookDetail_description"
                 android:layout_marginLeft="60dp"
                 android:contentDescription="@string/like"
                 android:src="@drawable/ic_action_good" />
@@ -166,7 +175,7 @@
                 android:id="@+id/bookDetail_likeNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/bookDetail_descriptionScroll"
+                android:layout_below="@id/bookDetail_description"
                 android:layout_marginLeft="140dp"
                 android:layout_marginTop="20dp"
                 android:textSize="25sp"
@@ -176,7 +185,7 @@
                 android:id="@+id/bookDetail_myPost_requestInfo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/bookDetail_descriptionScroll"
+                android:layout_below="@id/bookDetail_description"
                 android:layout_marginLeft="95dp"
                 android:layout_marginTop="13dp"
                 android:layout_toRightOf="@id/bookDetail_likeNum"
@@ -201,12 +210,13 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
+            <!-- for has responded -->
 
             <TextView
                 android:id="@+id/bookDetail_myRequest_hasResponded"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/bookDetail_descriptionScroll"
+                android:layout_below="@id/bookDetail_description"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@id/bookDetail_likeNum"
@@ -240,6 +250,7 @@
 
                 <Button
                     android:id="@+id/bookDetail_myPost_edit"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_button"
@@ -251,6 +262,7 @@
 
                 <Button
                     android:id="@+id/bookDetail_myPost_delete"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
@@ -261,6 +273,7 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
             </LinearLayout>
+            <!-- withdraw -->
 
             <Button
                 android:id="@+id/bookDetail_myRequest_withdraw"
@@ -278,6 +291,7 @@
                 android:visibility="invisible" />
         </RelativeLayout>
     </ScrollView>
+    <!-- Background used when loading -->
 
     <ImageView
         android:id="@+id/bookDetail_block"
