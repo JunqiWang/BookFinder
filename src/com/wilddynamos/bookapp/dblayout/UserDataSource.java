@@ -81,6 +81,32 @@ public class UserDataSource {
 		return database.update(UserSQLiteHelper.TABLE_USER, values,
 				UserSQLiteHelper.COLUMN_ID + " = " + user.getId(), null);
 	}
+	
+	public int addOrUpdateUser(User user) {
+		
+		if (getUser(user.getId()) != null) {
+			ContentValues values = new ContentValues();
+			// values.put(UserSQLiteHelper.COLUMN_EMAIL, user.getEmail());
+			// values.put(UserSQLiteHelper.COLUMN_PASSWORD, user.getPassword());
+			values.put(UserSQLiteHelper.COLUMN_NAME, user.getName());
+			values.put(UserSQLiteHelper.COLUMN_GENDER, user.getGender());
+			values.put(UserSQLiteHelper.COLUMN_CAMPUS, user.getCampus());
+			values.put(UserSQLiteHelper.COLUMN_CONTACT, user.getContact());
+			values.put(UserSQLiteHelper.COLUMN_ADDRESS, user.getAddress());
+			values.put(UserSQLiteHelper.COLUMN_PHOTO, user.getPhotoAddr());
+			return database.update(UserSQLiteHelper.TABLE_USER, values,
+				UserSQLiteHelper.COLUMN_ID + " = " + user.getId(), null);
+		}
+		else {
+			User newUser = createUser(user.getId(), user.getEmail(), user.getPassword(), user.getName(),
+					user.getGender(), user.getCampus(), user.getContact(), user.getAddress(),
+					user.getPhotoAddr());
+			if (newUser != null)
+				return 1;
+			else 
+				return -1;
+		}
+	}
 
 	public void deleteUser(User user) {
 		long id = user.getId();

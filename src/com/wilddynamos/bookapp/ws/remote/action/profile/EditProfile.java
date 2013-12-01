@@ -29,20 +29,20 @@ public class EditProfile extends AsyncTask<String, Void, Boolean> {
 
 		// TODO check if exist, method addOrUpdate
 		// update profile in sqlite
-		// UserDataSource userDataSource = new UserDataSource(a);
-		// userDataSource.open();
-		//
-		// User user = new User();
-		// user.setId(Integer.parseInt(params[0]));
-		// user.setName(params[1]);
-		// user.setGender("1".equals(params[2]));
-		// user.setCampus(params[3]);
-		// user.setContact(params[4]);
-		// user.setAddress(params[5]);
-		// user.setPhotoAddr(params[6]);
-		//
-		// sqliteResult = userDataSource.createUser(user);
-		// userDataSource.close();
+		UserDataSource userDataSource = new UserDataSource(a);
+		userDataSource.open();
+		
+		User user = new User();
+		user.setId(Integer.parseInt(params[0]));
+		user.setName(params[1]);
+		user.setGender("1".equals(params[2]));
+		user.setCampus(params[3]);
+		user.setContact(params[4]);
+		user.setAddress(params[5]);
+		user.setPhotoAddr(params[6]);
+		
+		userDataSource.updateUser(user);
+		userDataSource.close();
 
 		// send the new profile data to server
 		Map<String, String> paramsMap = new HashMap<String, String>();
