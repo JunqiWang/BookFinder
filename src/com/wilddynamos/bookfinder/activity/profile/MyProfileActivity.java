@@ -1,12 +1,14 @@
 package com.wilddynamos.bookfinder.activity.profile;
 
-import java.nio.charset.Charset;
+import java.io.ByteArrayOutputStream;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -54,11 +56,13 @@ public class MyProfileActivity extends BaseProfileActivity {
 		intent.putExtra("contact", contact.getText().toString());
 		intent.putExtra("address", address.getText().toString());
 
-		if (profileImageString != null && !"".equals(profileImageString)) {
-			byte[] bytes = profileImageString.getBytes(Charset
-					.forName("ISO-8859-1"));
-			intent.putExtra("BMP", bytes);
-		}
+		Drawable drawable = profileImage.getDrawable();
+		BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+		Bitmap bitmap = bitmapDrawable.getBitmap();
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 75, stream);
+		byte[] bytes = stream.toByteArray();
+		intent.putExtra("BMP", bytes);
 
 		startActivity(intent);
 	}

@@ -21,7 +21,7 @@ public class ZoomInOutAction {
 		Intent intent = new Intent(activity, ZoomInOutActivity.class);
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-		bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 75, stream);
 
 		byte[] bytes = stream.toByteArray();
 		intent.putExtra("BMP", bytes);
