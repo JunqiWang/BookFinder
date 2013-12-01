@@ -63,15 +63,11 @@ public class MyBookListActivity extends Activity {
 		
 		GetMyBooks gmb = new GetMyBooks(this);
 		gmb.execute(new String[] { String.valueOf(Connection.id) });
-		
-		expListView.expandGroup(position);
 	}
 
 	public void loadData(JSONArray jsonArray) { // get data from the server and
 												// set headers and children for
 												// different kind of list
-
-		System.out.println("haha");
 		listDataHeader = new ArrayList<String>();
 		listDataChild = new HashMap<String, List<String>>();
 
@@ -155,7 +151,16 @@ public class MyBookListActivity extends Activity {
 		intent.putExtra("id", borrowIds.get(childPosition));
 		startActivity(intent);
 	}
+	
+	public void clearList() {
+		listDataHeader.clear();
+		listDataChild.clear();
 
+		sellIds.clear();
+		rentIds.clear();
+		buyIds.clear();
+		borrowIds.clear();
+	}
 	public void fill() {
 		// set the adapter
 		listAdapter = new ExpandableListAdapter(this, listDataHeader,
@@ -204,5 +209,6 @@ public class MyBookListActivity extends Activity {
 				return false;
 			}
 		});
+		expListView.expandGroup(position);
 	}
 }
