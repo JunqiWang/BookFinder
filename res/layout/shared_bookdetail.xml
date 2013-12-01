@@ -41,10 +41,11 @@
                 android:layout_height="100dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="5dp"
                 android:contentDescription="@string/cover"
+                android:layout_below="@id/bookDetail_title"
                 android:onClick="zoomInOut"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/app_cover" />
             <!-- name -->
 
             <LinearLayout
@@ -161,6 +162,27 @@
 
             <!-- use for edit -->
 
+            <ImageView
+                android:id="@+id/bookDetail_like"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/bookDetail_description"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:contentDescription="@string/like"
+                android:src="@drawable/ic_action_good" />
+
+            <TextView
+                android:id="@+id/bookDetail_likeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bookDetail_description"
+                android:layout_toRightOf="@id/bookDetail_like"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="23dp"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:id="@+id/bookDetail_myPost_requestInfo"
                 android:layout_width="fill_parent"
@@ -172,22 +194,6 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:visibility="invisible" >
-
-                <ImageView
-                    android:id="@+id/bookDetail_like"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:contentDescription="@string/like"
-                    android:src="@drawable/ic_action_good" />
-
-                <TextView
-                    android:id="@+id/bookDetail_likeNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/bookDetail_myPost_requesterNum"
@@ -216,10 +222,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bookDetail_description"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="23dp"
                 android:orientation="horizontal"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:visibility="invisible" />
 
@@ -229,7 +235,7 @@
                 android:layout_height="40dp"
                 android:layout_below="@id/bookDetail_myRequest_hasResponded"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/custom_button3"
                 android:textColor="@color/white"
                 android:textSize="15sp"
@@ -279,7 +285,7 @@
                 android:layout_height="40dp"
                 android:layout_below="@id/bookDetail_myRequest_hasResponded"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/custom_button2"
                 android:onClick="withdraw"
                 android:text="@string/withdraw"
@@ -292,7 +298,7 @@
     <!-- Background used when loading -->
 
     <ImageView
-        android:id="@+id/bookdetails_background11"
+        android:id="@+id/bookDetail_block"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:alpha="1"
