@@ -8,6 +8,7 @@ import com.wilddynamos.bookfinder.model.User;
 import com.wilddynamos.bookfinder.ws.remote.Connection;
 import com.wilddynamos.bookfinder.ws.remote.action.profile.GetProfile;
 
+/** Servlet to get profile information **/
 public class GetMyProfile extends AsyncTask<Void, Void, User> {
 
 	private MyProfileActivity a;
@@ -16,6 +17,7 @@ public class GetMyProfile extends AsyncTask<Void, Void, User> {
 		this.a = a;
 	}
 
+	/** Connect with sever's datbase to get profile **/
 	@Override
 	protected User doInBackground(Void... params) {
 		UserDataSource userDataSource = new UserDataSource(a);
