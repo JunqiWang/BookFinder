@@ -3,14 +3,10 @@ package com.wilddynamos.bookfinder.ws.remote.action.profile;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.wilddynamos.bookfinder.activity.LoginActivity;
 import com.wilddynamos.bookfinder.activity.profile.ChangePasswordActivity;
-import com.wilddynamos.bookfinder.dblayout.UserDataSource;
-import com.wilddynamos.bookfinder.model.User;
 import com.wilddynamos.bookfinder.utils.DataUtils;
 import com.wilddynamos.bookfinder.ws.remote.Connection;
 

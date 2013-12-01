@@ -29,7 +29,7 @@ public class RequesterListActivity extends Activity {
 
 	private int bookId; // book id for the requests
 
-	ArrayList<HashMap<String, String>> requesterArray;
+	private ArrayList<HashMap<String, String>> requesterArray;
 
 	private List<Integer> ids;
 	private int currentPage;

@@ -5,65 +5,57 @@
     android:layout_height="wrap_content"
     android:background="@drawable/list_selector"
     android:orientation="horizontal"
-    android:padding="7dip" >
+    android:padding="2dip" >
 
     <!-- Image -->
 
-    <LinearLayout
-        android:id="@+id/thumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="7dip"
-        android:background="@drawable/image_bg"
-        android:padding="5dip" >
-
-        <ImageView
-            android:id="@+id/list_image"
-            android:layout_width="30dip"
-            android:layout_height="30dip"
-            android:contentDescription="@string/image"
-            android:src="@drawable/profile" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/mybooks_requester_image"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/profile" />
     <!-- Name -->
 
     <TextView
         android:id="@+id/requesterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/mybooks_requester_image"
         android:text="@string/user_name"
         android:textColor="#040404"
-        android:textSize="18sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         android:typeface="sans" />
     <!-- View Button -->
 
     <Button
         android:id="@+id/viewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/requesterName"
         android:layout_margin="5dip"
         android:layout_toLeftOf="@+id/acceptButton"
         android:background="@drawable/custom_button"
         android:text="@string/view"
         android:textColor="#ffffff"
+        android:textSize="12sp"
         android:textStyle="bold" />
     <!-- Accept Button -->
 
     <Button
         android:id="@+id/acceptButton"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/requesterName"
         android:layout_margin="5dip"
         android:background="@drawable/custom_button4"
         android:text="@string/accept"
         android:textColor="#ffffff"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
