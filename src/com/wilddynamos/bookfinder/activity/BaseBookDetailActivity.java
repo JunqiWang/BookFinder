@@ -35,9 +35,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 	 */
 	protected ImageView bg;
 
-	/**
-	 * View widgets
-	 */
+	// View widgets
 	protected TextView title;
 	protected TextView name;
 	protected TextView price;

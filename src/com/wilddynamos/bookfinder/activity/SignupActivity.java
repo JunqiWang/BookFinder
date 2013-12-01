@@ -9,7 +9,6 @@ import android.widget.Toast;
 import com.wilddynamos.bookfinder.R;
 import com.wilddynamos.bookfinder.ws.remote.action.Signup;
 
-/** Activity for sign up **/
 public class SignupActivity extends Activity {
 
 	private EditText email;
@@ -29,31 +28,15 @@ public class SignupActivity extends Activity {
 	}
 
 	public void signUp(View view) {
-		if ((password.getText().toString() == null || "".equals(password.getText()
-				.toString()))
-				|| (password.getText().toString() == null || "".equals(password
-						.getText().toString()))
-				|| (password.getText().toString() == null || "".equals(password
-						.getText().toString()))
-				|| (password.getText().toString() == null || "".equals(password
-						.getText().toString()))) {
-			Toast.makeText(this, "Please fill in all fields",
-					Toast.LENGTH_SHORT).show();
-			return;
-		}
-		
-		if ((name.getText().toString() == null || "".equals(name.getText()
-				.toString()))
-				|| (name.getText().toString() == null || "".equals(name
-						.getText().toString()))
-				|| (name.getText().toString() == null || "".equals(name
-						.getText().toString()))
+		if ((password.getText().toString() == null || "".equals(password
+				.getText().toString()))
 				|| (name.getText().toString() == null || "".equals(name
 						.getText().toString()))) {
 			Toast.makeText(this, "Please fill in all fields",
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
+
 		if (!isValidEmail(email.getText().toString())) {
 			Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show();
 			return;
@@ -64,7 +47,7 @@ public class SignupActivity extends Activity {
 					.show();
 			return;
 		}
-		
+
 		new Signup(this).execute(new String[] {
 				email.getEditableText().toString(),
 				name.getEditableText().toString(),
