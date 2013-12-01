@@ -108,7 +108,7 @@ public class PostDetailActivity extends BaseBookDetailActivity {
 	
 	public void requestSuccess() {
 		request.setText("Has Requested");
-		Toast.makeText(PostDetailActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "Your request has been delivered", Toast.LENGTH_SHORT).show();
 	}
 
 }
