@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
-encoding//src/com/wilddynamos/bookapp/activity/MultiWindowActivity.java=UTF-8
-encoding//src/com/wilddynamos/bookapp/activity/mybooks/MyBookListActivity.java=UTF-8
-encoding//src/com/wilddynamos/bookapp/activity/post/PostListActivity.java=UTF-8
-encoding//src/com/wilddynamos/bookapp/service/NotificationCenter.java=UTF-8
-encoding//src/com/wilddynamos/bookapp/ws/remote/Connection.java=UTF-8
-encoding//src/com/wilddynamos/bookapp/ws/remote/action/WaitingForMessage.java=UTF-8
+encoding//src/com/wilddynamos/bookfinder/activity/MultiWindowActivity.java=UTF-8
+encoding//src/com/wilddynamos/bookfinder/activity/mybooks/MyBookListActivity.java=UTF-8
+encoding//src/com/wilddynamos/bookfinder/activity/post/PostListActivity.java=UTF-8
+encoding//src/com/wilddynamos/bookfinder/service/NotificationCenter.java=UTF-8
+encoding//src/com/wilddynamos/bookfinder/ws/remote/Connection.java=UTF-8
+encoding//src/com/wilddynamos/bookfinder/ws/remote/action/WaitingForMessage.java=UTF-8
