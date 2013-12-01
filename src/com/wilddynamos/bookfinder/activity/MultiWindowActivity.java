@@ -1,6 +1,5 @@
 package com.wilddynamos.bookfinder.activity;
 
-import android.annotation.SuppressLint;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -19,20 +18,16 @@ import com.wilddynamos.bookfinder.activity.post.PostListActivity;
 import com.wilddynamos.bookfinder.activity.profile.MyProfileActivity;
 import com.wilddynamos.bookfinder.service.NotificationCenter;
 
-/** Activity for multiwindow display **/
 @SuppressWarnings("deprecation")
 public class MultiWindowActivity extends TabActivity {
 	public final static String TAB_SELECT = "tab_select";
 	Menu myMenu;
 	TabHost tabHost;
 
-	/** Called when the activity is first created. **/
-	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.multiwindow);
-		System.out.println(0);
 		// create the TabHost that will contain the Tabs
 		tabHost = (TabHost) findViewById(android.R.id.tabhost);
 		TabSpec tab1 = tabHost.newTabSpec("First Tab");
@@ -41,7 +36,6 @@ public class MultiWindowActivity extends TabActivity {
 
 		// Set the Tab name and Activity
 		// that will be opened when particular Tab will be selected
-
 		tab1.setIndicator("Posts");
 		tab1.setContent(new Intent(this, PostListActivity.class));
 
@@ -97,5 +91,4 @@ public class MultiWindowActivity extends TabActivity {
 			}
 		}
 	}
-
 }

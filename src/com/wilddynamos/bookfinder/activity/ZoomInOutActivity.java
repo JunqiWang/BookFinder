@@ -15,10 +15,12 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 
 public class ZoomInOutActivity extends Activity implements OnTouchListener {
+
 	private static final String TAG = "Touch";
+
 	@SuppressWarnings("unused")
 	private static final float MIN_ZOOM = 1f, MAX_ZOOM = 1f;
-	// private int id;
+
 	// These matrices will be used to scale points of the image
 	Matrix matrix = new Matrix();
 	Matrix savedMatrix = new Matrix();
@@ -36,14 +38,12 @@ public class ZoomInOutActivity extends Activity implements OnTouchListener {
 
 	// private Bitmap bitmap;
 
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.util_zoom_in_out);
 		byte[] bytes = getIntent().getByteArrayExtra("BMP");
 		Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-		// bitmap = (Bitmap)getIntent().getParcelableExtra("BitmapImage");
 		ImageView view = (ImageView) findViewById(R.id.zoom_in_out_imageView);
 		view.setImageBitmap(bitmap);
 		view.setOnTouchListener(this);
@@ -114,27 +114,16 @@ public class ZoomInOutActivity extends Activity implements OnTouchListener {
 		return true; // indicate event was handled
 	}
 
-	/*
-	 * --------------------------------------------------------------------------
-	 * Method: spacing Parameters: MotionEvent Returns: float Description:
-	 * checks the spacing between the two fingers on touch
-	 * ----------------------------------------------------
-	 */
-
+	// Method: spacing Parameters: MotionEvent Returns: float Description:
+	// checks the spacing between the two fingers on touch
 	private float spacing(MotionEvent event) {
 		float x = event.getX(0) - event.getX(1);
 		float y = event.getY(0) - event.getY(1);
-		// return FloatMath.sqrt(x * x + y * y);
 		return (float) Math.sqrt(x * x + y * y);
 	}
 
-	/*
-	 * --------------------------------------------------------------------------
-	 * Method: midPoint Parameters: PointF object, MotionEvent Returns: void
-	 * Description: calculates the midpoint between the two fingers
-	 * ------------------------------------------------------------
-	 */
-
+	// Method: midPoint Parameters: PointF object, MotionEvent Returns: void
+	// Description: calculates the midpoint between the two fingers
 	private void midPoint(PointF point, MotionEvent event) {
 		float x = event.getX(0) + event.getX(1);
 		float y = event.getY(0) + event.getY(1);
@@ -142,7 +131,6 @@ public class ZoomInOutActivity extends Activity implements OnTouchListener {
 	}
 
 	@SuppressWarnings("deprecation")
-	/** Show an event in the LogCat view, for debugging */
 	private void dumpEvent(MotionEvent event) {
 		String names[] = { "DOWN", "UP", "MOVE", "CANCEL", "OUTSIDE",
 				"POINTER_DOWN", "POINTER_UP", "7?", "8?", "9?" };

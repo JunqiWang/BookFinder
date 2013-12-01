@@ -16,8 +16,15 @@ import android.widget.TextView;
 import com.wilddynamos.bookfinder.R;
 import com.wilddynamos.bookfinder.utils.ZoomInOutAction;
 
+/**
+ * Profile activity shared by profile_self and profile_others
+ * 
+ * @author JunqiWang
+ * 
+ */
 public abstract class BaseProfileActivity extends Activity {
 
+	// View widgets
 	protected ImageView bg;
 	protected TextView name;
 	protected TextView email;
@@ -68,7 +75,6 @@ public abstract class BaseProfileActivity extends Activity {
 				profileImage.setImageBitmap(coverImage);
 			}
 		} catch (Exception e) {
-			System.out.println(e.toString());
 		}
 
 		bg.setAlpha(0f);

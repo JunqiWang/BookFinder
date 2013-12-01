@@ -50,7 +50,6 @@ import com.wilddynamos.bookfinder.utils.ZoomInOutAction;
 import com.wilddynamos.bookfinder.ws.remote.Connection;
 import com.wilddynamos.bookfinder.ws.remote.action.profile.EditProfile;
 
-/** Edit profile Activity **/
 public class EditProfileActivity extends Activity implements LocationListener,
 		GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener {
@@ -68,7 +67,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 	private Button choosePhoto;
 	private Button save;
 
-	/** params in taking photo **/
+	// params in taking photo
 	private static final int ACTION_TAKE_PHOTO = 1;
 	private static final String BITMAP_STORAGE_KEY = "viewbitmap";
 	private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
@@ -77,10 +76,10 @@ public class EditProfileActivity extends Activity implements LocationListener,
 
 	TakePhoto takePhotoAction;
 
-	/** params in choose photo **/
+	// params in choose photo
 	final int ACTIVITY_SELECT_IMAGE = 5;
 
-	/** params in geolocation **/
+	// params in geolocation
 	// A request to connect to Location Services
 	private LocationRequest mLocationRequest;
 
@@ -112,22 +111,17 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		contact.setText(getIntent().getExtras().getString("contact"));
 		myaddress.setText(getIntent().getExtras().getString("address"));
 
-		byte[] bytes = getIntent().getByteArrayExtra("BMP");System.out.println(bytes);
+		byte[] bytes = getIntent().getByteArrayExtra("BMP");
 		if (bytes != null) {
 			Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,
 					bytes.length);
 			profileImage.setImageBitmap(bitmap);
 		}
 
-		/*** geolocation ***/
+		// geolocation
 
 		// Create a new global location parameters object
 		mLocationRequest = LocationRequest.create();
-
-		/*
-		 * Set the update interval
-		 */
-		// mLocationRequest.setInterval(LocationUtils.UPDATE_INTERVAL_IN_MILLISECONDS);
 
 		// Use high accuracy
 		mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -136,10 +130,8 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		mLocationRequest
 				.setFastestInterval(LocationUtils.FAST_INTERVAL_CEILING_IN_MILLISECONDS);
 
-		/*
-		 * Create a new location client, using the enclosing class to handle
-		 * callbacks.
-		 */
+		// Create a new location client, using the enclosing class to handle
+		// callbacks.
 		mLocationClient = new LocationClient(this, this, this);
 
 		save.setOnClickListener(new OnClickListener() {
@@ -171,13 +163,13 @@ public class EditProfileActivity extends Activity implements LocationListener,
 			}
 		});
 
-		/** take photo **/
+		// take photo
 		mImageBitmap = null;
 		takePhotoAction = new TakePhoto(this, mCurrentPhotoPath, profileImage,
 				takePhoto);
 		takePhotoAction.start();
 
-		/** choose Photo **/
+		// choose Photo
 		choosePhoto.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -188,7 +180,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 			}
 		});
 
-		/** geolocation **/
+		// geolocation
 		mapImage.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				getAddress(v);
@@ -222,17 +214,17 @@ public class EditProfileActivity extends Activity implements LocationListener,
 						}).setNegativeButton("Back", null).show();
 	}
 
-	/** image zoom in and out **/
+	// image zoom in and out
 	public void zoomInOut(View view) {
 		ZoomInOutAction.action(this, profileImage);
 	}
 
-	/** result from take photo and choose photo **/
+	// result from take photo and choose photo
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 
-		/** take photo **/
+		// take photo
 		case ACTION_TAKE_PHOTO: {
 			if (resultCode == RESULT_OK) {
 				mCurrentPhotoPath = takePhotoAction.getPath();
@@ -245,7 +237,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 			break;
 		}
 
-		/** choose photo **/
+		// choose photo
 		case ACTIVITY_SELECT_IMAGE: {
 			if (resultCode == RESULT_OK) {
 				Uri selectedImage = data.getData();
@@ -271,7 +263,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		}
 	}
 
-	/** Save Instance when stop **/
+	// Save Instance when stop
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		Drawable drawable = profileImage.getDrawable();
@@ -283,7 +275,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		super.onSaveInstanceState(outState);
 	}
 
-	/** Recover Instance **/
+	// Recover Instance
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
@@ -295,8 +287,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 						: ImageView.INVISIBLE);
 	}
 
-	/** geolocation **/
-	/*
+	/**
 	 * Called when the Activity is no longer visible at all. Stop updates and
 	 * disconnect.
 	 */
@@ -306,7 +297,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		super.onStop();
 	}
 
-	/*
+	/**
 	 * Called when the Activity is restarted, even before it becomes visible.
 	 */
 	@Override
@@ -380,7 +371,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 	public void onConnected(Bundle bundle) {
 	}
 
-	/*
+	/**
 	 * Called by Location Services if the connection to the location client
 	 * drops because of an error.
 	 */
@@ -388,17 +379,12 @@ public class EditProfileActivity extends Activity implements LocationListener,
 	public void onDisconnected() {
 	}
 
-	/*
+	/**
 	 * Called by Location Services if the attempt to Location Services fails.
 	 */
 	@Override
 	public void onConnectionFailed(ConnectionResult connectionResult) {
 
-		/*
-		 * Google Play services can resolve some errors it detects. If the error
-		 * has a resolution, try sending an Intent to start a Google Play
-		 * services activity that can resolve error.
-		 */
 		if (connectionResult.hasResolution()) {
 			try {
 
@@ -406,18 +392,9 @@ public class EditProfileActivity extends Activity implements LocationListener,
 				connectionResult.startResolutionForResult(this,
 						LocationUtils.CONNECTION_FAILURE_RESOLUTION_REQUEST);
 
-				/*
-				 * Thrown if Google Play services canceled the original
-				 * PendingIntent
-				 */
-
 			} catch (IntentSender.SendIntentException e) {
-
-				// Log the error
-				e.printStackTrace();
 			}
 		} else {
-
 			// If no resolution is available, display a dialog to the user with
 			// the error.
 			Toast.makeText(EditProfileActivity.this, "Cannot use geolation!",
@@ -483,11 +460,6 @@ public class EditProfileActivity extends Activity implements LocationListener,
 			// network problems.
 			try {
 
-				/*
-				 * Call the synchronous getFromLocation() method with the
-				 * latitude and longitude of the current location. Return at
-				 * most 1 address.
-				 */
 				addresses = geocoder.getFromLocation(location.getLatitude(),
 						location.getLongitude(), 1);
 
@@ -497,9 +469,6 @@ public class EditProfileActivity extends Activity implements LocationListener,
 				// Log an error and return an error message
 				Log.e(LocationUtils.APPTAG,
 						getString(R.string.IO_Exception_getFromLocation));
-
-				// print the stack trace
-				exception1.printStackTrace();
 
 				// Return an error message
 				return (getString(R.string.IO_Exception_getFromLocation));
@@ -511,11 +480,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 				String errorString = getString(
 						R.string.illegal_argument_exception,
 						location.getLatitude(), location.getLongitude());
-				// Log the error and print the stack trace
 				Log.e(LocationUtils.APPTAG, errorString);
-				exception2.printStackTrace();
-
-				//
 				return errorString;
 			}
 			// If the reverse geocode returned an address

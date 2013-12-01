@@ -33,6 +33,9 @@ public class NotificationCenter extends Service {
 	 */
 	public static WaitingForMessage t;
 
+	/**
+	 * Establish a long connection with server at starting
+	 */
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		if (t == null || !t.isAlive()) {

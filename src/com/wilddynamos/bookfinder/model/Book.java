@@ -1,8 +1,12 @@
 package com.wilddynamos.bookfinder.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Book {
+public class Book implements Serializable {
+	
+	private static final long serialVersionUID = -6642891755641628595L;
+	
 	private int id;
 	private String name;
 	private int price;

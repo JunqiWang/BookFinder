@@ -88,18 +88,4 @@ public class MyProfileActivity extends BaseProfileActivity {
 		Intent intent = new Intent(this, ChangePasswordActivity.class);
 		startActivity(intent);
 	}
-
-	// public Bitmap getBitmap(Context ctx, String
-	// pathNameRelativeToAssetsFolder) {
-	// InputStream bitmapIs = null;
-	// Bitmap bmp = null;
-	// try {
-	// bitmapIs = ctx.getAssets().open(pathNameRelativeToAssetsFolder);
-	// bmp = BitmapFactory.decodeStream(bitmapIs);
-	// bitmapIs.close();
-	// } catch (IOException e) {
-	// }
-	// return bmp;
-	// }
-
 }

@@ -22,7 +22,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-/** Activity for Login in **/
+/**
+ * Login Activity
+ * 
+ * @author JunqiWang
+ * @author Cheng Zhang
+ * @author Zhe Qian
+ * 
+ */
 public class LoginActivity extends Activity {
 
 	private EditText email;
@@ -57,7 +64,7 @@ public class LoginActivity extends Activity {
 
 				if (!"".equals(email.getText().toString())
 						&& !"".equals(password.getText().toString())) {
-					
+
 					Login login = new Login(LoginActivity.this);
 					login.execute(new String[] { email.getText().toString(),
 							password.getText().toString() });
@@ -67,7 +74,6 @@ public class LoginActivity extends Activity {
 					else
 						notRemember();
 				}
-				// signIn();
 			}
 		});
 
@@ -76,7 +82,7 @@ public class LoginActivity extends Activity {
 	/**
 	 * If user return from other activity and the user is remembered, it will
 	 * automatically log in
-	 **/
+	 */
 	@Override
 	protected void onRestart() {
 		super.onRestart();
@@ -84,19 +90,16 @@ public class LoginActivity extends Activity {
 		block.setAlpha(0f);
 	}
 
-	/** redirect to post list page **/
 	public void signIn() {
 		Intent intent = new Intent(this, MultiWindowActivity.class);
 		startActivity(intent);
 	}
 
-	/** redirect to sign up page **/
 	public void signUp(View view) {
 		Intent intent = new Intent(this, SignupActivity.class);
 		startActivity(intent);
 	}
 
-	/** forget password **/
 	public void forgotPassword(View view) {
 		final EditText email = new EditText(this);
 		forgotPwd = new ForgotPwd(this);
@@ -121,7 +124,6 @@ public class LoginActivity extends Activity {
 						}).setNegativeButton("Cancel", null).show();
 	}
 
-	/** choose if remember me **/
 	public void onCheckboxClicked(View view) {
 		if (((CheckBox) view).isChecked()) {
 			Toast.makeText(LoginActivity.this,
@@ -130,7 +132,6 @@ public class LoginActivity extends Activity {
 		}
 	}
 
-	/** save log in data to database when user select remember me **/
 	public void remember() {
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
@@ -145,14 +146,12 @@ public class LoginActivity extends Activity {
 		db.close();
 	}
 
-	/** when user do not select remember me, clear the database **/
 	public void notRemember() {
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 		db.delete(RememberMeColumn.TABLE_NAME, null, null);
 		db.close();
 	}
 
-	/** automatically log in when the user is remembered **/
 	public void setRemember() {
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
