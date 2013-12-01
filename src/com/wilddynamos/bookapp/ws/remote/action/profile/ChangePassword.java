@@ -33,8 +33,6 @@ public class ChangePassword extends AsyncTask<String, Void, Boolean> {
 		paramsMap.put("oldPassword", params[0]);
 		paramsMap.put("newPassword", params[1]);
 		paramsMap.put("id", Connection.id + "");
-		System.out.println(params[0]);
-		System.out.println(params[1]);
 		String flag = null;
 		try {
 			flag = DataUtils.receiveFlag(Connection.requestByPost("/ChangePwd",
