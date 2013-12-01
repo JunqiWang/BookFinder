@@ -67,6 +67,7 @@ public class LazyAdapter extends BaseAdapter {
 
 		final int pos = position;
 		acceptButton.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				new AlertDialog.Builder(activity)
