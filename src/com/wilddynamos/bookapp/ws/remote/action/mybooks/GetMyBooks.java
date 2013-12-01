@@ -39,6 +39,7 @@ public class GetMyBooks extends AsyncTask<String, Void, JSONArray> {
 		if(jsonArray == null)
 			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
 		else {
+			a.clearList();
 			a.loadData(jsonArray);		//after successfully getting data from server, set books data with the json array
 			a.fill();	//fill the listview with the books data
 		}
