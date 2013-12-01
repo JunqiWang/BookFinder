@@ -34,7 +34,7 @@
         <ListView
             android:id="@+id/request_list"
             android:layout_width="fill_parent"
-            android:layout_height="378dp"
+            android:layout_height="fill_parent"
             android:divider="#000000"
             android:dividerHeight="5dp"
             android:listSelector="@drawable/list_selector" >

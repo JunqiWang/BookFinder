@@ -112,7 +112,7 @@ public class EditProfileActivity extends Activity implements LocationListener,
 		contact.setText(getIntent().getExtras().getString("contact"));
 		myaddress.setText(getIntent().getExtras().getString("address"));
 
-		byte[] bytes = getIntent().getByteArrayExtra("BMP");
+		byte[] bytes = getIntent().getByteArrayExtra("BMP");System.out.println(bytes);
 		if (bytes != null) {
 			Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,
 					bytes.length);
@@ -239,7 +239,6 @@ public class EditProfileActivity extends Activity implements LocationListener,
 				BitmapWorkerTask bitmapworker = new BitmapWorkerTask(
 						mCurrentPhotoPath, profileImage);
 				bitmapworker.execute();
-				System.out.println(mCurrentPhotoPath);
 				takePhotoAction.galleryAddPic(mCurrentPhotoPath);
 
 			}
