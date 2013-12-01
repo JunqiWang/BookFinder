@@ -49,7 +49,7 @@ public abstract class Connection {
 	/**
 	 * Server address
 	 */
-	public static final String STRURI = "http://10.0.23.238:8080/BookAppServer";
+	public static final String STRURI = "http://10.0.23.154:8080/BookAppServer_1110";
 
 	/**
 	 * User id at server side

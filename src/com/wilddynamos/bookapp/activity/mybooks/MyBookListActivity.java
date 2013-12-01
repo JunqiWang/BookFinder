@@ -31,6 +31,8 @@ public class MyBookListActivity extends Activity {
 	private List<Integer> rentIds;
 	private List<Integer> buyIds;
 	private List<Integer> borrowIds;
+	
+	private int position;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +52,19 @@ public class MyBookListActivity extends Activity {
 
 	}
 	
+//	@Override
+//	protected void onPause() {
+//		super.onPause();
+//	}
+	
 	@Override
 	protected void onRestart() {
 		super.onRestart();
 		
 		GetMyBooks gmb = new GetMyBooks(this);
 		gmb.execute(new String[] { String.valueOf(Connection.id) });
+		
+		expListView.expandGroup(position);
 	}
 
 	public void loadData(JSONArray jsonArray) { // get data from the server and
@@ -121,7 +130,7 @@ public class MyBookListActivity extends Activity {
 		}
 
 	}
-
+	
 	public void showBookForSaleInfo(View view, int childPosition) {
 		Intent intent = new Intent(this, MyPostDetailActivity.class);
 		intent.putExtra("id", sellIds.get(childPosition));
@@ -158,6 +167,7 @@ public class MyBookListActivity extends Activity {
 			@Override
 			public void onGroupExpand(int arg0) {
 				// set other lists to collapse when one is open
+				position = arg0;
 				for (int i = 0; i < listAdapter.getGroupCount(); i++) {
 					if (arg0 != i) {
 						expListView.collapseGroup(i);
