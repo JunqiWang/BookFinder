@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.BaseBookDetailActivity;
+import com.wilddynamos.bookapp.ws.remote.action.mybooks.DeleteBook;
 
 public class MyPostDetailActivity extends BaseBookDetailActivity {
 
@@ -169,6 +171,16 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 	}
 
 	public void deletePost(View view) {
-		// TODO
+		new AlertDialog.Builder(this)
+				.setTitle("Delete this post?")
+				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						new DeleteBook(MyPostDetailActivity.this).execute(new String[] { id + "" });
+					}
+				})
+				.setNegativeButton("No", null)
+				.show();
 	}
 }
