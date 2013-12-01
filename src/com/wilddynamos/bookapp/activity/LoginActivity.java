@@ -57,7 +57,7 @@ public class LoginActivity extends Activity {
 
 				if (!"".equals(email.getText().toString())
 						&& !"".equals(password.getText().toString())) {
-
+					
 					Login login = new Login(LoginActivity.this);
 					login.execute(new String[] { email.getText().toString(),
 							password.getText().toString() });

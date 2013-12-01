@@ -32,7 +32,7 @@ public class MyBookListActivity extends Activity {
 	private List<Integer> buyIds;
 	private List<Integer> borrowIds;
 
-	private int position;
+	private int position = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +58,6 @@ public class MyBookListActivity extends Activity {
 
 		GetMyBooks gmb = new GetMyBooks(this);
 		gmb.execute(new String[] { String.valueOf(Connection.id) });
-
-		expListView.expandGroup(position);
 	}
 
 	public void loadData(JSONArray jsonArray) { // get data from the server and
@@ -198,5 +196,8 @@ public class MyBookListActivity extends Activity {
 				return false;
 			}
 		});
+
+		if (position != -1)
+			expListView.expandGroup(position);
 	}
 }

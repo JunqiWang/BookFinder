@@ -39,7 +39,6 @@ public class GetBookDetail extends AsyncTask<String, Void, JSONArray> {
 	@Override
 	protected void onPostExecute(JSONArray jsonArray) {
 		if(bda != null)
-			System.out.println(jsonArray);
 			if(jsonArray == null || jsonArray.length() == 0)
 				Toast.makeText(bda, "Oops", Toast.LENGTH_SHORT).show();
 			else

@@ -49,7 +49,7 @@ public abstract class Connection {
 	/**
 	 * Server address
 	 */
-	public static final String STRURI = "http://10.0.23.154:8080/BookAppServer_1110";
+	public static final String STRURI = "http://10.0.23.238:8080/BookAppServer";
 
 	/**
 	 * User id at server side
@@ -63,7 +63,7 @@ public abstract class Connection {
 	 * @param pwd
 	 * @return
 	 */
-	public synchronized static boolean login(String email, String pwd) {
+	public static boolean login(String email, String pwd) {
 		HttpPost doPost = new HttpPost(STRURI + "/Login");
 
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
@@ -81,7 +81,7 @@ public abstract class Connection {
 		BufferedReader br = null;
 		try {
 			HttpResponse response;
-
+			
 			synchronized (client) {
 				response = client.execute(doPost);
 			}
@@ -92,7 +92,7 @@ public abstract class Connection {
 			HttpEntity entity = response.getEntity();
 
 			br = new BufferedReader(new InputStreamReader(entity.getContent()));
-
+			
 			String result = br.readLine();
 			if (!result.equals("-1")) {
 				sessionID = result;

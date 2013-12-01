@@ -40,7 +40,7 @@ public class DeleteBook extends AsyncTask<String, Void, Boolean> {
 			Toast.makeText(a, "This post has been deleted.",
 					Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(a, MultiWindowActivity.class);
-			intent.putExtra(MultiWindowActivity.TAB_SELECT, 2);
+			intent.putExtra(MultiWindowActivity.TAB_SELECT, 1);
 			a.startActivity(intent);
 		} else
 			Toast.makeText(a, "Oops!", Toast.LENGTH_SHORT).show();
