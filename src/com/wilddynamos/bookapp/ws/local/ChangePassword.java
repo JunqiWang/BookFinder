@@ -36,7 +36,7 @@ public class ChangePassword extends AsyncTask<String, Void, Integer> {
 
 	@Override
 	protected void onPostExecute(Integer result) {
-		if (result != 1) {
+		if (result == 1) {
 			Toast.makeText(
 			a,
 			"Your password has been changed.\nYou need to re-login using your new password",
@@ -46,7 +46,7 @@ public class ChangePassword extends AsyncTask<String, Void, Integer> {
 			a.startActivity(intent);
 		}
 		else
-			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
+			Toast.makeText(a, "Ooops", Toast.LENGTH_SHORT).show();
 			
 	}
 }

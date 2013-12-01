@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.wilddynamos.bookapp.R;
 import com.wilddynamos.bookapp.activity.MultiWindowActivity;
-import com.wilddynamos.bookapp.ws.local.ChangePassword;
+import com.wilddynamos.bookapp.ws.remote.action.profile.ChangePassword;
 
 public class ChangePasswordActivity extends Activity {
 
