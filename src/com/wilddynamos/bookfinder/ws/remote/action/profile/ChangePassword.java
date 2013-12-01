@@ -21,7 +21,7 @@ public class ChangePassword extends AsyncTask<String, Void, Boolean> {
 	}
 
 	@Override
-	protected Boolean doInBackground(String... params) {
+	protected Boolean doInBackground(String... params) {		// make a connection to the server
 		
 		this.params = params;
 		
@@ -47,8 +47,8 @@ public class ChangePassword extends AsyncTask<String, Void, Boolean> {
 	}
 
 	@Override
-	protected void onPostExecute(Boolean success) {
-		if (success == null)
+	protected void onPostExecute(Boolean success) {		// after connection, new a local changepwd asynctask to change password in sqlite
+		if (success == null)			
 			Toast.makeText(a, "Wrong password", Toast.LENGTH_SHORT).show();
 		else {
 			if (success) {

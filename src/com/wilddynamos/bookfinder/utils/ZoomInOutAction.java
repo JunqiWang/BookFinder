@@ -11,7 +11,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
-/** API for Zoom in and zoom out **/
+/** 
+ * API for Zoom in and zoom out 
+ **/
 public class ZoomInOutAction {
 
 	public static void action(Activity activity, ImageView image) {

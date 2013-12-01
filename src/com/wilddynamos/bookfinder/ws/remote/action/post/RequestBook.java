@@ -19,7 +19,7 @@ public class RequestBook extends AsyncTask<String, Void, Boolean> {
 	}
 
 	@Override
-	protected Boolean doInBackground(String... params) {
+	protected Boolean doInBackground(String... params) {			// make a connection to the server
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
 		paramsMap.put("message", params[1]);
@@ -39,7 +39,7 @@ public class RequestBook extends AsyncTask<String, Void, Boolean> {
 	@Override
 	protected void onPostExecute(Boolean success) {
 		if(success)
-			a.setLikeNum();
+			a.setLikeNum();						
 		else
 			Toast.makeText(a, "Oops!", Toast.LENGTH_SHORT).show();
 	}

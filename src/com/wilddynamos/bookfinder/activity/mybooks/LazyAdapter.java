@@ -38,7 +38,6 @@ public class LazyAdapter extends BaseAdapter {
 		inflater = (LayoutInflater) activity
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.ids = ids;
-		// imageLoader= new ImageLoader(activity.getApplicationContext());
 		this.bookId = bookId;
 	}
 

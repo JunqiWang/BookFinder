@@ -25,9 +25,8 @@ public class EditProfile extends AsyncTask<String, Void, Boolean> {
 	}
 
 	@Override
-	protected Boolean doInBackground(String... params) {
+	protected Boolean doInBackground(String... params) {		// make a connection to the server
 
-		// TODO check if exist, method addOrUpdate
 		// update profile in sqlite
 		UserDataSource userDataSource = new UserDataSource(a);
 		userDataSource.open();
@@ -63,26 +62,7 @@ public class EditProfile extends AsyncTask<String, Void, Boolean> {
 	}
 
 	@Override
-	protected void onPostExecute(Boolean success) {
-		// if ((sqliteResult != 1) && !success)
-		// Toast.makeText(a, "Both sqlite and mysql wrong!",
-		// Toast.LENGTH_SHORT).show();
-		// else if ((sqliteResult == 1) && !success)
-		// Toast.makeText(a, "Mysql wrong!", Toast.LENGTH_SHORT).show();
-		// else if ((sqliteResult != 1) && success)
-		// Toast.makeText(a, "Sqlite wrong!", Toast.LENGTH_SHORT).show();
-		// else if ((sqliteResult == 1) && success) { // after data
-		// // updated
-		// // successfully,
-		// // go to my
-		// // profile
-		// // activity
-		// Toast.makeText(a, "Profile updated!", Toast.LENGTH_SHORT).show();
-		// Intent intent = new Intent(a, MultiWindowActivity.class);
-		// intent.putExtra(MultiWindowActivity.TAB_SELECT, 2);
-		// a.startActivity(intent);
-		// } else
-		// Toast.makeText(a, "What happened?", Toast.LENGTH_SHORT).show();
+	protected void onPostExecute(Boolean success) {		// after connection, go back to profile page
 		if (success) {
 			Toast.makeText(a, "Profile updated!", Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(a, MultiWindowActivity.class);

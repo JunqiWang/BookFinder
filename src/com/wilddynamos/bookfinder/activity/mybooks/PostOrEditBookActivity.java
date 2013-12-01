@@ -55,7 +55,9 @@ public class PostOrEditBookActivity extends Activity {
 	private boolean sOrR;
 	private Integer id = null;
 
-	/*** take photo ***/
+	/** 
+	 * take photo
+	 */
 	private static final int ACTION_TAKE_PHOTO = 1;
 	private static final String BITMAP_STORAGE_KEY = "viewbitmap";
 	private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
@@ -64,7 +66,9 @@ public class PostOrEditBookActivity extends Activity {
 
 	TakePhoto takePhotoAction;
 
-	/*** choose photo ***/
+	/** 
+	 * choose photo 
+	 */
 	final int ACTIVITY_SELECT_IMAGE = 5;
 
 	@Override
@@ -87,7 +91,7 @@ public class PostOrEditBookActivity extends Activity {
 		if ((id = getIntent().getExtras().getInt("id")) == 0)
 			id = null;
 
-		/*** take photo ***/
+		// take photo
 		mImageBitmap = null;
 		takePhotoAction = new TakePhoto(this, mCurrentPhotoPath, cover,
 				takePhoto);
@@ -167,7 +171,9 @@ public class PostOrEditBookActivity extends Activity {
 		}
 	}
 
-	/**** choose Photo **/
+	/** 
+	 * choose Photo
+	 */
 	public void choosePhoto(View view) {
 		Intent i = new Intent(Intent.ACTION_PICK,
 				android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -231,11 +237,13 @@ public class PostOrEditBookActivity extends Activity {
 				}).setNegativeButton("Back", null).show();
 	}
 
-	/*** take photo ***/
+	/** 
+	 * take photo
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
-		/** take photo **/
+		// take photo
 		case ACTION_TAKE_PHOTO: {
 			if (resultCode == RESULT_OK) {
 				mCurrentPhotoPath = takePhotoAction.getPath();
@@ -297,7 +305,9 @@ public class PostOrEditBookActivity extends Activity {
 				: ImageView.INVISIBLE);
 	}
 
-	/**** image zoom in and out ***/
+	/**
+	 * image zoom in and out
+	 */
 	public void zoomInOut(View view) {
 		ZoomInOutAction.action(this, cover);
 	}

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,7 +14,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 public class RequestDataSource {
-		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
 		  // Database fields
 		  private SQLiteDatabase database;
 		  private RequestSQLiteHelper dbHelper;
@@ -22,20 +23,20 @@ public class RequestDataSource {
 		      RequestSQLiteHelper.COLUMN_REQUEST_TIME,
 		      RequestSQLiteHelper.COLUMN_USER_ID, RequestSQLiteHelper.COLUMN_BOOK_ID };
 
-		  public RequestDataSource(Context context) {
+		  public RequestDataSource(Context context) {		// new a sqlite helper
 		    dbHelper = new RequestSQLiteHelper(context);
 		  }
 
-		  public void open() throws SQLException {
+		  public void open() throws SQLException {			// open database
 		    database = dbHelper.getWritableDatabase();
 		  }
 
-		  public void close() {
+		  public void close() {			// close database
 		    dbHelper.close();
 		  }
 
 		  public Request createRequest(String message, Boolean state, Date requestTime, int user_id,
-				  int book_id, Context context) {
+				  int book_id, Context context) {		// new request	
 		    ContentValues values = new ContentValues();
 		    values.put(RequestSQLiteHelper.COLUMN_MESSAGE, message);
 		    values.put(RequestSQLiteHelper.COLUMN_STATE, state);
@@ -53,7 +54,7 @@ public class RequestDataSource {
 		    return newRequest;
 		  }
 		  
-		  public Request getRequest(int request_id, Context context) {
+		  public Request getRequest(int request_id, Context context) {		// get request
 			  Cursor cursor = database.query(RequestSQLiteHelper.TABLE_REQUEST,
 				        allColumns, RequestSQLiteHelper.COLUMN_ID + " = " + request_id, null,
 				        null, null, null);
@@ -63,14 +64,14 @@ public class RequestDataSource {
 			  return request;
 		  }
 
-		  public void deleteRequest(Request request) {
+		  public void deleteRequest(Request request) {		// delete request
 		    long id = request.getId();
 		    System.out.println("Request deleted with id: " + id);
 		    database.delete(RequestSQLiteHelper.TABLE_REQUEST, RequestSQLiteHelper.COLUMN_ID
 		        + " = " + id, null);
 		  }
 
-		  public List<Request> getAllRequests(Context context) {
+		  public List<Request> getAllRequests(Context context) {	// get requests
 		    List<Request> requests = new ArrayList<Request>();
 
 		    Cursor cursor = database.query(RequestSQLiteHelper.TABLE_REQUEST,

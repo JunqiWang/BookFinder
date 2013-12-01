@@ -23,7 +23,9 @@ import android.widget.ImageView;
 
 import com.wilddynamos.bookfinder.R;
 
-/*** API for taking photo **/
+/**
+ * API for taking photo 
+ **/
 
 public class TakePhoto {
 	private static final int ACTION_TAKE_PHOTO = 1;
@@ -52,7 +54,9 @@ public class TakePhoto {
 		return activity.getString(R.string.album_name);
 	}
 
-	/** get photo album for this application **/
+	/** 
+	 * get photo album for this application 
+	 **/
 	private File getAlbumDir() {
 		File storageDir = null;
 
@@ -79,7 +83,9 @@ public class TakePhoto {
 		return storageDir;
 	}
 
-	/** Create an image file **/
+	/** 
+	 * Create an image file 
+	 **/
 	@SuppressLint("SimpleDateFormat")
 	private File createImageFile() throws IOException {
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
@@ -91,7 +97,9 @@ public class TakePhoto {
 		return imageF;
 	}
 
-	/** set up photo file **/
+	/** 
+	 * set up photo file 
+	 **/
 	private File setUpPhotoFile() throws IOException {
 
 		File f = createImageFile();
@@ -100,7 +108,9 @@ public class TakePhoto {
 		return f;
 	}
 
-	/** show picture in gallery **/
+	/**
+	 *  show picture in gallery 
+	 **/
 	public void galleryAddPic(String path) {
 		Intent mediaScanIntent = new Intent(
 				"android.intent.action.MEDIA_SCANNER_SCAN_FILE");
@@ -110,7 +120,9 @@ public class TakePhoto {
 		activity.sendBroadcast(mediaScanIntent);
 	}
 
-	/** start taking photo activity **/
+	/** 
+	 * start taking photo activity 
+	 **/
 	public void dispatchTakePictureIntent(int actionCode) {
 
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -130,15 +142,15 @@ public class TakePhoto {
 		activity.startActivityForResult(takePictureIntent, actionCode);
 	}
 
-	/** handle camera photo **/
+	/** 
+	 * handle camera photo 
+	 **/
 	public void handleCameraPhoto() {
 
 		if (mCurrentPhotoPath != null) {
 			BitmapWorkerTask task = new BitmapWorkerTask(mCurrentPhotoPath,
 					imageView);
 			task.execute();
-			// galleryAddPic();
-			// mCurrentPhotoPath = null;
 		}
 	}
 
@@ -149,7 +161,9 @@ public class TakePhoto {
 		}
 	};
 
-	/** Indicates whether the specified action can be used as an intent. **/
+	/** 
+	 * Indicates whether the specified action can be used as an intent
+	 **/
 	public static boolean isIntentAvailable(Context context, String action) {
 		final PackageManager packageManager = context.getPackageManager();
 		final Intent intent = new Intent(action);
@@ -158,7 +172,9 @@ public class TakePhoto {
 		return list.size() > 0;
 	}
 
-	/** set button listener **/
+	/** 
+	 * set button listener 
+	 **/
 	private void setBtnListenerOrDisable(Button btn,
 			Button.OnClickListener onClickListener, String intentName) {
 		if (isIntentAvailable(activity, intentName)) {
@@ -170,7 +186,9 @@ public class TakePhoto {
 		}
 	}
 
-	/** start taking photo action **/
+	/** 
+	 * start taking photo action 
+	 **/
 	public void start() {
 		// it has define take photo button above
 		setBtnListenerOrDisable(takePhoto, mTakePicOnClickListener,
@@ -184,7 +202,9 @@ public class TakePhoto {
 
 	}
 
-	/** get the path of the photo **/
+	/** 
+	 * get the path of the photo 
+	 **/
 	public String getPath() {
 		return mCurrentPhotoPath;
 	}

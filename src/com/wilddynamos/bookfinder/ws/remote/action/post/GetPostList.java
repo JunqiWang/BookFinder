@@ -23,7 +23,7 @@ public class GetPostList extends AsyncTask<String, Void, JSONArray> {
 	}
 
 	@Override
-	protected JSONArray doInBackground(String... params) {
+	protected JSONArray doInBackground(String... params) {		// make a connection to the server
 		this.currentPage = params[0];
 		
 		Map<String, String> paramsMap = new HashMap<String, String>();
@@ -42,7 +42,7 @@ public class GetPostList extends AsyncTask<String, Void, JSONArray> {
 	}
 
 	@Override
-	protected void onPostExecute(JSONArray jsonArray) {
+	protected void onPostExecute(JSONArray jsonArray) {		// after connection load data or just pour
 		if(jsonArray == null)
 			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
 		else {

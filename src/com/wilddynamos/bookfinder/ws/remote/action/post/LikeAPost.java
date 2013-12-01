@@ -19,7 +19,7 @@ public class LikeAPost extends AsyncTask<String, Void, Boolean> {
 	}
 	
 	@Override
-	protected Boolean doInBackground(String... params) {
+	protected Boolean doInBackground(String... params) {		// make a connection to the server
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
 		
@@ -35,7 +35,7 @@ public class LikeAPost extends AsyncTask<String, Void, Boolean> {
 	}
 
 	@Override
-	protected void onPostExecute(Boolean success) {
+	protected void onPostExecute(Boolean success) {		// after connection, add the likes number
 		if(success)
 			a.setLikeNum();
 		else
