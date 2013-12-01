@@ -6,10 +6,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -158,7 +158,7 @@ public abstract class BaseBookDetailActivity extends Activity {
 		String s = (Integer.parseInt(likeNum.getText().toString()) + 1) + "";
 		likeNum.setText(s);
 	}
-
+	
 	/**
 	 * Show the book cover in full screen
 	 * 

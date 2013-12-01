@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wilddynamos.bookfinder.R;
 import com.wilddynamos.bookfinder.activity.BaseBookDetailActivity;
@@ -33,7 +34,6 @@ public class PostDetailActivity extends BaseBookDetailActivity {
 			case DialogInterface.BUTTON_POSITIVE:
 				new RequestBook(PostDetailActivity.this)
 						.execute(new String[]{id + "", message.getText().toString()});
-				request.setText("Has Requested");
 				request.setClickable(false);
 				break;
 			}
@@ -104,6 +104,11 @@ public class PostDetailActivity extends BaseBookDetailActivity {
 				}
 			});
 		}
+	}
+	
+	public void requestSuccess() {
+		request.setText("Has Requested");
+		Toast.makeText(PostDetailActivity.this, "Oops!", Toast.LENGTH_SHORT).show();
 	}
 
 }
