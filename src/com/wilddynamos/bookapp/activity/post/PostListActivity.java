@@ -168,6 +168,16 @@ public class PostListActivity extends Activity implements SensorEventListener,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
 		super.onPause();
 	}
+	
+	/**
+	 * Stop the feature "shake to refresh"
+	 */
+	@Override
+	protected void onStop() {
+		mSensorManager.unregisterListener(this,
+				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+		super.onStop();
+	}
 
 	/**
 	 * Make the feature "shake to refresh" available again

@@ -31,7 +31,7 @@ public class MyBookListActivity extends Activity {
 	private List<Integer> rentIds;
 	private List<Integer> buyIds;
 	private List<Integer> borrowIds;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,14 +50,6 @@ public class MyBookListActivity extends Activity {
 
 	}
 	
-	@Override
-	protected void onRestart() {
-		super.onRestart();
-		
-		GetMyBooks gmb = new GetMyBooks(this);
-		gmb.execute(new String[] { String.valueOf(Connection.id) });
-	}
-
 	public void loadData(JSONArray jsonArray) { // get data from the server and
 												// set headers and children for
 												// different kind of list

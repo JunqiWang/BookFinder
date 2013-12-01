@@ -52,7 +52,7 @@ public class WaitingForMessage extends Thread {
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 
 		try {
-			String str = br.readLine();
+			String str;
 
 			while (canRun && (str = br.readLine()) != null) {
 
