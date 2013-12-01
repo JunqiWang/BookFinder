@@ -22,21 +22,21 @@ public class UserDataSource {
 			UserSQLiteHelper.COLUMN_CAMPUS, UserSQLiteHelper.COLUMN_CONTACT,
 			UserSQLiteHelper.COLUMN_ADDRESS, UserSQLiteHelper.COLUMN_PHOTO };
 
-	public UserDataSource(Context context) {
+	public UserDataSource(Context context) {		// new a sqlite helper
 		dbHelper = new UserSQLiteHelper(context);
 	}
 
-	public void open() throws SQLException {
+	public void open() throws SQLException {		// open database
 		database = dbHelper.getWritableDatabase();
 	}
-
-	public void close() {
+	
+	public void close() {							// close database
 		dbHelper.close();
 	}
 
 	public User createUser(int id, String email, String password, String name,
 			Boolean gender, String campus, String contact, String address,
-			String photoPath) {
+			String photoPath) {						// new user
 		ContentValues values = new ContentValues();
 		values.put(UserSQLiteHelper.COLUMN_ID, id);
 		values.put(UserSQLiteHelper.COLUMN_EMAIL, email);
@@ -58,7 +58,7 @@ public class UserDataSource {
 		return newUser;
 	}
 
-	public User getUser(int user_id) {
+	public User getUser(int user_id) {		// get user
 		Cursor cursor = database.query(UserSQLiteHelper.TABLE_USER, allColumns,
 				UserSQLiteHelper.COLUMN_ID + " = " + user_id, null, null, null,
 				null);
@@ -68,10 +68,8 @@ public class UserDataSource {
 		return user;
 	}
 
-	public int updateUser(User user) {
+	public int updateUser(User user) {		// update user
 		ContentValues values = new ContentValues();
-		// values.put(UserSQLiteHelper.COLUMN_EMAIL, user.getEmail());
-		// values.put(UserSQLiteHelper.COLUMN_PASSWORD, user.getPassword());
 		values.put(UserSQLiteHelper.COLUMN_NAME, user.getName());
 		values.put(UserSQLiteHelper.COLUMN_GENDER, user.getGender());
 		values.put(UserSQLiteHelper.COLUMN_CAMPUS, user.getCampus());
@@ -81,41 +79,15 @@ public class UserDataSource {
 		return database.update(UserSQLiteHelper.TABLE_USER, values,
 				UserSQLiteHelper.COLUMN_ID + " = " + user.getId(), null);
 	}
-	
-	public int addOrUpdateUser(User user) {
-		
-		if (getUser(user.getId()) != null) {
-			ContentValues values = new ContentValues();
-			// values.put(UserSQLiteHelper.COLUMN_EMAIL, user.getEmail());
-			// values.put(UserSQLiteHelper.COLUMN_PASSWORD, user.getPassword());
-			values.put(UserSQLiteHelper.COLUMN_NAME, user.getName());
-			values.put(UserSQLiteHelper.COLUMN_GENDER, user.getGender());
-			values.put(UserSQLiteHelper.COLUMN_CAMPUS, user.getCampus());
-			values.put(UserSQLiteHelper.COLUMN_CONTACT, user.getContact());
-			values.put(UserSQLiteHelper.COLUMN_ADDRESS, user.getAddress());
-			values.put(UserSQLiteHelper.COLUMN_PHOTO, user.getPhotoAddr());
-			return database.update(UserSQLiteHelper.TABLE_USER, values,
-				UserSQLiteHelper.COLUMN_ID + " = " + user.getId(), null);
-		}
-		else {
-			User newUser = createUser(user.getId(), user.getEmail(), user.getPassword(), user.getName(),
-					user.getGender(), user.getCampus(), user.getContact(), user.getAddress(),
-					user.getPhotoAddr());
-			if (newUser != null)
-				return 1;
-			else 
-				return -1;
-		}
-	}
 
-	public void deleteUser(User user) {
+	public void deleteUser(User user) {			// delete user
 		long id = user.getId();
 		System.out.println("User deleted with id: " + id);
 		database.delete(UserSQLiteHelper.TABLE_USER, UserSQLiteHelper.COLUMN_ID
 				+ " = " + id, null);
 	}
 
-	public List<User> getAllUsers() {
+	public List<User> getAllUsers() {			// get users
 		List<User> users = new ArrayList<User>();
 
 		Cursor cursor = database.query(UserSQLiteHelper.TABLE_USER, allColumns,

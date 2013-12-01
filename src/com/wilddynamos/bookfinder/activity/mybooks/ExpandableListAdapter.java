@@ -48,11 +48,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 		final String childText = (String) getChild(groupPosition, childPosition);
 		convertView = null;
-		// if (convertView == null) {
-		// LayoutInflater infalInflater = (LayoutInflater) this._context
-		// .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		// convertView = infalInflater.inflate(R.layout.list_item, null);
-		// }
+
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) this._context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -62,11 +58,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 				.findViewById(R.id.lblListItem);
 
 		txtListChild.setText(childText);
-
-		// TextView txtListChild = (TextView) convertView
-		// .findViewById(R.id.lblListItem);
-		//
-		// txtListChild.setText(childText);
 
 		return convertView;
 	}
@@ -110,12 +101,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		lblListHeader.setTypeface(null, Typeface.BOLD);
 		lblListHeader.setText(headerTitle);
 
-		// new_image.setImageResource(R.drawable.ic_action_new);
-		// if(isExpanded){
-		// arrow_image.setImageResource(R.drawable.ic_action_collapse);
-		// }else{
-		// arrow_image.setImageResource(R.drawable.ic_action_expand);
-		// }
 		switch (groupPosition) {
 		case 0:
 			new_image.setImageResource(R.drawable.ic_action_new);
@@ -161,7 +146,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		return true;
 	}
 
-	/* new for sell */
 	public void newSell(View view) { // new a book for sell
 		Intent intent = new Intent(_context, PostOrEditBookActivity.class);
 		intent.putExtra("sOrR", true);
@@ -169,7 +153,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		_context.startActivity(intent);
 	}
 
-	/* new for rent */
 	public void newRent(View view) { // new a book for rent
 		Intent intent = new Intent(_context, PostOrEditBookActivity.class);
 		intent.putExtra("sOrR", false);

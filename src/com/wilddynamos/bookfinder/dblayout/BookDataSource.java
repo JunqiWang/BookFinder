@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,7 +14,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 public class BookDataSource {
-	  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
 
 	  // Database fields
 	  private SQLiteDatabase database;
@@ -25,21 +26,24 @@ public class BookDataSource {
 	      BookSQLiteHelper.COLUMN_DESCRIPTION, BookSQLiteHelper.COLUMN_POST_TIME, 
 	      BookSQLiteHelper.COLUMN_OWNER_ID };
 
-	  public BookDataSource(Context context) {
+	  public BookDataSource(Context context) {	
+		// new a sqlite helper
 	    dbHelper = new BookSQLiteHelper(context);
 	  }
 
 	  public void open() throws SQLException {
+		// open database
 	    database = dbHelper.getWritableDatabase();
 	  }
 
 	  public void close() {
+		// close database
 	    dbHelper.close();
 	  }
 
 	  public Book createBook(String name, int price, Boolean per, int availableTime, int likes,
 			  Boolean sOrR, Boolean state, String description, Date postTime, int ownerId,
-			  Context context) {
+			  Context context) {	// new a book
 	    ContentValues values = new ContentValues();
 	    values.put(BookSQLiteHelper.COLUMN_NAME, name);
 	    values.put(BookSQLiteHelper.COLUMN_PRICE, price);
@@ -63,7 +67,7 @@ public class BookDataSource {
 	    return newBook;
 	  }
 	  
-	  public Book getBook(int book_id, Context context) {
+	  public Book getBook(int book_id, Context context) {	// find a book
 		  Cursor cursor = database.query(BookSQLiteHelper.TABLE_BOOK,
 			        allColumns, UserSQLiteHelper.COLUMN_ID + " = " + book_id, null,
 			        null, null, null);
@@ -73,14 +77,14 @@ public class BookDataSource {
 		  return book;
 	  }
 
-	  public void deleteBook(Book book) {
+	  public void deleteBook(Book book) {		// delete a book
 	    long id = book.getId();
 	    System.out.println("Book deleted with id: " + id);
 	    database.delete(BookSQLiteHelper.TABLE_BOOK, BookSQLiteHelper.COLUMN_ID
 	        + " = " + id, null);
 	  }
 
-	  public List<Book> getAllBooks(Context context) {
+	  public List<Book> getAllBooks(Context context) {		// find books
 	    List<Book> books = new ArrayList<Book>();
 
 	    Cursor cursor = database.query(BookSQLiteHelper.TABLE_BOOK,

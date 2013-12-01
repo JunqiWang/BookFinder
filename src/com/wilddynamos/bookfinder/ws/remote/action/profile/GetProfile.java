@@ -21,7 +21,7 @@ public class GetProfile extends AsyncTask<String, Void, JSONArray> {
 	}
 
 	@Override
-	protected JSONArray doInBackground(String... params) {
+	protected JSONArray doInBackground(String... params) {		// make a connection to the server
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
 
@@ -35,7 +35,7 @@ public class GetProfile extends AsyncTask<String, Void, JSONArray> {
 	}
 
 	@Override
-	protected void onPostExecute(JSONArray jsonArray) {
+	protected void onPostExecute(JSONArray jsonArray) {		// after connection, fill the relative text view and image view
 		if (jsonArray == null || jsonArray.length() == 0)
 			Toast.makeText(a, "Oops", Toast.LENGTH_SHORT).show();
 		else
