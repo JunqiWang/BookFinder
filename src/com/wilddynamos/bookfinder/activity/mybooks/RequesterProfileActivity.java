@@ -23,7 +23,7 @@ public class RequesterProfileActivity extends BaseProfileActivity {
 
 		id = getIntent().getExtras().getInt("id");
 		bookId = getIntent().getExtras().getInt("bookId");
-		new GetProfile(this).execute(new String[] { id + "" });
+		new GetProfile(this).execute(new String[] { id + "", bookId + "" });
 	}
 
 	public void acceptRequest(View view) {
