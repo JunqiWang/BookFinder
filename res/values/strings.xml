@@ -90,6 +90,7 @@
 
     <!-- profile detail -->
     <string name="profile_title">Profile</string>
+    <string name="message">Requester\'s Message:</string>
 
     <!-- mybooks_requestlist -->
     <string name="request_list">Request List</string>

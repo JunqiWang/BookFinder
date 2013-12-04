@@ -66,6 +66,12 @@ public abstract class BaseProfileActivity extends Activity {
 			contact.setText(jo.getString("contact"));
 			address.setText(jo.getString("address"));
 
+			try {
+				((TextView) findViewById(R.id.request_message)).setText(jo
+						.getString("message"));
+			} catch (Exception e) {
+			}
+
 			String profileImageString = jo.getString("photo");
 			if (profileImageString != null && !"".equals(profileImageString)) {
 				byte[] cover = profileImageString.getBytes(Charset

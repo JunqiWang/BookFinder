@@ -35,7 +35,7 @@
         android:id="@+id/viewButton"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/requesterName"
+        android:layout_alignTop="@id/requesterName"
         android:layout_margin="10dip"
         android:layout_toLeftOf="@+id/acceptButton"
         android:background="@drawable/custom_button"

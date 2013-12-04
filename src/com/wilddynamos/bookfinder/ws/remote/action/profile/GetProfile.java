@@ -24,6 +24,8 @@ public class GetProfile extends AsyncTask<String, Void, JSONArray> {
 	protected JSONArray doInBackground(String... params) {		// make a connection to the server
 		Map<String, String> paramsMap = new HashMap<String, String>();
 		paramsMap.put("id", params[0]);
+		if(params.length >= 2)
+			paramsMap.put("bookId", params[1]);
 
 		try {
 			return DataUtils.receiveJSON(Connection.requestByPost("/Profile",
