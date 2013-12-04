@@ -15,8 +15,9 @@ import android.widget.LinearLayout;
 import com.wilddynamos.bookfinder.R;
 import com.wilddynamos.bookfinder.activity.BaseProfileActivity;
 import com.wilddynamos.bookfinder.model.User;
-import com.wilddynamos.bookfinder.ws.local.GetMyProfile;
+import com.wilddynamos.bookfinder.ws.remote.Connection;
 import com.wilddynamos.bookfinder.ws.remote.action.Logout;
+import com.wilddynamos.bookfinder.ws.remote.action.profile.GetProfile;
 
 public class MyProfileActivity extends BaseProfileActivity {
 
@@ -25,7 +26,8 @@ public class MyProfileActivity extends BaseProfileActivity {
 		((LinearLayout) findViewById(R.id.profile_self))
 				.setVisibility(LinearLayout.VISIBLE);
 
-		new GetMyProfile(this).execute();
+//		new GetMyProfile(this).execute();
+		new GetProfile(this).execute(new String[] { Connection.id + "" });
 	}
 
 	public void fill(User user) {

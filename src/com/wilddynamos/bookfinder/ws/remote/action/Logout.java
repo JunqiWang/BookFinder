@@ -35,7 +35,6 @@ public class Logout extends AsyncTask<Void, Void, Boolean> {
 	}
 
 	protected void onPostExecute(Boolean success) {
-		System.out.println(success);
 		if (success) {
 			Toast.makeText(a, "Logged out", Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(a, LoginActivity.class);

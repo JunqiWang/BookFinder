@@ -59,7 +59,7 @@ public class MyRequestDetailActivity extends BaseBookDetailActivity {
 					else
 						title.setText("Your request been declined");
 				} else {
-					if (jo.getInt("hasResponded") == -1)
+					if (jo.getInt("hasResponded") == 1)
 						title.setText("Using this book");
 					else
 						title.setText("Your request been declined");

@@ -216,7 +216,7 @@ public class PostOrEditBookActivity extends Activity {
 			params = new String[] { !sOrR + "", id == null ? null : id + "",
 					name.getText().toString(), coverString,
 					price.getText().toString(),
-					description.getText().toString(), coverString };
+					description.getText().toString() };
 
 		PostOrEditBook submit = new PostOrEditBook(this);
 		submit.execute(params);
