@@ -129,6 +129,7 @@ public class MyPostDetailActivity extends BaseBookDetailActivity {
 
 						try {
 							intent.putExtra("id", jo.getInt("requesterId"));
+							intent.putExtra("bookId", id);
 							intent.putExtra("responded", true);
 						} catch (JSONException e) {
 						}
