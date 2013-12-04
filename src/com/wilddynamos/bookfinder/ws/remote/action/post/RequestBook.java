@@ -39,7 +39,7 @@ public class RequestBook extends AsyncTask<String, Void, Boolean> {
 	@Override
 	protected void onPostExecute(Boolean success) {
 		if(success)
-			a.setLikeNum();						
+			a.requestSuccess();					
 		else
 			Toast.makeText(a, "Oops!", Toast.LENGTH_SHORT).show();
 	}
