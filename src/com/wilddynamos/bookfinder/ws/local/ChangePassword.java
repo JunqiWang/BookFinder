@@ -30,7 +30,7 @@ public class ChangePassword extends AsyncTask<String, Void, Integer> {
 		user.setId(Connection.id);
 		user.setPassword(params[1]);
 
-		int updateResult = userDataSource.updateUser(user);
+		int updateResult = userDataSource.updateUserPassword(user);
 		userDataSource.close();
 
 		return updateResult;

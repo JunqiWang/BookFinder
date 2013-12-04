@@ -79,6 +79,13 @@ public class UserDataSource {
 		return database.update(UserSQLiteHelper.TABLE_USER, values,
 				UserSQLiteHelper.COLUMN_ID + " = " + user.getId(), null);
 	}
+	
+	public int updateUserPassword(User user) {		// update user
+		ContentValues values = new ContentValues();
+		values.put(UserSQLiteHelper.COLUMN_PASSWORD, user.getPassword());
+		return database.update(UserSQLiteHelper.TABLE_USER, values,
+				UserSQLiteHelper.COLUMN_ID + " = " + user.getId(), null);
+	}
 
 	public void deleteUser(User user) {			// delete user
 		long id = user.getId();
