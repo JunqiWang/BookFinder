@@ -237,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/profile_addrLine"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:orientation="vertical"
                 android:visibility="invisible" >
 
